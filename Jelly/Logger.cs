@@ -12,7 +12,17 @@ public class Logger(string name = "Main")
     public static void Log(string name, MessageType type, object message)
     {
         var date = DateTime.Now - _startDate;
-        Trace.WriteLine($"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type != MessageType.NONE ? $"/{type}" : "")}] {message ?? "null"}");
+
+        string outputMessage = $"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type != MessageType.NONE ? $"/{type}" : "")}] {message ?? "null"}";
+
+        if(type != MessageType.ERROR)
+        {
+            Trace.WriteLine(outputMessage);
+        }
+        else
+        {
+            Console.Error.WriteLine(outputMessage);
+        }
     }
 
     public enum MessageType
