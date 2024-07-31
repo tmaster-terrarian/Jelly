@@ -3,37 +3,37 @@ using System.Diagnostics;
 
 namespace Jelly;
 
-public class Logger(string name = "main")
+public class Logger(string name = "Main")
 {
     private static readonly DateTime _startDate = DateTime.Now;
 
     public string Name { get; } = name;
 
-    public void Info(object message) => Log(Name, "INFO", message);
-
-    public void Error(object message) => Log(Name, "ERROR", message);
-
-    public void Warn(object message) => Log(Name, "WARN", message);
-
-    public void Log(object message) => Log(Name, null, message);
-
-    private static void Log(string name, string? type, object message)
+    public static void Log(string name, MessageType type, object message)
     {
         var date = DateTime.Now - _startDate;
-        Trace.WriteLine($"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type is not null ? $"/{type}" : "")}] {message ?? "null"}");
+        Trace.WriteLine($"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type != MessageType.NONE ? $"/{type}" : "")}] {message ?? "null"}");
     }
 
-    public static void InfoGeneric(string name, object message) => Log(name, "INFO", message);
-
-    public static void ErrorGeneric(string name, object message) => Log(name, "ERROR", message);
-
-    public static void WarnGeneric(string name, object message) => Log(name, "WARN", message);
-
-    public static void LogGeneric(string name, object message) => Log(name, null, message);
-
-    static Logger()
+    public enum MessageType
     {
-        TextWriterTraceListener tr2 = new TextWriterTraceListener(System.IO.File.CreateText("latest.log"));
-        Trace.Listeners.Add(tr2);
+        INFO,
+        ERROR,
+        WARN,
+        NONE
     }
+
+    public void Log(MessageType type, object message) => Log(Name, type, message);
+
+    public void Info(object message) => Log(Name, MessageType.INFO, message);
+
+    public void Error(object message) => Log(Name, MessageType.ERROR, message);
+
+    public void Warn(object message) => Log(Name, MessageType.WARN, message);
+
+    public static void Info(string name, object message) => Log(name, MessageType.INFO, message);
+
+    public static void Error(string name, object message) => Log(name, MessageType.ERROR, message);
+
+    public static void Warn(string name, object message) => Log(name, MessageType.WARN, message);
 }
