@@ -1,28 +1,39 @@
 using System;
+using System.Diagnostics;
 
 namespace Jelly;
 
-public class Logger
+public class Logger(string name = "main")
 {
     private static readonly DateTime _startDate = DateTime.Now;
-    private readonly string _name;
 
-    public string Name => _name;
+    public string Name { get; } = name;
 
-    public Logger(string name = "main")
-    {
-        this._name = name;
-    }
+    public void Info(object message) => Log(Name, "INFO", message);
 
-    public void Info(object message) => _Log("INFO", message ?? "null");
+    public void Error(object message) => Log(Name, "ERROR", message);
 
-    public void Error(object message) => _Log("ERROR", message ?? "null");
+    public void Warn(object message) => Log(Name, "WARN", message);
 
-    public void Warn(object message) => _Log("WARN", message ?? "null");
+    public void Log(object message) => Log(Name, null, message);
 
-    private void _Log(string type, object message)
+    private static void Log(string name, string? type, object message)
     {
         var date = DateTime.Now - _startDate;
-        Console.Out.WriteLine($"[{date.Hours.ToString("D2")}:{date.Minutes.ToString("D2")}:{date.Seconds.ToString("D2")}] [{Name}/{type}] {message}");
+        Trace.WriteLine($"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type is not null ? $"/{type}" : "")}] {message ?? "null"}");
+    }
+
+    public static void InfoGeneric(string name, object message) => Log(name, "INFO", message);
+
+    public static void ErrorGeneric(string name, object message) => Log(name, "ERROR", message);
+
+    public static void WarnGeneric(string name, object message) => Log(name, "WARN", message);
+
+    public static void LogGeneric(string name, object message) => Log(name, null, message);
+
+    static Logger()
+    {
+        TextWriterTraceListener tr2 = new TextWriterTraceListener(System.IO.File.CreateText("latest.log"));
+        Trace.Listeners.Add(tr2);
     }
 }
