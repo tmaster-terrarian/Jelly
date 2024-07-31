@@ -23,6 +23,6 @@ public class Logger
     private void _Log(string type, object message)
     {
         var date = DateTime.Now - _startDate;
-        Console.WriteLine($"[{date.Hours.ToString("D2")}:{date.Minutes.ToString("D2")}:{date.Seconds.ToString("D2")}] [{Name}/{type}] {message}");
+        Console.Out.WriteLine($"[{date.Hours.ToString("D2")}:{date.Minutes.ToString("D2")}:{date.Seconds.ToString("D2")}] [{Name}/{type}] {message}");
     }
 }
