@@ -7,6 +7,8 @@ namespace Jelly;
 
 public abstract class GameServer : Game
 {
+    internal static bool _gameCreated = false;
+
     public bool Server { get; set; }
 
     bool _disposed;
@@ -21,7 +23,11 @@ public abstract class GameServer : Game
 
     public GameServer()
     {
+        if(_gameCreated) throw new InvalidOperationException("You cannot create additional instances of GameServer.");
+
         Disposed += SetDisposed;
+
+        _gameCreated = true;
     }
 
     private void SetDisposed(object sender, EventArgs e) => _disposed = true;

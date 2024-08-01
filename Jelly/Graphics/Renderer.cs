@@ -34,6 +34,11 @@ public static class Renderer
     /// </summary>
     public static Texture2D EmptyTexture { get; private set; }
 
+    /// <summary>
+    /// Represents a single white pixel.
+    /// </summary>
+    public static Texture2D PixelTexture { get; private set; }
+
     public static void Initialize(GraphicsDeviceManager graphics, GraphicsDevice graphicsDevice, GameWindow window)
     {
         _graphics = graphics;
@@ -44,7 +49,10 @@ public static class Renderer
         UIRenderTarget = new RenderTarget2D(GraphicsDevice, ScreenSize.X, ScreenSize.Y);
 
         EmptyTexture = new Texture2D(GraphicsDevice, 1, 1);
-        EmptyTexture.SetData<byte>([0, 0, 0, 0]);
+        EmptyTexture.SetData([Color.Transparent]);
+
+        PixelTexture = new Texture2D(GraphicsDevice, 1, 1);
+        PixelTexture.SetData([Color.White]);
 
         Window.Position = new((GraphicsDevice.DisplayMode.Width - _graphics.PreferredBackBufferWidth) / 2, (GraphicsDevice.DisplayMode.Height - _graphics.PreferredBackBufferHeight) / 2);
 
