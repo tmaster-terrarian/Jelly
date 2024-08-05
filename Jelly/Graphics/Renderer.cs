@@ -26,9 +26,6 @@ public static class Renderer
     /// </summary>
     public static Point ScreenSize { get; set; } = new Point(640, 360);
 
-    public static SpriteFont RegularFont { get; private set; }
-    public static SpriteFont RegularFontBold { get; private set; }
-
     /// <summary>
     /// Represents a missing (empty) <see cref="Texture2D"/>.
     /// </summary>
@@ -68,9 +65,6 @@ public static class Renderer
     public static void LoadContent(ContentManager content)
     {
         SpriteBatch = new SpriteBatch(GraphicsDevice);
-
-        RegularFont = content.Load<SpriteFont>("Fonts/default");
-        RegularFontBold = content.Load<SpriteFont>("Fonts/defaultBold");
     }
 
     public static void BeginDraw(SamplerState samplerState = null, Matrix? transformMatrix = null, SpriteSortMode sortMode = SpriteSortMode.Deferred)
