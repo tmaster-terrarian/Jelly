@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+
 using Microsoft.Xna.Framework;
 
 namespace Jelly;
@@ -23,11 +24,12 @@ public abstract class GameServer : Game
 
     public GameServer()
     {
-        if(_gameCreated) throw new InvalidOperationException("You cannot create additional instances of GameServer.");
-
-        Disposed += SetDisposed;
+        if(_gameCreated)
+            throw new InvalidOperationException("You cannot create additional instances of GameServer.");
 
         _gameCreated = true;
+
+        Disposed += SetDisposed;
     }
 
     private void SetDisposed(object sender, EventArgs e) => _disposed = true;
