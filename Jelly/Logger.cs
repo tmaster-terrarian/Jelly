@@ -17,14 +17,7 @@ public class Logger(string name = "Main")
 
         string outputMessage = $"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type != MessageType.NONE ? $"/{type}" : "")}] {message ?? "null"}";
 
-        if(type == MessageType.ERROR)
-        {
-            Console.Error.WriteLine(outputMessage);
-        }
-        else
-        {
-            Trace.WriteLine(outputMessage);
-        }
+        Trace.WriteLine(outputMessage);
     }
 
     public enum MessageType
