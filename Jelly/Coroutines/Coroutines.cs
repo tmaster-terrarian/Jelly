@@ -1,6 +1,4 @@
-// Involves syntax edits to fit .NET core 8.0 standards.
-
-#region
+#region LICENSE
 /*
 
 MIT License
@@ -26,8 +24,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 */
+
 //github: https://github.com/ChevyRay/Coroutines/tree/master
 //FIX github: https://github.com/Linerichka/Coroutines
+
+// involves syntax edits to fit .NET core 8.0 and project standards:
+// https://github.com/tmaster-terrarian/BeeboMG/tree/main/Jelly/Coroutines/
 #endregion
 
 using System.Collections;

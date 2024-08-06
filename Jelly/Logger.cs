@@ -7,8 +7,6 @@ public class Logger(string name = "Main")
 {
     private static readonly DateTime _startDate = DateTime.Now;
 
-    private static readonly TextWriterTraceListener tr = new ConsoleTraceListener(true);
-
     public string Name { get; } = name;
 
     public static void Log(string name, MessageType type, object message)
@@ -17,7 +15,15 @@ public class Logger(string name = "Main")
 
         string outputMessage = $"[{date.Hours:D2}:{date.Minutes:D2}:{date.Seconds:D2}] [{name}{(type != MessageType.NONE ? $"/{type}" : "")}] {message ?? "null"}";
 
-        Trace.WriteLine(outputMessage);
+        switch(type)
+        {
+            case MessageType.ERROR:
+                Console.Error.WriteLine(outputMessage);
+                break;
+            default:
+                Console.Out.WriteLine(outputMessage);
+                break;
+        }
     }
 
     public enum MessageType
