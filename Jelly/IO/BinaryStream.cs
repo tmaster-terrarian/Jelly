@@ -11,7 +11,7 @@ public class BinaryStream : Stream
 
     private readonly List<byte> bytes;
 
-    public ReadOnlyCollection<byte> Buffer => bytes.AsReadOnly();
+    public byte[] Buffer => [.. bytes];
 
     public override bool CanRead => true;
     public override bool CanSeek => true;
@@ -25,7 +25,7 @@ public class BinaryStream : Stream
         set
         {
             ArgumentOutOfRangeException.ThrowIfNegative(value, nameof(value));
-            ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(value, Length, nameof(value));
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(value, Length, nameof(value));
 
             _position = value;
         }
@@ -33,11 +33,19 @@ public class BinaryStream : Stream
 
     public bool EndOfStream => Position >= Length;
 
-    public BinaryStream() => bytes = [];
+    public BinaryStream(int offset = 0)
+    {
+        bytes = [];
+        Position = offset;
+    }
 
-    public BinaryStream(List<byte> data) => bytes = data ?? [];
+    public BinaryStream(IEnumerable<byte> buffer, int offset = 0)
+    {
+        ArgumentNullException.ThrowIfNull(buffer);
 
-    public BinaryStream(byte[] data) => bytes = [.. data ?? []];
+        bytes = [.. buffer];
+        Position = offset;
+    }
 
     public override int ReadByte()
     {
@@ -108,7 +116,17 @@ public class BinaryStream : Stream
 
     public override void SetLength(long value)
     {
-        throw new NotImplementedException();
+        while(bytes.Count < value)
+        {
+            bytes.Add(0);
+        }
+
+        while(bytes.Count > value)
+        {
+            bytes.RemoveAt(bytes.Count - 1);
+        }
+
+        if(Position > value) Position = value;
     }
 
     public override void Write(byte[] buffer, int offset, int count)

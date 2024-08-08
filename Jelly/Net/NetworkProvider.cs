@@ -1,0 +1,28 @@
+namespace Jelly.Net;
+
+public abstract class NetworkProvider
+{
+    /// <summary>
+    /// Override this method to provide the client's NetID (ie. the player's index in a lobby)
+    /// </summary>
+    /// <returns>The index of the client this process is in charge of</returns>
+    public abstract int GetNetID();
+
+    /// <summary>
+    /// Override this method to provide the host's NetID (ie. the host's index in a lobby)
+    /// </summary>
+    /// <returns>The index of the client that started and manages the lobby</returns>
+    public abstract int GetHostNetID();
+
+    /// <summary>
+    /// This value is <see langword="true"/> if this client is the owner of the lobby, otherwise <see langword="false"/>
+    /// </summary>
+    public virtual bool IsHost => GetHostNetID() == GetNetID();
+
+    /// <summary>
+    /// This method will be called for each entity that wants to update
+    /// </summary>
+    /// <param name="data">The data to send to other clients</param>
+    /// <param name="important">Whether this packet should be sent in a reliable manner</param>
+    public abstract void SendSyncPacket(byte[] data, bool important);
+}
