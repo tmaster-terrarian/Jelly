@@ -67,12 +67,12 @@ public static class Renderer
         SpriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
-    public static void BeginDraw(SamplerState samplerState = null, Matrix? transformMatrix = null, SpriteSortMode sortMode = SpriteSortMode.Deferred)
+    public static void BeginDraw(SamplerState samplerState = null, Matrix? transformMatrix = null)
     {
         GraphicsDevice.SetRenderTarget(RenderTarget);
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        SpriteBatch.Begin(sortMode: sortMode, samplerState: samplerState, transformMatrix: transformMatrix);
+        SpriteBatch.Begin(sortMode: SpriteSortMode.Deferred, samplerState: samplerState, transformMatrix: transformMatrix);
     }
 
     public static void EndDraw()

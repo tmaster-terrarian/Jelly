@@ -1,4 +1,4 @@
-namespace Microsoft.Xna.Framework.Input;
+namespace Jelly;
 
 public enum MouseButtons
 {

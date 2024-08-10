@@ -19,5 +19,8 @@ public static class TextAlignmentPresets
     public const TextAlignment BottomRight = TextAlignment.Bottom | TextAlignment.Right;
     public const TextAlignment Center =      TextAlignment.CenterX | TextAlignment.CenterY;
 
+    public const TextAlignment BitsHorizontal = (TextAlignment)0b0011;
+    public const TextAlignment BitsVertical = (TextAlignment)0b1100;
+
     public static TextAlignment Default { get; set; } = TopLeft;
 }

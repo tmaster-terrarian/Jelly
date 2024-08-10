@@ -1,47 +1,58 @@
-using System.Collections.Generic;
 using System.IO;
 
 using Microsoft.Xna.Framework;
 
-using Jelly.Components;
-using Jelly.IO;
 using Jelly.Net;
 using Jelly.Utilities;
 
 namespace Jelly;
 
-public class Entity : INetworkedObject
+public class Entity : INetID
 {
     public ComponentList Components { get; }
 
-    private bool markedForRemoval;
-    private bool syncThisStep;
-    private bool syncImportant;
     private int depth;
+    private Point position;
 
-    public Point Position { get; set; }
+    internal bool skipSync;
 
-    /// <summary>
-    /// Corresponds to the index of the player that owns this entity.
-    /// </summary>
+    public Point Position
+    {
+        get => position;
+        set {
+            if(position != value)
+            {
+                position = value;
+                MarkForSync();
+            }
+        }
+    }
+
     public int NetID { get; }
 
+    public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
+
+    internal long EntityID { get; set; }
+
+    public int Tag { get; set; }
+
     public bool Enabled { get; private set; }
+    public bool Visible { get; set; }
+
+    public Scene Scene { get; private set; }
 
     public int Depth
     {
         get => depth;
         set
         {
-            if(depth != value)
+            var val = MathHelper.Clamp(value, -100000, 100000);
+            if(depth != val)
             {
-                depth = value;
-                // Scene?.SetActualDepth(this);
+                depth = val;
             }
         }
     }
-
-    public float RendererDepth { get; set; }
 
     public int X
     {
@@ -55,10 +66,14 @@ public class Entity : INetworkedObject
         set => Position = new(Position.X, value);
     }
 
+    internal bool SyncThisStep { get; set; }
+    internal bool SyncImportant { get; set; }
+
     public Entity(Point position, int netID)
     {
         Position = position;
         NetID = netID < 0 ? Providers.NetworkProvider.GetHostNetID() : netID;
+        EntityID = new System.Random((int)(NetID * 3011 + Providers.DeltaTime * 1000007)).NextInt64();
         Components = new(this);
     }
 
@@ -66,75 +81,109 @@ public class Entity : INetworkedObject
 
     public Entity() : this(Point.Zero, -1) {}
 
-    // public static void UpdateAll(GameTime gameTime)
-    // {
-    //     for(int i = 0; i < entities.Length; i++)
-    //     {
-    //         var entity = entities[i];
-
-    //         if(entity.NetID != Providers.NetworkProvider.GetNetID()) continue;
-
-    //         if(!entity.Enabled) continue;
-
-    //         // ...
-
-    //         if(entity.syncThisStep)
-    //         {
-    //             Providers.NetworkProvider.SendSyncPacket(entity.GetSyncPacket(), entity.syncImportant);
-
-    //             entity.syncThisStep = false;
-    //             entity.syncImportant = false;
-    //         }
-    //     }
-    // }
-
-    public virtual void Update(GameTime gameTime)
+    public void MarkForSync(bool important = false)
     {
-        Components.Update(gameTime);
+        SyncThisStep = true;
+        SyncImportant = important;
     }
 
-    public virtual void Draw(GameTime gameTime)
+    public virtual void Awake(Scene scene)
     {
-        Components.Draw(gameTime);
+        if(Components != null)
+            foreach(var c in Components)
+                c.EntityAwake();
     }
 
-    public byte[] GetSyncPacket()
+    public virtual void Added(Scene scene)
     {
-        var binWriter = new BinaryWriter(new BinaryStream());
+        Scene = scene;
+        if(Components != null)
+            foreach(var c in Components)
+                c.EntityAdded(scene);
+    }
+
+    public virtual void Removed(Scene scene)
+    {
+        if(Components != null)
+            foreach(var c in Components)
+                c.EntityRemoved(scene);
+        Scene = null;
+    }
+
+    public virtual void SceneBegin(Scene scene) {}
+
+    public virtual void SceneEnd(Scene scene)
+    {
+        if(Components != null)
+            foreach(var c in Components)
+                c.SceneEnd(scene);
+    }
+
+    public virtual void Update()
+    {
+        Components.Update();
+    }
+
+    public virtual void PreDraw()
+    {
+        Components.PreDraw();
+    }
+
+    public virtual void Draw()
+    {
+        Components.Draw();
+    }
+
+    public virtual void DrawUI()
+    {
+        Components.DrawUI();
+    }
+
+    public virtual void PostDraw()
+    {
+        Components.PostDraw();
+    }
+
+    public virtual bool TagIncludes(int tags)
+    {
+        return (tags & Tag) != 0;
+    }
+
+    public virtual bool TagMatches(int tags)
+    {
+        return (tags & Tag) == tags;
+    }
+
+    public void AddTag(int tag)
+    {
+        Tag |= tag;
+    }
+
+    public void RemoveTag(int tag)
+    {
+        Tag &= ~tag;
+    }
+
+    public void Remove(Component component)
+    {
+        Components.Remove(component);
+    }
+
+    public void Add(Component component)
+    {
+        Components.Add(component);
+    }
+
+    internal byte[] GetSyncPacket()
+    {
+        using var stream = new MemoryStream();
+        var binWriter = new BinaryWriter(stream);
+
+        binWriter.Write(EntityID);
 
         binWriter.Write(Position.X);
         binWriter.Write(Position.Y);
 
-        byte[] value = ((BinaryStream)binWriter.BaseStream).Buffer;
-
-        binWriter.Dispose();
-
-        return value;
-    }
-
-    public void ReadSyncPacket(byte[] data)
-    {
-        var binReader = new BinaryReader(new BinaryStream(data));
-
-        Position = new(binReader.ReadInt32(), binReader.ReadInt32());
-
-        binReader.Dispose();
-    }
-
-    public void RemoveComponent(Component component)
-    {
-        if(ReferenceEquals(component.Entity, this) || component.Entity == this)
-        {
-            component.Entity = null;
-            component.Enabled = false;
-        }
-
-        Components.Remove(component);
-    }
-
-    public void AddComponent(Component component)
-    {
-        Components.Add(component);
-        component.Entity = this;
+        return stream.ToArray();
     }
 }

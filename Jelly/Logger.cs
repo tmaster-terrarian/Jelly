@@ -3,13 +3,15 @@ using System.Diagnostics;
 
 namespace Jelly;
 
-public class Logger(string name = "Main")
+public class Logger(string name)
 {
     private static readonly DateTime _startDate = DateTime.Now;
 
+    internal static Logger JellyLogger = new("Jelly");
+
     public string Name { get; } = name;
 
-    public static void Log(string name, MessageType type, object message)
+    public static void Log(string name, MessageType type, object? message)
     {
         var date = DateTime.Now - _startDate;
 
@@ -34,17 +36,17 @@ public class Logger(string name = "Main")
         NONE
     }
 
-    public void Log(MessageType type, object message) => Log(Name, type, message);
+    public void Log(MessageType type, object? message) => Log(Name, type, message);
 
-    public void Info(object message) => Log(Name, MessageType.INFO, message);
+    public void Info(object? message) => Log(Name, MessageType.INFO, message);
 
-    public void Error(object message) => Log(Name, MessageType.ERROR, message);
+    public void Error(object? message) => Log(Name, MessageType.ERROR, message);
 
-    public void Warn(object message) => Log(Name, MessageType.WARN, message);
+    public void Warn(object? message) => Log(Name, MessageType.WARN, message);
 
-    public static void Info(string name, object message) => Log(name, MessageType.INFO, message);
+    public static void Info(string name, object? message) => Log(name, MessageType.INFO, message);
 
-    public static void Error(string name, object message) => Log(name, MessageType.ERROR, message);
+    public static void Error(string name, object? message) => Log(name, MessageType.ERROR, message);
 
-    public static void Warn(string name, object message) => Log(name, MessageType.WARN, message);
+    public static void Warn(string name, object? message) => Log(name, MessageType.WARN, message);
 }

@@ -1,10 +1,8 @@
 namespace Jelly.Net;
 
-public interface INetworkedObject
+internal interface INetworkedObject : INetID
 {
-    public int NetID { get; }
+    internal byte[] GetSyncPacket();
 
-    public byte[] GetSyncPacket();
-
-    public void ReadSyncPacket(byte[] data);
+    internal void ReadSyncPacket(byte[] data);
 }
