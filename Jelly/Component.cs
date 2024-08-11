@@ -1,12 +1,18 @@
 using System.IO;
 using System.Text.Json.Serialization;
 
+using Jelly.Components;
 using Jelly.Net;
-using Jelly.Serialization;
 
 namespace Jelly;
 
-public abstract class Component : INetID
+[JsonPolymorphic(
+    IgnoreUnrecognizedTypeDiscriminators = false,
+    UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToBaseType
+)]
+
+[JsonDerivedType(typeof(SpriteComponent), nameof(SpriteComponent))]
+public abstract class Component : INetID, IComponent
 {
     internal Entity entity;
 
@@ -149,3 +155,5 @@ public abstract class Component : INetID
 
     public virtual void ReadPacket(byte[] data) {}
 }
+
+internal interface IComponent;
