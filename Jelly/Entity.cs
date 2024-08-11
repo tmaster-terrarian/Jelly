@@ -37,7 +37,7 @@ public class Entity : INetID
 
     public int Tag { get; set; }
 
-    public bool Enabled { get; private set; }
+    public bool Enabled { get; set; }
     public bool Visible { get; set; }
 
     [JsonIgnore] public Scene Scene { get; private set; }
