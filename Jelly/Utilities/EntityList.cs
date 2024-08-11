@@ -3,17 +3,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Jelly.IO;
-using Jelly.Net;
+using System.Text.Json.Serialization;
+
 using Microsoft.Xna.Framework;
+
+using Jelly.Net;
 
 namespace Jelly.Utilities;
 
-public class EntityList : IEnumerable<Entity>, IEnumerable
+public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 {
     public static Comparison<Entity> CompareDepth => (a, b) => Math.Sign(b.Depth - a.Depth);
 
-    private readonly List<Entity> entities = [];
+    private List<Entity> Entities { get; set; } = [];
+
     private readonly List<Entity> toAdd = [];
     private readonly List<Entity> toAwake = [];
     private readonly List<Entity> toRemove = [];
@@ -24,7 +27,24 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     private bool unsorted;
 
-    public Scene Scene { get; private set; }
+    [JsonIgnore] public Scene Scene { get; internal set; }
+
+    [JsonIgnore]
+    public int Count => Entities.Count;
+
+    public bool IsReadOnly { get; }
+
+    [JsonIgnore]
+    public Entity this[int index]
+    {
+        get
+        {
+            if (index < 0 || index >= Entities.Count)
+                throw new IndexOutOfRangeException();
+            else
+                return Entities[index];
+        }
+    }
 
     internal EntityList(Scene scene)
     {
@@ -44,7 +64,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
             {
                 if(current.Add(entity))
                 {
-                    entities.Add(entity);
+                    Entities.Add(entity);
 
                     if (Scene != null)
                     {
@@ -75,7 +95,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         {
             foreach (var entity in toRemove)
             {
-                if(entities.Remove(entity))
+                if(Entities.Remove(entity))
                 {
                     current.Remove(entity);
 
@@ -104,7 +124,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         if (unsorted)
         {
             unsorted = false;
-            entities.Sort(CompareDepth);
+            Entities.Sort(CompareDepth);
         }
 
         if (toAdd.Count > 0)
@@ -120,6 +140,8 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         }
     }
 
+    public int IndexOf(Entity entity) => Entities.IndexOf(entity);
+
     public void Add(Entity entity)
     {
         if (!adding.Contains(entity) && !current.Contains(entity))
@@ -129,13 +151,15 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         }
     }
 
-    public void Remove(Entity entity)
+    public bool Remove(Entity entity)
     {
-        if (!removing.Contains(entity) && current.Contains(entity))
+        if(!removing.Contains(entity) && current.Contains(entity))
         {
             removing.Add(entity);
             toRemove.Add(entity);
+            return true;
         }
+        return false;
     }
 
     public void Add(IEnumerable<Entity> entities)
@@ -144,10 +168,12 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
             Add(entity);
     }
 
-    public void Remove(IEnumerable<Entity> entities)
+    public bool Remove(IEnumerable<Entity> entities)
     {
+        bool result = false;
         foreach (Entity entity in entities)
-            Remove(entity);
+            result |= Remove(entity);
+        return result;
     }
 
     public void Add(params Entity[] entities)
@@ -156,35 +182,18 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
             Add(entity);
     }
 
-    public void Remove(params Entity[] entities)
+    public bool Remove(params Entity[] entities)
     {
+        bool result = false;
         foreach (Entity entity in entities)
-            Remove(entity);
-    }
-
-    public int Count
-    {
-        get
-        {
-            return entities.Count;
-        }
-    }
-
-    public Entity this[int index]
-    {
-        get
-        {
-            if (index < 0 || index >= entities.Count)
-                throw new IndexOutOfRangeException();
-            else
-                return entities[index];
-        }
+            result |= Remove(entity);
+        return result;
     }
 
     public int AmountOf<T>() where T : Entity
     {
         int count = 0;
-        foreach (var e in entities)
+        foreach (var e in Entities)
             if (e is T)
                 count++;
 
@@ -193,7 +202,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     public T FindFirst<T>() where T : Entity
     {
-        foreach (var e in entities)
+        foreach (var e in Entities)
             if (e is T)
                 return e as T;
 
@@ -202,7 +211,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     public Entity FindByID(long id)
     {
-        foreach (var e in entities)
+        foreach (var e in Entities)
             if (e.EntityID == id)
                 return e;
 
@@ -213,7 +222,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
     {
         List<T> list = [];
 
-        foreach (var e in entities)
+        foreach (var e in Entities)
             if (e is T)
                 list.Add(e as T);
 
@@ -222,14 +231,14 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     public void With<T>(Action<T> action) where T : Entity
     {
-        foreach (var e in entities)
+        foreach (var e in Entities)
             if (e is T)
                 action(e as T);
     }
 
     public IEnumerator<Entity> GetEnumerator()
     {
-        return entities.GetEnumerator();
+        return Entities.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -239,7 +248,7 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     public Entity[] ToArray()
     {
-        return [.. entities];
+        return [.. Entities];
     }
 
     public bool HasVisibleEntities(int matchTags, TagFilter filter = TagFilter.AtLeastOne)
@@ -247,19 +256,19 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         switch(filter)
         {
             case TagFilter.AtLeastOne:
-                foreach(var entity in entities)
+                foreach(var entity in Entities)
                     if(entity.Visible && entity.TagIncludes(matchTags))
                         return true;
                 break;
 
             case TagFilter.All:
-                foreach(var entity in entities)
+                foreach(var entity in Entities)
                     if(entity.Visible && entity.TagMatches(matchTags))
                         return true;
                 break;
 
             case TagFilter.None:
-                foreach(var entity in entities)
+                foreach(var entity in Entities)
                     if(entity.Visible && !entity.TagIncludes(matchTags))
                         return true;
                 break;
@@ -270,14 +279,14 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     internal void Update()
     {
-        foreach(var entity in entities)
+        foreach(var entity in Entities)
             if(entity.Enabled && entity.CanUpdateLocally)
                 entity.Update();
     }
 
     private void Draw(int phase)
     {
-        foreach(var entity in entities)
+        foreach(var entity in Entities)
             if(entity.Visible)
                 DrawPhase(entity, phase);
     }
@@ -287,19 +296,19 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         switch(filter)
         {
             case TagFilter.AtLeastOne:
-                foreach(var entity in entities)
+                foreach(var entity in Entities)
                     if(entity.Visible && entity.TagIncludes(matchTags))
                         DrawPhase(entity, phase);
                 break;
 
             case TagFilter.All:
-                foreach(var entity in entities)
+                foreach(var entity in Entities)
                     if(entity.Visible && entity.TagMatches(matchTags))
                         DrawPhase(entity, phase);
                 break;
 
             case TagFilter.None:
-                foreach(var entity in entities)
+                foreach(var entity in Entities)
                     if(entity.Visible && !entity.TagIncludes(matchTags))
                         DrawPhase(entity, phase);
                 break;
@@ -343,10 +352,10 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
 
     internal void SendPackets()
     {
-        for(int i = 0; i < entities.Count; i++)
+        for(int i = 0; i < Entities.Count; i++)
         {
-            Entity entity = entities[i];
-            if (entity.Enabled && entity.SyncThisStep)
+            Entity entity = Entities[i];
+            if(entity.CanUpdateLocally && entity.Enabled && entity.SyncThisStep)
             {
                 Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityUpdate, entity.GetSyncPacket(), entity.SyncImportant);
 
@@ -360,8 +369,13 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
     {
         using var binReader = new BinaryReader(new MemoryStream(data));
 
+        var sceneId = binReader.ReadInt64();
+        if(Scene.SceneID != sceneId)
+            return;
+
         var id = binReader.ReadInt64();
         var entity = FindByID(id);
+
         if(entity is null)
         {
             if(!newEntity)
@@ -381,5 +395,20 @@ public class EntityList : IEnumerable<Entity>, IEnumerable
         entity.Position = new(binReader.ReadInt32(), binReader.ReadInt32());
 
         // Logger.JellyLogger.Warn("An entity was given an invalid packet and was not updated. This may cause a desync!");
+    }
+
+    public void Clear()
+    {
+        Remove(Entities);
+    }
+
+    public bool Contains(Entity item)
+    {
+        return Entities.Contains(item);
+    }
+
+    void ICollection<Entity>.CopyTo(Entity[] array, int arrayIndex)
+    {
+        Entities.CopyTo(array, arrayIndex);
     }
 }

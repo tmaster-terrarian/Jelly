@@ -1,6 +1,8 @@
 using System.IO;
+using System.Text.Json.Serialization;
 
 using Jelly.Net;
+using Jelly.Serialization;
 
 namespace Jelly;
 
@@ -10,43 +12,28 @@ public abstract class Component : INetID
 
     internal bool enabled;
 
-    internal long ComponentID { get; set; }
+    [JsonIgnore] internal long ComponentID { get; set; }
 
-    public bool SyncThisStep { get; internal set; }
-    public bool SyncImportant { get; internal set; }
+    [JsonIgnore] public bool SyncThisStep { get; internal set; }
+    [JsonIgnore] public bool SyncImportant { get; internal set; }
 
     internal bool skipSync;
 
-    public int NetID => Entity.NetID;
+    [JsonIgnore] public int NetID => Entity.NetID;
 
+    [JsonIgnore]
     public Entity Entity
     {
         get => entity;
 
         private set
         {
-            if(value is not null)
-            {
-                if(ReferenceEquals(value, entity) || value == entity)
-                {
-                    return;
-                }
-            }
-            else if(entity is null)
+            if(ReferenceEquals(value, entity) || value == entity)
             {
                 return;
             }
 
-            if(value is not null)
-            {
-                entity = value;
-                Added(value);
-            }
-            else
-            {
-                Removed(entity);
-                entity = value;
-            }
+            entity = value;
         }
     }
 
@@ -68,21 +55,23 @@ public abstract class Component : INetID
 
     public bool Visible { get; set; } = true;
 
-    public Scene Scene => Entity?.Scene;
+    [JsonIgnore] public Scene? Scene => Entity?.Scene;
 
     /// <summary>
     /// Ensure that the zero-argument constructor is preserved in all subtypes, to avoid netcode problems.
     /// </summary>
-    public Component()
-    {
-        Enabled = true;
-        Visible = true;
-    }
+    public Component() : this(true, true) {}
 
     public Component(bool enabled, bool visible)
     {
         Enabled = enabled;
         Visible = visible;
+    }
+
+    public void MarkForSync(bool important = false)
+    {
+        SyncThisStep = true;
+        SyncImportant = important;
     }
 
     public virtual void Added(Entity entity)
@@ -139,12 +128,12 @@ public abstract class Component : INetID
         using var stream = new MemoryStream();
         var binWriter = new BinaryWriter(stream);
 
+        binWriter.Write(Scene.SceneID);
         binWriter.Write(Entity.EntityID);
         binWriter.Write(ComponentID);
 
         var name = GetType().FullName;
 
-        // binWriter.Write((byte)Math.Clamp(name.Length, 0, 255));
         binWriter.Write(name);
 
         binWriter.Write(Enabled);

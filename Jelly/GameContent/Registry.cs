@@ -3,34 +3,71 @@ using System.Collections.Generic;
 
 namespace Jelly.GameContent;
 
-public abstract class Registry<T> : IEnumerable, IEnumerable<Dictionary<string, T>.Enumerator> where T : ContentDef
+public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerable<Dictionary<string, TDef>.Enumerator> where TDef : ContentDef
 {
-    private readonly Dictionary<string, T> registeredDefs = [];
+    private readonly Dictionary<string, TDef> registeredDefs = [];
 
-    public T GetDef(string key)
+    public TDef? GetDef(string key)
     {
-        if(registeredDefs.TryGetValue(key, out T value))
+        if(registeredDefs.TryGetValue(key, out TDef value))
             return value;
 
         return null;
     }
 
-    public T Register(string key, T value)
+    public static TDef? GetDefStatic(string name) => Registries.GetRegistry<Registry<TDef>>()?.GetDef(name);
+
+    public bool Register(TDef value)
     {
-        return registeredDefs.TryAdd(key, value) ? value : null;
+        CheckLocked();
+
+        return Register(value, value.Name);
     }
 
-    public T Register(T value)
+    public bool Register(TDef value, string key)
     {
-        return registeredDefs.TryAdd(value.Name, value) ? value : null;
+        CheckLocked();
+
+        if(!Locked && registeredDefs.TryAdd(key, value))
+        {
+            EntryAdded(value, key);
+            return true;
+        }
+
+        return false;
     }
 
     public bool UnRegister(string key)
     {
-        return registeredDefs.Remove(key);
+        CheckLocked();
+
+        if(!Locked && registeredDefs.Remove(key, out TDef value))
+        {
+            EntryRemoved(value, key);
+            return true;
+        }
+
+        return false;
     }
 
-    public IEnumerator<Dictionary<string, T>.Enumerator> GetEnumerator()
+    public bool UnRegister(TDef value)
+    {
+        CheckLocked();
+
+        if(!Locked && registeredDefs.Remove(value.Name, out TDef v) && ReferenceEquals(value, v))
+        {
+            EntryRemoved(v, v.Name);
+            return true;
+        }
+
+        return false;
+    }
+
+    protected virtual void EntryAdded(TDef? value, string key) {}
+
+    protected virtual void EntryRemoved(TDef? value, string key) {}
+
+    public IEnumerator<Dictionary<string, TDef>.Enumerator> GetEnumerator()
     {
         yield return registeredDefs.GetEnumerator();
     }

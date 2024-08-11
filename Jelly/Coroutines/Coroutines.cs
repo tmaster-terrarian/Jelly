@@ -155,7 +155,7 @@ public class CoroutineHandle(CoroutineRunner runner, string methodName, float de
     {
         if (Enumerator != null)
         {
-            while(Runner.IsRunning(MethodName))
+            while(IsRunning)
             {
                 yield return null;
             }
@@ -166,4 +166,18 @@ public class CoroutineHandle(CoroutineRunner runner, string methodName, float de
     /// True if the enumerator is currently running.
     /// </summary>
     public bool IsRunning => Runner.IsRunning(MethodName);
+}
+
+// addition
+public static class TimeDelay
+{
+    public static float ToSeconds(float value)
+    {
+        return value;
+    }
+
+    public static float ToFrames(float value)
+    {
+        return value / 60f;
+    }
 }

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.Json.Serialization;
 
 using Microsoft.Xna.Framework;
 
@@ -9,7 +10,7 @@ namespace Jelly;
 
 public class Entity : INetID
 {
-    public ComponentList Components { get; }
+    public ComponentList Components { get; internal set; }
 
     private int depth;
     private Point position;
@@ -28,18 +29,18 @@ public class Entity : INetID
         }
     }
 
-    public int NetID { get; }
+    [JsonIgnore] public int NetID { get; protected set; }
 
-    public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
+    [JsonIgnore] public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
 
-    internal long EntityID { get; set; }
+    [JsonIgnore] internal long EntityID { get; set; }
 
     public int Tag { get; set; }
 
     public bool Enabled { get; private set; }
     public bool Visible { get; set; }
 
-    public Scene Scene { get; private set; }
+    [JsonIgnore] public Scene Scene { get; private set; }
 
     public int Depth
     {
@@ -54,20 +55,22 @@ public class Entity : INetID
         }
     }
 
+    [JsonIgnore]
     public int X
     {
         get => Position.X;
         set => Position = new(value, Position.Y);
     }
 
+    [JsonIgnore]
     public int Y
     {
         get => Position.Y;
         set => Position = new(Position.X, value);
     }
 
-    internal bool SyncThisStep { get; set; }
-    internal bool SyncImportant { get; set; }
+    [JsonIgnore] internal bool SyncThisStep { get; set; }
+    [JsonIgnore] internal bool SyncImportant { get; set; }
 
     public Entity(Point position, int netID)
     {
@@ -179,6 +182,7 @@ public class Entity : INetID
         using var stream = new MemoryStream();
         var binWriter = new BinaryWriter(stream);
 
+        binWriter.Write(Scene.SceneID);
         binWriter.Write(EntityID);
 
         binWriter.Write(Position.X);

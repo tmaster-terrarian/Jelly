@@ -1,5 +1,6 @@
 using System;
 
+using Jelly.GameContent;
 using Jelly.Net;
 
 namespace Jelly;
@@ -18,21 +19,19 @@ public static class Providers
         }
     }
 
+    private static ContentProvider _contentProvider;
+
+    public static ContentProvider ContentProvider
+    {
+        get {
+            CheckInitialized();
+            return _contentProvider;
+        }
+    }
+
     private static float deltaTime;
 
     public static float DeltaTime => deltaTime;
-
-    internal static event PacketEvent PacketReceived;
-
-    internal delegate void PacketEvent(byte[] data, int senderNetID);
-
-    /// <summary>
-    /// Use this to raise the <see cref="PacketReceived"/> event whenever a multiplayer packet is received 
-    /// </summary>
-    public static void RaisePacketReceivedEvent(byte[] data)
-    {
-        PacketReceived?.Invoke(data, NetworkProvider.GetNetID());
-    }
 
     /// <summary>
     /// This method should called before calling any other update methods related to <see cref="Jelly"/>
@@ -43,16 +42,19 @@ public static class Providers
     }
 
     /// <summary>
-    /// Use this method to set up the main providers at program start.
+    /// Sets up the main providers and engine backend utilities. Call once at program start.
     /// </summary>
-    public static void Initialize(NetworkProvider networkProvider)
+    public static void Initialize(NetworkProvider networkProvider, ContentProvider contentProvider)
     {
         ArgumentNullException.ThrowIfNull(networkProvider, nameof(networkProvider));
 
-        if(_initialized) throw new InvalidOperationException(nameof(Initialize) + " cannot be called more than once.");
+        if(_initialized) throw new InvalidOperationException(nameof(Initialize) + " cannot be called more than once!");
         _initialized = true;
 
         _networkProvider = networkProvider;
+        _contentProvider = contentProvider;
+
+        Registries.Init();
     }
 
     private static void CheckInitialized()

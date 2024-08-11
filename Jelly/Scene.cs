@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json.Serialization;
+
+using Microsoft.Xna.Framework;
+
 using Jelly.Coroutines;
 using Jelly.Net;
 using Jelly.Utilities;
-using Microsoft.Xna.Framework;
 
 namespace Jelly;
 
@@ -13,45 +16,57 @@ public class Scene
     /// <summary>
     /// Don't use this during multiplayer games
     /// </summary>
-    public bool Paused { get; set; }
+    [JsonIgnore] public bool Paused { get; set; }
 
-    public float TimeScale { get; set; } = 1;
+    [JsonIgnore] public float TimeScale { get; set; } = 1;
 
-    public float TimeActive { get; private set; }
+    [JsonIgnore] public float TimeActive { get; private set; }
 
-    public float RawTimeActive { get; private set; }
+    [JsonIgnore] public float RawTimeActive { get; private set; }
 
-    public bool Focused { get; private set; }
+    [JsonIgnore] public bool Focused { get; private set; }
 
-    public EntityList Entities { get; private set; }
+    public EntityList Entities { get; internal set; }
 
-    public Entity HelperEntity { get; private set; }
+    public string Name { get; set; } = "";
 
-    public CoroutineRunner CoroutineRunner { get; } = new();
+    [JsonIgnore] public CoroutineRunner CoroutineRunner { get; } = new();
+
+    [JsonIgnore] internal long SceneID { get; }
 
     public event Action OnEndOfFrame;
 
     public Scene()
     {
         Entities = new(this);
+        SceneID = Name.GetHashCode();
+    }
+
+    public Scene(long idOverride) : this()
+    {
+        SceneID = idOverride;
     }
 
     public virtual void Begin()
     {
         Focused = true;
-        Providers.PacketReceived += ReadPacket;
+        Providers.NetworkProvider.PacketReceived += ReadPacket;
 
         foreach (var entity in Entities)
-            entity.SceneBegin(this);
+            if(entity.CanUpdateLocally)
+                entity.SceneBegin(this);
     }
 
     public virtual void End()
     {
         Focused = false;
-        Providers.PacketReceived -= ReadPacket;
+        Providers.NetworkProvider.PacketReceived -= ReadPacket;
 
         foreach (var entity in Entities)
-            entity.SceneEnd(this);
+            if(entity.CanUpdateLocally)
+                entity.SceneEnd(this);
+
+        CoroutineRunner.StopAll();
     }
 
     public virtual void PreUpdate()
@@ -82,7 +97,10 @@ public class Scene
         OnEndOfFrame?.Invoke();
         OnEndOfFrame = null;
 
-        Entities.SendPackets();
+        if(!Paused && Providers.NetworkProvider.NetworkingEnabled)
+        {
+            Entities.SendPackets();
+        }
     }
 
     public virtual void PreDraw()
@@ -146,6 +164,9 @@ public class Scene
 
     private void ReadPacket(byte[] data, int sender)
     {
+        if(!Providers.NetworkProvider.NetworkingEnabled)
+            return;
+
         SyncPacketType type = (SyncPacketType)data[0];
         var payload = data[1..];
 
@@ -164,33 +185,58 @@ public class Scene
             case SyncPacketType.EntityRemoved:
             {
                 using var stream = new MemoryStream(payload);
+                var reader = new BinaryReader(stream);
 
-                long entity = new BinaryReader(stream).ReadInt64();
-                Entities.Remove(Entities.FindByID(entity));
+                long scene = reader.ReadInt64();
+                if(scene != SceneID)
+                    break;
+
+                long entityId = reader.ReadInt64();
+                var entity = Entities.FindByID(entityId);
+
+                if(entity is not null)
+                    entity.skipSync = true;
+
+                Entities.Remove(entity);
                 break;
             }
             case SyncPacketType.ComponentUpdate:
             {
                 using var stream = new MemoryStream(payload);
+                var reader = new BinaryReader(stream);
 
-                long entity = new BinaryReader(stream).ReadInt64();
-                Entities.FindByID(entity)?.Components?.ReadPacket(payload[8..]);
+                long scene = reader.ReadInt64();
+                if(scene != SceneID)
+                    break;
+
+                long entity = reader.ReadInt64();
+                Entities.FindByID(entity)?.Components?.ReadPacket(payload[16..]);
                 break;
             }
             case SyncPacketType.ComponentAdded:
             {
                 using var stream = new MemoryStream(payload);
+                var reader = new BinaryReader(stream);
 
-                long entity = new BinaryReader(stream).ReadInt64();
-                Entities.FindByID(entity)?.Components?.ReadPacket(payload[8..], true);
+                long scene = reader.ReadInt64();
+                if(scene != SceneID)
+                    break;
+
+                long entityId = reader.ReadInt64();
+                Entities.FindByID(entityId)?.Components?.ReadPacket(payload[16..], true);
                 break;
             }
             case SyncPacketType.ComponentRemoved:
             {
                 using var stream = new MemoryStream(payload);
+                var reader = new BinaryReader(stream);
 
-                long entity = new BinaryReader(stream).ReadInt64();
-                Entities.FindByID(entity)?.Components?.ReadRemovalPacket(payload[8..]);
+                long scene = reader.ReadInt64();
+                if(scene != SceneID)
+                    break;
+
+                long entity = reader.ReadInt64();
+                Entities.FindByID(entity)?.Components?.ReadRemovalPacket(payload[16..]);
                 break;
             }
         }
