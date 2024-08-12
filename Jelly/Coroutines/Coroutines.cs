@@ -53,10 +53,19 @@ public class CoroutineRunner
 
     private readonly Dictionary<string, CoroutineHandle> _coroutines = [];
 
+    private readonly Dictionary<string, CoroutineHandle> _toAdd = [];
+
+    private bool running;
+
     public CoroutineHandle Run(string methodName, IEnumerator enumerator, float delay = 0f)
     {
         CoroutineHandle coroutineHandle = new(this, methodName, delay, enumerator);
-        _coroutines.Add(methodName, coroutineHandle);
+        if(running)
+        {
+            _toAdd.Add(methodName, coroutineHandle);
+        }
+        else
+            _coroutines.Add(methodName, coroutineHandle);
         return coroutineHandle;
     }
 
@@ -91,6 +100,17 @@ public class CoroutineRunner
     {
         Queue<string> corountineForRemoval = [];
 
+        if(_toAdd.Count > 0)
+        {
+            foreach(var coroutine in _toAdd.Values)
+            {
+                _coroutines.Add(coroutine.MethodName, coroutine);
+            }
+            _toAdd.Clear();
+        }
+
+        running = true;
+
         foreach(var coroutine in _coroutines.Values)
         {
             if(coroutine.Delay > 0)
@@ -107,6 +127,8 @@ public class CoroutineRunner
                 corountineForRemoval.Enqueue(coroutine.MethodName);
             }
         }
+
+        running = false;
 
         while(corountineForRemoval.TryDequeue(out string methodName))
         {
@@ -155,7 +177,7 @@ public class CoroutineHandle(CoroutineRunner runner, string methodName, float de
     {
         if (Enumerator != null)
         {
-            while(IsRunning)
+            while(Runner.IsRunning(MethodName))
             {
                 yield return null;
             }
