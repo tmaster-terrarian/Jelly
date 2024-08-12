@@ -1,14 +1,23 @@
 using System;
 using System.Collections.Generic;
-using Jelly.Graphics;
+using System.Diagnostics.CodeAnalysis;
 
 using Microsoft.Xna.Framework.Graphics;
+
+using Jelly.Graphics;
+using System.IO;
 
 namespace Jelly;
 
 public abstract class ContentProvider
 {
     public abstract Texture2D? GetTexture(string pathName);
+
+    public virtual bool TryGetTexture(string pathName, [NotNullWhen(true)] out Texture2D? texture)
+    {
+        texture = GetTexture(pathName);
+        return texture is not null;
+    }
 }
 
 public class BasicContentProvider() : ContentProvider
@@ -30,7 +39,7 @@ public class BasicContentProvider() : ContentProvider
 
         try
         {
-            var texture = Texture2D.FromFile(Renderer.GraphicsDevice, pathName);
+            var texture = Texture2D.FromFile(Renderer.GraphicsDevice, Path.Combine("Content", pathName, ".png"));
             loadedTextures.Add(pathName, texture);
             return texture;
         }

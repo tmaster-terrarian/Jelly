@@ -207,10 +207,12 @@ public static class Input
             Keys.OemSemicolon => shift ? ':' : ';',
             Keys.OemQuotes => shift ? '"' : '\'',
             Keys.OemBackslash => shift ? '|' : '\\',
+            Keys.OemPipe => shift ? '|' : '\\',
             Keys.OemOpenBrackets => shift ? '{' : '[',
             Keys.OemCloseBrackets => shift ? '}' : ']',
             Keys.OemMinus => shift ? '_' : '-',
             Keys.OemPlus => shift ? '+' : '=',
+            Keys.OemTilde => shift ? '~' : '`',
             Keys.Back => '\x127',
             _ => '\0',
         };

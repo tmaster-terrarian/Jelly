@@ -29,10 +29,9 @@ public class SpriteComponent : Component
 
         if(TexturePath is null) return;
 
-        var tex = Providers.ContentProvider.GetTexture(TexturePath);
-
-        if(tex is null) return;
-
-        Renderer.SpriteBatch.Draw(tex, Entity.Position.ToVector2(), SourceRectangle, Color * Alpha, Rotation, Pivot, Scale, SpriteEffects, 0);
+        if(Providers.ContentProvider.TryGetTexture(TexturePath, out Texture2D tex))
+        {
+            Renderer.SpriteBatch.Draw(tex, Entity.Position.ToVector2(), SourceRectangle, Color * Alpha, Rotation, Pivot, Scale, SpriteEffects, 0);
+        }
     }
 }

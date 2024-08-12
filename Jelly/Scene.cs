@@ -47,10 +47,21 @@ public class Scene
         SceneID = idOverride;
     }
 
-    public virtual void Begin()
+    public void Subscribe()
     {
         Focused = true;
         Providers.NetworkProvider.PacketReceived += ReadPacket;
+    }
+
+    public void Unsubscribe()
+    {
+        Focused = false;
+        Providers.NetworkProvider.PacketReceived -= ReadPacket;
+    }
+
+    public virtual void Begin()
+    {
+        Subscribe();
 
         foreach (var entity in Entities)
             if(entity.CanUpdateLocally)
@@ -59,8 +70,7 @@ public class Scene
 
     public virtual void End()
     {
-        Focused = false;
-        Providers.NetworkProvider.PacketReceived -= ReadPacket;
+        Unsubscribe();
 
         foreach (var entity in Entities)
             if(entity.CanUpdateLocally)
