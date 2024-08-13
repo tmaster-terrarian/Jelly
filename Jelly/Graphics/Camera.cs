@@ -8,7 +8,7 @@ namespace Jelly.Graphics;
 
 public class Camera
 {
-    readonly Random random;
+    readonly Random random = new();
     float currentShake;
     float shakeMagnitude;
     int shakeTime;
@@ -18,11 +18,6 @@ public class Camera
     public float Zoom { get; set; } = 1;
 
     public Matrix Transform { get; private set; } = new();
-
-    public Camera()
-    {
-        this.random = new();
-    }
 
     public void SetShake(float shakeMagnitude, int shakeTime)
     {

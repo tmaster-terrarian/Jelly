@@ -29,11 +29,11 @@ public class Entity : INetID
         }
     }
 
-    [JsonIgnore] public int NetID { get; protected set; }
+    [JsonIgnore] public int NetID { get; private set; }
 
     [JsonIgnore] public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
 
-    [JsonIgnore] internal long EntityID { get; set; }
+    [JsonIgnore] internal long EntityID { get; set; } = Providers.IDRandom.NextInt64();
 
     public int Tag { get; set; }
 
@@ -76,7 +76,6 @@ public class Entity : INetID
     {
         Position = position;
         NetID = netID < 0 ? Providers.NetworkProvider.GetHostNetID() : netID;
-        EntityID = new System.Random((int)(NetID * 3011 + Providers.DeltaTime * 1000007)).NextInt64();
         Components = new(this);
     }
 

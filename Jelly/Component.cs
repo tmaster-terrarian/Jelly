@@ -1,29 +1,23 @@
 using System.IO;
 using System.Text.Json.Serialization;
 
-using Jelly.Components;
 using Jelly.Net;
+using Jelly.Serialization;
 
 namespace Jelly;
 
-[JsonPolymorphic(
-    IgnoreUnrecognizedTypeDiscriminators = false,
-    UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToBaseType
-)]
-
-[JsonDerivedType(typeof(SpriteComponent), nameof(SpriteComponent))]
-public abstract class Component : INetID, IComponent
+[JsonAutoPolymorphic]
+public abstract class Component : INetID
 {
     internal Entity entity;
 
     internal bool enabled;
+    internal bool skipSync;
 
     [JsonIgnore] internal long ComponentID { get; set; }
 
     [JsonIgnore] public bool SyncThisStep { get; internal set; }
     [JsonIgnore] public bool SyncImportant { get; internal set; }
-
-    internal bool skipSync;
 
     [JsonIgnore] public int NetID => Entity.NetID;
 
@@ -155,5 +149,3 @@ public abstract class Component : INetID, IComponent
 
     public virtual void ReadPacket(byte[] data) {}
 }
-
-internal interface IComponent;

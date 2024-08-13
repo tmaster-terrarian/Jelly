@@ -9,6 +9,8 @@ public static class Providers
 {
     private static bool _initialized;
 
+    internal static Random IDRandom = new();
+
     private static NetworkProvider _networkProvider;
 
     public static NetworkProvider NetworkProvider
