@@ -10,7 +10,7 @@ namespace Jelly.Serialization;
 
 public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
 {
-    public IList<Type> DerivedTypes { get; set; } = [];
+    public HashSet<Type> DerivedTypes { get; set; } = [];
 
     public Type BaseType { get; }
 
@@ -26,7 +26,7 @@ public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
         DerivedTypes = GetDerivedTypesFromAssembly(Assembly.GetAssembly(BaseType));
     }
 
-    public IList<Type> GetDerivedTypesFromAssembly(Assembly assembly)
+    public HashSet<Type> GetDerivedTypesFromAssembly(Assembly assembly)
     {
         ArgumentNullException.ThrowIfNull(assembly);
 
@@ -40,7 +40,7 @@ public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
             }
         }
 
-        return [..list];
+        return list;
     }
 
     public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)

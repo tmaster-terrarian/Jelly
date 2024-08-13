@@ -29,11 +29,11 @@ public class Entity : INetID
         }
     }
 
-    [JsonIgnore] public int NetID { get; private set; }
+    public int NetID { get; private set; }
 
     [JsonIgnore] public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
 
-    [JsonIgnore] internal long EntityID { get; set; } = Providers.IDRandom.NextInt64();
+    public long EntityID { get; internal set; } = Providers.IDRandom.NextInt64();
 
     public int Tag { get; set; }
 

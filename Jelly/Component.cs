@@ -14,7 +14,7 @@ public abstract class Component : INetID
     internal bool enabled;
     internal bool skipSync;
 
-    [JsonIgnore] internal long ComponentID { get; set; }
+    internal long ComponentID { get; set; }
 
     [JsonIgnore] public bool SyncThisStep { get; internal set; }
     [JsonIgnore] public bool SyncImportant { get; internal set; }
