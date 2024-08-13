@@ -19,16 +19,16 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
 
     public bool Register(TDef value)
     {
-        CheckLocked();
+        CheckInitialized();
 
         return Register(value, value.Name);
     }
 
     public bool Register(TDef value, string key)
     {
-        CheckLocked();
+        CheckInitialized();
 
-        if(!Locked && registeredDefs.TryAdd(key, value))
+        if(!Initialized && registeredDefs.TryAdd(key, value))
         {
             EntryAdded(value, key);
             return true;
@@ -39,9 +39,9 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
 
     public bool UnRegister(string key)
     {
-        CheckLocked();
+        CheckInitialized();
 
-        if(!Locked && registeredDefs.Remove(key, out TDef value))
+        if(!Initialized && registeredDefs.Remove(key, out TDef value))
         {
             EntryRemoved(value, key);
             return true;
@@ -52,9 +52,9 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
 
     public bool UnRegister(TDef value)
     {
-        CheckLocked();
+        CheckInitialized();
 
-        if(!Locked && registeredDefs.Remove(value.Name, out TDef v) && ReferenceEquals(value, v))
+        if(!Initialized && registeredDefs.Remove(value.Name, out TDef v) && ReferenceEquals(value, v))
         {
             EntryRemoved(v, v.Name);
             return true;

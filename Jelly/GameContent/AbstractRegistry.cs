@@ -5,18 +5,18 @@ namespace Jelly.GameContent;
 
 public abstract class AbstractRegistry
 {
-    public bool Locked { get; private set; }
+    public bool Initialized { get; private set; }
 
-    internal void CheckLocked()
+    internal protected void CheckInitialized()
     {
-        if(Locked)
+        if(Initialized)
             throw new InvalidOperationException("Unable to modify contents of the registry because it is locked");
     }
 
     internal void DoInit()
     {
         Init();
-        Locked = true;
+        Initialized = true;
     }
 
     /// <summary>
