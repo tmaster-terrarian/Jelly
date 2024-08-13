@@ -14,7 +14,7 @@ public abstract class Component : INetID
     internal bool enabled;
     internal bool skipSync;
 
-    internal long ComponentID { get; set; }
+    [JsonInclude] public long ComponentID { get; internal set; } = Providers.IDRandom.NextInt64();
 
     [JsonIgnore] public bool SyncThisStep { get; internal set; }
     [JsonIgnore] public bool SyncImportant { get; internal set; }
