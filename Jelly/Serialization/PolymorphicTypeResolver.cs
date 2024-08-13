@@ -53,7 +53,6 @@ public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
 
             if(DerivedTypes.Count == 0)
             {
-                jsonTypeInfo.PolymorphismOptions = null;
                 return jsonTypeInfo;
             }
 
