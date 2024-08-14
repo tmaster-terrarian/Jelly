@@ -41,8 +41,8 @@ public abstract class NetworkProvider
     /// <summary>
     /// Use this to raise the <see cref="PacketReceived"/> event whenever a multiplayer packet is received 
     /// </summary>
-    public void RaisePacketReceivedEvent(byte[] data)
+    public void RaisePacketReceivedEvent(byte[] data, int senderNetID)
     {
-        PacketReceived?.Invoke(data, Providers.NetworkProvider.GetNetID());
+        PacketReceived?.Invoke(data, senderNetID);
     }
 }

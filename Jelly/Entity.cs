@@ -29,7 +29,7 @@ public class Entity : INetID
         }
     }
 
-    public int NetID { get; private set; }
+    public int NetID { get; internal set; }
 
     [JsonIgnore] public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
 
@@ -183,6 +183,9 @@ public class Entity : INetID
 
         binWriter.Write(Scene.SceneID);
         binWriter.Write(EntityID);
+
+        binWriter.Write(Enabled);
+        binWriter.Write(Visible);
 
         binWriter.Write(Position.X);
         binWriter.Write(Position.Y);

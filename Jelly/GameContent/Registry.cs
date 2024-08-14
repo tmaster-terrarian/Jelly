@@ -3,9 +3,14 @@ using System.Collections.Generic;
 
 namespace Jelly.GameContent;
 
-public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerable<Dictionary<string, TDef>.Enumerator> where TDef : ContentDef
+public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePair<string, TDef>> where TDef : ContentDef
 {
     private readonly Dictionary<string, TDef> registeredDefs = [];
+
+    public TDef this[string key]
+    {
+        get => GetDef(key) ?? throw new KeyNotFoundException();
+    }
 
     public TDef? GetDef(string key)
     {
@@ -15,11 +20,13 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
         return null;
     }
 
-    public static TDef? GetDefStatic(string name) => Registries.GetRegistry<Registry<TDef>>()?.GetDef(name);
+    public static TDef? GetDefStatic(string name) => Registries.FindFirst<Registry<TDef>>()?.GetDef(name);
 
     public bool Register(TDef value)
     {
         CheckInitialized();
+
+        System.ArgumentNullException.ThrowIfNull(value, nameof(value));
 
         return Register(value, value.Name);
     }
@@ -28,9 +35,14 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
     {
         CheckInitialized();
 
+        System.ArgumentNullException.ThrowIfNull(value, nameof(value));
+        System.ArgumentNullException.ThrowIfNull(key, nameof(key));
+
+        // if(value.Name != key) value.Name = key;
+
         if(!Initialized && registeredDefs.TryAdd(key, value))
         {
-            EntryAdded(value, key);
+            EntryAdded?.Invoke(value, key);
             return true;
         }
 
@@ -41,9 +53,11 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
     {
         CheckInitialized();
 
+        System.ArgumentNullException.ThrowIfNull(key, nameof(key));
+
         if(!Initialized && registeredDefs.Remove(key, out TDef value))
         {
-            EntryRemoved(value, key);
+            EntryRemoved?.Invoke(value, key);
             return true;
         }
 
@@ -54,26 +68,32 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable, IEnumerabl
     {
         CheckInitialized();
 
+        System.ArgumentNullException.ThrowIfNull(value, nameof(value));
+
         if(!Initialized && registeredDefs.Remove(value.Name, out TDef v) && ReferenceEquals(value, v))
         {
-            EntryRemoved(v, v.Name);
+            EntryRemoved?.Invoke(v, v.Name);
             return true;
         }
 
         return false;
     }
 
-    protected virtual void EntryAdded(TDef? value, string key) {}
+    public event EntryEventDelegate EntryAdded;
 
-    protected virtual void EntryRemoved(TDef? value, string key) {}
+    public event EntryEventDelegate EntryRemoved;
 
-    public IEnumerator<Dictionary<string, TDef>.Enumerator> GetEnumerator()
+    public override IEnumerator<KeyValuePair<string, TDef>> GetEnumerator()
     {
-        yield return registeredDefs.GetEnumerator();
+        foreach(var def in registeredDefs)
+        {
+            yield return def;
+        }
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    public virtual IReadOnlyCollection<string> Keys => registeredDefs.Keys;
+
+    public virtual IReadOnlyCollection<TDef> Values => registeredDefs.Values;
+
+    public delegate void EntryEventDelegate(TDef? value, string key);
 }

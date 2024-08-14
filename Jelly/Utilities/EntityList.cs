@@ -79,6 +79,9 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
                             continue;
                         }
 
+                        if(!entity?.CanUpdateLocally ?? false)
+                            continue;
+
                         Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityAdded, entity.GetSyncPacket(), true);
 
                         if(entity.Components is not null)
@@ -111,6 +114,9 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
                             entity.skipSync = false;
                             continue;
                         }
+
+                        if(!entity?.CanUpdateLocally ?? false)
+                            continue;
 
                         Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityRemoved, entity.GetSyncPacket(), true);
                     }
@@ -352,6 +358,8 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     internal void SendPackets()
     {
+        if(Scene is null) return;
+
         for(int i = 0; i < Entities.Count; i++)
         {
             Entity entity = Entities[i];
@@ -365,12 +373,12 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         }
     }
 
-    internal void ReadPacket(byte[] data, int sender, bool newEntity = false)
+    internal void ReadPacket(byte[] data, int netId)
     {
         using var binReader = new BinaryReader(new MemoryStream(data));
 
         var sceneId = binReader.ReadInt64();
-        if(Scene.SceneID != sceneId)
+        if(Scene?.SceneID != sceneId)
             return;
 
         var id = binReader.ReadInt64();
@@ -378,13 +386,9 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
         if(entity is null)
         {
-            if(!newEntity)
-            {
-                Logger.JellyLogger.Error("DESYNC: received a packet for an entity that doesn't exist!");
-                return;
-            }
+            Logger.JellyLogger.Error("CONFLICT: received a packet for an entity that doesn't exist, this will create a new one!");
 
-            entity = new(Point.Zero, sender) {
+            entity = new(Point.Zero, netId) {
                 EntityID = id,
                 skipSync = true
             };
@@ -392,9 +396,38 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
             Add(entity);
         }
 
+        entity.Enabled = binReader.ReadBoolean();
+        entity.Visible = binReader.ReadBoolean();
         entity.Position = new(binReader.ReadInt32(), binReader.ReadInt32());
+    }
 
-        // Logger.JellyLogger.Warn("An entity was given an invalid packet and was not updated. This may cause a desync!");
+    internal void ReadNewEntityPacket(byte[] data, int netId)
+    {
+        using var binReader = new BinaryReader(new MemoryStream(data));
+
+        var sceneId = binReader.ReadInt64();
+        if(Scene?.SceneID != sceneId)
+            return;
+
+        var id = binReader.ReadInt64();
+
+        if(FindByID(id) is Entity entity)
+        {
+            Logger.JellyLogger.Warn("CONFLICT: received an EntityAdded packet for an entity that already exists, the local entity will be overwritten!");
+        }
+        else
+        {
+            entity = new();
+            Add(entity);
+        }
+
+        entity.EntityID = id;
+        entity.NetID = netId;
+        entity.skipSync = true;
+
+        entity.Enabled = binReader.ReadBoolean();
+        entity.Visible = binReader.ReadBoolean();
+        entity.Position = new(binReader.ReadInt32(), binReader.ReadInt32());
     }
 
     public void Clear()

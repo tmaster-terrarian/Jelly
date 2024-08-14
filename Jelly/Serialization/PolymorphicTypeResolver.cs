@@ -10,23 +10,29 @@ namespace Jelly.Serialization;
 
 public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
 {
-    public HashSet<Type> DerivedTypes { get; set; } = [];
+    public HashSet<TypeSet> TypeSets { get; } = [];
 
-    public Type BaseType { get; }
-
-    public PolymorphicTypeResolver(Type type)
+    public TypeSet? GetTypeSet(Type type)
     {
-        BaseType = type;
-
-        if(BaseType.GetCustomAttribute<JsonAutoPolymorphicAttribute>(inherit: false) is null)
-        {
-            throw new Exception($"The specified type {BaseType} must have a {nameof(JsonAutoPolymorphicAttribute)} applied");
-        }
-
-        DerivedTypes = GetDerivedTypesFromAssembly(Assembly.GetAssembly(BaseType));
+        foreach(var typeSet in TypeSets)
+            if(typeSet.BaseType == type || typeSet.DerivedTypes.Contains(type))
+                return typeSet;
+        return null;
     }
 
-    public HashSet<Type> GetDerivedTypesFromAssembly(Assembly assembly)
+    public PolymorphicTypeResolver(IEnumerable<Type> types)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(nameof(types));
+
+        foreach(var type in types)
+        {
+            if(type is null) throw new NullReferenceException($"{nameof(types)} cannot contain null values.");
+
+            TypeSets.Add(new(type));
+        }
+    }
+
+    public static HashSet<Type> GetDerivedTypesFromAssembly(Assembly assembly, Type baseType)
     {
         ArgumentNullException.ThrowIfNull(assembly);
 
@@ -34,7 +40,7 @@ public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
 
         foreach(var type in assembly.GetTypes())
         {
-            if(type.IsClass && type.IsSubclassOf(BaseType))
+            if(type.IsClass && type.IsSubclassOf(baseType))
             {
                 list.Add(type);
             }
@@ -43,58 +49,77 @@ public class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
         return list;
     }
 
+    public void GetAllDerivedTypesFromAssembly(Assembly assembly)
+    {
+        ArgumentNullException.ThrowIfNull(assembly);
+
+        foreach(var typeSet in TypeSets)
+        {
+            foreach(var type in GetDerivedTypesFromAssembly(assembly, typeSet.BaseType))
+            {
+                if(type.IsClass)
+                {
+                    if(type.IsSubclassOf(typeSet.BaseType))
+                    {
+                        typeSet.DerivedTypes.Add(type);
+                    }
+                }
+            }
+        }
+    }
+
     public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)
     {
         JsonTypeInfo jsonTypeInfo = base.GetTypeInfo(type, options);
 
-        if(jsonTypeInfo.Type == BaseType)
+        foreach(var typeSet in TypeSets)
         {
-            DerivedTypes ??= [];
-
-            if(DerivedTypes.Count == 0)
+            if(jsonTypeInfo.Type == typeSet.BaseType)
             {
-                return jsonTypeInfo;
-            }
+                typeSet.DerivedTypes ??= [];
 
-            var polyOptions = jsonTypeInfo.PolymorphismOptions ?? new JsonPolymorphismOptions
-            {
-                IgnoreUnrecognizedTypeDiscriminators = false,
-                UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization,
-            };
-
-            foreach(var t in DerivedTypes)
-            {
-                if(t is null)
+                if(typeSet.DerivedTypes.Count == 0)
                 {
-                    throw new NullReferenceException();
+                    return jsonTypeInfo;
                 }
 
-                if(t == BaseType) continue;
+                var polyOptions = jsonTypeInfo.PolymorphismOptions ?? new JsonPolymorphismOptions
+                {
+                    IgnoreUnrecognizedTypeDiscriminators = false,
+                    UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization,
+                };
 
-                if(!t.IsClass) continue;
+                foreach(var t in typeSet.DerivedTypes)
+                {
+                    if(t == typeSet.BaseType) continue;
 
-                if(!t.IsSubclassOf(BaseType)) continue;
+                    if(!t.IsClass) continue;
 
-                JsonDerivedType jsonDerivedType = new JsonDerivedType(t, t.Name);
+                    if(!t.IsSubclassOf(typeSet.BaseType)) continue;
 
-                // if(t.GetCustomAttribute<JsonAutoPolymorphicAttribute>(inherit: false) is JsonAutoPolymorphicAttribute autoPolymorphicAttribute)
-                // {
-                //     if(autoPolymorphicAttribute.TypeDiscriminator is string str)
-                //     {
-                //         jsonDerivedType = new JsonDerivedType(t, str);
-                //     }
-                //     else if(autoPolymorphicAttribute.TypeDiscriminator is int i)
-                //     {
-                //         jsonDerivedType = new JsonDerivedType(t, i);
-                //     }
-                // }
+                    JsonDerivedType jsonDerivedType = new JsonDerivedType(t, t.Name);
 
-                if(polyOptions.DerivedTypes.Contains(jsonDerivedType)) continue;
+                    // if(t.GetCustomAttribute<JsonAutoPolymorphicAttribute>(inherit: false) is JsonAutoPolymorphicAttribute autoPolymorphicAttribute)
+                    // {
+                    //     if(autoPolymorphicAttribute.TypeDiscriminator is string str)
+                    //     {
+                    //         jsonDerivedType = new JsonDerivedType(t, str);
+                    //     }
+                    //     else if(autoPolymorphicAttribute.TypeDiscriminator is int i)
+                    //     {
+                    //         jsonDerivedType = new JsonDerivedType(t, i);
+                    //     }
+                    // }
 
-                polyOptions.DerivedTypes.Add(jsonDerivedType);
+                    if(polyOptions.DerivedTypes.Contains(jsonDerivedType)) continue;
+
+                    polyOptions.DerivedTypes.Add(jsonDerivedType);
+                }
+
+                jsonTypeInfo.PolymorphismOptions = polyOptions;
+
+                return jsonTypeInfo;
             }
-
-            jsonTypeInfo.PolymorphismOptions = polyOptions;
         }
 
         return jsonTypeInfo;

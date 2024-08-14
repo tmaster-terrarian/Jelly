@@ -60,7 +60,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                             continue;
                         }
 
-                        if(Entity is not null && Entity.Scene is not null)
+                        if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
                             Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentAdded, component.GetInternalSyncPacket(), true);
                     }
                 }
@@ -84,7 +84,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                             continue;
                         }
 
-                        if(Entity is not null && Entity.Scene is not null)
+                        if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
                             Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentRemoved, component.GetInternalSyncPacket(), true);
                     }
                 }
@@ -111,7 +111,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                         break;
                     }
 
-                    if(Entity is not null && Entity.Scene is not null)
+                    if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
                         Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentAdded, component.GetInternalSyncPacket(), true);
                 }
                 break;
@@ -147,7 +147,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                         break;
                     }
 
-                    if(Entity is not null && Entity.Scene is not null)
+                    if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
                         Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentRemoved, component.GetInternalSyncPacket(), true);
                 }
                 break;
@@ -288,7 +288,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         return null;
     }
 
-    internal Component FindByID(long id)
+    public Component FindByID(long id)
     {
         foreach (var component in Components)
             if (component.ComponentID == id)
@@ -318,7 +318,31 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         }
     }
 
-    internal void ReadPacket(byte[] data, bool newComponent = false)
+    internal void ReadPacket(byte[] data)
+    {
+        using var stream = new MemoryStream(data);
+        var binReader = new BinaryReader(stream);
+
+        long id = binReader.ReadInt64();
+
+        binReader.ReadString();
+
+        var component = FindByID(id);
+        if(component is null)
+        {
+            Logger.JellyLogger.Error("DESYNC: received a packet for a component that doesn't exist!");
+            return;
+        }
+        else
+        {
+            component.enabled = binReader.ReadBoolean();
+            component.Visible = binReader.ReadBoolean();
+        }
+
+        component?.ReadPacket(data[(int)stream.Position..]);
+    }
+
+    internal void ReadNewComponentPacket(byte[] data)
     {
         using var stream = new MemoryStream(data);
         var binReader = new BinaryReader(stream);
@@ -328,18 +352,16 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         var typeName = binReader.ReadString();
 
         var component = FindByID(id);
-        if(component is null)
+        if(component is not null)
         {
-            if(!newComponent)
-            {
-                Logger.JellyLogger.Error("DESYNC: received a packet for a component that doesn't exist!");
-                return;
-            }
-
-            component = Type.GetType(typeName).GetConstructor(Type.EmptyTypes).Invoke(null) as Component;
+            Logger.JellyLogger.Warn("CONFLICT: received an EntityAdded packet for an entity that already exists, the local entity will be overwritten!");
             component.skipSync = true;
-            Add(component);
+            Remove(component);
         }
+
+        component = Type.GetType(typeName).GetConstructor(Type.EmptyTypes).Invoke(null) as Component;
+        component.skipSync = true;
+        Add(component);
 
         component.enabled = binReader.ReadBoolean();
         component.Visible = binReader.ReadBoolean();
@@ -354,12 +376,10 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
         long id = binReader.ReadInt64();
 
-        binReader.ReadString();
-
         var component = FindByID(id);
         if(component is null)
         {
-            Logger.JellyLogger.Error("DESYNC: received a packet for a component that doesn't exist!");
+            Logger.JellyLogger.Warn("DESYNC: received a packet for a component that doesn't exist!");
             return;
         }
 

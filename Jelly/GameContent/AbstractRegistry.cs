@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Jelly.GameContent;
 
-public abstract class AbstractRegistry
+public abstract class AbstractRegistry : IEnumerable
 {
     public bool Initialized { get; private set; }
 
@@ -23,4 +23,6 @@ public abstract class AbstractRegistry
     /// When this method is overridden, it is used to register all entries at startup.
     /// </summary>
     public abstract void Init();
+
+    public abstract IEnumerator GetEnumerator();
 }

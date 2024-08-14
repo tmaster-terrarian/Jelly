@@ -44,12 +44,12 @@ public static class Registries
         return true;
     }
 
-    public static bool AddRegistry<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
+    public static bool Add<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
     {
         return CheckInitialized() && (_isDirty |= _registries.Add(registry));
     }
 
-    public static bool AddRegistry<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : ContentDef
+    public static bool Add<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : ContentDef
     {
         CheckInitialized();
 
@@ -61,12 +61,12 @@ public static class Registries
         return index != -1;
     }
 
-    public static bool RemoveRegistry<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
+    public static bool Remove<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
     {
         return CheckInitialized() && (_isDirty |= _registries.Remove(registry));
     }
 
-    public static bool RemoveRegistry<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : ContentDef
+    public static bool Remove<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : ContentDef
     {
         CheckInitialized();
 
@@ -76,13 +76,13 @@ public static class Registries
         return _isDirty |= _registries.Remove(registry);
     }
 
-    public static Registry<T> GetRegistry<T>(int index) where T : ContentDef
+    public static Registry<T> GetAt<T>(int index) where T : ContentDef
     {
         var value = GetRegistriesAsArray()[index];
         return (value is Registry<T> registry) ? registry : null;
     }
 
-    public static T GetRegistry<T>() where T : AbstractRegistry
+    public static T FindFirst<T>() where T : AbstractRegistry
     {
         foreach(var registry in _registries)
             if(registry is T reg)

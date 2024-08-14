@@ -32,7 +32,7 @@ public class Scene
 
     [JsonIgnore] public CoroutineRunner CoroutineRunner { get; } = new();
 
-    [JsonIgnore] internal long SceneID { get; }
+    [JsonIgnore] public long SceneID { get; }
 
     public event Action OnEndOfFrame;
 
@@ -189,7 +189,7 @@ public class Scene
             }
             case SyncPacketType.EntityAdded:
             {
-                Entities.ReadPacket(payload, sender, true);
+                Entities.ReadNewEntityPacket(payload, sender);
                 break;
             }
             case SyncPacketType.EntityRemoved:
@@ -202,12 +202,12 @@ public class Scene
                     break;
 
                 long entityId = reader.ReadInt64();
-                var entity = Entities.FindByID(entityId);
 
-                if(entity is not null)
+                if(Entities.FindByID(entityId) is Entity entity)
+                {
                     entity.skipSync = true;
-
-                Entities.Remove(entity);
+                    Entities.Remove(entity);
+                }
                 break;
             }
             case SyncPacketType.ComponentUpdate:
@@ -233,7 +233,7 @@ public class Scene
                     break;
 
                 long entityId = reader.ReadInt64();
-                Entities.FindByID(entityId)?.Components?.ReadPacket(payload[16..], true);
+                Entities.FindByID(entityId)?.Components?.ReadNewComponentPacket(payload[16..]);
                 break;
             }
             case SyncPacketType.ComponentRemoved:

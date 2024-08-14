@@ -21,4 +21,14 @@ public static class BTS
     {
         entity.skipSync = true;
     }
+
+    /// <summary>
+    /// Only use this method if you have to. WILL cause desyncs if you aren't careful!
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <param name="id"></param>
+    public static void IgnoreNextSync(this Component component)
+    {
+        component.skipSync = true;
+    }
 }
