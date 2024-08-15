@@ -60,8 +60,17 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     {
         if (toAdd.Count > 0)
         {
-            foreach (var entity in toAdd)
+            for (int i = 0; i < toAdd.Count; i++)
             {
+                Entity entity = toAdd[i];
+
+                if (FindByID(entity.EntityID) is not null)
+                {
+                    toAdd.Remove(entity);
+                    i--;
+                    continue;
+                }
+
                 if(current.Add(entity))
                 {
                     Entities.Add(entity);
@@ -79,7 +88,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
                             continue;
                         }
 
-                        if(!entity?.CanUpdateLocally ?? false)
+                        if(!(entity?.CanUpdateLocally) ?? false)
                             continue;
 
                         Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityAdded, entity.GetSyncPacket(), true);
@@ -115,7 +124,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
                             continue;
                         }
 
-                        if(!entity?.CanUpdateLocally ?? false)
+                        if(!(entity?.CanUpdateLocally) ?? false)
                             continue;
 
                         Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityRemoved, entity.GetSyncPacket(), true);

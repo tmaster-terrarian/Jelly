@@ -29,7 +29,7 @@ public class Entity : INetID
         }
     }
 
-    public int NetID { get; internal set; }
+    public int NetID { get; set; }
 
     [JsonIgnore] public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
 
