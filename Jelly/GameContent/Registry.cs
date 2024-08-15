@@ -20,7 +20,7 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePai
         return null;
     }
 
-    public static TDef? GetDefStatic(string name) => Registries.FindFirst<Registry<TDef>>()?.GetDef(name);
+    public static TDef? GetDefStatic(string name) => Registries.Get<Registry<TDef>>()?.GetDef(name);
 
     public bool Register(TDef value)
     {
@@ -49,7 +49,7 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePai
         return false;
     }
 
-    public bool UnRegister(string key)
+    public bool Unregister(string key)
     {
         CheckInitialized();
 
@@ -64,7 +64,7 @@ public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePai
         return false;
     }
 
-    public bool UnRegister(TDef value)
+    public bool Unregister(TDef value)
     {
         CheckInitialized();
 

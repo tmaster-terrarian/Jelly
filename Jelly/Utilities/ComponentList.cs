@@ -280,7 +280,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         LockMode = LockModes.Open;
     }
 
-    public T Get<T>() where T : Component
+    public T? Get<T>() where T : Component
     {
         foreach (var component in Components)
             if (component is T)
@@ -288,7 +288,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         return null;
     }
 
-    public Component FindByID(long id)
+    public Component? FindByID(long id)
     {
         foreach (var component in Components)
             if (component.ComponentID == id)

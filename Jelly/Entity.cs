@@ -40,7 +40,7 @@ public class Entity : INetID
     public bool Enabled { get; set; }
     public bool Visible { get; set; }
 
-    [JsonIgnore] public Scene Scene { get; private set; }
+    [JsonIgnore] public Scene? Scene { get; private set; }
 
     public int Depth
     {

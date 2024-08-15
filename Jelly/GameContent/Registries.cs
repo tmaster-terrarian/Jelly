@@ -82,7 +82,7 @@ public static class Registries
         return (value is Registry<T> registry) ? registry : null;
     }
 
-    public static T FindFirst<T>() where T : AbstractRegistry
+    public static T Get<T>() where T : AbstractRegistry
     {
         foreach(var registry in _registries)
             if(registry is T reg)

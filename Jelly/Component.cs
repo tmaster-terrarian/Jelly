@@ -19,6 +19,8 @@ public abstract class Component : INetID
     [JsonIgnore] public bool SyncThisStep { get; internal set; }
     [JsonIgnore] public bool SyncImportant { get; internal set; }
 
+    [JsonIgnore] public bool CanUpdateLocally => Entity.CanUpdateLocally;
+
     [JsonIgnore] public int NetID => Entity.NetID;
 
     [JsonIgnore]
@@ -94,6 +96,9 @@ public abstract class Component : INetID
 
     public virtual void OnDisable() {}
 
+    /// <summary>
+    /// Called every frame on every client. Use <see cref="CanUpdateLocally"/> to prevent problems
+    /// </summary>
     public virtual void Update() {}
 
     /// <summary>
