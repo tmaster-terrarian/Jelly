@@ -76,12 +76,27 @@ public class Entity : INetID
     {
         Position = position;
         NetID = netID < 0 ? Providers.NetworkProvider.GetHostNetID() : netID;
-        Components = new(this);
+        // Components = new(this);
+
+        SetDefaults();
     }
 
     public Entity(Point position) : this(position, -1) {}
 
     public Entity() : this(Point.Zero, -1) {}
+
+    public virtual void SetDefaults() {}
+
+    public virtual void CopyTo(Entity other)
+    {
+        other.Position = Position;
+        other.Depth = Depth;
+        other.NetID = NetID;
+        other.Enabled = Enabled;
+        other.Scene = Scene;
+        other.Visible = Visible;
+        other.Tag = Tag;
+    }
 
     public void MarkForSync(bool important = false)
     {
@@ -91,24 +106,24 @@ public class Entity : INetID
 
     public virtual void Awake(Scene scene)
     {
-        if(Components != null)
-            foreach(var c in Components)
-                c.EntityAwake();
+        // if(Components != null)
+        //     foreach(var c in Components)
+        //         c.EntityAwake();
     }
 
     public virtual void Added(Scene scene)
     {
         Scene = scene;
-        if(Components != null)
-            foreach(var c in Components)
-                c.EntityAdded(scene);
+        // if(Components != null)
+        //     foreach(var c in Components)
+        //         c.EntityAdded(scene);
     }
 
     public virtual void Removed(Scene scene)
     {
-        if(Components != null)
-            foreach(var c in Components)
-                c.EntityRemoved(scene);
+        // if(Components != null)
+        //     foreach(var c in Components)
+        //         c.EntityRemoved(scene);
         Scene = null;
     }
 
@@ -116,34 +131,34 @@ public class Entity : INetID
 
     public virtual void SceneEnd(Scene scene)
     {
-        if(Components != null)
-            foreach(var c in Components)
-                c.SceneEnd(scene);
+        // if(Components != null)
+        //     foreach(var c in Components)
+        //         c.SceneEnd(scene);
     }
 
     public virtual void Update()
     {
-        Components?.Update();
+        // Components?.Update();
     }
 
     public virtual void PreDraw()
     {
-        Components?.PreDraw();
+        // Components?.PreDraw();
     }
 
     public virtual void Draw()
     {
-        Components?.Draw();
+        // Components?.Draw();
     }
 
     public virtual void DrawUI()
     {
-        Components?.DrawUI();
+        // Components?.DrawUI();
     }
 
     public virtual void PostDraw()
     {
-        Components?.PostDraw();
+        // Components?.PostDraw();
     }
 
     // public void Remove(Component component)
@@ -156,7 +171,7 @@ public class Entity : INetID
     //     Components?.Add(component);
     // }
 
-    internal byte[] GetSyncPacket()
+    internal byte[] GetInternalSyncPacket()
     {
         using var stream = new MemoryStream();
         var binWriter = new BinaryWriter(stream);
@@ -170,6 +185,22 @@ public class Entity : INetID
         binWriter.Write(Position.X);
         binWriter.Write(Position.Y);
 
-        return stream.ToArray();
+        return [
+            ..stream.ToArray(),
+            ..(GetSyncPacket() ?? [])
+        ];
     }
+
+    public virtual byte[] GetSyncPacket() => [];
+
+    internal void ReadInternalPacket(BinaryReader binReader)
+    {
+        Enabled = binReader.ReadBoolean();
+        Visible = binReader.ReadBoolean();
+        Position = new(binReader.ReadInt32(), binReader.ReadInt32());
+
+        ReadPacket(binReader);
+    }
+
+    public virtual void ReadPacket(BinaryReader binReader) {}
 }

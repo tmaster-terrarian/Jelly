@@ -26,7 +26,7 @@ public class Scene
 
     [JsonIgnore] public bool Focused { get; private set; }
 
-    public EntityList Entities { get; internal set; }
+    public EntityList Entities { get; }
 
     public string Name { get; set; } = "";
 
@@ -91,7 +91,6 @@ public class Scene
         }
 
         Entities.UpdateLists();
-        // TagLists.UpdateLists();
     }
 
     public virtual void Update()
@@ -109,7 +108,7 @@ public class Scene
 
         if(!Paused && Providers.NetworkProvider.NetworkingEnabled)
         {
-            Entities.SendPackets();
+            SendPackets();
         }
     }
 
@@ -172,6 +171,20 @@ public class Scene
 
     #endregion
 
+    private void SendPackets()
+    {
+        foreach(var entity in Entities)
+        {
+            if(entity.CanUpdateLocally && entity.Enabled && entity.SyncThisStep)
+            {
+                Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityUpdate, entity.GetInternalSyncPacket(), entity.SyncImportant);
+
+                entity.SyncThisStep = false;
+                entity.SyncImportant = false;
+            }
+        }
+    }
+
     private void ReadPacket(byte[] data, int sender)
     {
         if(!Providers.NetworkProvider.NetworkingEnabled)
@@ -179,76 +192,5 @@ public class Scene
 
         SyncPacketType type = (SyncPacketType)data[0];
         var payload = data[1..];
-
-        switch(type)
-        {
-            case SyncPacketType.EntityUpdate:
-            {
-                Entities.ReadPacket(payload, sender);
-                break;
-            }
-            case SyncPacketType.EntityAdded:
-            {
-                Entities.ReadNewEntityPacket(payload, sender);
-                break;
-            }
-            case SyncPacketType.EntityRemoved:
-            {
-                using var stream = new MemoryStream(payload);
-                var reader = new BinaryReader(stream);
-
-                long scene = reader.ReadInt64();
-                if(scene != SceneID)
-                    break;
-
-                long entityId = reader.ReadInt64();
-
-                if(Entities.FindByID(entityId) is Entity entity)
-                {
-                    entity.skipSync = true;
-                    Entities.Remove(entity);
-                }
-                break;
-            }
-            case SyncPacketType.ComponentUpdate:
-            {
-                using var stream = new MemoryStream(payload);
-                var reader = new BinaryReader(stream);
-
-                long scene = reader.ReadInt64();
-                if(scene != SceneID)
-                    break;
-
-                long entity = reader.ReadInt64();
-                Entities.FindByID(entity)?.Components?.ReadPacket(payload[16..]);
-                break;
-            }
-            case SyncPacketType.ComponentAdded:
-            {
-                using var stream = new MemoryStream(payload);
-                var reader = new BinaryReader(stream);
-
-                long scene = reader.ReadInt64();
-                if(scene != SceneID)
-                    break;
-
-                long entityId = reader.ReadInt64();
-                Entities.FindByID(entityId)?.Components?.ReadNewComponentPacket(payload[16..]);
-                break;
-            }
-            case SyncPacketType.ComponentRemoved:
-            {
-                using var stream = new MemoryStream(payload);
-                var reader = new BinaryReader(stream);
-
-                long scene = reader.ReadInt64();
-                if(scene != SceneID)
-                    break;
-
-                long entity = reader.ReadInt64();
-                Entities.FindByID(entity)?.Components?.ReadRemovalPacket(payload[16..]);
-                break;
-            }
-        }
     }
 }

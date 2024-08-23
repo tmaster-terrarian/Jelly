@@ -15,17 +15,9 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 {
     public static Comparison<Entity> CompareDepth => (a, b) => Math.Sign(b.Depth - a.Depth);
 
-    private List<Entity> Entities { get; set; } = [];
+    private Dictionary<long, Entity> Entities { get; set; } = [];
 
-    private readonly List<Entity> toAdd = [];
     private readonly List<Entity> toAwake = [];
-    private readonly List<Entity> toRemove = [];
-
-    private readonly HashSet<Entity> current = [];
-    private readonly HashSet<Entity> adding = [];
-    private readonly HashSet<Entity> removing = [];
-
-    private bool unsorted;
 
     [JsonIgnore] public Scene Scene { get; internal set; }
 
@@ -51,139 +43,74 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         Scene = scene;
     }
 
-    internal void MarkUnsorted()
-    {
-        unsorted = true;
-    }
-
     public void UpdateLists()
     {
-        if (toAdd.Count > 0)
+        if(toAwake.Count > 0)
         {
-            for (int i = 0; i < toAdd.Count; i++)
-            {
-                Entity entity = toAdd[i];
-
-                if (FindByID(entity.EntityID) is not null)
-                {
-                    toAdd.Remove(entity);
-                    i--;
-                    continue;
-                }
-
-                if(current.Add(entity))
-                {
-                    Entities.Add(entity);
-
-                    if (Scene != null)
-                    {
-                        // Scene.TagLists.EntityAdded(entity);
-                        // Scene.Tracker.EntityAdded(entity);
-
-                        entity.Added(Scene);
-
-                        if(entity.skipSync)
-                        {
-                            entity.skipSync = false;
-                            continue;
-                        }
-
-                        if(!(entity?.CanUpdateLocally) ?? false)
-                            continue;
-
-                        Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityAdded, entity.GetSyncPacket(), true);
-
-                        if(entity.Components is not null)
-                            foreach(var c in entity.Components)
-                                Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentAdded, c.GetInternalSyncPacket(), true);
-                    }
-                }
-            }
-
-            unsorted = true;
-        }
-
-        if (toRemove.Count > 0)
-        {
-            foreach (var entity in toRemove)
-            {
-                if(Entities.Remove(entity))
-                {
-                    current.Remove(entity);
-
-                    if(Scene != null)
-                    {
-                        entity.Removed(Scene);
-                        // Scene.TagLists.EntityRemoved(entity);
-                        // Scene.Tracker.EntityRemoved(entity);
-                        // Engine.Pooler.EntityRemoved(entity);
-
-                        if(entity.skipSync)
-                        {
-                            entity.skipSync = false;
-                            continue;
-                        }
-
-                        if(!(entity?.CanUpdateLocally) ?? false)
-                            continue;
-
-                        Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityRemoved, entity.GetSyncPacket(), true);
-                    }
-                }
-            }
-
-            toRemove.Clear();
-            removing.Clear();
-        }
-
-        if (unsorted)
-        {
-            unsorted = false;
-            Entities.Sort(CompareDepth);
-        }
-
-        if (toAdd.Count > 0)
-        {
-            toAwake.AddRange(toAdd);
-            toAdd.Clear();
-            adding.Clear();
-
-            foreach (var entity in toAwake)
-                if (entity.Scene == Scene)
+            foreach(var entity in toAwake)
+                if(entity.Scene == Scene && entity.CanUpdateLocally)
                     entity.Awake(Scene);
+
             toAwake.Clear();
         }
     }
 
-    public int IndexOf(Entity entity) => Entities.IndexOf(entity);
+    public int IndexOf(Entity entity)
+    {
+        int i = -1;
+        foreach(var e in Entities.Values)
+        {
+            i++;
+
+            if(e is null) continue;
+
+            if(e == entity)
+                return i;
+        }
+        return -1;
+    }
 
     public void Add(Entity entity)
     {
-        if (!adding.Contains(entity) && !current.Contains(entity))
+        bool exists = Entities.ContainsKey(entity.EntityID);
+
+        if(exists || Entities.TryAdd(entity.EntityID, entity))
         {
-            adding.Add(entity);
-            toAdd.Add(entity);
+            if(exists)
+                Entities[entity.EntityID] = entity;
+
+            if(Scene != null)
+            {
+                entity.Added(Scene);
+
+                toAwake.Add(entity);
+            }
         }
     }
 
     public bool Remove(Entity entity)
     {
-        if(!removing.Contains(entity) && current.Contains(entity))
+        if(Entities.Remove(entity.EntityID))
         {
-            removing.Add(entity);
-            toRemove.Add(entity);
+            if(Scene != null)
+            {
+                entity.Removed(Scene);
+
+                if(entity.CanUpdateLocally)
+                    Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityRemoved, entity.GetSyncPacket(), true);
+            }
             return true;
         }
         return false;
     }
 
-    public void Add(IEnumerable<Entity> entities)
+    public void AddRange(IEnumerable<Entity> entities)
     {
         foreach (Entity entity in entities)
             Add(entity);
     }
 
-    public bool Remove(IEnumerable<Entity> entities)
+    public bool RemoveRange(IEnumerable<Entity> entities)
     {
         bool result = false;
         foreach (Entity entity in entities)
@@ -191,13 +118,13 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return result;
     }
 
-    public void Add(params Entity[] entities)
+    public void AddRange(params Entity[] entities)
     {
         foreach (Entity entity in entities)
             Add(entity);
     }
 
-    public bool Remove(params Entity[] entities)
+    public bool RemoveRange(params Entity[] entities)
     {
         bool result = false;
         foreach (Entity entity in entities)
@@ -226,18 +153,15 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     public Entity FindByID(long id)
     {
-        foreach (var e in Entities)
-            if (e.EntityID == id)
-                return e;
-
-        return null;
+        Entities.TryGetValue(id, out Entity entity);
+        return entity;
     }
 
     public List<T> FindAll<T>() where T : Entity
     {
         List<T> list = [];
 
-        foreach (var e in Entities)
+        foreach (var e in Entities.Values)
             if (e is T)
                 list.Add(e as T);
 
@@ -246,14 +170,14 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     public void With<T>(Action<T> action) where T : Entity
     {
-        foreach (var e in Entities)
+        foreach (var e in Entities.Values)
             if (e is T)
                 action(e as T);
     }
 
     public IEnumerator<Entity> GetEnumerator()
     {
-        return Entities.GetEnumerator();
+        return Entities.Values.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -263,12 +187,12 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     public Entity[] ToArray()
     {
-        return [.. Entities];
+        return [.. Entities.Values];
     }
 
     public bool HasVisibleEntities(Tag matchTags, TagFilter filter = TagFilter.AtLeastOne)
     {
-        foreach(var entity in Entities)
+        foreach(var entity in Entities.Values)
             if(entity.Visible && entity.Tag.Matches(matchTags, filter))
                 return true;
 
@@ -277,21 +201,21 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     internal void Update()
     {
-        foreach(var entity in Entities)
+        foreach(var entity in Entities.Values)
             if(entity.Enabled && entity.CanUpdateLocally)
                 entity.Update();
     }
 
     private void Draw(int phase)
     {
-        foreach(var entity in Entities)
+        foreach(var entity in Entities.Values)
             if(entity.Visible)
                 DrawPhase(entity, phase);
     }
 
     private void Draw(int phase, Tag matchTags, TagFilter filter)
     {
-        foreach(var entity in Entities)
+        foreach(var entity in Entities.Values)
             if(entity.Visible && entity.Tag.Matches(matchTags, filter))
                 DrawPhase(entity, phase);
     }
@@ -331,23 +255,6 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     internal void DrawUI(Tag matchTags, TagFilter filter) => Draw(3, matchTags, filter);
 
-    internal void SendPackets()
-    {
-        if(Scene is null) return;
-
-        for(int i = 0; i < Entities.Count; i++)
-        {
-            Entity entity = Entities[i];
-            if(entity.CanUpdateLocally && entity.Enabled && entity.SyncThisStep)
-            {
-                Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityUpdate, entity.GetSyncPacket(), entity.SyncImportant);
-
-                entity.SyncThisStep = false;
-                entity.SyncImportant = false;
-            }
-        }
-    }
-
     internal void ReadPacket(byte[] data, int netId)
     {
         using var binReader = new BinaryReader(new MemoryStream(data));
@@ -361,19 +268,17 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
         if(entity is null)
         {
-            Logger.JellyLogger.Error("CONFLICT: received a packet for an entity that doesn't exist, this will create a new one!");
+            // Logger.JellyLogger.Error("CONFLICT: received a packet for an entity that doesn't exist, this will create a new one!");
 
-            entity = new(Point.Zero, netId) {
+            entity = new() {
                 EntityID = id,
-                skipSync = true
+                NetID = netId
             };
 
             Add(entity);
         }
 
-        entity.Enabled = binReader.ReadBoolean();
-        entity.Visible = binReader.ReadBoolean();
-        entity.Position = new(binReader.ReadInt32(), binReader.ReadInt32());
+        entity.ReadInternalPacket(binReader);
     }
 
     internal void ReadNewEntityPacket(byte[] data, int netId)
@@ -386,37 +291,29 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
         var id = binReader.ReadInt64();
 
-        if(FindByID(id) is Entity entity)
+        Entity entity = new()
         {
-            Logger.JellyLogger.Warn("CONFLICT: received an EntityAdded packet for an entity that already exists, the local entity will be overwritten!");
-        }
-        else
-        {
-            entity = new();
-            Add(entity);
-        }
+            EntityID = id,
+            NetID = netId
+        };
 
-        entity.EntityID = id;
-        entity.NetID = netId;
-        entity.skipSync = true;
+        Add(entity);
 
-        entity.Enabled = binReader.ReadBoolean();
-        entity.Visible = binReader.ReadBoolean();
-        entity.Position = new(binReader.ReadInt32(), binReader.ReadInt32());
+        entity.ReadInternalPacket(binReader);
     }
 
     public void Clear()
     {
-        Remove(Entities);
+        RemoveRange(Entities.Values);
     }
 
     public bool Contains(Entity item)
     {
-        return Entities.Contains(item);
+        return Entities.ContainsValue(item);
     }
 
     void ICollection<Entity>.CopyTo(Entity[] array, int arrayIndex)
     {
-        Entities.CopyTo(array, arrayIndex);
+        Entities.Values.CopyTo(array, arrayIndex);
     }
 }
