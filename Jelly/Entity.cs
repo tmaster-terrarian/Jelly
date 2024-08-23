@@ -10,12 +10,12 @@ namespace Jelly;
 
 public class Entity : INetID
 {
-    public ComponentList Components { get; internal set; }
-
     private int depth;
     private Point position;
 
     internal bool skipSync;
+
+    public ComponentList Components { get; internal set; }
 
     public Point Position
     {
@@ -35,7 +35,7 @@ public class Entity : INetID
 
     public long EntityID { get; internal set; } = Providers.IDRandom.NextInt64();
 
-    public int Tag { get; set; }
+    public Tag Tag { get; set; }
 
     public bool Enabled { get; set; }
     public bool Visible { get; set; }
@@ -123,58 +123,38 @@ public class Entity : INetID
 
     public virtual void Update()
     {
-        Components.Update();
+        Components?.Update();
     }
 
     public virtual void PreDraw()
     {
-        Components.PreDraw();
+        Components?.PreDraw();
     }
 
     public virtual void Draw()
     {
-        Components.Draw();
+        Components?.Draw();
     }
 
     public virtual void DrawUI()
     {
-        Components.DrawUI();
+        Components?.DrawUI();
     }
 
     public virtual void PostDraw()
     {
-        Components.PostDraw();
+        Components?.PostDraw();
     }
 
-    public virtual bool TagIncludes(int tags)
-    {
-        return (tags & Tag) != 0;
-    }
+    // public void Remove(Component component)
+    // {
+    //     Components?.Remove(component);
+    // }
 
-    public virtual bool TagMatches(int tags)
-    {
-        return (tags & Tag) == tags;
-    }
-
-    public void AddTag(int tag)
-    {
-        Tag |= tag;
-    }
-
-    public void RemoveTag(int tag)
-    {
-        Tag &= ~tag;
-    }
-
-    public void Remove(Component component)
-    {
-        Components.Remove(component);
-    }
-
-    public void Add(Component component)
-    {
-        Components.Add(component);
-    }
+    // public void Add(Component component)
+    // {
+    //     Components?.Add(component);
+    // }
 
     internal byte[] GetSyncPacket()
     {

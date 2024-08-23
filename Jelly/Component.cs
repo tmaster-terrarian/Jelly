@@ -125,7 +125,7 @@ public abstract class Component : INetID
 
     public void RemoveSelf()
     {
-        Entity?.Remove(this);
+        Entity?.Components?.Remove(this);
     }
 
     internal byte[] GetInternalSyncPacket()

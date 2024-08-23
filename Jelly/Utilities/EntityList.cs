@@ -266,28 +266,11 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return [.. Entities];
     }
 
-    public bool HasVisibleEntities(int matchTags, TagFilter filter = TagFilter.AtLeastOne)
+    public bool HasVisibleEntities(Tag matchTags, TagFilter filter = TagFilter.AtLeastOne)
     {
-        switch(filter)
-        {
-            case TagFilter.AtLeastOne:
-                foreach(var entity in Entities)
-                    if(entity.Visible && entity.TagIncludes(matchTags))
-                        return true;
-                break;
-
-            case TagFilter.All:
-                foreach(var entity in Entities)
-                    if(entity.Visible && entity.TagMatches(matchTags))
-                        return true;
-                break;
-
-            case TagFilter.None:
-                foreach(var entity in Entities)
-                    if(entity.Visible && !entity.TagIncludes(matchTags))
-                        return true;
-                break;
-        }
+        foreach(var entity in Entities)
+            if(entity.Visible && entity.Tag.Matches(matchTags, filter))
+                return true;
 
         return false;
     }
@@ -306,28 +289,11 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
                 DrawPhase(entity, phase);
     }
 
-    private void Draw(int phase, int matchTags, TagFilter filter)
+    private void Draw(int phase, Tag matchTags, TagFilter filter)
     {
-        switch(filter)
-        {
-            case TagFilter.AtLeastOne:
-                foreach(var entity in Entities)
-                    if(entity.Visible && entity.TagIncludes(matchTags))
-                        DrawPhase(entity, phase);
-                break;
-
-            case TagFilter.All:
-                foreach(var entity in Entities)
-                    if(entity.Visible && entity.TagMatches(matchTags))
-                        DrawPhase(entity, phase);
-                break;
-
-            case TagFilter.None:
-                foreach(var entity in Entities)
-                    if(entity.Visible && !entity.TagIncludes(matchTags))
-                        DrawPhase(entity, phase);
-                break;
-        }
+        foreach(var entity in Entities)
+            if(entity.Visible && entity.Tag.Matches(matchTags, filter))
+                DrawPhase(entity, phase);
     }
 
     private static void DrawPhase(Entity entity, int phase)
@@ -351,19 +317,19 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     internal void PreDraw() => Draw(0);
 
-    internal void PreDraw(int matchTags, TagFilter filter) => Draw(0, matchTags, filter);
+    internal void PreDraw(Tag matchTags, TagFilter filter) => Draw(0, matchTags, filter);
 
     internal void Draw() => Draw(1);
 
-    internal void Draw(int matchTags, TagFilter filter) => Draw(1, matchTags, filter);
+    internal void Draw(Tag matchTags, TagFilter filter) => Draw(1, matchTags, filter);
 
     internal void PostDraw() => Draw(2);
 
-    internal void PostDraw(int matchTags, TagFilter filter) => Draw(2, matchTags, filter);
+    internal void PostDraw(Tag matchTags, TagFilter filter) => Draw(2, matchTags, filter);
 
     internal void DrawUI() => Draw(3);
 
-    internal void DrawUI(int matchTags, TagFilter filter) => Draw(3, matchTags, filter);
+    internal void DrawUI(Tag matchTags, TagFilter filter) => Draw(3, matchTags, filter);
 
     internal void SendPackets()
     {
