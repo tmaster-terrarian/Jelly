@@ -2,12 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.Json.Serialization;
-
-using Microsoft.Xna.Framework;
-
-using Jelly.Net;
 
 namespace Jelly.Utilities;
 
@@ -48,7 +43,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         if(toAwake.Count > 0)
         {
             foreach(var entity in toAwake)
-                if(entity.Scene == Scene && entity.CanUpdateLocally)
+                if(entity.Scene == Scene)
                     entity.Awake(Scene);
 
             toAwake.Clear();
@@ -95,9 +90,6 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
             if(Scene != null)
             {
                 entity.Removed(Scene);
-
-                if(entity.CanUpdateLocally)
-                    Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityRemoved, entity.GetSyncPacket(), true);
             }
             return true;
         }
@@ -202,7 +194,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     internal void Update()
     {
         foreach(var entity in Entities.Values)
-            if(entity.Enabled && entity.CanUpdateLocally)
+            if(entity.Enabled)
                 entity.Update();
     }
 
@@ -254,53 +246,6 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     internal void DrawUI() => Draw(3);
 
     internal void DrawUI(Tag matchTags, TagFilter filter) => Draw(3, matchTags, filter);
-
-    internal void ReadPacket(byte[] data, int netId)
-    {
-        using var binReader = new BinaryReader(new MemoryStream(data));
-
-        var sceneId = binReader.ReadInt64();
-        if(Scene?.SceneID != sceneId)
-            return;
-
-        var id = binReader.ReadInt64();
-        var entity = FindByID(id);
-
-        if(entity is null)
-        {
-            // Logger.JellyLogger.Error("CONFLICT: received a packet for an entity that doesn't exist, this will create a new one!");
-
-            entity = new() {
-                EntityID = id,
-                NetID = netId
-            };
-
-            Add(entity);
-        }
-
-        entity.ReadInternalPacket(binReader);
-    }
-
-    internal void ReadNewEntityPacket(byte[] data, int netId)
-    {
-        using var binReader = new BinaryReader(new MemoryStream(data));
-
-        var sceneId = binReader.ReadInt64();
-        if(Scene?.SceneID != sceneId)
-            return;
-
-        var id = binReader.ReadInt64();
-
-        Entity entity = new()
-        {
-            EntityID = id,
-            NetID = netId
-        };
-
-        Add(entity);
-
-        entity.ReadInternalPacket(binReader);
-    }
 
     public void Clear()
     {

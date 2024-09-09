@@ -8,12 +8,10 @@ using Jelly.Utilities;
 
 namespace Jelly;
 
-public class Entity : INetID
+public class Entity
 {
     private int depth;
     private Point position;
-
-    internal bool skipSync;
 
     public ComponentList Components { get; internal set; }
 
@@ -24,16 +22,9 @@ public class Entity : INetID
             if(position != value)
             {
                 position = value;
-                MarkForSync();
             }
         }
     }
-
-    public int NetID { get; set; }
-
-    [JsonIgnore] public bool CanUpdateLocally => NetID == Providers.NetworkProvider.GetNetID();
-
-    public long EntityID { get; internal set; } = Providers.IDRandom.NextInt64();
 
     public Tag Tag { get; set; }
 
@@ -69,21 +60,15 @@ public class Entity : INetID
         set => Position = new(Position.X, value);
     }
 
-    [JsonIgnore] internal bool SyncThisStep { get; set; }
-    [JsonIgnore] internal bool SyncImportant { get; set; }
+    public long EntityID { get; set; } = Providers.IDRandom.NextInt64();
 
-    public Entity(Point position, int netID)
+    public Entity(Point position)
     {
         Position = position;
-        NetID = netID < 0 ? Providers.NetworkProvider.GetHostNetID() : netID;
-        // Components = new(this);
-
         SetDefaults();
     }
 
-    public Entity(Point position) : this(position, -1) {}
-
-    public Entity() : this(Point.Zero, -1) {}
+    public Entity() : this(Point.Zero) {}
 
     public virtual void SetDefaults() {}
 
@@ -91,39 +76,32 @@ public class Entity : INetID
     {
         other.Position = Position;
         other.Depth = Depth;
-        other.NetID = NetID;
         other.Enabled = Enabled;
         other.Scene = Scene;
         other.Visible = Visible;
         other.Tag = Tag;
     }
 
-    public void MarkForSync(bool important = false)
-    {
-        SyncThisStep = true;
-        SyncImportant = important;
-    }
-
     public virtual void Awake(Scene scene)
     {
-        // if(Components != null)
-        //     foreach(var c in Components)
-        //         c.EntityAwake();
+        if(Components != null)
+            foreach(var c in Components)
+                c.EntityAwake();
     }
 
     public virtual void Added(Scene scene)
     {
         Scene = scene;
-        // if(Components != null)
-        //     foreach(var c in Components)
-        //         c.EntityAdded(scene);
+        if(Components != null)
+            foreach(var c in Components)
+                c.EntityAdded(scene);
     }
 
     public virtual void Removed(Scene scene)
     {
-        // if(Components != null)
-        //     foreach(var c in Components)
-        //         c.EntityRemoved(scene);
+        if(Components != null)
+            foreach(var c in Components)
+                c.EntityRemoved(scene);
         Scene = null;
     }
 
@@ -131,76 +109,43 @@ public class Entity : INetID
 
     public virtual void SceneEnd(Scene scene)
     {
-        // if(Components != null)
-        //     foreach(var c in Components)
-        //         c.SceneEnd(scene);
+        if(Components != null)
+            foreach(var c in Components)
+                c.SceneEnd(scene);
     }
 
     public virtual void Update()
     {
-        // Components?.Update();
+        Components?.Update();
     }
 
     public virtual void PreDraw()
     {
-        // Components?.PreDraw();
+        Components?.PreDraw();
     }
 
     public virtual void Draw()
     {
-        // Components?.Draw();
+        Components?.Draw();
     }
 
     public virtual void DrawUI()
     {
-        // Components?.DrawUI();
+        Components?.DrawUI();
     }
 
     public virtual void PostDraw()
     {
-        // Components?.PostDraw();
+        Components?.PostDraw();
     }
 
-    // public void Remove(Component component)
-    // {
-    //     Components?.Remove(component);
-    // }
-
-    // public void Add(Component component)
-    // {
-    //     Components?.Add(component);
-    // }
-
-    internal byte[] GetInternalSyncPacket()
+    public void RemoveComponent(Component component)
     {
-        using var stream = new MemoryStream();
-        var binWriter = new BinaryWriter(stream);
-
-        binWriter.Write(Scene.SceneID);
-        binWriter.Write(EntityID);
-
-        binWriter.Write(Enabled);
-        binWriter.Write(Visible);
-
-        binWriter.Write(Position.X);
-        binWriter.Write(Position.Y);
-
-        return [
-            ..stream.ToArray(),
-            ..(GetSyncPacket() ?? [])
-        ];
+        Components?.Remove(component);
     }
 
-    public virtual byte[] GetSyncPacket() => [];
-
-    internal void ReadInternalPacket(BinaryReader binReader)
+    public void AddComponent(Component component)
     {
-        Enabled = binReader.ReadBoolean();
-        Visible = binReader.ReadBoolean();
-        Position = new(binReader.ReadInt32(), binReader.ReadInt32());
-
-        ReadPacket(binReader);
+        Components?.Add(component);
     }
-
-    public virtual void ReadPacket(BinaryReader binReader) {}
 }

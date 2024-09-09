@@ -2,12 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.Json.Serialization;
-using System.Xml;
-
-using Jelly.Net;
-using Jelly.Serialization;
 
 namespace Jelly.Utilities;
 
@@ -18,8 +13,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
     [JsonIgnore] public Entity Entity { get; internal set; }
 
-    private List<Component> Components { get; set; } = [];
-
+    private readonly List<Component> components = [];
     private readonly List<Component> toAdd = [];
     private readonly List<Component> toRemove = [];
 
@@ -51,17 +45,8 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                 {
                     if(current.Add(component))
                     {
-                        Components.Add(component);
+                        components.Add(component);
                         component.Added(Entity);
-
-                        if(component.skipSync)
-                        {
-                            component.skipSync = false;
-                            continue;
-                        }
-
-                        if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
-                            Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentAdded, component.GetInternalSyncPacket(), true);
                     }
                 }
 
@@ -75,17 +60,8 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                 {
                     if(current.Remove(component))
                     {
-                        Components.Remove(component);
+                        components.Remove(component);
                         component.Removed(Entity);
-
-                        if(component.skipSync)
-                        {
-                            component.skipSync = false;
-                            continue;
-                        }
-
-                        if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
-                            Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentRemoved, component.GetInternalSyncPacket(), true);
                     }
                 }
 
@@ -102,17 +78,8 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
             case LockModes.Open:
                 if(current.Add(component))
                 {
-                    Components.Add(component);
+                    components.Add(component);
                     component.Added(Entity);
-
-                    if(component.skipSync)
-                    {
-                        component.skipSync = false;
-                        break;
-                    }
-
-                    if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
-                        Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentAdded, component.GetInternalSyncPacket(), true);
                 }
                 break;
 
@@ -137,18 +104,9 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
             case LockModes.Open:
                 if(current.Remove(component))
                 {
-                    Components.Remove(component);
+                    components.Remove(component);
                     component.Removed(Entity);
                     result = true;
-
-                    if(component.skipSync)
-                    {
-                        component.skipSync = false;
-                        break;
-                    }
-
-                    if((Entity?.CanUpdateLocally ?? false) && Entity?.Scene is not null)
-                        Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentRemoved, component.GetInternalSyncPacket(), true);
                 }
                 break;
 
@@ -202,10 +160,10 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
     public void Clear()
     {
-        Remove(Components);
+        Remove(components);
     }
 
-    public int Count => Components.Count;
+    public int Count => components.Count;
 
     public bool IsReadOnly { get; }
 
@@ -213,16 +171,16 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     {
         get
         {
-            if (index < 0 || index >= Components.Count)
+            if (index < 0 || index >= components.Count)
                 throw new IndexOutOfRangeException();
             else
-                return Components[index];
+                return components[index];
         }
     }
 
     public IEnumerator<Component> GetEnumerator()
     {
-        return Components.GetEnumerator();
+        return components.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -232,13 +190,13 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
     public Component[] ToArray()
     {
-        return [.. Components];
+        return [.. components];
     }
 
     internal void Update()
     {
         LockMode = LockModes.Locked;
-        foreach(var component in Components)
+        foreach(var component in components)
             if(component.Enabled)
                 component.Update();
         LockMode = LockModes.Open;
@@ -247,7 +205,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     internal void PreDraw()
     {
         LockMode = LockModes.Error;
-        foreach(var component in Components)
+        foreach(var component in components)
             if(component.Visible)
                 component.PreDraw();
         LockMode = LockModes.Open;
@@ -256,7 +214,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     internal void Draw()
     {
         LockMode = LockModes.Error;
-        foreach(var component in Components)
+        foreach(var component in components)
             if(component.Visible)
                 component.Draw();
         LockMode = LockModes.Open;
@@ -265,7 +223,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     internal void PostDraw()
     {
         LockMode = LockModes.Error;
-        foreach(var component in Components)
+        foreach(var component in components)
             if(component.Visible)
                 component.PostDraw();
         LockMode = LockModes.Open;
@@ -274,7 +232,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     internal void DrawUI()
     {
         LockMode = LockModes.Error;
-        foreach(var component in Components)
+        foreach(var component in components)
             if(component.Visible)
                 component.DrawUI();
         LockMode = LockModes.Open;
@@ -282,119 +240,26 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
     public T? Get<T>() where T : Component
     {
-        foreach (var component in Components)
+        foreach (var component in components)
             if (component is T)
                 return component as T;
         return null;
     }
 
-    public Component? FindByID(long id)
-    {
-        foreach (var component in Components)
-            if (component.ComponentID == id)
-                return component;
-        return null;
-    }
-
     public IEnumerable<T> GetAll<T>() where T : Component
     {
-        foreach (var component in Components)
+        foreach (var component in components)
             if (component is T)
                 yield return component as T;
     }
 
-    internal void SendPackets()
-    {
-        for(int i = 0; i < Components.Count; i++)
-        {
-            Component component = Components[i];
-            if(component.Enabled && component.SyncThisStep)
-            {
-                Providers.NetworkProvider.SendSyncPacket(SyncPacketType.ComponentUpdate, component.GetInternalSyncPacket(), component.SyncImportant);
-
-                component.SyncThisStep = false;
-                component.SyncImportant = false;
-            }
-        }
-    }
-
-    internal void ReadPacket(byte[] data)
-    {
-        using var stream = new MemoryStream(data);
-        var binReader = new BinaryReader(stream);
-
-        long id = binReader.ReadInt64();
-
-        binReader.ReadString();
-
-        var component = FindByID(id);
-        if(component is null)
-        {
-            Logger.JellyLogger.Error("DESYNC: received a packet for a component that doesn't exist!");
-            return;
-        }
-        else
-        {
-            component.enabled = binReader.ReadBoolean();
-            component.Visible = binReader.ReadBoolean();
-        }
-
-        component?.ReadPacket(data[(int)stream.Position..]);
-    }
-
-    internal void ReadNewComponentPacket(byte[] data)
-    {
-        using var stream = new MemoryStream(data);
-        var binReader = new BinaryReader(stream);
-
-        long id = binReader.ReadInt64();
-
-        var typeName = binReader.ReadString();
-
-        var component = FindByID(id);
-        if(component is not null)
-        {
-            Logger.JellyLogger.Warn("CONFLICT: received an EntityAdded packet for an entity that already exists, the local entity will be overwritten!");
-            component.skipSync = true;
-            Remove(component);
-        }
-
-        component = Type.GetType(typeName).GetConstructor(Type.EmptyTypes).Invoke(null) as Component;
-        component.skipSync = true;
-        Add(component);
-
-        component.enabled = binReader.ReadBoolean();
-        component.Visible = binReader.ReadBoolean();
-
-        component?.ReadPacket(data[(int)stream.Position..]);
-    }
-
-    internal void ReadRemovalPacket(byte[] data)
-    {
-        using var stream = new MemoryStream(data);
-        var binReader = new BinaryReader(stream);
-
-        long id = binReader.ReadInt64();
-
-        var component = FindByID(id);
-        if(component is null)
-        {
-            Logger.JellyLogger.Warn("DESYNC: received a packet for a component that doesn't exist!");
-            return;
-        }
-
-        component.skipSync = true;
-
-        Remove(component);
-    }
-
     public bool Contains(Component item)
     {
-        return Components.Contains(item);
+        return components.Contains(item);
     }
 
     void ICollection<Component>.CopyTo(Component[] array, int arrayIndex)
     {
-        Components.CopyTo(array, arrayIndex);
+        components.CopyTo(array, arrayIndex);
     }
 }

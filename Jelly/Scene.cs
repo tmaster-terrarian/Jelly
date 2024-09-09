@@ -32,40 +32,29 @@ public class Scene
 
     [JsonIgnore] public CoroutineRunner CoroutineRunner { get; } = new();
 
-    [JsonIgnore] public long SceneID { get; }
-
     public event Action OnEndOfFrame;
 
     public Scene()
     {
         Entities = new(this);
-        SceneID = Name.GetHashCode();
-    }
-
-    public Scene(long idOverride) : this()
-    {
-        SceneID = idOverride;
     }
 
     public void Subscribe()
     {
         Focused = true;
-        Providers.NetworkProvider.PacketReceived += ReadPacket;
     }
 
     public void Unsubscribe()
     {
         Focused = false;
-        Providers.NetworkProvider.PacketReceived -= ReadPacket;
     }
 
     public virtual void Begin()
     {
         Subscribe();
 
-        foreach (var entity in Entities)
-            if(entity.CanUpdateLocally)
-                entity.SceneBegin(this);
+        foreach(var entity in Entities)
+            entity.SceneBegin(this);
     }
 
     public virtual void End()
@@ -73,8 +62,7 @@ public class Scene
         Unsubscribe();
 
         foreach (var entity in Entities)
-            if(entity.CanUpdateLocally)
-                entity.SceneEnd(this);
+            entity.SceneEnd(this);
 
         CoroutineRunner.StopAll();
     }
@@ -105,11 +93,6 @@ public class Scene
     {
         OnEndOfFrame?.Invoke();
         OnEndOfFrame = null;
-
-        if(!Paused && Providers.NetworkProvider.NetworkingEnabled)
-        {
-            SendPackets();
-        }
     }
 
     public virtual void PreDraw()
@@ -170,27 +153,4 @@ public class Scene
     }
 
     #endregion
-
-    private void SendPackets()
-    {
-        foreach(var entity in Entities)
-        {
-            if(entity.CanUpdateLocally && entity.Enabled && entity.SyncThisStep)
-            {
-                Providers.NetworkProvider.SendSyncPacket(SyncPacketType.EntityUpdate, entity.GetInternalSyncPacket(), entity.SyncImportant);
-
-                entity.SyncThisStep = false;
-                entity.SyncImportant = false;
-            }
-        }
-    }
-
-    private void ReadPacket(byte[] data, int sender)
-    {
-        if(!Providers.NetworkProvider.NetworkingEnabled)
-            return;
-
-        SyncPacketType type = (SyncPacketType)data[0];
-        var payload = data[1..];
-    }
 }

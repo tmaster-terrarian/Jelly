@@ -11,16 +11,6 @@ public static class Providers
 
     internal static Random IDRandom = new();
 
-    private static NetworkProvider _networkProvider;
-
-    public static NetworkProvider NetworkProvider
-    {
-        get {
-            CheckInitialized();
-            return _networkProvider;
-        }
-    }
-
     private static ContentProvider _contentProvider;
 
     public static ContentProvider ContentProvider
@@ -46,14 +36,13 @@ public static class Providers
     /// <summary>
     /// Sets up the main providers and engine backend utilities. Call once at program start.
     /// </summary>
-    public static void Initialize(NetworkProvider networkProvider, ContentProvider contentProvider)
+    public static void Initialize(ContentProvider contentProvider)
     {
-        ArgumentNullException.ThrowIfNull(networkProvider, nameof(networkProvider));
+        ArgumentNullException.ThrowIfNull(contentProvider, nameof(contentProvider));
 
         if(_initialized) throw new InvalidOperationException(nameof(Initialize) + " cannot be called more than once!");
         _initialized = true;
 
-        _networkProvider = networkProvider;
         _contentProvider = contentProvider;
 
         Registries.Init();
