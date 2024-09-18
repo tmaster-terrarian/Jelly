@@ -29,7 +29,7 @@ public class SpriteComponent : Component
 
         if(TexturePath is null) return;
 
-        if(Providers.ContentProvider.TryGetTexture(TexturePath, out Texture2D tex))
+        if(JellyBackend.ContentProvider.TryGetTexture(TexturePath, out Texture2D tex))
         {
             Renderer.SpriteBatch.Draw(tex, Entity.Position.ToVector2(), SourceRectangle, Color * Alpha, Rotation, Pivot, Scale, SpriteEffects, 0);
         }

@@ -1,11 +1,10 @@
 using System;
 
 using Jelly.GameContent;
-using Jelly.Net;
 
 namespace Jelly;
 
-public static class Providers
+public static class JellyBackend
 {
     private static bool _initialized;
 
@@ -21,16 +20,13 @@ public static class Providers
         }
     }
 
-    private static float deltaTime;
-
-    public static float DeltaTime => deltaTime;
-
     /// <summary>
     /// This method should called before calling any other update methods related to <see cref="Jelly"/>
     /// </summary>
-    public static void SetDeltaTime(float value)
+    /// <param name="deltaTimeThisFrame">The current <i>unscaled</i> (real time) time in seconds since the last frame</param>
+    public static void PreUpdate(float deltaTimeThisFrame)
     {
-        deltaTime = value;
+        Time.SetDeltaTime(deltaTimeThisFrame);
     }
 
     /// <summary>

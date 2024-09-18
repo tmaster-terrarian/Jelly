@@ -127,18 +127,39 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     public int AmountOf<T>() where T : Entity
     {
         int count = 0;
-        foreach (var e in Entities)
+        foreach (var e in Entities.Values)
             if (e is T)
                 count++;
 
         return count;
     }
 
+    public int AmountOfType<T>() where T : Component
+    {
+        int count = 0;
+        foreach (var e in Entities.Values)
+            foreach (var c in e.Components)
+                if(c is T)
+                    count++;
+
+        return count;
+    }
+
     public T FindFirst<T>() where T : Entity
     {
-        foreach (var e in Entities)
+        foreach (var e in Entities.Values)
             if (e is T)
                 return e as T;
+
+        return null;
+    }
+
+    public Entity FindFirstOfType<T>() where T : Component
+    {
+        foreach (var e in Entities.Values)
+            foreach (var c in e.Components)
+                if(c is T)
+                    return e;
 
         return null;
     }
@@ -156,6 +177,18 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         foreach (var e in Entities.Values)
             if (e is T)
                 list.Add(e as T);
+
+        return list;
+    }
+
+    public List<Entity> FindAllOfType<T>() where T : Component
+    {
+        List<Entity> list = [];
+
+        foreach (var e in Entities.Values)
+            foreach (var c in e.Components)
+                if(c is T)
+                    list.Add(e);
 
         return list;
     }

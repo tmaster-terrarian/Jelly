@@ -11,20 +11,12 @@ namespace Jelly;
 public class Entity
 {
     private int depth;
-    private Point position;
 
     public ComponentList Components { get; internal set; }
 
-    public Point Position
-    {
-        get => position;
-        set {
-            if(position != value)
-            {
-                position = value;
-            }
-        }
-    }
+    public Point Position { get; set; }
+
+    public Point Pivot { get; set; } = Point.Zero;
 
     public Tag Tag { get; set; }
 
@@ -60,11 +52,12 @@ public class Entity
         set => Position = new(Position.X, value);
     }
 
-    public long EntityID { get; set; } = Providers.IDRandom.NextInt64();
+    public long EntityID { get; set; } = JellyBackend.IDRandom.NextInt64();
 
     public Entity(Point position)
     {
         Position = position;
+        Components = new(this);
         SetDefaults();
     }
 

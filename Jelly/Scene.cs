@@ -1,18 +1,17 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text.Json.Serialization;
 
-using Microsoft.Xna.Framework;
-
 using Jelly.Coroutines;
-using Jelly.Net;
 using Jelly.Utilities;
+using Microsoft.Xna.Framework;
 
 namespace Jelly;
 
 public class Scene
 {
+    private int width = 1;
+    private int height = 1;
+
     /// <summary>
     /// Don't use this during multiplayer games
     /// </summary>
@@ -26,6 +25,18 @@ public class Scene
 
     [JsonIgnore] public bool Focused { get; private set; }
 
+    public int Width {
+        get => width;
+        set => width = MathHelper.Max(value, 1);
+    }
+
+    public int Height {
+        get => height;
+        set => height = MathHelper.Max(value, 1);
+    }
+
+    public CollisionWorld CollisionWorld { get; private set; }
+
     public EntityList Entities { get; }
 
     public string Name { get; set; } = "";
@@ -37,6 +48,7 @@ public class Scene
     public Scene()
     {
         Entities = new(this);
+        CollisionWorld = new(this);
     }
 
     public void Subscribe()
@@ -69,7 +81,7 @@ public class Scene
 
     public virtual void PreUpdate()
     {
-        var delta = Providers.DeltaTime;
+        var delta = Time.DeltaTime;
 
         RawTimeActive += delta;
         if(!Paused)
@@ -128,7 +140,7 @@ public class Scene
     /// <returns></returns>
     public bool OnInterval(float interval)
     {
-        return (int)((TimeActive - (Providers.DeltaTime * TimeScale)) / interval) < (int)(TimeActive / interval);
+        return (int)((TimeActive - (Time.DeltaTime * TimeScale)) / interval) < (int)(TimeActive / interval);
     }
 
     /// <summary>
@@ -139,17 +151,17 @@ public class Scene
     /// <returns></returns>
     public bool OnInterval(float interval, float offset)
     {
-        return Math.Floor((TimeActive - offset - (Providers.DeltaTime * TimeScale)) / interval) < Math.Floor((TimeActive - offset) / interval);
+        return Math.Floor((TimeActive - offset - (Time.DeltaTime * TimeScale)) / interval) < Math.Floor((TimeActive - offset) / interval);
     }
 
     public bool OnRawInterval(float interval)
     {
-        return (int)((RawTimeActive - Providers.DeltaTime) / interval) < (int)(RawTimeActive / interval);
+        return (int)((RawTimeActive - Time.DeltaTime) / interval) < (int)(RawTimeActive / interval);
     }
 
     public bool OnRawInterval(float interval, float offset)
     {
-        return Math.Floor((RawTimeActive - offset - Providers.DeltaTime) / interval) < Math.Floor((RawTimeActive - offset) / interval);
+        return Math.Floor((RawTimeActive - offset - Time.DeltaTime) / interval) < Math.Floor((RawTimeActive - offset) / interval);
     }
 
     #endregion

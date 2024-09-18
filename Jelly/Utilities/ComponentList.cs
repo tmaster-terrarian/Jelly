@@ -167,14 +167,12 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
     public bool IsReadOnly { get; }
 
-    public Component this[int index]
-    {
-        get
-        {
+    public Component this[int index] {
+        get {
             if (index < 0 || index >= components.Count)
                 throw new IndexOutOfRangeException();
-            else
-                return components[index];
+
+            return components[index];
         }
     }
 
