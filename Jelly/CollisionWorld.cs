@@ -111,19 +111,19 @@ public class CollisionWorld
 
     public void Draw()
     {
-        for(int x = 0; x < Width; x++)
-        {
-            for(int y = 0; y < Height; y++)
-            {
-                int tile = _tiles[x, y];
-                if(tile == 0) continue;
+        // if(Main.Debug.Enabled)
+        // {
+        //     for(int x = 0; x < Width; x++)
+        //     {
+        //         for(int y = 0; y < Height; y++)
+        //         {
+        //             int tile = _tiles[x, y];
+        //             if(tile == 0) continue;
 
-                // if(Main.Debug.Enabled)
-                // {
-                //     NineSlice.DrawNineSlice(Main.LoadContent<Texture2D>("Images/Other/tileOutline"), _collisions[x, y], null, new Point(1), new Point(1), Color.Red * 0.5f);
-                // }
-            }
-        }
+        //             NineSlice.DrawNineSlice(Main.LoadContent<Texture2D>("Images/Other/tileOutline"), _collisions[x, y], null, new Point(1), new Point(1), Color.Red * 0.5f);
+        //         }
+        //     }
+        // }
 
         if(!Visible) return;
 
@@ -317,6 +317,6 @@ public class CollisionWorld
 
     public bool InWorld(Point pos)
     {
-        return InWorld(pos.X, pos.Y);
+        return InWorld(this, pos.X, pos.Y);
     }
 }
