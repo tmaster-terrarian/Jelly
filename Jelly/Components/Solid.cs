@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace Jelly.Components;
@@ -86,11 +87,11 @@ public class Solid : Component
                 {
                     foreach(var entity in allActors)
                     {
-                        var actor = entity.GetComponent<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.WorldBoundingBox))
+                        var actor = entity.Components.Get<Actor>();
+                        if(this.WorldHitbox.Intersects(actor.Hitbox))
                         {
                             // Push left
-                            actor.MoveX(this.WorldHitbox.Left - actor.WorldBoundingBox.Right, actor.Squish);
+                            actor.MoveX(this.WorldHitbox.Left - actor.Hitbox.Right, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
@@ -104,25 +105,16 @@ public class Solid : Component
             if(moveY != 0)
             {
                 yRemainder -= moveY;
-                transform.position.Y += moveY;
+                Entity.Y += moveY;
                 if(moveY > 0)
                 {
-                    if(this.WorldHitbox.Intersects(Main.Player.Hitbox))
-                    {
-                        Main.Player.MoveY(this.WorldHitbox.Bottom - Main.Player.Top.Y, Main.Player.Squish);
-                    }
-                    else if(playerRiding)
-                    {
-                        Main.Player.MoveY(moveY, null);
-                    }
-
                     foreach(var entity in allActors)
                     {
-                        var actor = entity.GetComponent<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.WorldBoundingBox))
+                        var actor = entity.Components.Get<Actor>();
+                        if(this.WorldHitbox.Intersects(actor.Hitbox))
                         {
                             // Push right
-                            actor.MoveY(this.WorldHitbox.Bottom - actor.WorldBoundingBox.Top, actor.Squish);
+                            actor.MoveY(this.WorldHitbox.Bottom - actor.Hitbox.Top, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
@@ -133,22 +125,13 @@ public class Solid : Component
                 }
                 else
                 {
-                    if(this.WorldHitbox.Intersects(Main.Player.Hitbox))
-                    {
-                        Main.Player.MoveY(this.WorldHitbox.Top - Main.Player.Bottom.Y, Main.Player.Squish);
-                    }
-                    else if(playerRiding)
-                    {
-                        Main.Player.MoveY(moveY, null);
-                    }
-
                     foreach(var entity in allActors)
                     {
-                        var actor = entity.GetComponent<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.WorldBoundingBox))
+                        var actor = entity.Components.Get<Actor>();
+                        if(this.WorldHitbox.Intersects(actor.Hitbox))
                         {
                             // Push left
-                            actor.MoveY(this.WorldHitbox.Top - actor.WorldBoundingBox.Bottom, actor.Squish);
+                            actor.MoveY(this.WorldHitbox.Top - actor.Hitbox.Bottom, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
@@ -166,10 +149,10 @@ public class Solid : Component
 
     private List<Actor> GetAllRidingActors()
     {
-        List<Actor> actors = new();
-        foreach(var entity in Main.World.GetAllEntitiesWithComponent<Actor>())
+        List<Actor> actors = [];
+        foreach(var entity in Scene.Entities.FindAllOfType<Actor>())
         {
-            var actor = entity.GetComponent<Actor>();
+            var actor = entity.Components.Get<Actor>();
             if(actor.IsRiding(this)) actors.Add(actor);
         }
         return actors;

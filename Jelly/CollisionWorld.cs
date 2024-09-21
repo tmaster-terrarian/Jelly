@@ -106,7 +106,7 @@ public class CollisionWorld
 
     public void Update()
     {
-        ComponentSystems.Update();
+        
     }
 
     public void Draw()
@@ -118,109 +118,80 @@ public class CollisionWorld
                 int tile = _tiles[x, y];
                 if(tile == 0) continue;
 
-                if(Main.Debug.Enabled)
-                {
-                    NineSlice.DrawNineSlice(Main.LoadContent<Texture2D>("Images/Other/tileOutline"), _collisions[x, y], null, new Point(1), new Point(1), Color.Red * 0.5f);
-                }
+                // if(Main.Debug.Enabled)
+                // {
+                //     NineSlice.DrawNineSlice(Main.LoadContent<Texture2D>("Images/Other/tileOutline"), _collisions[x, y], null, new Point(1), new Point(1), Color.Red * 0.5f);
+                // }
             }
         }
 
         if(!Visible) return;
 
-        if(Main.Debug.Enabled)
-        {
-            foreach(var rect in JumpThroughs)
-            {
-                SpriteBatch.Draw(Main.OnePixel, rect, Color.LimeGreen * 0.5f);
-            }
+        // if(Main.Debug.Enabled)
+        // {
+        //     foreach(var rect in JumpThroughs)
+        //     {
+        //         SpriteBatch.Draw(Main.OnePixel, rect, Color.LimeGreen * 0.5f);
+        //     }
 
-            foreach(var line in JumpThroughSlopes)
-            {
-                SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P1 - new Point(1), new(2)), Color.LimeGreen * 0.75f);
-                SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P2 - new Point(1), new(2)), Color.LimeGreen * 0.75f);
+        //     foreach(var line in JumpThroughSlopes)
+        //     {
+        //         SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P1 - new Point(1), new(2)), Color.LimeGreen * 0.75f);
+        //         SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P2 - new Point(1), new(2)), Color.LimeGreen * 0.75f);
 
-                Point min = new(MathHelper.Min(line.P1.X, line.P2.X), MathHelper.Min(line.P1.Y, line.P2.Y));
-                Point max = new(MathHelper.Max(line.P1.X, line.P2.X), MathHelper.Max(line.P1.Y, line.P2.Y));
+        //         Point min = new(MathHelper.Min(line.P1.X, line.P2.X), MathHelper.Min(line.P1.Y, line.P2.Y));
+        //         Point max = new(MathHelper.Max(line.P1.X, line.P2.X), MathHelper.Max(line.P1.Y, line.P2.Y));
 
-                for(int x = 0; x < max.X - min.X; x++)
-                {
-                    float y = (float)(line.P2.Y - line.P1.Y) / (line.P2.X - line.P1.X) * x;
+        //         for(int x = 0; x < max.X - min.X; x++)
+        //         {
+        //             float y = (float)(line.P2.Y - line.P1.Y) / (line.P2.X - line.P1.X) * x;
 
-                    if(line.P2.Y < line.P1.Y) y--;
+        //             if(line.P2.Y < line.P1.Y) y--;
 
-                    SpriteBatch.Draw(Main.OnePixel, new Rectangle(new Point(x + line.P1.X, (int)y + line.P1.Y), new(1)), Color.LimeGreen * 0.5f);
-                }
-            }
+        //             SpriteBatch.Draw(Main.OnePixel, new Rectangle(new Point(x + line.P1.X, (int)y + line.P1.Y), new(1)), Color.LimeGreen * 0.5f);
+        //         }
+        //     }
 
-            foreach(var line in Slopes)
-            {
-                SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P1 - new Point(1), new(2)), Color.Red * 0.75f);
-                SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P2 - new Point(1), new(2)), Color.Red * 0.75f);
+        //     foreach(var line in Slopes)
+        //     {
+        //         SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P1 - new Point(1), new(2)), Color.Red * 0.75f);
+        //         SpriteBatch.Draw(Main.OnePixel, new Rectangle(line.P2 - new Point(1), new(2)), Color.Red * 0.75f);
 
-                Point min = new(MathHelper.Min(line.P1.X, line.P2.X), MathHelper.Min(line.P1.Y, line.P2.Y));
-                Point max = new(MathHelper.Max(line.P1.X, line.P2.X), MathHelper.Max(line.P1.Y, line.P2.Y));
+        //         Point min = new(MathHelper.Min(line.P1.X, line.P2.X), MathHelper.Min(line.P1.Y, line.P2.Y));
+        //         Point max = new(MathHelper.Max(line.P1.X, line.P2.X), MathHelper.Max(line.P1.Y, line.P2.Y));
 
-                for(int x = 0; x < max.X - min.X; x++)
-                {
-                    float y = (float)(line.P2.Y - line.P1.Y) / (line.P2.X - line.P1.X) * x;
+        //         for(int x = 0; x < max.X - min.X; x++)
+        //         {
+        //             float y = (float)(line.P2.Y - line.P1.Y) / (line.P2.X - line.P1.X) * x;
 
-                    if(line.P2.Y < line.P1.Y) y--;
+        //             if(line.P2.Y < line.P1.Y) y--;
 
-                    SpriteBatch.Draw(Main.OnePixel, new Rectangle(new Point(x + line.P1.X, (int)y + line.P1.Y), new(1)), Color.Red * 0.5f);
-                }
-            }
+        //             SpriteBatch.Draw(Main.OnePixel, new Rectangle(new Point(x + line.P1.X, (int)y + line.P1.Y), new(1)), Color.Red * 0.5f);
+        //         }
+        //     }
 
-            foreach(var entity in GetAllEntitiesWithComponent<Solid>())
-            {
-                SpriteBatch.Draw(Main.OnePixel, entity.GetComponent<Solid>().WorldBoundingBox, Color.Orange * 0.5f);
-            }
+        //     foreach(var entity in GetAllEntitiesWithComponent<Solid>())
+        //     {
+        //         SpriteBatch.Draw(Main.OnePixel, entity.GetComponent<Solid>().WorldBoundingBox, Color.Orange * 0.5f);
+        //     }
 
-            foreach(var actor in GetAllEntitiesWithComponent<Actor>())
-            {
-                SpriteBatch.Draw(Main.OnePixel, actor.GetComponent<Actor>().WorldBoundingBox, Color.Red * 0.5f);
-            }
-        }
-
-        ComponentSystems.Draw();
+        //     foreach(var actor in GetAllEntitiesWithComponent<Actor>())
+        //     {
+        //         SpriteBatch.Draw(Main.OnePixel, actor.GetComponent<Actor>().WorldBoundingBox, Color.Red * 0.5f);
+        //     }
+        // }
     }
-
-    public void DrawSprite(Sprite sprite, Transform transform)
-    {
-        SpriteBatch.Draw(sprite.texture, transform.position.ToVector2(), sprite.sourceRectangle, sprite.color, transform.rotation, sprite.origin.ToVector2(), transform.scale, sprite.spriteEffects, sprite.LayerDepth);
-    }
-
-    public void Dispose()
-    {
-        _entityWorld.Dispose();
-        _entityWorld = null;
-
-        GC.SuppressFinalize(this);
-    }
-
-    public Ecs.Entity? GetEntityWithId(uint id) => _entityWorld.GetEntityWithId(id);
 
     public List<Actor> GetAllActorComponents()
     {
         List<Actor> actors = [];
-        foreach(var actor in ActorSystem.Components)
+        foreach(var actor in Scene.Entities.FindAllOfType<Actor>())
         {
-            if(!actor.IsEnabled) continue;
+            if(!actor.Enabled) continue;
 
-            actors.Add(actor);
+            actors.Add(actor.Components.Get<Actor>());
         }
         return actors;
-    }
-
-    public List<Ecs.Entity> GetAllEntitiesWithComponent<T>() where T : Component
-    {
-        List<Ecs.Entity> entities = [];
-        foreach(var entity in _entityWorld.Entities)
-        {
-            if(!entity.IsEnabled) continue;
-
-            if(entity.HasComponent<T>()) entities.Add(entity);
-        }
-        return entities;
     }
 
     public bool TileMeeting(Rectangle rect, bool checkSlopes = true)
@@ -296,9 +267,9 @@ public class CollisionWorld
     {
         foreach(var entity in Entities)
         {
-            if(!entity.IsEnabled) continue;
+            if(!entity.Enabled) continue;
 
-            Solid solid = entity.GetComponent<Solid>();
+            Solid solid = entity.Components.Get<Solid>();
             if(solid is not null)
             {
                 if(!solid.Enabled) continue;
