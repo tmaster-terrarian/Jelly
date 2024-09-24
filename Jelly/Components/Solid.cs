@@ -1,42 +1,17 @@
 using System;
 using System.Collections.Generic;
+
 using Microsoft.Xna.Framework;
+
+using Jelly.Components.Attributes;
 
 namespace Jelly.Components;
 
-public class Solid : Component
+[MutuallyExclusiveComponent(typeof(Actor), ExclusionKind = MutuallyExclusiveComponentKind.Default)]
+[SingletonComponent]
+public class Solid : Moveable, IWorldObject
 {
-    Rectangle bbox;
-
-    float xRemainder;
-    float yRemainder;
-
-    Vector2 velocity = Vector2.Zero;
-
-    public Rectangle Hitbox
-    {
-        get => bbox;
-        set {
-            this.bbox = new(value.Location - Entity.Pivot, value.Size);
-        }
-    }
-
-    public Rectangle WorldHitbox => new(bbox.X + Entity.X, bbox.Y + Entity.Y, bbox.Width, bbox.Height);
-
-    public Vector2 Velocity { get => velocity; set => velocity = value; }
-
-    public bool Collidable { get; protected set; }
-
     public bool DefaultBehavior { get; set; }
-
-    public override void Added(Entity entity)
-    {
-        base.Added(entity);
-
-        Point origin = Entity.Pivot;
-        bbox.X -= origin.X;
-        bbox.Y -= origin.Y;
-    }
 
     public override void Update()
     {
@@ -45,18 +20,23 @@ public class Solid : Component
         Move(velocity.X, velocity.Y);
     }
 
-    public void Move(float x, float y)
+    public virtual void Move(float x, float y)
     {
-        xRemainder += x;
-        yRemainder += y;   
-        int moveX = (int)Math.Round(xRemainder);
-        int moveY = (int)Math.Round(yRemainder);
+        if(!float.IsNormal(x)) x = 0;
+        if(!float.IsNormal(y)) y = 0;
+
+        RemainderX += x;
+        RemainderY += y;
+
+        int moveX = (int)Math.Round(RemainderX);
+        int moveY = (int)Math.Round(RemainderY);
+
         if(moveX != 0 || moveY != 0)
         {
             // Loop through every Actor in the Level, add it to
             // a list if actor.IsRiding(this) is true
             var riding = GetAllRidingActors();
-            var allActors = Scene.Entities.FindAllOfType<Actor>();
+            var allActors = Scene.Entities.FindAllWithComponent<Actor>();
 
             // Make this Solid non-collidable for Actors,
             // so that Actors moved by it do not get stuck on it
@@ -64,17 +44,17 @@ public class Solid : Component
 
             if(moveX != 0)
             {
-                xRemainder -= moveX;
+                RemainderX -= moveX;
                 Entity.X += moveX;
                 if(moveX > 0)
                 {
                     foreach(var entity in allActors)
                     {
                         var actor = entity.Components.Get<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.Hitbox))
+                        if(this.Intersects(actor.Hitbox))
                         {
                             // Push right
-                            actor.MoveX(this.WorldHitbox.Right - actor.Hitbox.Left, actor.Squish);
+                            actor.MoveX(this.Hitbox.Right - actor.Hitbox.Left, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
@@ -88,10 +68,10 @@ public class Solid : Component
                     foreach(var entity in allActors)
                     {
                         var actor = entity.Components.Get<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.Hitbox))
+                        if(this.Intersects(actor.Hitbox))
                         {
                             // Push left
-                            actor.MoveX(this.WorldHitbox.Left - actor.Hitbox.Right, actor.Squish);
+                            actor.MoveX(this.Hitbox.Left - actor.Hitbox.Right, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
@@ -104,21 +84,21 @@ public class Solid : Component
 
             if(moveY != 0)
             {
-                yRemainder -= moveY;
+                RemainderY -= moveY;
                 Entity.Y += moveY;
                 if(moveY > 0)
                 {
                     foreach(var entity in allActors)
                     {
                         var actor = entity.Components.Get<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.Hitbox))
+                        if(this.Intersects(actor.Hitbox))
                         {
-                            // Push right
-                            actor.MoveY(this.WorldHitbox.Bottom - actor.Hitbox.Top, actor.Squish);
+                            // Push down
+                            actor.MoveY(this.Hitbox.Bottom - actor.Hitbox.Top, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
-                            // Carry right
+                            // Carry down
                             actor.MoveY(moveY, null);
                         }
                     }
@@ -128,14 +108,14 @@ public class Solid : Component
                     foreach(var entity in allActors)
                     {
                         var actor = entity.Components.Get<Actor>();
-                        if(this.WorldHitbox.Intersects(actor.Hitbox))
+                        if(this.Intersects(actor.Hitbox))
                         {
-                            // Push left
-                            actor.MoveY(this.WorldHitbox.Top - actor.Hitbox.Bottom, actor.Squish);
+                            // Push up
+                            actor.MoveY(this.Hitbox.Top - actor.Hitbox.Bottom, actor.Squish);
                         }
                         else if(riding.Contains(actor))
                         {
-                            // Carry left
+                            // Carry up
                             actor.MoveY(moveY, null);
                         }
                     }
@@ -150,16 +130,11 @@ public class Solid : Component
     private List<Actor> GetAllRidingActors()
     {
         List<Actor> actors = [];
-        foreach(var entity in Scene.Entities.FindAllOfType<Actor>())
+        foreach(var entity in Scene.Entities.FindAllWithComponent<Actor>())
         {
             var actor = entity.Components.Get<Actor>();
             if(actor.IsRiding(this)) actors.Add(actor);
         }
         return actors;
-    }
-
-    public virtual bool Intersects(Rectangle rectangle)
-    {
-        return rectangle.Intersects(WorldHitbox);
     }
 }

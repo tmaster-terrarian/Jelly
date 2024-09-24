@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text.Json.Serialization;
+using Jelly.Components.Attributes;
 
 namespace Jelly.Utilities;
 
@@ -17,9 +19,9 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     private readonly List<Component> toAdd = [];
     private readonly List<Component> toRemove = [];
 
-    private readonly HashSet<Component> current = [];
-    private readonly HashSet<Component> adding = [];
-    private readonly HashSet<Component> removing = [];
+    private readonly HashSet<Component> current = new HashSet<Component>(Component.GetEqualityComparer());
+    private readonly HashSet<Component> adding = new HashSet<Component>(Component.GetEqualityComparer());
+    private readonly HashSet<Component> removing = new HashSet<Component>(Component.GetEqualityComparer());
 
     private LockModes lockMode;
 
@@ -28,14 +30,11 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         Entity = entity;
     }
 
-    internal LockModes LockMode
+    public LockModes LockMode
     {
-        get
-        {
-            return lockMode;
-        }
+        get => lockMode;
 
-        set
+        internal set
         {
             lockMode = value;
 
@@ -43,7 +42,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
             {
                 foreach (var component in toAdd)
                 {
-                    if(current.Add(component))
+                    if (current.Add(component))
                     {
                         components.Add(component);
                         component.Added(Entity);
@@ -58,7 +57,7 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
             {
                 foreach (var component in toRemove)
                 {
-                    if(current.Remove(component))
+                    if (current.Remove(component))
                     {
                         components.Remove(component);
                         component.Removed(Entity);
@@ -73,9 +72,11 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
 
     public void Add(Component component)
     {
-        switch (lockMode)
+        switch (LockMode)
         {
             case LockModes.Open:
+                if(!Internal_ResolveComponentAttributes_PreAdd(component)) break;
+
                 if(current.Add(component))
                 {
                     components.Add(component);
@@ -84,6 +85,8 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
                 break;
 
             case LockModes.Locked:
+                if(!Internal_ResolveComponentAttributes_PreAdd(component)) break;
+
                 if (!current.Contains(component) && !adding.Contains(component))
                 {
                     adding.Add(component);
@@ -99,22 +102,28 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     public bool Remove(Component component)
     {
         bool result = false;
-        switch (lockMode)
+        switch (LockMode)
         {
             case LockModes.Open:
                 if(current.Remove(component))
                 {
                     components.Remove(component);
                     component.Removed(Entity);
+
+                    Internal_ResolveComponentAttributes_PostRemove(component);
+
                     result = true;
                 }
                 break;
 
             case LockModes.Locked:
-                if (current.Contains(component) && !removing.Contains(component))
+                if(current.Contains(component) && !removing.Contains(component))
                 {
                     removing.Add(component);
                     toRemove.Add(component);
+
+                    Internal_ResolveComponentAttributes_PostRemove(component);
+
                     result = true;
                 }
                 break;
@@ -161,6 +170,147 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
     public void Clear()
     {
         Remove(components);
+    }
+
+    internal void Internal_ResolveComponentAttributes_PostRemove(Component component)
+    {
+        if(component is null) return;
+
+        var t = component.GetType();
+
+        Component[] components = [..this.components];
+        foreach(var c in components)
+        {
+            var cType = c.GetType();
+
+            if(cType.GetCustomAttributes<RequiredComponentAttribute>(inherit: true)
+                is IEnumerable<RequiredComponentAttribute> dependencyAttributes)
+            {
+                foreach(var a in dependencyAttributes)
+                {
+                    if(a.ComponentType != t && !t.IsSubclassOf(a.ComponentType))
+                        continue;
+
+                    if(Get(a.ComponentType) is null)
+                    {
+                        Remove(c);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    internal bool Internal_ResolveComponentAttributes_PreAdd(Component component)
+    {
+        if(component is null) return false;
+
+        var t = component.GetType();
+
+        if(t.GetCustomAttribute<SingletonComponentAttribute>(inherit: true)
+            is SingletonComponentAttribute singletonAttribute)
+        {
+            if(Get(t) is not null)
+                return false;
+        }
+
+        if(t.GetCustomAttributes<RequiredComponentAttribute>(inherit: true)
+            is IEnumerable<RequiredComponentAttribute> dependencyAttributes)
+        {
+            foreach(var a in dependencyAttributes)
+            {
+                if(Get(a.ComponentType) is null)
+                    return false;
+            }
+        }
+
+        foreach(var c in components)
+        {
+            var cType = c.GetType();
+
+            var eMsg =
+                $"Entity {Entity.EntityID} is about to add a component with the type {t.FullName}, which is mutually exclusive or incompatible with {cType.FullName}!";
+
+            if(cType.GetCustomAttributes<MutuallyExclusiveComponentAttribute>(inherit: true)
+                is IEnumerable<MutuallyExclusiveComponentAttribute> cExclusiveAttributes)
+            {
+                List<Type> types = [];
+                List<MutuallyExclusiveComponentKind> kinds = [];
+
+                foreach(var a in cExclusiveAttributes)
+                {
+                    types.Add(a.ComponentType);
+                    kinds.Add(a.ExclusionKind);
+                }
+
+                int i = types.IndexOf(t);
+                if(i != -1)
+                {
+                    switch(kinds[i])
+                    {
+                        case MutuallyExclusiveComponentKind.Default:
+                            return false;
+
+                        case MutuallyExclusiveComponentKind.Warn:
+                            JellyBackend.Logger.LogWarning(eMsg);
+                            break;
+
+                        case MutuallyExclusiveComponentKind.Throw:
+                            throw new InvalidOperationException(eMsg);
+
+                        default:
+                            throw new InvalidOperationException(
+                                $"The value {(int)kinds[i]} is not a valid value of {nameof(MutuallyExclusiveComponentKind)}");
+                    }
+                }
+            }
+        }
+
+        if(t.GetCustomAttributes<MutuallyExclusiveComponentAttribute>(inherit: true)
+            is IEnumerable<MutuallyExclusiveComponentAttribute> exclusiveAttributes)
+        {
+            List<Type> types = [];
+            List<MutuallyExclusiveComponentKind> kinds = [];
+
+            foreach(var a in exclusiveAttributes)
+            {
+                types.Add(a.ComponentType);
+                kinds.Add(a.ExclusionKind);
+            }
+
+            Component[] components = [..this.components];
+            foreach(var c in components)
+            {
+                var cType = c.GetType();
+
+                var eMsg =
+                    $"Entity {Entity.EntityID} has one or more components with the type {cType.FullName}, which is mutually exclusive or incompatible with {t.FullName}!";
+
+                int i = types.IndexOf(cType);
+                if(i != -1)
+                {
+                    switch(kinds[i])
+                    {
+                        case MutuallyExclusiveComponentKind.Default:
+                            Remove(c);
+                            break;
+
+                        case MutuallyExclusiveComponentKind.Warn:
+                            JellyBackend.Logger.LogWarning(eMsg);
+                            break;
+
+                        case MutuallyExclusiveComponentKind.Throw:
+                            throw new InvalidOperationException(eMsg);
+
+                        default:
+                            throw new InvalidOperationException(
+                                $"The value {(int)kinds[i]} is not a valid value of {nameof(MutuallyExclusiveComponentKind)}");
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 
     public int Count => components.Count;
@@ -249,6 +399,27 @@ public class ComponentList : ICollection<Component>, IEnumerable<Component>, IEn
         foreach (var component in components)
             if (component is T)
                 yield return component as T;
+    }
+
+    public Component? Get(Type type)
+    {
+        if(!(type.IsClass && type.IsSubclassOf(typeof(Component))))
+            throw new InvalidCastException($"{nameof(type)} must derive from the type {nameof(Component)}");
+
+        foreach (var component in components)
+            if (component.GetType().IsSubclassOf(type) || component.GetType() == type)
+                return component;
+        return null;
+    }
+
+    public IEnumerable<Component> GetAll(Type type)
+    {
+        if(!(type.IsClass && type.IsSubclassOf(typeof(Component))))
+            throw new InvalidCastException($"{nameof(type)} must derive from the type {nameof(Component)}");
+
+        foreach (var component in components)
+            if (component.GetType().IsSubclassOf(type) || component.GetType() == type)
+                yield return component;
     }
 
     public bool Contains(Component item)

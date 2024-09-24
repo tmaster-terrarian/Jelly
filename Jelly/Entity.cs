@@ -14,14 +14,18 @@ public class Entity
 
     public ComponentList Components { get; internal set; }
 
+    public bool Persistent { get; set; }
+
     public Point Position { get; set; }
 
     public Point Pivot { get; set; } = Point.Zero;
 
     public Tag Tag { get; set; }
 
-    public bool Enabled { get; set; }
-    public bool Visible { get; set; }
+    public bool Enabled { get; set; } = true;
+    public bool Visible { get; set; } = true;
+
+    internal bool depthChanged = false;
 
     [JsonIgnore] public Scene? Scene { get; private set; }
 
@@ -30,10 +34,11 @@ public class Entity
         get => depth;
         set
         {
-            var val = MathHelper.Clamp(value, -100000, 100000);
+            var val = MathHelper.Clamp(value, -100000, 99999);
             if(depth != val)
             {
                 depth = val;
+                depthChanged = true;
             }
         }
     }

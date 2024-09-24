@@ -9,12 +9,9 @@ namespace Jelly;
 
 public class Scene
 {
-    private int width = 1;
-    private int height = 1;
+    private int width = CollisionSystem.TileSize;
+    private int height = CollisionSystem.TileSize;
 
-    /// <summary>
-    /// Don't use this during multiplayer games
-    /// </summary>
     [JsonIgnore] public bool Paused { get; set; }
 
     [JsonIgnore] public float TimeScale { get; set; } = 1;
@@ -25,17 +22,29 @@ public class Scene
 
     [JsonIgnore] public bool Focused { get; private set; }
 
-    public int Width {
+    public int Width
+    {
         get => width;
-        set => width = MathHelper.Max(value, 1);
+        set
+        {
+            var w = MathHelper.Max(value, CollisionSystem.TileSize);
+            CollisionSystem.Resize(w / CollisionSystem.TileSize, Height / CollisionSystem.TileSize);
+            width = w;
+        }
     }
 
-    public int Height {
+    public int Height
+    {
         get => height;
-        set => height = MathHelper.Max(value, 1);
+        set
+        {
+            var h = MathHelper.Max(value, CollisionSystem.TileSize);
+            CollisionSystem.Resize(Width / CollisionSystem.TileSize, h / CollisionSystem.TileSize);
+            height = h;
+        }
     }
 
-    public CollisionWorld CollisionWorld { get; private set; }
+    public CollisionSystem CollisionSystem { get; private set; }
 
     public EntityList Entities { get; }
 
@@ -48,22 +57,22 @@ public class Scene
     public Scene()
     {
         Entities = new(this);
-        CollisionWorld = new(this);
+        CollisionSystem = new(this);
     }
 
-    public void Subscribe()
+    public void Focus()
     {
         Focused = true;
     }
 
-    public void Unsubscribe()
+    public void Unfocus()
     {
         Focused = false;
     }
 
     public virtual void Begin()
     {
-        Subscribe();
+        Focus();
 
         foreach(var entity in Entities)
             entity.SceneBegin(this);
@@ -71,7 +80,7 @@ public class Scene
 
     public virtual void End()
     {
-        Unsubscribe();
+        Unfocus();
 
         foreach (var entity in Entities)
             entity.SceneEnd(this);
@@ -109,22 +118,54 @@ public class Scene
 
     public virtual void PreDraw()
     {
-        Entities.PreDraw();
+        if(JellyBackend.DrawingEnabled)
+            Entities.PreDraw();
     }
 
     public virtual void Draw()
     {
-        Entities.Draw();
+        if(JellyBackend.DrawingEnabled)
+            Entities.Draw();
     }
 
     public virtual void PostDraw()
     {
-        Entities.PostDraw();
+        if(JellyBackend.DrawingEnabled)
+            Entities.PostDraw();
     }
 
     public virtual void DrawUI()
     {
-        Entities.DrawUI();
+        if(JellyBackend.DrawingEnabled)
+        {
+            Entities.DrawUI();
+
+            CollisionSystem.DrawUI();
+        }
+    }
+
+    public virtual void PreDrawWithTag(Tag matchTags, TagFilter filter)
+    {
+        if(JellyBackend.DrawingEnabled)
+            Entities.PreDraw(matchTags, filter);
+    }
+
+    public virtual void DrawWithTag(Tag matchTags, TagFilter filter)
+    {
+        if(JellyBackend.DrawingEnabled)
+            Entities.Draw(matchTags, filter);
+    }
+
+    public virtual void PostDrawWithTag(Tag matchTags, TagFilter filter)
+    {
+        if(JellyBackend.DrawingEnabled)
+            Entities.PostDraw(matchTags, filter);
+    }
+
+    public virtual void DrawUIWithTag(Tag matchTags, TagFilter filter)
+    {
+        if(JellyBackend.DrawingEnabled)
+            Entities.DrawUI(matchTags, filter);
     }
 
     public virtual void GainFocus() {}

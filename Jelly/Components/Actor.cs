@@ -1,115 +1,40 @@
 using System;
-using Jelly.Utilities;
+
 using Microsoft.Xna.Framework;
+
+using Jelly.Components.Attributes;
+using System.Text.Json.Serialization;
 
 namespace Jelly.Components;
 
-public class Actor : Component
+[MutuallyExclusiveComponent(typeof(Solid), ExclusionKind = MutuallyExclusiveComponentKind.Default)]
+[SingletonComponent]
+public class Actor : Moveable, IWorldObject
 {
-    private float yRemainder;
-    private float xRemainder;
+    public static float MaxContinousMovementThreshold { get; set; } = 32f;
 
-    protected Vector2 RemainderPosition => new(xRemainder, yRemainder);
-
-	public int Width { get; set; } = 8;
-	public int Height { get; set; } = 8;
-
-    public Rectangle Hitbox => new(Entity.X, Entity.Y, Width, Height);
+	public bool Collides { get; set; } = true;
+	public bool CollidesWithSolids { get; set; } = true;
+	public bool CollidesWithJumpthroughs { get; set; } = true;
 
 	public bool NudgeOnMove { get; set; } = true;
 
-	public virtual bool NoCollide { get; set; }
-	public virtual bool CollidesWithSolids { get; set; } = true;
-	public virtual bool CollidesWithJumpthroughs { get; set; } = true;
-
+	[JsonIgnore]
 	public bool OnGround { get; protected set; }
 
-    public int Facing { get; set; } = 1;
-
-	public Point Center {
-		get => new(Entity.X + (Width/2), Entity.Y + (Height/2));
-		set {
-			Entity.Position = new(value.X - (Width/2), value.Y - (Height/2));
-		}
-	}
-
-	public Point TopLeft {
-		get => Entity.Position;
-		set {
-			Entity.Position = value;
-		}
-	}
-
-	public Point TopRight {
-		get => new(Entity.X + Width, Entity.Y);
-		set {
-			Entity.Position = new(value.X - Width, value.Y);
-		}
-	}
-
-	public Point BottomLeft {
-		get => new(Entity.X, Entity.Y + Height);
-		set {
-			Entity.Position = new(value.X, value.Y - Height);
-		}
-	}
-
-	public Point BottomRight {
-		get => new(Entity.X + Width, Entity.Y + Height);
-		set {
-			Entity.Position = new(value.X - Width, value.Y - Height);
-		}
-	}
-
-    public Rectangle RightEdge => new(Right.X - 1, Top.Y, 1, Height);
-
-	public Rectangle LeftEdge => new(Left.X, Top.Y, 1, Height);
-
-	public Rectangle TopEdge => new(Left.X, Top.Y, Width, 1);
-
-	public Rectangle BottomEdge => new(Left.X, Bottom.Y - 1, Width, 1);
-
-	public Point Left {
-		get => new(Entity.X, Entity.Y + (Height/2));
-		set {
-			Entity.Position = new(value.X, value.Y - (Height/2));
-		}
-	}
-
-	public Point Right {
-		get => new(Entity.X + Width, Entity.Y + (Height/2));
-		set {
-			Entity.Position = new(value.X - Width, value.Y - (Height/2));
-		}
-	}
-
-	public Point Top {
-		get => new(Entity.X + (Width/2), Entity.Y);
-		set {
-			Entity.Position = new(value.X - (Width/2), value.Y);
-		}
-	}
-
-	public Point Bottom {
-		get => new(Entity.X + (Width/2), Entity.Y + Height);
-		set {
-			Entity.Position = new(value.X - (Width/2), value.Y - Height);
-		}
-	}
-
-	public bool CheckOnGround()
+    public bool CheckOnGround()
 	{
 		return CheckColliding(Hitbox.Shift(0, 1));
 	}
 
 	public bool CheckColliding(Rectangle rectangle, bool ignoreJumpThroughs = false)
 	{
-		if(NoCollide) return false;
+		if(!Collides) return false;
 
-		if(Scene.CollisionWorld.TileMeeting(rectangle)) return true;
-		if(CollidesWithSolids && Scene.CollisionWorld.SolidMeeting(rectangle)) return true;
+		if(Scene.CollisionSystem.TileMeeting(rectangle)) return true;
+		if(CollidesWithSolids && Scene.CollisionSystem.SolidMeeting(rectangle)) return true;
 
-		if(!ignoreJumpThroughs)
+		if(!ignoreJumpThroughs && CollidesWithJumpthroughs)
 		{
 			return CheckCollidingJumpthrough(rectangle);
 		}
@@ -119,18 +44,18 @@ public class Actor : Component
 
 	public bool CheckCollidingJumpthrough(Rectangle rectangle)
 	{
-		if(NoCollide) return false;
+		if(!Collides) return false;
 		if(!CollidesWithJumpthroughs) return false;
 
 		Rectangle newRect = new(rectangle.Left, rectangle.Bottom - 1, rectangle.Width, 1);
 
-		Rectangle rect = Scene.CollisionWorld.JumpThroughPlace(newRect) ?? Rectangle.Empty;
-		Rectangle rect2 = Scene.CollisionWorld.JumpThroughPlace(newRect.Shift(0, -1)) ?? Rectangle.Empty;
+		Rectangle rect = Scene.CollisionSystem.JumpThroughPlace(newRect) ?? Rectangle.Empty;
+		Rectangle rect2 = Scene.CollisionSystem.JumpThroughPlace(newRect.Shift(0, -1)) ?? Rectangle.Empty;
 
 		if(rect != Rectangle.Empty) return rect != rect2;
 
-		Line line = Scene.CollisionWorld.JumpThroughSlopePlace(newRect) ?? Line.Empty;
-		Line line2 = Scene.CollisionWorld.JumpThroughSlopePlace(newRect.Shift(0, -1)) ?? Line.Empty;
+		Line line = Scene.CollisionSystem.JumpThroughSlopePlace(newRect) ?? Line.Empty;
+		Line line2 = Scene.CollisionSystem.JumpThroughSlopePlace(newRect.Shift(0, -1)) ?? Line.Empty;
 
 		if(line != Line.Empty) return line != line2;
 
@@ -139,12 +64,20 @@ public class Actor : Component
 
     public virtual void MoveX(float amount, Action? onCollide)
     {
-        xRemainder += amount;
-        int move = (int)Math.Round(xRemainder);
-        xRemainder -= move;
+		if(!float.IsNormal(amount)) amount = 0;
+
+        RemainderX += amount;
+        int move = (int)Math.Round(RemainderX);
+        RemainderX -= move;
 
         if(move != 0)
         {
+			if(!Collidable || Math.Abs(amount) > MaxContinousMovementThreshold)
+			{
+				Entity.X += move;
+				return;
+			}
+
             int sign = Math.Sign(move);
             while(move != 0)
             {
@@ -178,12 +111,20 @@ public class Actor : Component
 
     public virtual void MoveY(float amount, Action? onCollide)
     {
-        yRemainder += amount;
-        int move = (int)Math.Round(yRemainder);
-        yRemainder -= move;
+		if(!float.IsNormal(amount)) amount = 0;
+
+        RemainderY += amount;
+        int move = (int)Math.Round(RemainderY);
+        RemainderY -= move;
 
         if(move != 0)
         {
+			if(!Collidable || Math.Abs(amount) > MaxContinousMovementThreshold)
+			{
+				Entity.Y += move;
+				return;
+			}
+
             int sign = Math.Sign(move);
             while(move != 0)
             {
@@ -202,7 +143,10 @@ public class Actor : Component
 
     public virtual bool IsRiding(Solid solid)
     {
-        return solid.Collidable && new Rectangle(Hitbox.Location + new Point(0, 1), Hitbox.Size).Intersects(solid.Hitbox);
+		ArgumentNullException.ThrowIfNull(solid, nameof(solid));
+
+        return Collides && CollidesWithSolids && solid.Collidable
+			&& !solid.Intersects(Hitbox) && solid.Intersects(Hitbox.Shift(0, 1));
     }
 
     public virtual void Squish()

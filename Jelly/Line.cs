@@ -1,7 +1,10 @@
 using System;
 using System.Runtime.Serialization;
-using Jelly.Utilities;
+using System.Text.Json.Serialization;
+
 using Microsoft.Xna.Framework;
+
+using Jelly.Utilities;
 
 namespace Jelly;
 
@@ -9,15 +12,18 @@ namespace Jelly;
 public struct Line : IEquatable<Line>
 {
     [DataMember]
+    [JsonPropertyName("start")]
     public Point P1 { get; set; }
 
     [DataMember]
+    [JsonPropertyName("end")]
     public Point P2 { get; set; }
 
-    public int Thickness { get; set; }
+    public int Thickness { get; set; } = 1;
 
     public static Line Empty => new();
 
+    [JsonIgnore]
     public Point this[int index]
     {
         readonly get

@@ -1,4 +1,4 @@
-// Modified from: https://github.com/JamesMcMahon/monocle-engine/blob/master/Monocle/InternalUtilities/ComponentList.cs
+// Modified from: https://github.com/JamesMcMahon/monocle-engine/blob/master/Monocle/InternalUtilities/EntityList.cs
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,14 +10,45 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 {
     public static Comparison<Entity> CompareDepth => (a, b) => Math.Sign(b.Depth - a.Depth);
 
-    private Dictionary<long, Entity> Entities { get; set; } = [];
+    Comparison<long> CompareDepthByID => (a, b) => Math.Sign(entities[b].Depth - entities[a].Depth);
+
+    [JsonIgnore]
+    internal List<long> ToDraw
+    {
+        get
+        {
+            if(!_drawOrderDirty) return toDraw;
+
+            toDraw = [..Entities.Keys];
+            toDraw.Sort(CompareDepthByID);
+
+            _drawOrderDirty = false;
+
+            return toDraw;
+        }
+    }
+
+    private bool _drawOrderDirty = true;
+
+    private List<long> toDraw;
+
+    private Dictionary<long, Entity> entities = [];
+
+    private Dictionary<long, Entity> Entities
+    {
+        get => entities;
+        set
+        {
+            entities = value;
+            _drawOrderDirty = true;
+        }
+    }
 
     private readonly List<Entity> toAwake = [];
 
     [JsonIgnore] public Scene Scene { get; internal set; }
 
-    [JsonIgnore]
-    public int Count => Entities.Count;
+    [JsonIgnore] public int Count => Entities.Count;
 
     public bool IsReadOnly { get; }
 
@@ -29,7 +60,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
             if (index < 0 || index >= Entities.Count)
                 throw new IndexOutOfRangeException();
             else
-                return Entities[index];
+                return ((Entity[])[..Entities.Values])[index];
         }
     }
 
@@ -71,6 +102,8 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
         if(exists || Entities.TryAdd(entity.EntityID, entity))
         {
+            _drawOrderDirty = true;
+
             if(exists)
                 Entities[entity.EntityID] = entity;
 
@@ -87,10 +120,13 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     {
         if(Entities.Remove(entity.EntityID))
         {
+            _drawOrderDirty = true;
+
             if(Scene != null)
             {
                 entity.Removed(Scene);
             }
+
             return true;
         }
         return false;
@@ -124,6 +160,11 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return result;
     }
 
+    public Entity FindByID(long id)
+    {
+        return Entities.TryGetValue(id, out Entity entity) ? entity : null;
+    }
+
     public int AmountOf<T>() where T : Entity
     {
         int count = 0;
@@ -134,7 +175,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return count;
     }
 
-    public int AmountOfType<T>() where T : Component
+    public int AmountOfWithComponent<T>() where T : Component
     {
         int count = 0;
         foreach (var e in Entities.Values)
@@ -154,7 +195,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return null;
     }
 
-    public Entity FindFirstOfType<T>() where T : Component
+    public Entity FindFirstWithComponent<T>() where T : Component
     {
         foreach (var e in Entities.Values)
             foreach (var c in e.Components)
@@ -162,12 +203,6 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
                     return e;
 
         return null;
-    }
-
-    public Entity FindByID(long id)
-    {
-        Entities.TryGetValue(id, out Entity entity);
-        return entity;
     }
 
     public List<T> FindAll<T>() where T : Entity
@@ -181,7 +216,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return list;
     }
 
-    public List<Entity> FindAllOfType<T>() where T : Component
+    public List<Entity> FindAllWithComponent<T>() where T : Component
     {
         List<Entity> list = [];
 
@@ -193,11 +228,17 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         return list;
     }
 
-    public void With<T>(Action<T> action) where T : Entity
+    public void Foreach<T>(Action<T> action) where T : Entity
     {
         foreach (var e in Entities.Values)
             if (e is T)
-                action(e as T);
+                action?.Invoke(e as T);
+    }
+
+    public void ForeachWithComponent<T>(Action<Entity> action) where T : Component
+    {
+        foreach (var e in FindAllWithComponent<T>())
+            action?.Invoke(e);
     }
 
     public IEnumerator<Entity> GetEnumerator()
@@ -229,20 +270,23 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         foreach(var entity in Entities.Values)
             if(entity.Enabled)
                 entity.Update();
-    }
 
-    private void Draw(int phase)
-    {
         foreach(var entity in Entities.Values)
-            if(entity.Visible)
-                DrawPhase(entity, phase);
+            if(entity.depthChanged)
+            {
+                entity.depthChanged = false;
+                _drawOrderDirty = true;
+            }
     }
 
     private void Draw(int phase, Tag matchTags, TagFilter filter)
     {
-        foreach(var entity in Entities.Values)
-            if(entity.Visible && entity.Tag.Matches(matchTags, filter))
+        foreach(var id in ToDraw)
+        {
+            var entity = entities[id];
+            if (entity.Visible && entity.Tag.Matches(matchTags, filter))
                 DrawPhase(entity, phase);
+        }
     }
 
     private static void DrawPhase(Entity entity, int phase)
@@ -264,19 +308,19 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         }
     }
 
-    internal void PreDraw() => Draw(0);
+    internal void PreDraw() => Draw(0, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
 
     internal void PreDraw(Tag matchTags, TagFilter filter) => Draw(0, matchTags, filter);
 
-    internal void Draw() => Draw(1);
+    internal void Draw() => Draw(1, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
 
     internal void Draw(Tag matchTags, TagFilter filter) => Draw(1, matchTags, filter);
 
-    internal void PostDraw() => Draw(2);
+    internal void PostDraw() => Draw(2, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
 
     internal void PostDraw(Tag matchTags, TagFilter filter) => Draw(2, matchTags, filter);
 
-    internal void DrawUI() => Draw(3);
+    internal void DrawUI() => Draw(3, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
 
     internal void DrawUI(Tag matchTags, TagFilter filter) => Draw(3, matchTags, filter);
 

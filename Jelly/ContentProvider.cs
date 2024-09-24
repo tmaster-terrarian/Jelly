@@ -46,7 +46,7 @@ public class BasicContentProvider() : ContentProvider
         catch(Exception e)
         {
             pathsThatDontWork.Add(pathName);
-            Logger.JellyLogger.Error(e);
+            JellyBackend.Logger.LogError(e);
             return null;
         }
     }

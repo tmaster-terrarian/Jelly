@@ -4,7 +4,7 @@ public static class Time
 {
     private static float deltaTime;
 
-    public static float TimeScale { get; set; }
+    public static float TimeScale { get; set; } = 1;
 
     public static float UnscaledDeltaTime => deltaTime;
 

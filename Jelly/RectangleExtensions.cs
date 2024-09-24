@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace Jelly.Utilities;
+namespace Jelly;
 
 public static class RectangleExtensions
 {

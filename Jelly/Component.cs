@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 using Jelly.Serialization;
@@ -9,7 +11,7 @@ public abstract class Component
 {
     internal Entity entity;
 
-    internal bool enabled;
+    internal bool enabled = true;
 
     [JsonIgnore]
     public Entity Entity
@@ -52,7 +54,7 @@ public abstract class Component
     /// </summary>
     public Component() : this(true, true) {}
 
-    public Component(bool enabled, bool visible)
+    internal Component(bool enabled, bool visible)
     {
         Enabled = enabled;
         Visible = visible;
@@ -81,7 +83,8 @@ public abstract class Component
     public virtual void Update() {}
 
     /// <summary>
-    /// Will not be called if the running instance is headless or if the component is not visible
+    /// <para>Will not be called if the running instance is headless or if the component is not visible.</para>
+    /// <para>Called <b>before</b> the main renderer's SpriteBatch is ready.</para>
     /// </summary>
     public virtual void PreDraw() {}
 
@@ -105,5 +108,20 @@ public abstract class Component
     public void RemoveSelf()
     {
         Entity?.RemoveComponent(this);
+    }
+
+    public static IEqualityComparer<Component> GetEqualityComparer() => new Comparer();
+
+    class Comparer : IEqualityComparer<Component>
+    {
+        public bool Equals(Component x, Component y)
+        {
+            return x.Equals(y);
+        }
+
+        public int GetHashCode([DisallowNull] Component obj)
+        {
+            return obj.GetHashCode();
+        }
     }
 }
