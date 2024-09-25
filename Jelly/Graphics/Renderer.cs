@@ -72,7 +72,7 @@ public static class Renderer
         GraphicsDevice.SetRenderTarget(RenderTarget);
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        SpriteBatch.Begin(sortMode: SpriteSortMode.Deferred, samplerState: samplerState, transformMatrix: transformMatrix);
+        SpriteBatch.Begin(sortMode: SpriteSortMode.Deferred, samplerState: samplerState, transformMatrix: transformMatrix, blendState: BlendState.AlphaBlend);
     }
 
     public static void EndDraw()
