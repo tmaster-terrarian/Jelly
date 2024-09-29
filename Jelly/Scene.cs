@@ -9,8 +9,8 @@ namespace Jelly;
 
 public class Scene
 {
-    private int width = CollisionSystem.TileSize;
-    private int height = CollisionSystem.TileSize;
+    private int width = CollisionSystem.TileSize * 40;
+    private int height = CollisionSystem.TileSize * 22;
 
     [JsonIgnore] public bool Paused { get; set; }
 
@@ -27,7 +27,7 @@ public class Scene
         get => width;
         set
         {
-            var w = MathHelper.Max(value, CollisionSystem.TileSize);
+            var w = MathHelper.Max(value, CollisionSystem.TileSize * 40);
             CollisionSystem.Resize(w / CollisionSystem.TileSize, Height / CollisionSystem.TileSize);
             width = w;
         }
@@ -38,7 +38,7 @@ public class Scene
         get => height;
         set
         {
-            var h = MathHelper.Max(value, CollisionSystem.TileSize);
+            var h = MathHelper.Max(value, CollisionSystem.TileSize * 22);
             CollisionSystem.Resize(Width / CollisionSystem.TileSize, h / CollisionSystem.TileSize);
             height = h;
         }

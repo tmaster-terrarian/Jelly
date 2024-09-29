@@ -146,4 +146,9 @@ public class Entity
     {
         Components?.Add(component);
     }
+
+    public T GetComponent<T>() where T : Component
+    {
+        return Components?.Get<T>();
+    }
 }
