@@ -112,17 +112,17 @@ public static class Input
 
     public static bool GetDown(Buttons button, PlayerIndex index)
     {
-        return currentGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
+        return currentGamepadStates[(int)index].IsConnected && currentGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
     }
 
     public static bool GetPressed(Buttons button, PlayerIndex index)
     {
-        return currentGamepadStates[(int)index].IsButtonDown(button) && !previousGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
+        return currentGamepadStates[(int)index].IsConnected && currentGamepadStates[(int)index].IsButtonDown(button) && !previousGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
     }
 
     public static bool GetReleased(Buttons button, PlayerIndex index)
     {
-        return !currentGamepadStates[(int)index].IsButtonDown(button) && previousGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
+        return currentGamepadStates[(int)index].IsConnected && !currentGamepadStates[(int)index].IsButtonDown(button) && previousGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
     }
 
     public static bool GetDown(Buttons button) => GetDown(button, PlayerIndex.One);
@@ -164,6 +164,137 @@ public static class Input
     public static int GetScrollDelta()
     {
         return InputDisabled ? 0 : System.Math.Sign(currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue);
+    }
+
+    public static bool GetAnyDown(InputType inputType)
+    {
+        if(InputDisabled) return false;
+
+        switch(inputType)
+        {
+            case InputType.Keyboard:
+                return currentKeyboardState.GetPressedKeyCount() > 0;
+            case InputType.Mouse:
+                for(int i = 0; i < 5; i++)
+                    if(GetDown((MouseButtons)i)) return true;
+                return false;
+            case InputType.GamePad:
+                foreach(var state in currentGamepadStates)
+                {
+                    if(!state.IsConnected) continue;
+                    return state != GamePadState.Default;
+                }
+                return false;
+            case InputType.Invalid:
+                return GetAnyDown(InputType.Keyboard) || GetAnyDown(InputType.Mouse) || GetAnyDown(InputType.GamePad);
+            default:
+                throw new System.Exception($"Invalid {nameof(InputType)}: {inputType}");
+        }
+    }
+
+    public static bool GetAnyPressed(InputType inputType)
+    {
+        if(InputDisabled) return false;
+
+        switch(inputType)
+        {
+            case InputType.Keyboard:
+                return currentKeyboardState.GetPressedKeyCount() > previousKeyboardState.GetPressedKeyCount();
+            case InputType.Mouse:
+                for(int i = 0; i < 5; i++)
+                    if(GetPressed((MouseButtons)i)) return true;
+                return false;
+            case InputType.GamePad:
+                foreach(var state in currentGamepadStates)
+                {
+                    if(!state.IsConnected) continue;
+
+                    // fuck this bro
+                    if(GetPressed(Buttons.A)
+                    || GetPressed(Buttons.B)
+                    || GetPressed(Buttons.X)
+                    || GetPressed(Buttons.Y)
+                    || GetPressed(Buttons.Back)
+                    || GetPressed(Buttons.Start)
+                    || GetPressed(Buttons.BigButton)
+                    || GetPressed(Buttons.DPadDown)
+                    || GetPressed(Buttons.DPadLeft)
+                    || GetPressed(Buttons.DPadRight)
+                    || GetPressed(Buttons.DPadUp)
+                    || GetPressed(Buttons.LeftShoulder)
+                    || GetPressed(Buttons.LeftStick)
+                    || GetPressed(Buttons.LeftThumbstickDown)
+                    || GetPressed(Buttons.LeftThumbstickLeft)
+                    || GetPressed(Buttons.LeftThumbstickRight)
+                    || GetPressed(Buttons.LeftThumbstickUp)
+                    || GetPressed(Buttons.LeftTrigger)
+                    || GetPressed(Buttons.RightShoulder)
+                    || GetPressed(Buttons.RightStick)
+                    || GetPressed(Buttons.RightThumbstickDown)
+                    || GetPressed(Buttons.RightThumbstickLeft)
+                    || GetPressed(Buttons.RightThumbstickRight)
+                    || GetPressed(Buttons.RightThumbstickUp)
+                    || GetPressed(Buttons.RightTrigger))
+                        return true;
+                }
+                return false;
+            case InputType.Invalid:
+                return GetAnyPressed(InputType.Keyboard) || GetAnyPressed(InputType.Mouse) || GetAnyPressed(InputType.GamePad);
+            default:
+                throw new System.Exception($"Invalid {nameof(InputType)}: {inputType}");
+        }
+    }
+
+    public static bool GetAnyReleased(InputType inputType)
+    {
+        if(InputDisabled) return false;
+
+        switch(inputType)
+        {
+            case InputType.Keyboard:
+                return currentKeyboardState.GetPressedKeyCount() < previousKeyboardState.GetPressedKeyCount();
+            case InputType.Mouse:
+                for(int i = 0; i < 5; i++)
+                    if(GetReleased((MouseButtons)i)) return true;
+                return false;
+            case InputType.GamePad:
+                foreach(var state in currentGamepadStates)
+                {
+                    if(!state.IsConnected) continue;
+
+                    if(GetReleased(Buttons.A)
+                    || GetReleased(Buttons.B)
+                    || GetReleased(Buttons.X)
+                    || GetReleased(Buttons.Y)
+                    || GetReleased(Buttons.Back)
+                    || GetReleased(Buttons.Start)
+                    || GetReleased(Buttons.BigButton)
+                    || GetReleased(Buttons.DPadDown)
+                    || GetReleased(Buttons.DPadLeft)
+                    || GetReleased(Buttons.DPadRight)
+                    || GetReleased(Buttons.DPadUp)
+                    || GetReleased(Buttons.LeftShoulder)
+                    || GetReleased(Buttons.LeftStick)
+                    || GetReleased(Buttons.LeftThumbstickDown)
+                    || GetReleased(Buttons.LeftThumbstickLeft)
+                    || GetReleased(Buttons.LeftThumbstickRight)
+                    || GetReleased(Buttons.LeftThumbstickUp)
+                    || GetReleased(Buttons.LeftTrigger)
+                    || GetReleased(Buttons.RightShoulder)
+                    || GetReleased(Buttons.RightStick)
+                    || GetReleased(Buttons.RightThumbstickDown)
+                    || GetReleased(Buttons.RightThumbstickLeft)
+                    || GetReleased(Buttons.RightThumbstickRight)
+                    || GetReleased(Buttons.RightThumbstickUp)
+                    || GetReleased(Buttons.RightTrigger))
+                        return true;
+                }
+                return false;
+            case InputType.Invalid:
+                return GetAnyReleased(InputType.Keyboard) || GetAnyReleased(InputType.Mouse) || GetAnyReleased(InputType.GamePad);
+            default:
+                throw new System.Exception($"Invalid {nameof(InputType)}: {inputType}");
+        }
     }
 
     private static char ConvertKeyToChar(Keys key, KeyboardState state)
@@ -234,16 +365,6 @@ public enum InputType
     Keyboard,
     Mouse,
     GamePad
-}
-
-public class PlayerInputMapping
-{
-    public MappedInput Right { get; set; } = new(Keys.D);
-    public MappedInput Left { get; set; } = new(Keys.A);
-    public MappedInput Down { get; set; } = new(Keys.S);
-    public MappedInput Up { get; set; } = new(Keys.W);
-    public MappedInput Jump { get; set; } = new(Keys.Space);
-    public MappedInput Fire { get; set; } = new(MouseButtons.LeftButton);
 }
 
 public class MappedInput
