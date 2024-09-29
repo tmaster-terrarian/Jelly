@@ -118,25 +118,25 @@ public class Scene
 
     public virtual void PreDraw()
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.PreDraw();
     }
 
     public virtual void Draw()
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.Draw();
     }
 
     public virtual void PostDraw()
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.PostDraw();
     }
 
     public virtual void DrawUI()
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
         {
             Entities.DrawUI();
 
@@ -146,25 +146,25 @@ public class Scene
 
     public virtual void PreDrawWithTag(Tag matchTags, TagFilter filter)
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.PreDraw(matchTags, filter);
     }
 
     public virtual void DrawWithTag(Tag matchTags, TagFilter filter)
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.Draw(matchTags, filter);
     }
 
     public virtual void PostDrawWithTag(Tag matchTags, TagFilter filter)
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.PostDraw(matchTags, filter);
     }
 
     public virtual void DrawUIWithTag(Tag matchTags, TagFilter filter)
     {
-        if(JellyBackend.DrawingEnabled)
+        if(JellyBackend.IsDrawingAllowed)
             Entities.DrawUI(matchTags, filter);
     }
 

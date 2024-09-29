@@ -1,5 +1,7 @@
 using System;
 
+using Microsoft.Xna.Framework;
+
 using Jelly.GameContent;
 
 namespace Jelly;
@@ -22,24 +24,23 @@ public static class JellyBackend
         }
     }
 
-    public static bool DrawingEnabled => ContentProvider is not null;
+    public static bool IsDrawingAllowed => ContentProvider is not null;
 
     public static bool DebugEnabled { get; set; }
 
     /// <summary>
     /// This method should called before calling any other update methods related to <see cref="Jelly"/>
     /// </summary>
-    /// <param name="deltaTimeThisFrame">The current <i>unscaled</i> (real time) time in seconds since the last frame</param>
-    public static void PreUpdate(float deltaTimeThisFrame)
+    /// <param name="gameTime">The elapsed time since the last call to <see cref="Game.Update"/>.</param>
+    public static void PreUpdate(GameTime gameTime)
     {
-        Time.SetDeltaTime(deltaTimeThisFrame);
+        Time.SetDeltaTime(gameTime);
     }
 
     /// <summary>
     /// This method should called after calling most other update methods related to <see cref="Jelly"/>
     /// </summary>
-    /// <param name="deltaTimeThisFrame">The current <i>unscaled</i> (real time) time in seconds since the last frame</param>
-    public static void PostUpdate(float deltaTimeThisFrame)
+    public static void PostUpdate()
     {
         SceneManager.ChangeSceneImmediately(SceneManager.nextScene);
     }

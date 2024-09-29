@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+using Jelly.Graphics;
+
 namespace Jelly;
 
 public static class Input
 {
-    public static bool IgnoreInput { get; set; }
-
     private static KeyboardState currentKeyboardState;
     private static KeyboardState previousKeyboardState;
 
@@ -18,7 +18,16 @@ public static class Input
     private static readonly double[] _charsDelay = new double[255];
     private static Keys[] _lastPressedKeys = [];
 
+    public static bool InputDisabled { get; set; }
+
     public static KeyboardState KeyboardState => currentKeyboardState;
+
+    public static Point MousePosition => new(
+        Mouse.GetState().X / Renderer.PixelScale,
+        Mouse.GetState().Y / Renderer.PixelScale
+    );
+
+    public static Point MousePositionClamped => MousePosition.Clamp(Point.Zero, new(Renderer.ScreenSize.X - 1, Renderer.ScreenSize.Y - 1));
 
     public static KeyboardState RefreshKeyboardState()
     {
@@ -88,32 +97,32 @@ public static class Input
 
     public static bool GetDown(Keys key)
     {
-        return currentKeyboardState.IsKeyDown(key) && !IgnoreInput;
+        return currentKeyboardState.IsKeyDown(key) && !InputDisabled;
     }
 
     public static bool GetPressed(Keys key)
     {
-        return currentKeyboardState.IsKeyDown(key) && !previousKeyboardState.IsKeyDown(key) && !IgnoreInput;
+        return currentKeyboardState.IsKeyDown(key) && !previousKeyboardState.IsKeyDown(key) && !InputDisabled;
     }
 
     public static bool GetReleased(Keys key)
     {
-        return !currentKeyboardState.IsKeyDown(key) && previousKeyboardState.IsKeyDown(key) && !IgnoreInput;
+        return !currentKeyboardState.IsKeyDown(key) && previousKeyboardState.IsKeyDown(key) && !InputDisabled;
     }
 
     public static bool GetDown(Buttons button, PlayerIndex index)
     {
-        return currentGamepadStates[(int)index].IsButtonDown(button) && !IgnoreInput;
+        return currentGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
     }
 
     public static bool GetPressed(Buttons button, PlayerIndex index)
     {
-        return currentGamepadStates[(int)index].IsButtonDown(button) && !previousGamepadStates[(int)index].IsButtonDown(button) && !IgnoreInput;
+        return currentGamepadStates[(int)index].IsButtonDown(button) && !previousGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
     }
 
     public static bool GetReleased(Buttons button, PlayerIndex index)
     {
-        return !currentGamepadStates[(int)index].IsButtonDown(button) && previousGamepadStates[(int)index].IsButtonDown(button) && !IgnoreInput;
+        return !currentGamepadStates[(int)index].IsButtonDown(button) && previousGamepadStates[(int)index].IsButtonDown(button) && !InputDisabled;
     }
 
     public static bool GetDown(Buttons button) => GetDown(button, PlayerIndex.One);
@@ -124,17 +133,17 @@ public static class Input
 
     public static bool GetDown(MouseButtons button)
     {
-        return GetMouseButtonState(currentMouseState, button) == ButtonState.Pressed && !IgnoreInput;
+        return GetMouseButtonState(currentMouseState, button) == ButtonState.Pressed && !InputDisabled;
     }
 
     public static bool GetPressed(MouseButtons button)
     {
-        return GetMouseButtonState(currentMouseState, button) == ButtonState.Pressed && GetMouseButtonState(previousMouseState, button) == ButtonState.Released && !IgnoreInput;
+        return GetMouseButtonState(currentMouseState, button) == ButtonState.Pressed && GetMouseButtonState(previousMouseState, button) == ButtonState.Released && !InputDisabled;
     }
 
     public static bool GetReleased(MouseButtons button)
     {
-        return GetMouseButtonState(currentMouseState, button) == ButtonState.Released && GetMouseButtonState(previousMouseState, button) == ButtonState.Pressed && !IgnoreInput;
+        return GetMouseButtonState(currentMouseState, button) == ButtonState.Released && GetMouseButtonState(previousMouseState, button) == ButtonState.Pressed && !InputDisabled;
     }
 
     private static ButtonState GetMouseButtonState(MouseState state, MouseButtons button)
@@ -154,7 +163,7 @@ public static class Input
 
     public static int GetScrollDelta()
     {
-        return IgnoreInput ? 0 : System.Math.Sign(currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue);
+        return InputDisabled ? 0 : System.Math.Sign(currentMouseState.ScrollWheelValue - previousMouseState.ScrollWheelValue);
     }
 
     private static char ConvertKeyToChar(Keys key, KeyboardState state)

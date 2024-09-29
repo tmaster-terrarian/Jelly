@@ -108,8 +108,6 @@ public static class LocalizationManager
             JellyBackend.Logger.LogInfo("Loaded languages:" + str);
         }
 
-        JellyBackend.Logger.LogInfo(string.Join(", ", loadedLanguages["en-us"].Values.Values));
-
         LocalizationDataReloaded?.Invoke();
     }
 

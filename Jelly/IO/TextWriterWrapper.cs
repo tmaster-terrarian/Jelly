@@ -2,6 +2,8 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Jelly.IO;
 
@@ -118,6 +120,27 @@ public class TextWriterWrapper(TextWriter baseWriter) : TextWriter
         OnWrite?.Invoke(this, new(value));
     }
 
+    public override Task WriteAsync(char value)
+    {
+        var r = BaseWriter.WriteAsync(value);
+        OnWrite?.Invoke(this, new(value));
+        return r;
+    }
+
+    public override Task WriteAsync(char[] buffer, int index, int count)
+    {
+        var r = BaseWriter.WriteAsync(buffer, index, count);
+        OnWrite?.Invoke(this, new(buffer, index, count));
+        return r;
+    }
+
+    public override Task WriteAsync(string value)
+    {
+        var r = BaseWriter.WriteAsync(value);
+        OnWrite?.Invoke(this, new(value));
+        return r;
+    }
+
     public override void WriteLine()
     {
         BaseWriter.WriteLine();
@@ -224,6 +247,34 @@ public class TextWriterWrapper(TextWriter baseWriter) : TextWriter
     {
         BaseWriter.WriteLine(value);
         OnWriteLine?.Invoke(this, new(value));
+    }
+
+    public override Task WriteLineAsync()
+    {
+        var r = BaseWriter.WriteLineAsync();
+        OnWriteLine?.Invoke(this, new());
+        return r;
+    }
+
+    public override Task WriteLineAsync(char value)
+    {
+        var r = BaseWriter.WriteLineAsync(value);
+        OnWriteLine?.Invoke(this, new(value));
+        return r;
+    }
+
+    public override Task WriteLineAsync(char[] buffer, int index, int count)
+    {
+        var r = BaseWriter.WriteLineAsync(buffer, index, count);
+        OnWriteLine?.Invoke(this, new(buffer, index, count));
+        return r;
+    }
+
+    public override Task WriteLineAsync(string value)
+    {
+        var r = BaseWriter.WriteLineAsync(value);
+        OnWriteLine?.Invoke(this, new(value));
+        return r;
     }
 }
 
