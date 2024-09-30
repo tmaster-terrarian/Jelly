@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Jelly.GameContent;
 
-public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePair<string, TDef>> where TDef : ContentDef
+public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePair<string, TDef>> where TDef : RegistryEntry
 {
     private readonly Dictionary<string, TDef> registeredDefs = [];
 

@@ -7,7 +7,11 @@ namespace Jelly.Graphics;
 
 public static class Renderer
 {
-    static GraphicsDeviceManager _graphics;
+    private static GraphicsDeviceManager _graphics;
+    private static RendererState _state = RendererState.Idle;
+    private static bool _initialized;
+
+    private enum RendererState { Idle, BaseDrawBegin, BaseDraw, BaseDrawEnd, UIDrawBegin, UIDraw, UIDrawEnd, Finalizing }
 
     public static GraphicsDevice GraphicsDevice { get; private set; }
     public static SpriteBatch SpriteBatch { get; private set; }
@@ -36,8 +40,24 @@ public static class Renderer
     /// </summary>
     public static Texture2D PixelTexture { get; private set; }
 
+    public static GraphicsDeviceManager GetDefaultGraphicsDeviceManager(Game game) => new(game)
+    {
+        PreferMultiSampling = false,
+        SynchronizeWithVerticalRetrace = true,
+        PreferredBackBufferWidth = ScreenSize.X * PixelScale,
+        PreferredBackBufferHeight = ScreenSize.Y * PixelScale,
+        GraphicsProfile = GraphicsProfile.HiDef,
+    };
+
+    private static void CheckInitialized()
+    {
+        if(!_initialized) throw new InvalidOperationException("Renderer has not been initialized");
+    }
+
     public static void Initialize(GraphicsDeviceManager graphics, GraphicsDevice graphicsDevice, GameWindow window)
     {
+        if(_initialized) throw new InvalidOperationException("Renderer already initialized");
+
         _graphics = graphics;
         GraphicsDevice = graphicsDevice;
         Window = window;
@@ -60,28 +80,47 @@ public static class Renderer
         }
 
         _graphics.ApplyChanges();
+
+        _initialized = true;
     }
 
     public static void LoadContent(ContentManager content)
     {
+        CheckInitialized();
+
         SpriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
     public static void BeginDraw(SamplerState samplerState = null, Matrix? transformMatrix = null)
     {
+        CheckInitialized();
+        if(_state != RendererState.Idle) throw new InvalidOperationException("Invalid render state");
+        _state = RendererState.BaseDrawBegin;
+
         GraphicsDevice.SetRenderTarget(RenderTarget);
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         SpriteBatch.Begin(sortMode: SpriteSortMode.Deferred, samplerState: samplerState, transformMatrix: transformMatrix, blendState: BlendState.AlphaBlend);
+
+        _state = RendererState.BaseDraw;
     }
 
     public static void EndDraw()
     {
+        CheckInitialized();
+        if(_state != RendererState.BaseDraw) throw new InvalidOperationException("Invalid render state");
+
         SpriteBatch.End();
+
+        _state = RendererState.BaseDrawEnd;
     }
 
     public static void BeginDrawUI(Point? canvasSize = null)
     {
+        CheckInitialized();
+        if(_state != RendererState.BaseDrawEnd) throw new InvalidOperationException("Invalid render state");
+        _state = RendererState.UIDrawBegin;
+
         Point size = canvasSize ?? Point.Zero;
         if(canvasSize is not null && size != Point.Zero && UIRenderTarget.Bounds.Size != new Point(Math.Abs(size.X), Math.Abs(size.Y)))
         {
@@ -92,15 +131,26 @@ public static class Renderer
         GraphicsDevice.Clear(Color.Transparent);
 
         SpriteBatch.Begin(samplerState: SamplerState.PointWrap);
+
+        _state = RendererState.UIDraw;
     }
 
     public static void EndDrawUI()
     {
+        CheckInitialized();
+        if(_state != RendererState.UIDraw) throw new InvalidOperationException("Invalid render state");
+
         SpriteBatch.End();
+
+        _state = RendererState.UIDrawEnd;
     }
 
     public static void FinalizeDraw()
     {
+        CheckInitialized();
+        if(_state != RendererState.UIDrawEnd) throw new InvalidOperationException("Invalid render state");
+        _state = RendererState.Finalizing;
+
         GraphicsDevice.SetRenderTarget(null);
         GraphicsDevice.Clear(Color.Black);
 
@@ -111,5 +161,7 @@ public static class Renderer
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
         SpriteBatch.Draw(UIRenderTarget, Vector2.Zero, null, Color.White, 0, Vector2.Zero, PixelScale, SpriteEffects.None, 0);
         SpriteBatch.End();
+
+        _state = RendererState.Idle;
     }
 }

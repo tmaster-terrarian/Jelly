@@ -1,10 +1,10 @@
 namespace Jelly.GameContent;
 
-public abstract class ContentDef
+public abstract class RegistryEntry
 {
     public string Name { get; set; }
 
-    public ContentDef()
+    public RegistryEntry()
     {
         Name = GetType().Name;
     }

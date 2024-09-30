@@ -1,16 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Jelly;
 
 public static class SceneManager
 {
-    public delegate void SceneChangedEvent(Scene oldScene, Scene newScene);
+    private static List<Entity> PersistentEntities {
+        get {
+            if(ActiveScene is null) return [];
+
+            return [
+                ..from entity in ActiveScene.Entities
+                where entity.Persistent
+                select entity
+            ];
+        }
+    }
 
     internal static Scene scene;
     internal static Scene nextScene;
 
-    private static List<Entity> CurrentEntities => ActiveScene is not null ? [..ActiveScene.Entities] : [];
+    public delegate void SceneChangedEvent(Scene oldScene, Scene newScene);
 
     /// <summary>
     /// The currently active Scene. Note that if set, the Scene will not actually change until the end of the Update
@@ -37,10 +48,14 @@ public static class SceneManager
 
             scene?.End();
 
+            var persistentEntities = PersistentEntities;
+
             scene = nextScene;
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
+
+            scene?.Entities.AddRange(persistentEntities);
 
             ActiveSceneChanged?.Invoke(lastScene, nextScene);
 

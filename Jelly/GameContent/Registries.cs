@@ -44,12 +44,12 @@ public static class Registries
         return true;
     }
 
-    public static bool Add<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
+    public static bool Add<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : RegistryEntry
     {
         return CheckInitialized() && (_isDirty |= _registries.Add(registry));
     }
 
-    public static bool Add<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : ContentDef
+    public static bool Add<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : RegistryEntry
     {
         CheckInitialized();
 
@@ -61,12 +61,12 @@ public static class Registries
         return index != -1;
     }
 
-    public static bool Remove<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
+    public static bool Remove<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : RegistryEntry
     {
         return CheckInitialized() && (_isDirty |= _registries.Remove(registry));
     }
 
-    public static bool Remove<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : ContentDef
+    public static bool Remove<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry, out int index) where T : RegistryEntry
     {
         CheckInitialized();
 
@@ -76,7 +76,7 @@ public static class Registries
         return _isDirty |= _registries.Remove(registry);
     }
 
-    public static Registry<T> GetAt<T>(int index) where T : ContentDef
+    public static Registry<T> GetAt<T>(int index) where T : RegistryEntry
     {
         var value = GetRegistriesAsArray()[index];
         return (value is Registry<T> registry) ? registry : null;
@@ -91,7 +91,7 @@ public static class Registries
         return null;
     }
 
-    public static bool IsRegistered<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : ContentDef
+    public static bool IsRegistered<T>([NotNullWhen(true)] [MaybeNullWhen(false)] Registry<T> registry) where T : RegistryEntry
     {
         return _registries.Contains(registry);
     }

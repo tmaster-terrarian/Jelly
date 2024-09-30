@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
@@ -12,6 +13,8 @@ public abstract class Component
     internal Entity entity;
 
     internal bool enabled = true;
+
+    private bool createNeedsToBeCalled = true;
 
     [JsonIgnore]
     public Entity Entity
@@ -63,6 +66,8 @@ public abstract class Component
     public virtual void Added(Entity entity)
     {
         Entity = entity;
+
+        DoOnCreated();
     }
 
     public virtual void Removed(Entity entity)
@@ -70,11 +75,22 @@ public abstract class Component
         Entity = null;
     }
 
+    private void DoOnCreated()
+    {
+        if(createNeedsToBeCalled)
+        {
+            createNeedsToBeCalled = false;
+            OnCreated();
+        }
+    }
+
     public virtual void EntityAwake() {}
 
     public virtual void EntityAdded(Scene scene) {}
 
     public virtual void EntityRemoved(Scene scene) {}
+
+    public virtual void OnCreated() {}
 
     public virtual void OnEnable() {}
 

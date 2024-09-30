@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Jelly;
@@ -30,12 +31,12 @@ public abstract class MappedInput(InputType inputType)
         public override bool Released => Input.GetReleased(mouseButton);
     }
 
-    public class GamePad(Buttons button) : MappedInput(InputType.GamePad)
+    public class GamePad(Buttons button, PlayerIndex playerIndex) : MappedInput(InputType.GamePad)
     {
-        public override bool IsDown => Input.GetDown(button);
+        public override bool IsDown => Input.GetDown(button, playerIndex);
 
-        public override bool Pressed => Input.GetPressed(button);
+        public override bool Pressed => Input.GetPressed(button, playerIndex);
 
-        public override bool Released => Input.GetReleased(button);
+        public override bool Released => Input.GetReleased(button, playerIndex);
     }
 }

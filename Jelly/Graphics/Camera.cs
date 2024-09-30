@@ -1,5 +1,6 @@
-// Source: https://raw.githubusercontent.com/IrishBruse/LDtkMonogame/main/LDtk.LevelViewer/Camera.cs
+// Modified from source: https://github.com/IrishBruse/LDtkMonogame/blob/main/LDtk.LevelViewer/Camera.cs
 // License: MIT
+// Licensed to: Ethan Conneely - IrishBruse
 
 using System;
 using Microsoft.Xna.Framework;
@@ -18,6 +19,8 @@ public class Camera
     public float Zoom { get; set; } = 1;
 
     public Matrix Transform { get; private set; } = new();
+
+    public Point MousePositionInWorld => Input.GetMousePositionWithZoom(Zoom, clamp: true) + Position.ToPoint();
 
     public void SetShake(float shakeMagnitude, int shakeTime)
     {

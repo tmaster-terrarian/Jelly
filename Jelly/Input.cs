@@ -29,6 +29,16 @@ public static class Input
 
     public static Point MousePositionClamped => MousePosition.Clamp(Point.Zero, new(Renderer.ScreenSize.X - 1, Renderer.ScreenSize.Y - 1));
 
+    public static Point GetMousePositionWithZoom(float zoom, bool clamp) => clamp
+        ? new Point(
+            (int)MathHelper.Clamp(Mouse.GetState().X / Renderer.PixelScale / zoom, 0, Renderer.ScreenSize.X / zoom),
+            (int)MathHelper.Clamp(Mouse.GetState().Y / Renderer.PixelScale / zoom, 0, Renderer.ScreenSize.Y / zoom)
+        )
+        : new Point(
+            (int)(Mouse.GetState().X / (Renderer.PixelScale * zoom)),
+            (int)(Mouse.GetState().Y / (Renderer.PixelScale * zoom))
+        );
+
     public static KeyboardState RefreshKeyboardState()
     {
         previousKeyboardState = currentKeyboardState;
