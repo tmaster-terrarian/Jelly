@@ -11,13 +11,16 @@ public class Moveable : Component
 
     public virtual int Facing { get; set; } = 1;
 
-	public virtual bool Collidable { get; set; }
+	public virtual bool Collidable { get; set; } = true;
 
 	[JsonIgnore]
     public SpriteEffects SpriteEffects => Facing < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
 	[JsonInclude]
     public Vector2 velocity;
+
+	[JsonInclude]
+	protected Point bboxOffset;
 
     protected Vector2 RemainderPosition
     {
@@ -54,39 +57,39 @@ public class Moveable : Component
 	[JsonIgnore]
     public Rectangle Hitbox
     {
-        get => (Entity is not null && bbox.Location != Entity.Position) ? (bbox = new Rectangle(Entity.Position, bbox.Size)) : bbox;
+        get => ((Entity is not null && bbox.Location != Entity.Position) ? (bbox = new Rectangle(Entity.Position, bbox.Size)) : bbox).Shift(bboxOffset);
         set {
-            bbox = value;
+            bbox = value.Shift(Point.Zero-bboxOffset);
 			if(Entity is not null)
-            	Entity.Position = value.Location;
+            	Entity.Position = value.Location - bboxOffset;
         }
     }
 
 	[JsonIgnore]
-    public int Left => Entity.X;
+    public int Left => Entity.X + bboxOffset.X;
 
 	[JsonIgnore]
-    public int Right => Entity.X + Width;
+    public int Right => Entity.X + bboxOffset.X + Width;
 
 	[JsonIgnore]
-    public int Top => Entity.Y;
+    public int Top => Entity.Y + bboxOffset.Y;
 
 	[JsonIgnore]
-    public int Bottom => Entity.Y + Height;
+    public int Bottom => Entity.Y + bboxOffset.Y + Height;
 
 	[JsonIgnore]
 	public Point Center {
-		get => new(Entity.X + (Width/2), Entity.Y + (Height/2));
+		get => new(Left + (Width/2), Top + (Height/2));
 		set {
-			Entity.Position = new(value.X - (Width/2), value.Y - (Height/2));
+			Entity.Position = new Point(value.X - (Width/2), value.Y - (Height/2)) - bboxOffset;
 		}
 	}
 
 	[JsonIgnore]
 	public Point TopLeft {
-		get => Entity.Position;
+		get => Entity.Position + bboxOffset;
 		set {
-			Entity.Position = value;
+			Entity.Position = value - bboxOffset;
 		}
 	}
 
@@ -94,7 +97,7 @@ public class Moveable : Component
 	public Point TopRight {
 		get => new(Right, Top);
 		set {
-			Entity.Position = new(value.X - Width, value.Y);
+			Entity.Position = new Point(value.X - Width, value.Y) - bboxOffset;
 		}
 	}
 
@@ -102,7 +105,7 @@ public class Moveable : Component
 	public Point BottomLeft {
 		get => new(Left, Bottom);
 		set {
-			Entity.Position = new(value.X, value.Y - Height);
+			Entity.Position = new Point(value.X, value.Y - Height) - bboxOffset;
 		}
 	}
 
@@ -110,7 +113,7 @@ public class Moveable : Component
 	public Point BottomRight {
 		get => new(Right, Bottom);
 		set {
-			Entity.Position = new(value.X - Width, value.Y - Height);
+			Entity.Position = new Point(value.X - Width, value.Y - Height) - bboxOffset;
 		}
 	}
 
@@ -128,33 +131,33 @@ public class Moveable : Component
 
 	[JsonIgnore]
 	public Point LeftMiddle {
-		get => new(Left, Entity.Y + (Height/2));
+		get => new(Left, Top + (Height/2));
 		set {
-			Entity.Position = new(value.X, value.Y - (Height/2));
+			Entity.Position = new Point(value.X, value.Y - (Height/2)) - bboxOffset;
 		}
 	}
 
 	[JsonIgnore]
 	public Point RightMiddle {
-		get => new(Right, Entity.Y + (Height/2));
+		get => new(Right, Top + (Height/2));
 		set {
-			Entity.Position = new(value.X - Width, value.Y - (Height/2));
+			Entity.Position = new Point(value.X - Width, value.Y - (Height/2)) - bboxOffset;
 		}
 	}
 
 	[JsonIgnore]
 	public Point TopMiddle {
-		get => new(Entity.X + (Width/2), Top);
+		get => new(Left + (Width/2), Top);
 		set {
-			Entity.Position = new(value.X - (Width/2), value.Y);
+			Entity.Position = new Point(value.X - (Width/2), value.Y) - bboxOffset;
 		}
 	}
 
 	[JsonIgnore]
 	public Point BottomMiddle {
-		get => new(Entity.X + (Width/2), Bottom);
+		get => new(Left + (Width/2), Bottom);
 		set {
-			Entity.Position = new(value.X - (Width/2), value.Y - Height);
+			Entity.Position = new Point(value.X - (Width/2), value.Y - Height) - bboxOffset;
 		}
 	}
 

@@ -8,19 +8,17 @@ namespace Jelly.Utilities;
 
 public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 {
-    public static Comparison<Entity> CompareDepth => (a, b) => Math.Sign(b.Depth - a.Depth);
-
-    Comparison<long> CompareDepthByID => (a, b) => Math.Sign(entities[b].Depth - entities[a].Depth);
+    private static Comparison<Entity> CompareDepth => (a, b) => Math.Sign(b.Depth - a.Depth);
 
     [JsonIgnore]
-    internal List<long> ToDraw
+    internal List<Entity> ToDraw
     {
         get
         {
             if(!_drawOrderDirty) return toDraw;
 
-            toDraw = [..Entities.Keys];
-            toDraw.Sort(CompareDepthByID);
+            toDraw = [..Entities.Values];
+            toDraw.Sort(CompareDepth);
 
             _drawOrderDirty = false;
 
@@ -30,7 +28,7 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     private bool _drawOrderDirty = true;
 
-    private List<long> toDraw;
+    private List<Entity> toDraw;
 
     private Dictionary<long, Entity> entities = [];
 
@@ -281,10 +279,9 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     private void Draw(int phase, Tag matchTags, TagFilter filter)
     {
-        foreach(var id in ToDraw)
+        foreach(var entity in ToDraw)
         {
-            var entity = entities[id];
-            if (entity.Visible && entity.Tag.Matches(matchTags, filter))
+            if(entity.Visible && entity.Tag.Matches(matchTags, filter))
                 DrawPhase(entity, phase);
         }
     }
@@ -308,19 +305,19 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
         }
     }
 
-    internal void PreDraw() => Draw(0, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
+    internal void PreDraw() => Draw(0, Tag.Empty, TagFilter.NoFiltering);
 
     internal void PreDraw(Tag matchTags, TagFilter filter) => Draw(0, matchTags, filter);
 
-    internal void Draw() => Draw(1, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
+    internal void Draw() => Draw(1, Tag.Empty, TagFilter.NoFiltering);
 
     internal void Draw(Tag matchTags, TagFilter filter) => Draw(1, matchTags, filter);
 
-    internal void PostDraw() => Draw(2, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
+    internal void PostDraw() => Draw(2, Tag.Empty, TagFilter.NoFiltering);
 
     internal void PostDraw(Tag matchTags, TagFilter filter) => Draw(2, matchTags, filter);
 
-    internal void DrawUI() => Draw(3, (Tag)uint.MaxValue, TagFilter.AtLeastOne);
+    internal void DrawUI() => Draw(3, Tag.Empty, TagFilter.NoFiltering);
 
     internal void DrawUI(Tag matchTags, TagFilter filter) => Draw(3, matchTags, filter);
 

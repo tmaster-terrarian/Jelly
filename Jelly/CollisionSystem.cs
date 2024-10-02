@@ -13,15 +13,31 @@ namespace Jelly;
 
 public class CollisionSystem
 {
-    private readonly Scene scene;
-
-    [JsonIgnore] public Scene Scene => scene;
+    [JsonIgnore]
+    public Scene Scene { get; set; }
 
     private Rectangle[,] _collisions = null;
 
+    private int[,] _tiles;
+
     [JsonInclude]
     [JsonPropertyName("tiles")]
-    private int[,] _tiles;
+    public int[] JsonTiles {
+        get {
+            int[] value = new int[_tiles.LongLength];
+            for(long x = 0; x < _tiles.LongLength; x++)
+            {
+                value[x] = _tiles[x % Width, x / Width];
+            }
+            return value;
+        }
+        set {
+            for(long x = 0; x < value.LongLength; x++)
+            {
+                _tiles[x % Width, x / Width] = value[x];
+            }
+        }
+    }
 
     public const int TileSize = 16;
 
@@ -71,18 +87,18 @@ public class CollisionSystem
     public List<Line> JumpThroughSlopes { get; } = [];
     public List<Line> Slopes { get; } = [];
 
-    [JsonIgnore] public List<Rectangle> SuccessfulCollisions { get; } = [];
+    [JsonIgnore] private List<Rectangle> SuccessfulCollisions { get; } = [];
 
     [JsonIgnore] public int Width => Scene.Width / TileSize;
     [JsonIgnore] public int Height => Scene.Height / TileSize;
 
     public CollisionSystem(Scene scene)
     {
-        this.scene = scene;
+        this.Scene = scene;
         _tiles = new int[Width, Height];
     }
 
-    internal void Resize(int newWidth, int newHeight)
+    public void Resize(int newWidth, int newHeight)
     {
         _collisions = null;
 
@@ -317,6 +333,13 @@ public class CollisionSystem
         _tiles[position.X, position.Y] = id;
 
         RefreshTileShapes(new Rectangle(position.X - 1, position.Y - 1, 3, 3));
+    }
+
+    public int GetTile(Point position)
+    {
+        if(!InWorld(position.X, position.Y)) return 0;
+
+        return _tiles[position.X, position.Y];
     }
 
     public static bool InWorld(CollisionSystem level, int x, int y)

@@ -8,12 +8,17 @@ public struct Tag(uint bitmask) : IEquatable<Tag>
 {
     public uint Bitmask { get; set; } = bitmask;
 
+    private static readonly Tag _emptyTag = new(0);
+
+    public static Tag Empty => _emptyTag;
+
     public Tag() : this(0)
     {
     }
 
     public static bool Matches(Tag tag1, Tag tag2, TagFilter filter) => filter switch
     {
+        TagFilter.NoFiltering => true,
         TagFilter.AtLeastOne => (tag1.Bitmask & tag2.Bitmask) != 0,
         TagFilter.All => (tag1.Bitmask & tag2.Bitmask) == tag2.Bitmask,
         TagFilter.None => (tag1.Bitmask & tag2.Bitmask) == 0,
