@@ -132,16 +132,13 @@ public class Scene
     {
         if(JellyBackend.IsDrawingAllowed)
             Entities.PostDraw();
+        CollisionSystem.PostDraw();
     }
 
     public virtual void DrawUI()
     {
         if(JellyBackend.IsDrawingAllowed)
-        {
             Entities.DrawUI();
-
-            CollisionSystem.DrawUI();
-        }
     }
 
     public virtual void PreDrawWithTag(Tag matchTags, TagFilter filter)

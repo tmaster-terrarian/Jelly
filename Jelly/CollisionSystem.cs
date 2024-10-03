@@ -144,7 +144,7 @@ public class CollisionSystem
         }
     }
 
-    public void DrawUI()
+    public void PostDraw()
     {
         if(JellyBackend.DebugEnabled)
         {
