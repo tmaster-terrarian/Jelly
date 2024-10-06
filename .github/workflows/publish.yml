@@ -1,0 +1,67 @@
+name: Nuget Release
+
+run-name: Release ${{inputs.version}}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version"
+        required: true
+        default: ${git describe --abbrev=0}
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        project:
+          - "Jelly/Jelly.csproj"
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore "${{ github.workspace }}/${{ matrix.project }}"
+
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build --output ${{ github.workspace }}/Nuget --no-restore --include-source "${{ github.workspace }}/${{ matrix.project }}" /p:version=${{ inputs.version }}
+
+      - name: Publish to Nuget
+        run: dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} ${{ github.workspace }}/Nuget/*.nupkg --skip-duplicate
+
+      - name: Authenticate With GitHub Packages
+        run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+
+      - name: Publish to GitHub Packages
+        run: dotnet nuget push --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} ${{ github.workspace }}/Nuget/*.nupkg --skip-duplicate
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "v${{inputs.version}}" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="v${{inputs.version}}" \
+              --generate-notes
