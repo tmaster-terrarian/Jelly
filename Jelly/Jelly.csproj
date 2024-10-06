@@ -7,16 +7,18 @@
     <TieredCompilation>false</TieredCompilation>
     <LanguageVersion>12.0</LanguageVersion>
     <Version>0.1.0-beta.2</Version>
-    <PackageId>Jelly</PackageId>
+    <PackageId>JellyEngine</PackageId>
     <Authors>bscit</Authors>
     <PackageDescription>A simple game engine for Monogame, based on Monocle</PackageDescription>
     <RepositoryUrl>https://github.com/tmaster-terrarian/Jelly</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\LICENSE.txt" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
