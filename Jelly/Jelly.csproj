@@ -7,6 +7,10 @@
     <TieredCompilation>false</TieredCompilation>
     <LanguageVersion>12.0</LanguageVersion>
     <Version>0.1.0-beta.1</Version>
+    <PackageId>Jelly</PackageId>
+    <Authors>bscit</Authors>
+    <PackageDescription>A simple game engine for Monogame, based on Monocle</PackageDescription>
+    <RepositoryUrl>https://github.com/tmaster-terrarian/Jelly</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
