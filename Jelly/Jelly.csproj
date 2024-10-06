@@ -8,6 +8,6 @@
     <LanguageVersion>12.0</LanguageVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.988-develop" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
   </ItemGroup>
 </Project>
