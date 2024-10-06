@@ -8,7 +8,6 @@ on:
       version:
         description: "Version"
         required: true
-        default: ${git describe --abbrev=0}
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
