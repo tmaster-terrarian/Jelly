@@ -3,14 +3,15 @@ using System.Text.Json.Serialization;
 
 using Jelly.Coroutines;
 using Jelly.Utilities;
+using Jelly.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace Jelly;
 
 public class Scene
 {
-    private int width = CollisionSystem.TileSize * 40;
-    private int height = CollisionSystem.TileSize * 22;
+    private int width = Renderer.ScreenSize.X;
+    private int height = Renderer.ScreenSize.Y;
 
     [JsonIgnore] public bool Paused { get; set; }
 
@@ -27,7 +28,7 @@ public class Scene
         get => width;
         set
         {
-            var w = MathHelper.Max(value, CollisionSystem.TileSize * 40);
+            var w = MathHelper.Max(value, CollisionSystem.TileSize);
             CollisionSystem.Resize(w / CollisionSystem.TileSize, Height / CollisionSystem.TileSize);
             width = w;
         }
@@ -38,7 +39,7 @@ public class Scene
         get => height;
         set
         {
-            var h = MathHelper.Max(value, CollisionSystem.TileSize * 22);
+            var h = MathHelper.Max(value, CollisionSystem.TileSize);
             CollisionSystem.Resize(Width / CollisionSystem.TileSize, h / CollisionSystem.TileSize);
             height = h;
         }

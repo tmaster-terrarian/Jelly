@@ -39,7 +39,7 @@ public class CollisionSystem
         }
     }
 
-    public const int TileSize = 16;
+    public static int TileSize { get; set; } = 16;
 
     public bool Visible { get; set; } = true;
 
