@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Localization
+  commentId: N:Jelly.Localization
+  id: Jelly.Localization
+  children:
+  - Jelly.Localization.LanguageSettings
+  langs:
+  - csharp
+  - vb
+  name: Jelly.Localization
+  nameWithType: Jelly.Localization
+  fullName: Jelly.Localization
+  type: Namespace
+  assemblies:
+  - Jelly
+references:
+- uid: Jelly.Localization.LanguageSettings
+  commentId: T:Jelly.Localization.LanguageSettings
+  href: Jelly.Localization.LanguageSettings.html
+  name: LanguageSettings
+  nameWithType: LanguageSettings
+  fullName: Jelly.Localization.LanguageSettings

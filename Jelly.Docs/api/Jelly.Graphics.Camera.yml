@@ -1,0 +1,630 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Graphics.Camera
+  commentId: T:Jelly.Graphics.Camera
+  id: Camera
+  parent: Jelly.Graphics
+  children:
+  - Jelly.Graphics.Camera.AddShake(System.Single,System.Int32)
+  - Jelly.Graphics.Camera.MousePositionInWorld
+  - Jelly.Graphics.Camera.Position
+  - Jelly.Graphics.Camera.SetShake(System.Single,System.Int32)
+  - Jelly.Graphics.Camera.Transform
+  - Jelly.Graphics.Camera.Update
+  - Jelly.Graphics.Camera.Zoom
+  langs:
+  - csharp
+  - vb
+  name: Camera
+  nameWithType: Camera
+  fullName: Jelly.Graphics.Camera
+  type: Class
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Camera
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 9
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public class Camera
+    content.vb: Public Class Camera
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Jelly.Graphics.Camera.Position
+  commentId: P:Jelly.Graphics.Camera.Position
+  id: Position
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Camera.Position
+  fullName: Jelly.Graphics.Camera.Position
+  type: Property
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Position
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 16
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public Vector2 Position { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Public Property Position As Vector2
+  overload: Jelly.Graphics.Camera.Position*
+- uid: Jelly.Graphics.Camera.Zoom
+  commentId: P:Jelly.Graphics.Camera.Zoom
+  id: Zoom
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: Zoom
+  nameWithType: Camera.Zoom
+  fullName: Jelly.Graphics.Camera.Zoom
+  type: Property
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Zoom
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 18
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public float Zoom { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Zoom As Single
+  overload: Jelly.Graphics.Camera.Zoom*
+- uid: Jelly.Graphics.Camera.Transform
+  commentId: P:Jelly.Graphics.Camera.Transform
+  id: Transform
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: Transform
+  nameWithType: Camera.Transform
+  fullName: Jelly.Graphics.Camera.Transform
+  type: Property
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Transform
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 20
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public Matrix Transform { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Matrix
+    content.vb: Public Property Transform As Matrix
+  overload: Jelly.Graphics.Camera.Transform*
+- uid: Jelly.Graphics.Camera.MousePositionInWorld
+  commentId: P:Jelly.Graphics.Camera.MousePositionInWorld
+  id: MousePositionInWorld
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: MousePositionInWorld
+  nameWithType: Camera.MousePositionInWorld
+  fullName: Jelly.Graphics.Camera.MousePositionInWorld
+  type: Property
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: MousePositionInWorld
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 22
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public Point MousePositionInWorld { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: Public ReadOnly Property MousePositionInWorld As Point
+  overload: Jelly.Graphics.Camera.MousePositionInWorld*
+- uid: Jelly.Graphics.Camera.SetShake(System.Single,System.Int32)
+  commentId: M:Jelly.Graphics.Camera.SetShake(System.Single,System.Int32)
+  id: SetShake(System.Single,System.Int32)
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: SetShake(float, int)
+  nameWithType: Camera.SetShake(float, int)
+  fullName: Jelly.Graphics.Camera.SetShake(float, int)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: SetShake
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 24
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public void SetShake(float shakeMagnitude, int shakeTime)
+    parameters:
+    - id: shakeMagnitude
+      type: System.Single
+    - id: shakeTime
+      type: System.Int32
+    content.vb: Public Sub SetShake(shakeMagnitude As Single, shakeTime As Integer)
+  overload: Jelly.Graphics.Camera.SetShake*
+  nameWithType.vb: Camera.SetShake(Single, Integer)
+  fullName.vb: Jelly.Graphics.Camera.SetShake(Single, Integer)
+  name.vb: SetShake(Single, Integer)
+- uid: Jelly.Graphics.Camera.AddShake(System.Single,System.Int32)
+  commentId: M:Jelly.Graphics.Camera.AddShake(System.Single,System.Int32)
+  id: AddShake(System.Single,System.Int32)
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: AddShake(float, int)
+  nameWithType: Camera.AddShake(float, int)
+  fullName: Jelly.Graphics.Camera.AddShake(float, int)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AddShake
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 37
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public void AddShake(float shakeMagnitude, int shakeTime)
+    parameters:
+    - id: shakeMagnitude
+      type: System.Single
+    - id: shakeTime
+      type: System.Int32
+    content.vb: Public Sub AddShake(shakeMagnitude As Single, shakeTime As Integer)
+  overload: Jelly.Graphics.Camera.AddShake*
+  nameWithType.vb: Camera.AddShake(Single, Integer)
+  fullName.vb: Jelly.Graphics.Camera.AddShake(Single, Integer)
+  name.vb: AddShake(Single, Integer)
+- uid: Jelly.Graphics.Camera.Update
+  commentId: M:Jelly.Graphics.Camera.Update
+  id: Update
+  parent: Jelly.Graphics.Camera
+  langs:
+  - csharp
+  - vb
+  name: Update()
+  nameWithType: Camera.Update()
+  fullName: Jelly.Graphics.Camera.Update()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Graphics/Camera.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Update
+    path: ../Jelly/Graphics/Camera.cs
+    startLine: 50
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public void Update()
+    content.vb: Public Sub Update()
+  overload: Jelly.Graphics.Camera.Update*
+references:
+- uid: Jelly.Graphics
+  commentId: N:Jelly.Graphics
+  href: Jelly.html
+  name: Jelly.Graphics
+  nameWithType: Jelly.Graphics
+  fullName: Jelly.Graphics
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Graphics
+    name: Graphics
+    href: Jelly.Graphics.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Graphics
+    name: Graphics
+    href: Jelly.Graphics.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Jelly.Graphics.Camera.Position*
+  commentId: Overload:Jelly.Graphics.Camera.Position
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_Position
+  name: Position
+  nameWithType: Camera.Position
+  fullName: Jelly.Graphics.Camera.Position
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Jelly.Graphics.Camera.Zoom*
+  commentId: Overload:Jelly.Graphics.Camera.Zoom
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_Zoom
+  name: Zoom
+  nameWithType: Camera.Zoom
+  fullName: Jelly.Graphics.Camera.Zoom
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Jelly.Graphics.Camera.Transform*
+  commentId: Overload:Jelly.Graphics.Camera.Transform
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_Transform
+  name: Transform
+  nameWithType: Camera.Transform
+  fullName: Jelly.Graphics.Camera.Transform
+- uid: Microsoft.Xna.Framework.Matrix
+  commentId: T:Microsoft.Xna.Framework.Matrix
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Matrix
+  nameWithType: Matrix
+  fullName: Microsoft.Xna.Framework.Matrix
+- uid: Jelly.Graphics.Camera.MousePositionInWorld*
+  commentId: Overload:Jelly.Graphics.Camera.MousePositionInWorld
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_MousePositionInWorld
+  name: MousePositionInWorld
+  nameWithType: Camera.MousePositionInWorld
+  fullName: Jelly.Graphics.Camera.MousePositionInWorld
+- uid: Microsoft.Xna.Framework.Point
+  commentId: T:Microsoft.Xna.Framework.Point
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Point
+  nameWithType: Point
+  fullName: Microsoft.Xna.Framework.Point
+- uid: Jelly.Graphics.Camera.SetShake*
+  commentId: Overload:Jelly.Graphics.Camera.SetShake
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_SetShake_System_Single_System_Int32_
+  name: SetShake
+  nameWithType: Camera.SetShake
+  fullName: Jelly.Graphics.Camera.SetShake
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Jelly.Graphics.Camera.AddShake*
+  commentId: Overload:Jelly.Graphics.Camera.AddShake
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_AddShake_System_Single_System_Int32_
+  name: AddShake
+  nameWithType: Camera.AddShake
+  fullName: Jelly.Graphics.Camera.AddShake
+- uid: Jelly.Graphics.Camera.Update*
+  commentId: Overload:Jelly.Graphics.Camera.Update
+  href: Jelly.Graphics.Camera.html#Jelly_Graphics_Camera_Update
+  name: Update
+  nameWithType: Camera.Update
+  fullName: Jelly.Graphics.Camera.Update

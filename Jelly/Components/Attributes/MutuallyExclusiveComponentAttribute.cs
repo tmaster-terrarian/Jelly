@@ -11,7 +11,7 @@ public sealed class MutuallyExclusiveComponentAttribute(Type type) : ComponentTy
 public enum MutuallyExclusiveComponentKind
 {
     /// <summary>
-    /// Automatically remove conflicting <see cref="Component"/>s when adding an instance of this <see cref="Component"/> <see langword="class"/>.
+    /// Automatically remove conflicting <see cref="Component"/>s when adding an instance of this <see cref="Component"/> class.
     /// </summary>
     Default,
 
@@ -21,7 +21,7 @@ public enum MutuallyExclusiveComponentKind
     Warn,
 
     /// <summary>
-    /// Don't resolve conflicting <see cref="Component"/>s and <see langword="throw"/> an <see cref="Exception"/>.
+    /// Don't resolve conflicting <see cref="Component"/>s and throw an Exception.
     /// </summary>
     Throw,
 }

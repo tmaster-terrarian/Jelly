@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.SceneManager.SceneChangedEvent
+  commentId: T:Jelly.SceneManager.SceneChangedEvent
+  id: SceneManager.SceneChangedEvent
+  parent: Jelly
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: SceneManager.SceneChangedEvent
+  nameWithType: SceneManager.SceneChangedEvent
+  fullName: Jelly.SceneManager.SceneChangedEvent
+  type: Delegate
+  source:
+    remote:
+      path: Jelly/SceneManager.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: SceneChangedEvent
+    path: ../Jelly/SceneManager.cs
+    startLine: 23
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public delegate void SceneManager.SceneChangedEvent(Scene oldScene, Scene newScene)
+    parameters:
+    - id: oldScene
+      type: Jelly.Scene
+    - id: newScene
+      type: Jelly.Scene
+    content.vb: Public Delegate Sub SceneManager.SceneChangedEvent(oldScene As Scene, newScene As Scene)
+references:
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+- uid: Jelly.Scene
+  commentId: T:Jelly.Scene
+  parent: Jelly
+  href: Jelly.Scene.html
+  name: Scene
+  nameWithType: Scene
+  fullName: Jelly.Scene

@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Components
+  commentId: N:Jelly.Components
+  id: Jelly.Components
+  children:
+  - Jelly.Components.Actor
+  - Jelly.Components.IWorldObject
+  - Jelly.Components.Moveable
+  - Jelly.Components.Solid
+  - Jelly.Components.SpriteComponent
+  langs:
+  - csharp
+  - vb
+  name: Jelly.Components
+  nameWithType: Jelly.Components
+  fullName: Jelly.Components
+  type: Namespace
+  assemblies:
+  - Jelly
+references:
+- uid: Jelly.Components.Actor
+  commentId: T:Jelly.Components.Actor
+  parent: Jelly.Components
+  href: Jelly.Components.Actor.html
+  name: Actor
+  nameWithType: Actor
+  fullName: Jelly.Components.Actor
+- uid: Jelly.Components.IWorldObject
+  commentId: T:Jelly.Components.IWorldObject
+  parent: Jelly.Components
+  href: Jelly.Components.IWorldObject.html
+  name: IWorldObject
+  nameWithType: IWorldObject
+  fullName: Jelly.Components.IWorldObject
+- uid: Jelly.Components.Moveable
+  commentId: T:Jelly.Components.Moveable
+  parent: Jelly.Components
+  href: Jelly.Components.Moveable.html
+  name: Moveable
+  nameWithType: Moveable
+  fullName: Jelly.Components.Moveable
+- uid: Jelly.Components.Solid
+  commentId: T:Jelly.Components.Solid
+  parent: Jelly.Components
+  href: Jelly.Components.Solid.html
+  name: Solid
+  nameWithType: Solid
+  fullName: Jelly.Components.Solid
+- uid: Jelly.Components.SpriteComponent
+  commentId: T:Jelly.Components.SpriteComponent
+  href: Jelly.Components.SpriteComponent.html
+  name: SpriteComponent
+  nameWithType: SpriteComponent
+  fullName: Jelly.Components.SpriteComponent
+- uid: Jelly.Components
+  commentId: N:Jelly.Components
+  href: Jelly.html
+  name: Jelly.Components
+  nameWithType: Jelly.Components
+  fullName: Jelly.Components
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Components
+    name: Components
+    href: Jelly.Components.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Components
+    name: Components
+    href: Jelly.Components.html

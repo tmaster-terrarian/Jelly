@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Utilities.TagFilter
+  commentId: T:Jelly.Utilities.TagFilter
+  id: TagFilter
+  parent: Jelly.Utilities
+  children:
+  - Jelly.Utilities.TagFilter.All
+  - Jelly.Utilities.TagFilter.AtLeastOne
+  - Jelly.Utilities.TagFilter.NoFiltering
+  - Jelly.Utilities.TagFilter.None
+  langs:
+  - csharp
+  - vb
+  name: TagFilter
+  nameWithType: TagFilter
+  fullName: Jelly.Utilities.TagFilter
+  type: Enum
+  source:
+    remote:
+      path: Jelly/Utilities/TagFilter.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: TagFilter
+    path: ../Jelly/Utilities/TagFilter.cs
+    startLine: 2
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public enum TagFilter
+    content.vb: Public Enum TagFilter
+- uid: Jelly.Utilities.TagFilter.NoFiltering
+  commentId: F:Jelly.Utilities.TagFilter.NoFiltering
+  id: NoFiltering
+  parent: Jelly.Utilities.TagFilter
+  langs:
+  - csharp
+  - vb
+  name: NoFiltering
+  nameWithType: TagFilter.NoFiltering
+  fullName: Jelly.Utilities.TagFilter.NoFiltering
+  type: Field
+  source:
+    remote:
+      path: Jelly/Utilities/TagFilter.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: NoFiltering
+    path: ../Jelly/Utilities/TagFilter.cs
+    startLine: 4
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: NoFiltering = 0
+    return:
+      type: Jelly.Utilities.TagFilter
+- uid: Jelly.Utilities.TagFilter.AtLeastOne
+  commentId: F:Jelly.Utilities.TagFilter.AtLeastOne
+  id: AtLeastOne
+  parent: Jelly.Utilities.TagFilter
+  langs:
+  - csharp
+  - vb
+  name: AtLeastOne
+  nameWithType: TagFilter.AtLeastOne
+  fullName: Jelly.Utilities.TagFilter.AtLeastOne
+  type: Field
+  source:
+    remote:
+      path: Jelly/Utilities/TagFilter.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AtLeastOne
+    path: ../Jelly/Utilities/TagFilter.cs
+    startLine: 5
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: AtLeastOne = 1
+    return:
+      type: Jelly.Utilities.TagFilter
+- uid: Jelly.Utilities.TagFilter.All
+  commentId: F:Jelly.Utilities.TagFilter.All
+  id: All
+  parent: Jelly.Utilities.TagFilter
+  langs:
+  - csharp
+  - vb
+  name: All
+  nameWithType: TagFilter.All
+  fullName: Jelly.Utilities.TagFilter.All
+  type: Field
+  source:
+    remote:
+      path: Jelly/Utilities/TagFilter.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: All
+    path: ../Jelly/Utilities/TagFilter.cs
+    startLine: 6
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: All = 2
+    return:
+      type: Jelly.Utilities.TagFilter
+- uid: Jelly.Utilities.TagFilter.None
+  commentId: F:Jelly.Utilities.TagFilter.None
+  id: None
+  parent: Jelly.Utilities.TagFilter
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: TagFilter.None
+  fullName: Jelly.Utilities.TagFilter.None
+  type: Field
+  source:
+    remote:
+      path: Jelly/Utilities/TagFilter.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: None
+    path: ../Jelly/Utilities/TagFilter.cs
+    startLine: 7
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: None = 3
+    return:
+      type: Jelly.Utilities.TagFilter
+references:
+- uid: Jelly.Utilities
+  commentId: N:Jelly.Utilities
+  href: Jelly.html
+  name: Jelly.Utilities
+  nameWithType: Jelly.Utilities
+  fullName: Jelly.Utilities
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Utilities
+    name: Utilities
+    href: Jelly.Utilities.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Utilities
+    name: Utilities
+    href: Jelly.Utilities.html
+- uid: Jelly.Utilities.TagFilter
+  commentId: T:Jelly.Utilities.TagFilter
+  parent: Jelly.Utilities
+  href: Jelly.Utilities.TagFilter.html
+  name: TagFilter
+  nameWithType: TagFilter
+  fullName: Jelly.Utilities.TagFilter

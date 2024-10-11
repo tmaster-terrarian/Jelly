@@ -1,0 +1,522 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.GameContent.AbstractRegistry
+  commentId: T:Jelly.GameContent.AbstractRegistry
+  id: AbstractRegistry
+  parent: Jelly.GameContent
+  children:
+  - Jelly.GameContent.AbstractRegistry.CheckInitialized
+  - Jelly.GameContent.AbstractRegistry.GetEnumerator
+  - Jelly.GameContent.AbstractRegistry.Init
+  - Jelly.GameContent.AbstractRegistry.Initialized
+  langs:
+  - csharp
+  - vb
+  name: AbstractRegistry
+  nameWithType: AbstractRegistry
+  fullName: Jelly.GameContent.AbstractRegistry
+  type: Class
+  source:
+    remote:
+      path: Jelly/GameContent/AbstractRegistry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AbstractRegistry
+    path: ../Jelly/GameContent/AbstractRegistry.cs
+    startLine: 5
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: 'public abstract class AbstractRegistry : IEnumerable'
+    content.vb: Public MustInherit Class AbstractRegistry Implements IEnumerable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Jelly.GameContent.Registry`1
+  implements:
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Jelly.GameContent.AbstractRegistry.Initialized
+  commentId: P:Jelly.GameContent.AbstractRegistry.Initialized
+  id: Initialized
+  parent: Jelly.GameContent.AbstractRegistry
+  langs:
+  - csharp
+  - vb
+  name: Initialized
+  nameWithType: AbstractRegistry.Initialized
+  fullName: Jelly.GameContent.AbstractRegistry.Initialized
+  type: Property
+  source:
+    remote:
+      path: Jelly/GameContent/AbstractRegistry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Initialized
+    path: ../Jelly/GameContent/AbstractRegistry.cs
+    startLine: 7
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public bool Initialized { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Initialized As Boolean
+  overload: Jelly.GameContent.AbstractRegistry.Initialized*
+- uid: Jelly.GameContent.AbstractRegistry.CheckInitialized
+  commentId: M:Jelly.GameContent.AbstractRegistry.CheckInitialized
+  id: CheckInitialized
+  parent: Jelly.GameContent.AbstractRegistry
+  langs:
+  - csharp
+  - vb
+  name: CheckInitialized()
+  nameWithType: AbstractRegistry.CheckInitialized()
+  fullName: Jelly.GameContent.AbstractRegistry.CheckInitialized()
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/AbstractRegistry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: CheckInitialized
+    path: ../Jelly/GameContent/AbstractRegistry.cs
+    startLine: 9
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: protected void CheckInitialized()
+    content.vb: Protected Sub CheckInitialized()
+  overload: Jelly.GameContent.AbstractRegistry.CheckInitialized*
+- uid: Jelly.GameContent.AbstractRegistry.Init
+  commentId: M:Jelly.GameContent.AbstractRegistry.Init
+  id: Init
+  parent: Jelly.GameContent.AbstractRegistry
+  langs:
+  - csharp
+  - vb
+  name: Init()
+  nameWithType: AbstractRegistry.Init()
+  fullName: Jelly.GameContent.AbstractRegistry.Init()
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/AbstractRegistry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Init
+    path: ../Jelly/GameContent/AbstractRegistry.cs
+    startLine: 24
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  summary: When this method is overridden, it is used to register all entries at startup.
+  example: []
+  syntax:
+    content: public abstract void Init()
+    content.vb: Public MustOverride Sub Init()
+  overload: Jelly.GameContent.AbstractRegistry.Init*
+- uid: Jelly.GameContent.AbstractRegistry.GetEnumerator
+  commentId: M:Jelly.GameContent.AbstractRegistry.GetEnumerator
+  id: GetEnumerator
+  parent: Jelly.GameContent.AbstractRegistry
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: AbstractRegistry.GetEnumerator()
+  fullName: Jelly.GameContent.AbstractRegistry.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/AbstractRegistry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetEnumerator
+    path: ../Jelly/GameContent/AbstractRegistry.cs
+    startLine: 26
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  summary: Returns an enumerator that iterates through a collection.
+  example: []
+  syntax:
+    content: public abstract IEnumerator GetEnumerator()
+    return:
+      type: System.Collections.IEnumerator
+      description: An <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref> object that can be used to iterate through the collection.
+    content.vb: Public MustOverride Function GetEnumerator() As IEnumerator
+  overload: Jelly.GameContent.AbstractRegistry.GetEnumerator*
+  implements:
+  - System.Collections.IEnumerable.GetEnumerator
+references:
+- uid: Jelly.GameContent
+  commentId: N:Jelly.GameContent
+  href: Jelly.html
+  name: Jelly.GameContent
+  nameWithType: Jelly.GameContent
+  fullName: Jelly.GameContent
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.GameContent
+    name: GameContent
+    href: Jelly.GameContent.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.GameContent
+    name: GameContent
+    href: Jelly.GameContent.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Jelly.GameContent.AbstractRegistry.Initialized*
+  commentId: Overload:Jelly.GameContent.AbstractRegistry.Initialized
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_Initialized
+  name: Initialized
+  nameWithType: AbstractRegistry.Initialized
+  fullName: Jelly.GameContent.AbstractRegistry.Initialized
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Jelly.GameContent.AbstractRegistry.CheckInitialized*
+  commentId: Overload:Jelly.GameContent.AbstractRegistry.CheckInitialized
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_CheckInitialized
+  name: CheckInitialized
+  nameWithType: AbstractRegistry.CheckInitialized
+  fullName: Jelly.GameContent.AbstractRegistry.CheckInitialized
+- uid: Jelly.GameContent.AbstractRegistry.Init*
+  commentId: Overload:Jelly.GameContent.AbstractRegistry.Init
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_Init
+  name: Init
+  nameWithType: AbstractRegistry.Init
+  fullName: Jelly.GameContent.AbstractRegistry.Init
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: Jelly.GameContent.AbstractRegistry.GetEnumerator*
+  commentId: Overload:Jelly.GameContent.AbstractRegistry.GetEnumerator
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_GetEnumerator
+  name: GetEnumerator
+  nameWithType: AbstractRegistry.GetEnumerator
+  fullName: Jelly.GameContent.AbstractRegistry.GetEnumerator
+- uid: System.Collections.IEnumerable.GetEnumerator
+  commentId: M:System.Collections.IEnumerable.GetEnumerator
+  parent: System.Collections.IEnumerable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable.GetEnumerator()
+  fullName: System.Collections.IEnumerable.GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )

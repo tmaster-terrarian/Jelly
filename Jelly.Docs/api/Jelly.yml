@@ -1,0 +1,318 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly
+  commentId: N:Jelly
+  id: Jelly
+  children:
+  - Jelly.BasicContentProvider
+  - Jelly.Bit
+  - Jelly.BooleanExtensions
+  - Jelly.CollisionSystem
+  - Jelly.Component
+  - Jelly.ContentProvider
+  - Jelly.Entity
+  - Jelly.GameServer
+  - Jelly.Input
+  - Jelly.InputType
+  - Jelly.JellyBackend
+  - Jelly.Line
+  - Jelly.LocalizationManager
+  - Jelly.Logger
+  - Jelly.Logger.MessageType
+  - Jelly.MappedInput
+  - Jelly.MappedInput.GamePad
+  - Jelly.MappedInput.Keyboard
+  - Jelly.MappedInput.Mouse
+  - Jelly.MouseButtons
+  - Jelly.NetworkProvider
+  - Jelly.ObjectDisposedEventArgs
+  - Jelly.PointExtensions
+  - Jelly.RectangleExtensions
+  - Jelly.Scene
+  - Jelly.SceneManager
+  - Jelly.SceneManager.SceneChangedEvent
+  - Jelly.Tag
+  - Jelly.Time
+  langs:
+  - csharp
+  - vb
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+  type: Namespace
+  assemblies:
+  - Jelly
+references:
+- uid: Jelly.Bit
+  commentId: T:Jelly.Bit
+  parent: Jelly
+  href: Jelly.Bit.html
+  name: Bit
+  nameWithType: Bit
+  fullName: Jelly.Bit
+- uid: Jelly.BooleanExtensions
+  commentId: T:Jelly.BooleanExtensions
+  href: Jelly.BooleanExtensions.html
+  name: BooleanExtensions
+  nameWithType: BooleanExtensions
+  fullName: Jelly.BooleanExtensions
+- uid: Jelly.CollisionSystem
+  commentId: T:Jelly.CollisionSystem
+  parent: Jelly
+  href: Jelly.CollisionSystem.html
+  name: CollisionSystem
+  nameWithType: CollisionSystem
+  fullName: Jelly.CollisionSystem
+- uid: Jelly.Component
+  commentId: T:Jelly.Component
+  parent: Jelly
+  href: Jelly.Component.html
+  name: Component
+  nameWithType: Component
+  fullName: Jelly.Component
+- uid: Jelly.ContentProvider
+  commentId: T:Jelly.ContentProvider
+  parent: Jelly
+  href: Jelly.ContentProvider.html
+  name: ContentProvider
+  nameWithType: ContentProvider
+  fullName: Jelly.ContentProvider
+- uid: Jelly.BasicContentProvider
+  commentId: T:Jelly.BasicContentProvider
+  href: Jelly.BasicContentProvider.html
+  name: BasicContentProvider
+  nameWithType: BasicContentProvider
+  fullName: Jelly.BasicContentProvider
+- uid: Jelly.Entity
+  commentId: T:Jelly.Entity
+  parent: Jelly
+  href: Jelly.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Jelly.Entity
+- uid: Jelly.GameServer
+  commentId: T:Jelly.GameServer
+  href: Jelly.GameServer.html
+  name: GameServer
+  nameWithType: GameServer
+  fullName: Jelly.GameServer
+- uid: Jelly.Input
+  commentId: T:Jelly.Input
+  href: Jelly.Input.html
+  name: Input
+  nameWithType: Input
+  fullName: Jelly.Input
+- uid: Jelly.InputType
+  commentId: T:Jelly.InputType
+  parent: Jelly
+  href: Jelly.InputType.html
+  name: InputType
+  nameWithType: InputType
+  fullName: Jelly.InputType
+- uid: Jelly.JellyBackend
+  commentId: T:Jelly.JellyBackend
+  href: Jelly.JellyBackend.html
+  name: JellyBackend
+  nameWithType: JellyBackend
+  fullName: Jelly.JellyBackend
+- uid: Jelly.Line
+  commentId: T:Jelly.Line
+  parent: Jelly
+  href: Jelly.Line.html
+  name: Line
+  nameWithType: Line
+  fullName: Jelly.Line
+- uid: Jelly.LocalizationManager
+  commentId: T:Jelly.LocalizationManager
+  href: Jelly.LocalizationManager.html
+  name: LocalizationManager
+  nameWithType: LocalizationManager
+  fullName: Jelly.LocalizationManager
+- uid: Jelly.Logger
+  commentId: T:Jelly.Logger
+  href: Jelly.Logger.html
+  name: Logger
+  nameWithType: Logger
+  fullName: Jelly.Logger
+- uid: Jelly.Logger.MessageType
+  commentId: T:Jelly.Logger.MessageType
+  parent: Jelly
+  href: Jelly.Logger.html
+  name: Logger.MessageType
+  nameWithType: Logger.MessageType
+  fullName: Jelly.Logger.MessageType
+  spec.csharp:
+  - uid: Jelly.Logger
+    name: Logger
+    href: Jelly.Logger.html
+  - name: .
+  - uid: Jelly.Logger.MessageType
+    name: MessageType
+    href: Jelly.Logger.MessageType.html
+  spec.vb:
+  - uid: Jelly.Logger
+    name: Logger
+    href: Jelly.Logger.html
+  - name: .
+  - uid: Jelly.Logger.MessageType
+    name: MessageType
+    href: Jelly.Logger.MessageType.html
+- uid: Jelly.MappedInput
+  commentId: T:Jelly.MappedInput
+  parent: Jelly
+  href: Jelly.MappedInput.html
+  name: MappedInput
+  nameWithType: MappedInput
+  fullName: Jelly.MappedInput
+- uid: Jelly.MappedInput.Keyboard
+  commentId: T:Jelly.MappedInput.Keyboard
+  href: Jelly.MappedInput.html
+  name: MappedInput.Keyboard
+  nameWithType: MappedInput.Keyboard
+  fullName: Jelly.MappedInput.Keyboard
+  spec.csharp:
+  - uid: Jelly.MappedInput
+    name: MappedInput
+    href: Jelly.MappedInput.html
+  - name: .
+  - uid: Jelly.MappedInput.Keyboard
+    name: Keyboard
+    href: Jelly.MappedInput.Keyboard.html
+  spec.vb:
+  - uid: Jelly.MappedInput
+    name: MappedInput
+    href: Jelly.MappedInput.html
+  - name: .
+  - uid: Jelly.MappedInput.Keyboard
+    name: Keyboard
+    href: Jelly.MappedInput.Keyboard.html
+- uid: Jelly.MappedInput.Mouse
+  commentId: T:Jelly.MappedInput.Mouse
+  href: Jelly.MappedInput.html
+  name: MappedInput.Mouse
+  nameWithType: MappedInput.Mouse
+  fullName: Jelly.MappedInput.Mouse
+  spec.csharp:
+  - uid: Jelly.MappedInput
+    name: MappedInput
+    href: Jelly.MappedInput.html
+  - name: .
+  - uid: Jelly.MappedInput.Mouse
+    name: Mouse
+    href: Jelly.MappedInput.Mouse.html
+  spec.vb:
+  - uid: Jelly.MappedInput
+    name: MappedInput
+    href: Jelly.MappedInput.html
+  - name: .
+  - uid: Jelly.MappedInput.Mouse
+    name: Mouse
+    href: Jelly.MappedInput.Mouse.html
+- uid: Jelly.MappedInput.GamePad
+  commentId: T:Jelly.MappedInput.GamePad
+  href: Jelly.MappedInput.html
+  name: MappedInput.GamePad
+  nameWithType: MappedInput.GamePad
+  fullName: Jelly.MappedInput.GamePad
+  spec.csharp:
+  - uid: Jelly.MappedInput
+    name: MappedInput
+    href: Jelly.MappedInput.html
+  - name: .
+  - uid: Jelly.MappedInput.GamePad
+    name: GamePad
+    href: Jelly.MappedInput.GamePad.html
+  spec.vb:
+  - uid: Jelly.MappedInput
+    name: MappedInput
+    href: Jelly.MappedInput.html
+  - name: .
+  - uid: Jelly.MappedInput.GamePad
+    name: GamePad
+    href: Jelly.MappedInput.GamePad.html
+- uid: Jelly.MouseButtons
+  commentId: T:Jelly.MouseButtons
+  parent: Jelly
+  href: Jelly.MouseButtons.html
+  name: MouseButtons
+  nameWithType: MouseButtons
+  fullName: Jelly.MouseButtons
+- uid: Jelly.NetworkProvider
+  commentId: T:Jelly.NetworkProvider
+  href: Jelly.NetworkProvider.html
+  name: NetworkProvider
+  nameWithType: NetworkProvider
+  fullName: Jelly.NetworkProvider
+- uid: Jelly.ObjectDisposedEventArgs
+  commentId: T:Jelly.ObjectDisposedEventArgs
+  href: Jelly.ObjectDisposedEventArgs.html
+  name: ObjectDisposedEventArgs
+  nameWithType: ObjectDisposedEventArgs
+  fullName: Jelly.ObjectDisposedEventArgs
+- uid: Jelly.PointExtensions
+  commentId: T:Jelly.PointExtensions
+  href: Jelly.PointExtensions.html
+  name: PointExtensions
+  nameWithType: PointExtensions
+  fullName: Jelly.PointExtensions
+- uid: Jelly.RectangleExtensions
+  commentId: T:Jelly.RectangleExtensions
+  href: Jelly.RectangleExtensions.html
+  name: RectangleExtensions
+  nameWithType: RectangleExtensions
+  fullName: Jelly.RectangleExtensions
+- uid: Jelly.Scene
+  commentId: T:Jelly.Scene
+  parent: Jelly
+  href: Jelly.Scene.html
+  name: Scene
+  nameWithType: Scene
+  fullName: Jelly.Scene
+- uid: Jelly.SceneManager
+  commentId: T:Jelly.SceneManager
+  href: Jelly.SceneManager.html
+  name: SceneManager
+  nameWithType: SceneManager
+  fullName: Jelly.SceneManager
+- uid: Jelly.SceneManager.SceneChangedEvent
+  commentId: T:Jelly.SceneManager.SceneChangedEvent
+  parent: Jelly
+  href: Jelly.SceneManager.html
+  name: SceneManager.SceneChangedEvent
+  nameWithType: SceneManager.SceneChangedEvent
+  fullName: Jelly.SceneManager.SceneChangedEvent
+  spec.csharp:
+  - uid: Jelly.SceneManager
+    name: SceneManager
+    href: Jelly.SceneManager.html
+  - name: .
+  - uid: Jelly.SceneManager.SceneChangedEvent
+    name: SceneChangedEvent
+    href: Jelly.SceneManager.SceneChangedEvent.html
+  spec.vb:
+  - uid: Jelly.SceneManager
+    name: SceneManager
+    href: Jelly.SceneManager.html
+  - name: .
+  - uid: Jelly.SceneManager.SceneChangedEvent
+    name: SceneChangedEvent
+    href: Jelly.SceneManager.SceneChangedEvent.html
+- uid: Jelly.Tag
+  commentId: T:Jelly.Tag
+  parent: Jelly
+  href: Jelly.Tag.html
+  name: Tag
+  nameWithType: Tag
+  fullName: Jelly.Tag
+- uid: Jelly.Time
+  commentId: T:Jelly.Time
+  href: Jelly.Time.html
+  name: Time
+  nameWithType: Time
+  fullName: Jelly.Time
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly

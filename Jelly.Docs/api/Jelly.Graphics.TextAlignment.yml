@@ -1,0 +1,220 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Graphics.TextAlignment
+  commentId: T:Jelly.Graphics.TextAlignment
+  id: TextAlignment
+  parent: Jelly.Graphics
+  children:
+  - Jelly.Graphics.TextAlignment.Bottom
+  - Jelly.Graphics.TextAlignment.CenterX
+  - Jelly.Graphics.TextAlignment.CenterY
+  - Jelly.Graphics.TextAlignment.Left
+  - Jelly.Graphics.TextAlignment.Right
+  - Jelly.Graphics.TextAlignment.Top
+  langs:
+  - csharp
+  - vb
+  name: TextAlignment
+  nameWithType: TextAlignment
+  fullName: Jelly.Graphics.TextAlignment
+  type: Enum
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: TextAlignment
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 2
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: public enum TextAlignment
+    content.vb: Public Enum TextAlignment
+- uid: Jelly.Graphics.TextAlignment.Left
+  commentId: F:Jelly.Graphics.TextAlignment.Left
+  id: Left
+  parent: Jelly.Graphics.TextAlignment
+  langs:
+  - csharp
+  - vb
+  name: Left
+  nameWithType: TextAlignment.Left
+  fullName: Jelly.Graphics.TextAlignment.Left
+  type: Field
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Left
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 4
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: Left = 1
+    return:
+      type: Jelly.Graphics.TextAlignment
+- uid: Jelly.Graphics.TextAlignment.Right
+  commentId: F:Jelly.Graphics.TextAlignment.Right
+  id: Right
+  parent: Jelly.Graphics.TextAlignment
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: TextAlignment.Right
+  fullName: Jelly.Graphics.TextAlignment.Right
+  type: Field
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Right
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 5
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: Right = 2
+    return:
+      type: Jelly.Graphics.TextAlignment
+- uid: Jelly.Graphics.TextAlignment.CenterX
+  commentId: F:Jelly.Graphics.TextAlignment.CenterX
+  id: CenterX
+  parent: Jelly.Graphics.TextAlignment
+  langs:
+  - csharp
+  - vb
+  name: CenterX
+  nameWithType: TextAlignment.CenterX
+  fullName: Jelly.Graphics.TextAlignment.CenterX
+  type: Field
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: CenterX
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 6
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: CenterX = 3
+    return:
+      type: Jelly.Graphics.TextAlignment
+- uid: Jelly.Graphics.TextAlignment.Top
+  commentId: F:Jelly.Graphics.TextAlignment.Top
+  id: Top
+  parent: Jelly.Graphics.TextAlignment
+  langs:
+  - csharp
+  - vb
+  name: Top
+  nameWithType: TextAlignment.Top
+  fullName: Jelly.Graphics.TextAlignment.Top
+  type: Field
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Top
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 7
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: Top = 4
+    return:
+      type: Jelly.Graphics.TextAlignment
+- uid: Jelly.Graphics.TextAlignment.Bottom
+  commentId: F:Jelly.Graphics.TextAlignment.Bottom
+  id: Bottom
+  parent: Jelly.Graphics.TextAlignment
+  langs:
+  - csharp
+  - vb
+  name: Bottom
+  nameWithType: TextAlignment.Bottom
+  fullName: Jelly.Graphics.TextAlignment.Bottom
+  type: Field
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Bottom
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 8
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: Bottom = 8
+    return:
+      type: Jelly.Graphics.TextAlignment
+- uid: Jelly.Graphics.TextAlignment.CenterY
+  commentId: F:Jelly.Graphics.TextAlignment.CenterY
+  id: CenterY
+  parent: Jelly.Graphics.TextAlignment
+  langs:
+  - csharp
+  - vb
+  name: CenterY
+  nameWithType: TextAlignment.CenterY
+  fullName: Jelly.Graphics.TextAlignment.CenterY
+  type: Field
+  source:
+    remote:
+      path: Jelly/Graphics/TextAlignment.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: CenterY
+    path: ../Jelly/Graphics/TextAlignment.cs
+    startLine: 9
+  assemblies:
+  - Jelly
+  namespace: Jelly.Graphics
+  syntax:
+    content: CenterY = 12
+    return:
+      type: Jelly.Graphics.TextAlignment
+references:
+- uid: Jelly.Graphics
+  commentId: N:Jelly.Graphics
+  href: Jelly.html
+  name: Jelly.Graphics
+  nameWithType: Jelly.Graphics
+  fullName: Jelly.Graphics
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Graphics
+    name: Graphics
+    href: Jelly.Graphics.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Graphics
+    name: Graphics
+    href: Jelly.Graphics.html
+- uid: Jelly.Graphics.TextAlignment
+  commentId: T:Jelly.Graphics.TextAlignment
+  parent: Jelly.Graphics
+  href: Jelly.Graphics.TextAlignment.html
+  name: TextAlignment
+  nameWithType: TextAlignment
+  fullName: Jelly.Graphics.TextAlignment

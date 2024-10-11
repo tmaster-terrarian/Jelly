@@ -1,5 +1,8 @@
+using System;
+
 namespace Jelly.Graphics;
 
+[Flags]
 public enum TextAlignment
 {
     Left =      0b0001,

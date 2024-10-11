@@ -1,0 +1,2204 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Utilities.EntityList
+  commentId: T:Jelly.Utilities.EntityList
+  id: EntityList
+  parent: Jelly.Utilities
+  children:
+  - Jelly.Utilities.EntityList.Add(Jelly.Entity)
+  - Jelly.Utilities.EntityList.AddRange(Jelly.Entity[])
+  - Jelly.Utilities.EntityList.AddRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  - Jelly.Utilities.EntityList.AmountOfWithComponent``1
+  - Jelly.Utilities.EntityList.AmountOf``1
+  - Jelly.Utilities.EntityList.Clear
+  - Jelly.Utilities.EntityList.Contains(Jelly.Entity)
+  - Jelly.Utilities.EntityList.Count
+  - Jelly.Utilities.EntityList.FindAllWithComponent``1
+  - Jelly.Utilities.EntityList.FindAll``1
+  - Jelly.Utilities.EntityList.FindByID(System.Int64)
+  - Jelly.Utilities.EntityList.FindFirstWithComponent``1
+  - Jelly.Utilities.EntityList.FindFirst``1
+  - Jelly.Utilities.EntityList.ForeachWithComponent``1(System.Action{Jelly.Entity})
+  - Jelly.Utilities.EntityList.Foreach``1(System.Action{``0})
+  - Jelly.Utilities.EntityList.GetEnumerator
+  - Jelly.Utilities.EntityList.HasVisibleEntities(Jelly.Tag,Jelly.Utilities.TagFilter)
+  - Jelly.Utilities.EntityList.IndexOf(Jelly.Entity)
+  - Jelly.Utilities.EntityList.IsReadOnly
+  - Jelly.Utilities.EntityList.Item(System.Int32)
+  - Jelly.Utilities.EntityList.Remove(Jelly.Entity)
+  - Jelly.Utilities.EntityList.RemoveRange(Jelly.Entity[])
+  - Jelly.Utilities.EntityList.RemoveRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  - Jelly.Utilities.EntityList.Scene
+  - Jelly.Utilities.EntityList.ToArray
+  - Jelly.Utilities.EntityList.UpdateLists
+  langs:
+  - csharp
+  - vb
+  name: EntityList
+  nameWithType: EntityList
+  fullName: Jelly.Utilities.EntityList
+  type: Class
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: EntityList
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 8
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable'
+    content.vb: Public Class EntityList Implements ICollection(Of Entity), IEnumerable(Of Entity), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}
+  - System.Collections.Generic.IEnumerable{Jelly.Entity}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Jelly.Utilities.EntityList.Scene
+  commentId: P:Jelly.Utilities.EntityList.Scene
+  id: Scene
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Scene
+  nameWithType: EntityList.Scene
+  fullName: Jelly.Utilities.EntityList.Scene
+  type: Property
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Scene
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 46
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Scene Scene { get; }
+    parameters: []
+    return:
+      type: Jelly.Scene
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Scene As Scene
+  overload: Jelly.Utilities.EntityList.Scene*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Utilities.EntityList.Count
+  commentId: P:Jelly.Utilities.EntityList.Count
+  id: Count
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: EntityList.Count
+  fullName: Jelly.Utilities.EntityList.Count
+  type: Property
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Count
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 48
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Gets the number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: The number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property Count As Integer
+  overload: Jelly.Utilities.EntityList.Count*
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}.Count
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Utilities.EntityList.IsReadOnly
+  commentId: P:Jelly.Utilities.EntityList.IsReadOnly
+  id: IsReadOnly
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: IsReadOnly
+  nameWithType: EntityList.IsReadOnly
+  fullName: Jelly.Utilities.EntityList.IsReadOnly
+  type: Property
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: IsReadOnly
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 50
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Gets a value indicating whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  example: []
+  syntax:
+    content: public bool IsReadOnly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public ReadOnly Property IsReadOnly As Boolean
+  overload: Jelly.Utilities.EntityList.IsReadOnly*
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}.IsReadOnly
+- uid: Jelly.Utilities.EntityList.Item(System.Int32)
+  commentId: P:Jelly.Utilities.EntityList.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: EntityList.this[int]
+  fullName: Jelly.Utilities.EntityList.this[int]
+  type: Property
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: this[]
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 52
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Entity this[int index] { get; }
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: Jelly.Entity
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Default Property this[](index As Integer) As Entity
+  overload: Jelly.Utilities.EntityList.Item*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+  nameWithType.vb: EntityList.this[](Integer)
+  fullName.vb: Jelly.Utilities.EntityList.this[](Integer)
+  name.vb: this[](Integer)
+- uid: Jelly.Utilities.EntityList.UpdateLists
+  commentId: M:Jelly.Utilities.EntityList.UpdateLists
+  id: UpdateLists
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: UpdateLists()
+  nameWithType: EntityList.UpdateLists()
+  fullName: Jelly.Utilities.EntityList.UpdateLists()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: UpdateLists
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 69
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public void UpdateLists()
+    content.vb: Public Sub UpdateLists()
+  overload: Jelly.Utilities.EntityList.UpdateLists*
+- uid: Jelly.Utilities.EntityList.IndexOf(Jelly.Entity)
+  commentId: M:Jelly.Utilities.EntityList.IndexOf(Jelly.Entity)
+  id: IndexOf(Jelly.Entity)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: IndexOf(Entity)
+  nameWithType: EntityList.IndexOf(Entity)
+  fullName: Jelly.Utilities.EntityList.IndexOf(Jelly.Entity)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: IndexOf
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 81
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public int IndexOf(Entity entity)
+    parameters:
+    - id: entity
+      type: Jelly.Entity
+    return:
+      type: System.Int32
+    content.vb: Public Function IndexOf(entity As Entity) As Integer
+  overload: Jelly.Utilities.EntityList.IndexOf*
+- uid: Jelly.Utilities.EntityList.Add(Jelly.Entity)
+  commentId: M:Jelly.Utilities.EntityList.Add(Jelly.Entity)
+  id: Add(Jelly.Entity)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Add(Entity)
+  nameWithType: EntityList.Add(Entity)
+  fullName: Jelly.Utilities.EntityList.Add(Jelly.Entity)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Add
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 96
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Adds an item to the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void Add(Entity entity)
+    parameters:
+    - id: entity
+      type: Jelly.Entity
+    content.vb: Public Sub Add(entity As Entity)
+  overload: Jelly.Utilities.EntityList.Add*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}.Add(Jelly.Entity)
+- uid: Jelly.Utilities.EntityList.Remove(Jelly.Entity)
+  commentId: M:Jelly.Utilities.EntityList.Remove(Jelly.Entity)
+  id: Remove(Jelly.Entity)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Remove(Entity)
+  nameWithType: EntityList.Remove(Entity)
+  fullName: Jelly.Utilities.EntityList.Remove(Jelly.Entity)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Remove
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 116
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Removes the first occurrence of a specific object from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Remove(Entity entity)
+    parameters:
+    - id: entity
+      type: Jelly.Entity
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function Remove(entity As Entity) As Boolean
+  overload: Jelly.Utilities.EntityList.Remove*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}.Remove(Jelly.Entity)
+- uid: Jelly.Utilities.EntityList.AddRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  commentId: M:Jelly.Utilities.EntityList.AddRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  id: AddRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: AddRange(IEnumerable<Entity>)
+  nameWithType: EntityList.AddRange(IEnumerable<Entity>)
+  fullName: Jelly.Utilities.EntityList.AddRange(System.Collections.Generic.IEnumerable<Jelly.Entity>)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AddRange
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 132
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public void AddRange(IEnumerable<Entity> entities)
+    parameters:
+    - id: entities
+      type: System.Collections.Generic.IEnumerable{Jelly.Entity}
+    content.vb: Public Sub AddRange(entities As IEnumerable(Of Entity))
+  overload: Jelly.Utilities.EntityList.AddRange*
+  nameWithType.vb: EntityList.AddRange(IEnumerable(Of Entity))
+  fullName.vb: Jelly.Utilities.EntityList.AddRange(System.Collections.Generic.IEnumerable(Of Jelly.Entity))
+  name.vb: AddRange(IEnumerable(Of Entity))
+- uid: Jelly.Utilities.EntityList.RemoveRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  commentId: M:Jelly.Utilities.EntityList.RemoveRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  id: RemoveRange(System.Collections.Generic.IEnumerable{Jelly.Entity})
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: RemoveRange(IEnumerable<Entity>)
+  nameWithType: EntityList.RemoveRange(IEnumerable<Entity>)
+  fullName: Jelly.Utilities.EntityList.RemoveRange(System.Collections.Generic.IEnumerable<Jelly.Entity>)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RemoveRange
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 138
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public bool RemoveRange(IEnumerable<Entity> entities)
+    parameters:
+    - id: entities
+      type: System.Collections.Generic.IEnumerable{Jelly.Entity}
+    return:
+      type: System.Boolean
+    content.vb: Public Function RemoveRange(entities As IEnumerable(Of Entity)) As Boolean
+  overload: Jelly.Utilities.EntityList.RemoveRange*
+  nameWithType.vb: EntityList.RemoveRange(IEnumerable(Of Entity))
+  fullName.vb: Jelly.Utilities.EntityList.RemoveRange(System.Collections.Generic.IEnumerable(Of Jelly.Entity))
+  name.vb: RemoveRange(IEnumerable(Of Entity))
+- uid: Jelly.Utilities.EntityList.AddRange(Jelly.Entity[])
+  commentId: M:Jelly.Utilities.EntityList.AddRange(Jelly.Entity[])
+  id: AddRange(Jelly.Entity[])
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: AddRange(params Entity[])
+  nameWithType: EntityList.AddRange(params Entity[])
+  fullName: Jelly.Utilities.EntityList.AddRange(params Jelly.Entity[])
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AddRange
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 146
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public void AddRange(params Entity[] entities)
+    parameters:
+    - id: entities
+      type: Jelly.Entity[]
+    content.vb: Public Sub AddRange(ParamArray entities As Entity())
+  overload: Jelly.Utilities.EntityList.AddRange*
+  nameWithType.vb: EntityList.AddRange(ParamArray Entity())
+  fullName.vb: Jelly.Utilities.EntityList.AddRange(ParamArray Jelly.Entity())
+  name.vb: AddRange(ParamArray Entity())
+- uid: Jelly.Utilities.EntityList.RemoveRange(Jelly.Entity[])
+  commentId: M:Jelly.Utilities.EntityList.RemoveRange(Jelly.Entity[])
+  id: RemoveRange(Jelly.Entity[])
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: RemoveRange(params Entity[])
+  nameWithType: EntityList.RemoveRange(params Entity[])
+  fullName: Jelly.Utilities.EntityList.RemoveRange(params Jelly.Entity[])
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RemoveRange
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 152
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public bool RemoveRange(params Entity[] entities)
+    parameters:
+    - id: entities
+      type: Jelly.Entity[]
+    return:
+      type: System.Boolean
+    content.vb: Public Function RemoveRange(ParamArray entities As Entity()) As Boolean
+  overload: Jelly.Utilities.EntityList.RemoveRange*
+  nameWithType.vb: EntityList.RemoveRange(ParamArray Entity())
+  fullName.vb: Jelly.Utilities.EntityList.RemoveRange(ParamArray Jelly.Entity())
+  name.vb: RemoveRange(ParamArray Entity())
+- uid: Jelly.Utilities.EntityList.FindByID(System.Int64)
+  commentId: M:Jelly.Utilities.EntityList.FindByID(System.Int64)
+  id: FindByID(System.Int64)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: FindByID(long)
+  nameWithType: EntityList.FindByID(long)
+  fullName: Jelly.Utilities.EntityList.FindByID(long)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: FindByID
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 160
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public Entity FindByID(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: Jelly.Entity
+    content.vb: Public Function FindByID(id As Long) As Entity
+  overload: Jelly.Utilities.EntityList.FindByID*
+  nameWithType.vb: EntityList.FindByID(Long)
+  fullName.vb: Jelly.Utilities.EntityList.FindByID(Long)
+  name.vb: FindByID(Long)
+- uid: Jelly.Utilities.EntityList.AmountOf``1
+  commentId: M:Jelly.Utilities.EntityList.AmountOf``1
+  id: AmountOf``1
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: AmountOf<T>()
+  nameWithType: EntityList.AmountOf<T>()
+  fullName: Jelly.Utilities.EntityList.AmountOf<T>()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AmountOf
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 165
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public int AmountOf<T>() where T : Entity'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Int32
+    content.vb: Public Function AmountOf(Of T As Entity)() As Integer
+  overload: Jelly.Utilities.EntityList.AmountOf*
+  nameWithType.vb: EntityList.AmountOf(Of T)()
+  fullName.vb: Jelly.Utilities.EntityList.AmountOf(Of T)()
+  name.vb: AmountOf(Of T)()
+- uid: Jelly.Utilities.EntityList.AmountOfWithComponent``1
+  commentId: M:Jelly.Utilities.EntityList.AmountOfWithComponent``1
+  id: AmountOfWithComponent``1
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: AmountOfWithComponent<T>()
+  nameWithType: EntityList.AmountOfWithComponent<T>()
+  fullName: Jelly.Utilities.EntityList.AmountOfWithComponent<T>()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: AmountOfWithComponent
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 175
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public int AmountOfWithComponent<T>() where T : Component'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Int32
+    content.vb: Public Function AmountOfWithComponent(Of T As Component)() As Integer
+  overload: Jelly.Utilities.EntityList.AmountOfWithComponent*
+  nameWithType.vb: EntityList.AmountOfWithComponent(Of T)()
+  fullName.vb: Jelly.Utilities.EntityList.AmountOfWithComponent(Of T)()
+  name.vb: AmountOfWithComponent(Of T)()
+- uid: Jelly.Utilities.EntityList.FindFirst``1
+  commentId: M:Jelly.Utilities.EntityList.FindFirst``1
+  id: FindFirst``1
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: FindFirst<T>()
+  nameWithType: EntityList.FindFirst<T>()
+  fullName: Jelly.Utilities.EntityList.FindFirst<T>()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: FindFirst
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 186
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public T FindFirst<T>() where T : Entity'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function FindFirst(Of T As Entity)() As T
+  overload: Jelly.Utilities.EntityList.FindFirst*
+  nameWithType.vb: EntityList.FindFirst(Of T)()
+  fullName.vb: Jelly.Utilities.EntityList.FindFirst(Of T)()
+  name.vb: FindFirst(Of T)()
+- uid: Jelly.Utilities.EntityList.FindFirstWithComponent``1
+  commentId: M:Jelly.Utilities.EntityList.FindFirstWithComponent``1
+  id: FindFirstWithComponent``1
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: FindFirstWithComponent<T>()
+  nameWithType: EntityList.FindFirstWithComponent<T>()
+  fullName: Jelly.Utilities.EntityList.FindFirstWithComponent<T>()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: FindFirstWithComponent
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 195
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public Entity FindFirstWithComponent<T>() where T : Component'
+    typeParameters:
+    - id: T
+    return:
+      type: Jelly.Entity
+    content.vb: Public Function FindFirstWithComponent(Of T As Component)() As Entity
+  overload: Jelly.Utilities.EntityList.FindFirstWithComponent*
+  nameWithType.vb: EntityList.FindFirstWithComponent(Of T)()
+  fullName.vb: Jelly.Utilities.EntityList.FindFirstWithComponent(Of T)()
+  name.vb: FindFirstWithComponent(Of T)()
+- uid: Jelly.Utilities.EntityList.FindAll``1
+  commentId: M:Jelly.Utilities.EntityList.FindAll``1
+  id: FindAll``1
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: FindAll<T>()
+  nameWithType: EntityList.FindAll<T>()
+  fullName: Jelly.Utilities.EntityList.FindAll<T>()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: FindAll
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 205
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public List<T> FindAll<T>() where T : Entity'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Collections.Generic.List{{T}}
+    content.vb: Public Function FindAll(Of T As Entity)() As List(Of T)
+  overload: Jelly.Utilities.EntityList.FindAll*
+  nameWithType.vb: EntityList.FindAll(Of T)()
+  fullName.vb: Jelly.Utilities.EntityList.FindAll(Of T)()
+  name.vb: FindAll(Of T)()
+- uid: Jelly.Utilities.EntityList.FindAllWithComponent``1
+  commentId: M:Jelly.Utilities.EntityList.FindAllWithComponent``1
+  id: FindAllWithComponent``1
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: FindAllWithComponent<T>()
+  nameWithType: EntityList.FindAllWithComponent<T>()
+  fullName: Jelly.Utilities.EntityList.FindAllWithComponent<T>()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: FindAllWithComponent
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 216
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public List<Entity> FindAllWithComponent<T>() where T : Component'
+    typeParameters:
+    - id: T
+    return:
+      type: System.Collections.Generic.List{Jelly.Entity}
+    content.vb: Public Function FindAllWithComponent(Of T As Component)() As List(Of Entity)
+  overload: Jelly.Utilities.EntityList.FindAllWithComponent*
+  nameWithType.vb: EntityList.FindAllWithComponent(Of T)()
+  fullName.vb: Jelly.Utilities.EntityList.FindAllWithComponent(Of T)()
+  name.vb: FindAllWithComponent(Of T)()
+- uid: Jelly.Utilities.EntityList.Foreach``1(System.Action{``0})
+  commentId: M:Jelly.Utilities.EntityList.Foreach``1(System.Action{``0})
+  id: Foreach``1(System.Action{``0})
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Foreach<T>(Action<T>)
+  nameWithType: EntityList.Foreach<T>(Action<T>)
+  fullName: Jelly.Utilities.EntityList.Foreach<T>(System.Action<T>)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Foreach
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 228
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public void Foreach<T>(Action<T> action) where T : Entity'
+    parameters:
+    - id: action
+      type: System.Action{{T}}
+    typeParameters:
+    - id: T
+    content.vb: Public Sub Foreach(Of T As Entity)(action As Action(Of T))
+  overload: Jelly.Utilities.EntityList.Foreach*
+  nameWithType.vb: EntityList.Foreach(Of T)(Action(Of T))
+  fullName.vb: Jelly.Utilities.EntityList.Foreach(Of T)(System.Action(Of T))
+  name.vb: Foreach(Of T)(Action(Of T))
+- uid: Jelly.Utilities.EntityList.ForeachWithComponent``1(System.Action{Jelly.Entity})
+  commentId: M:Jelly.Utilities.EntityList.ForeachWithComponent``1(System.Action{Jelly.Entity})
+  id: ForeachWithComponent``1(System.Action{Jelly.Entity})
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: ForeachWithComponent<T>(Action<Entity>)
+  nameWithType: EntityList.ForeachWithComponent<T>(Action<Entity>)
+  fullName: Jelly.Utilities.EntityList.ForeachWithComponent<T>(System.Action<Jelly.Entity>)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ForeachWithComponent
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 235
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: 'public void ForeachWithComponent<T>(Action<Entity> action) where T : Component'
+    parameters:
+    - id: action
+      type: System.Action{Jelly.Entity}
+    typeParameters:
+    - id: T
+    content.vb: Public Sub ForeachWithComponent(Of T As Component)(action As Action(Of Entity))
+  overload: Jelly.Utilities.EntityList.ForeachWithComponent*
+  nameWithType.vb: EntityList.ForeachWithComponent(Of T)(Action(Of Entity))
+  fullName.vb: Jelly.Utilities.EntityList.ForeachWithComponent(Of T)(System.Action(Of Jelly.Entity))
+  name.vb: ForeachWithComponent(Of T)(Action(Of Entity))
+- uid: Jelly.Utilities.EntityList.GetEnumerator
+  commentId: M:Jelly.Utilities.EntityList.GetEnumerator
+  id: GetEnumerator
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: EntityList.GetEnumerator()
+  fullName: Jelly.Utilities.EntityList.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetEnumerator
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 241
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Returns an enumerator that iterates through the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<Entity> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{Jelly.Entity}
+      description: An enumerator that can be used to iterate through the collection.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of Entity)
+  overload: Jelly.Utilities.EntityList.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{Jelly.Entity}.GetEnumerator
+- uid: Jelly.Utilities.EntityList.ToArray
+  commentId: M:Jelly.Utilities.EntityList.ToArray
+  id: ToArray
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: ToArray()
+  nameWithType: EntityList.ToArray()
+  fullName: Jelly.Utilities.EntityList.ToArray()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToArray
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 251
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public Entity[] ToArray()
+    return:
+      type: Jelly.Entity[]
+    content.vb: Public Function ToArray() As Entity()
+  overload: Jelly.Utilities.EntityList.ToArray*
+- uid: Jelly.Utilities.EntityList.HasVisibleEntities(Jelly.Tag,Jelly.Utilities.TagFilter)
+  commentId: M:Jelly.Utilities.EntityList.HasVisibleEntities(Jelly.Tag,Jelly.Utilities.TagFilter)
+  id: HasVisibleEntities(Jelly.Tag,Jelly.Utilities.TagFilter)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: HasVisibleEntities(Tag, TagFilter)
+  nameWithType: EntityList.HasVisibleEntities(Tag, TagFilter)
+  fullName: Jelly.Utilities.EntityList.HasVisibleEntities(Jelly.Tag, Jelly.Utilities.TagFilter)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: HasVisibleEntities
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 256
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  syntax:
+    content: public bool HasVisibleEntities(Tag matchTags, TagFilter filter = TagFilter.AtLeastOne)
+    parameters:
+    - id: matchTags
+      type: Jelly.Tag
+    - id: filter
+      type: Jelly.Utilities.TagFilter
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasVisibleEntities(matchTags As Tag, filter As TagFilter = TagFilter.AtLeastOne) As Boolean
+  overload: Jelly.Utilities.EntityList.HasVisibleEntities*
+- uid: Jelly.Utilities.EntityList.Clear
+  commentId: M:Jelly.Utilities.EntityList.Clear
+  id: Clear
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: EntityList.Clear()
+  fullName: Jelly.Utilities.EntityList.Clear()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Clear
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 323
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Removes all items from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: Jelly.Utilities.EntityList.Clear*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}.Clear
+- uid: Jelly.Utilities.EntityList.Contains(Jelly.Entity)
+  commentId: M:Jelly.Utilities.EntityList.Contains(Jelly.Entity)
+  id: Contains(Jelly.Entity)
+  parent: Jelly.Utilities.EntityList
+  langs:
+  - csharp
+  - vb
+  name: Contains(Entity)
+  nameWithType: EntityList.Contains(Entity)
+  fullName: Jelly.Utilities.EntityList.Contains(Jelly.Entity)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Utilities/EntityList.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Contains
+    path: ../Jelly/Utilities/EntityList.cs
+    startLine: 328
+  assemblies:
+  - Jelly
+  namespace: Jelly.Utilities
+  summary: Determines whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> contains a specific value.
+  example: []
+  syntax:
+    content: public bool Contains(Entity item)
+    parameters:
+    - id: item
+      type: Jelly.Entity
+      description: The object to locate in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Contains(item As Entity) As Boolean
+  overload: Jelly.Utilities.EntityList.Contains*
+  implements:
+  - System.Collections.Generic.ICollection{Jelly.Entity}.Contains(Jelly.Entity)
+references:
+- uid: Jelly.Utilities
+  commentId: N:Jelly.Utilities
+  href: Jelly.html
+  name: Jelly.Utilities
+  nameWithType: Jelly.Utilities
+  fullName: Jelly.Utilities
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Utilities
+    name: Utilities
+    href: Jelly.Utilities.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Utilities
+    name: Utilities
+    href: Jelly.Utilities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}
+  commentId: T:System.Collections.Generic.ICollection{Jelly.Entity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<Entity>
+  nameWithType: ICollection<Entity>
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>
+  nameWithType.vb: ICollection(Of Entity)
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity)
+  name.vb: ICollection(Of Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Jelly.Entity}
+  commentId: T:System.Collections.Generic.IEnumerable{Jelly.Entity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Entity>
+  nameWithType: IEnumerable<Entity>
+  fullName: System.Collections.Generic.IEnumerable<Jelly.Entity>
+  nameWithType.vb: IEnumerable(Of Entity)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Jelly.Entity)
+  name.vb: IEnumerable(Of Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Jelly.Utilities.EntityList.Scene*
+  commentId: Overload:Jelly.Utilities.EntityList.Scene
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Scene
+  name: Scene
+  nameWithType: EntityList.Scene
+  fullName: Jelly.Utilities.EntityList.Scene
+- uid: Jelly.Scene
+  commentId: T:Jelly.Scene
+  parent: Jelly
+  href: Jelly.Scene.html
+  name: Scene
+  nameWithType: Scene
+  fullName: Jelly.Scene
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+- uid: Jelly.Utilities.EntityList.Count*
+  commentId: Overload:Jelly.Utilities.EntityList.Count
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Count
+  name: Count
+  nameWithType: EntityList.Count
+  fullName: Jelly.Utilities.EntityList.Count
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}.Count
+  commentId: P:System.Collections.Generic.ICollection{Jelly.Entity}.Count
+  parent: System.Collections.Generic.ICollection{Jelly.Entity}
+  definition: System.Collections.Generic.ICollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<Entity>.Count
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>.Count
+  nameWithType.vb: ICollection(Of Entity).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity).Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.ICollection`1.Count
+  commentId: P:System.Collections.Generic.ICollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<T>.Count
+  fullName: System.Collections.Generic.ICollection<T>.Count
+  nameWithType.vb: ICollection(Of T).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
+- uid: Jelly.Utilities.EntityList.IsReadOnly*
+  commentId: Overload:Jelly.Utilities.EntityList.IsReadOnly
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_IsReadOnly
+  name: IsReadOnly
+  nameWithType: EntityList.IsReadOnly
+  fullName: Jelly.Utilities.EntityList.IsReadOnly
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection{Jelly.Entity}.IsReadOnly
+  parent: System.Collections.Generic.ICollection{Jelly.Entity}
+  definition: System.Collections.Generic.ICollection`1.IsReadOnly
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<Entity>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>.IsReadOnly
+  nameWithType.vb: ICollection(Of Entity).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity).IsReadOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.ICollection`1.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection`1.IsReadOnly
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<T>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<T>.IsReadOnly
+  nameWithType.vb: ICollection(Of T).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of T).IsReadOnly
+- uid: Jelly.Utilities.EntityList.Item*
+  commentId: Overload:Jelly.Utilities.EntityList.Item
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Item_System_Int32_
+  name: this
+  nameWithType: EntityList.this
+  fullName: Jelly.Utilities.EntityList.this
+  nameWithType.vb: EntityList.this[]
+  fullName.vb: Jelly.Utilities.EntityList.this[]
+  name.vb: this[]
+- uid: Jelly.Entity
+  commentId: T:Jelly.Entity
+  parent: Jelly
+  href: Jelly.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Jelly.Entity
+- uid: Jelly.Utilities.EntityList.UpdateLists*
+  commentId: Overload:Jelly.Utilities.EntityList.UpdateLists
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_UpdateLists
+  name: UpdateLists
+  nameWithType: EntityList.UpdateLists
+  fullName: Jelly.Utilities.EntityList.UpdateLists
+- uid: Jelly.Utilities.EntityList.IndexOf*
+  commentId: Overload:Jelly.Utilities.EntityList.IndexOf
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_IndexOf_Jelly_Entity_
+  name: IndexOf
+  nameWithType: EntityList.IndexOf
+  fullName: Jelly.Utilities.EntityList.IndexOf
+- uid: System.NotSupportedException
+  commentId: T:System.NotSupportedException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.notsupportedexception
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: Jelly.Utilities.EntityList.Add*
+  commentId: Overload:Jelly.Utilities.EntityList.Add
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Add_Jelly_Entity_
+  name: Add
+  nameWithType: EntityList.Add
+  fullName: Jelly.Utilities.EntityList.Add
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}.Add(Jelly.Entity)
+  commentId: M:System.Collections.Generic.ICollection{Jelly.Entity}.Add(Jelly.Entity)
+  parent: System.Collections.Generic.ICollection{Jelly.Entity}
+  definition: System.Collections.Generic.ICollection`1.Add(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  name: Add(Entity)
+  nameWithType: ICollection<Entity>.Add(Entity)
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>.Add(Jelly.Entity)
+  nameWithType.vb: ICollection(Of Entity).Add(Entity)
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity).Add(Jelly.Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Add(Jelly.Entity)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Add(Jelly.Entity)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Add(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Add(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  name: Add(T)
+  nameWithType: ICollection<T>.Add(T)
+  fullName: System.Collections.Generic.ICollection<T>.Add(T)
+  nameWithType.vb: ICollection(Of T).Add(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Add(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - name: T
+  - name: )
+- uid: Jelly.Utilities.EntityList.Remove*
+  commentId: Overload:Jelly.Utilities.EntityList.Remove
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Remove_Jelly_Entity_
+  name: Remove
+  nameWithType: EntityList.Remove
+  fullName: Jelly.Utilities.EntityList.Remove
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}.Remove(Jelly.Entity)
+  commentId: M:System.Collections.Generic.ICollection{Jelly.Entity}.Remove(Jelly.Entity)
+  parent: System.Collections.Generic.ICollection{Jelly.Entity}
+  definition: System.Collections.Generic.ICollection`1.Remove(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(Entity)
+  nameWithType: ICollection<Entity>.Remove(Entity)
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>.Remove(Jelly.Entity)
+  nameWithType.vb: ICollection(Of Entity).Remove(Entity)
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity).Remove(Jelly.Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Remove(Jelly.Entity)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Remove(Jelly.Entity)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Remove(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Remove(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(T)
+  nameWithType: ICollection<T>.Remove(T)
+  fullName: System.Collections.Generic.ICollection<T>.Remove(T)
+  nameWithType.vb: ICollection(Of T).Remove(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Remove(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+- uid: Jelly.Utilities.EntityList.AddRange*
+  commentId: Overload:Jelly.Utilities.EntityList.AddRange
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_AddRange_System_Collections_Generic_IEnumerable_Jelly_Entity__
+  name: AddRange
+  nameWithType: EntityList.AddRange
+  fullName: Jelly.Utilities.EntityList.AddRange
+- uid: Jelly.Utilities.EntityList.RemoveRange*
+  commentId: Overload:Jelly.Utilities.EntityList.RemoveRange
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_RemoveRange_System_Collections_Generic_IEnumerable_Jelly_Entity__
+  name: RemoveRange
+  nameWithType: EntityList.RemoveRange
+  fullName: Jelly.Utilities.EntityList.RemoveRange
+- uid: Jelly.Entity[]
+  isExternal: true
+  href: Jelly.Entity.html
+  name: Entity[]
+  nameWithType: Entity[]
+  fullName: Jelly.Entity[]
+  nameWithType.vb: Entity()
+  fullName.vb: Jelly.Entity()
+  name.vb: Entity()
+  spec.csharp:
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: (
+  - name: )
+- uid: Jelly.Utilities.EntityList.FindByID*
+  commentId: Overload:Jelly.Utilities.EntityList.FindByID
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_FindByID_System_Int64_
+  name: FindByID
+  nameWithType: EntityList.FindByID
+  fullName: Jelly.Utilities.EntityList.FindByID
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Jelly.Utilities.EntityList.AmountOf*
+  commentId: Overload:Jelly.Utilities.EntityList.AmountOf
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_AmountOf__1
+  name: AmountOf
+  nameWithType: EntityList.AmountOf
+  fullName: Jelly.Utilities.EntityList.AmountOf
+- uid: Jelly.Utilities.EntityList.AmountOfWithComponent*
+  commentId: Overload:Jelly.Utilities.EntityList.AmountOfWithComponent
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_AmountOfWithComponent__1
+  name: AmountOfWithComponent
+  nameWithType: EntityList.AmountOfWithComponent
+  fullName: Jelly.Utilities.EntityList.AmountOfWithComponent
+- uid: Jelly.Utilities.EntityList.FindFirst*
+  commentId: Overload:Jelly.Utilities.EntityList.FindFirst
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_FindFirst__1
+  name: FindFirst
+  nameWithType: EntityList.FindFirst
+  fullName: Jelly.Utilities.EntityList.FindFirst
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Jelly.Utilities.EntityList.FindFirstWithComponent*
+  commentId: Overload:Jelly.Utilities.EntityList.FindFirstWithComponent
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_FindFirstWithComponent__1
+  name: FindFirstWithComponent
+  nameWithType: EntityList.FindFirstWithComponent
+  fullName: Jelly.Utilities.EntityList.FindFirstWithComponent
+- uid: Jelly.Utilities.EntityList.FindAll*
+  commentId: Overload:Jelly.Utilities.EntityList.FindAll
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_FindAll__1
+  name: FindAll
+  nameWithType: EntityList.FindAll
+  fullName: Jelly.Utilities.EntityList.FindAll
+- uid: System.Collections.Generic.List{{T}}
+  commentId: T:System.Collections.Generic.List{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Jelly.Utilities.EntityList.FindAllWithComponent*
+  commentId: Overload:Jelly.Utilities.EntityList.FindAllWithComponent
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_FindAllWithComponent__1
+  name: FindAllWithComponent
+  nameWithType: EntityList.FindAllWithComponent
+  fullName: Jelly.Utilities.EntityList.FindAllWithComponent
+- uid: System.Collections.Generic.List{Jelly.Entity}
+  commentId: T:System.Collections.Generic.List{Jelly.Entity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Entity>
+  nameWithType: List<Entity>
+  fullName: System.Collections.Generic.List<Jelly.Entity>
+  nameWithType.vb: List(Of Entity)
+  fullName.vb: System.Collections.Generic.List(Of Jelly.Entity)
+  name.vb: List(Of Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: Jelly.Utilities.EntityList.Foreach*
+  commentId: Overload:Jelly.Utilities.EntityList.Foreach
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Foreach__1_System_Action___0__
+  name: Foreach
+  nameWithType: EntityList.Foreach
+  fullName: Jelly.Utilities.EntityList.Foreach
+- uid: System.Action{{T}}
+  commentId: T:System.Action{``0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Jelly.Utilities.EntityList.ForeachWithComponent*
+  commentId: Overload:Jelly.Utilities.EntityList.ForeachWithComponent
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_ForeachWithComponent__1_System_Action_Jelly_Entity__
+  name: ForeachWithComponent
+  nameWithType: EntityList.ForeachWithComponent
+  fullName: Jelly.Utilities.EntityList.ForeachWithComponent
+- uid: System.Action{Jelly.Entity}
+  commentId: T:System.Action{Jelly.Entity}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Entity>
+  nameWithType: Action<Entity>
+  fullName: System.Action<Jelly.Entity>
+  nameWithType.vb: Action(Of Entity)
+  fullName.vb: System.Action(Of Jelly.Entity)
+  name.vb: Action(Of Entity)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: Jelly.Utilities.EntityList.GetEnumerator*
+  commentId: Overload:Jelly.Utilities.EntityList.GetEnumerator
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_GetEnumerator
+  name: GetEnumerator
+  nameWithType: EntityList.GetEnumerator
+  fullName: Jelly.Utilities.EntityList.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{Jelly.Entity}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{Jelly.Entity}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{Jelly.Entity}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<Entity>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<Jelly.Entity>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of Entity).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Jelly.Entity).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{Jelly.Entity}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{Jelly.Entity}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{Jelly.Entity}
+  commentId: T:System.Collections.Generic.IEnumerator{Jelly.Entity}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<Entity>
+  nameWithType: IEnumerator<Entity>
+  fullName: System.Collections.Generic.IEnumerator<Jelly.Entity>
+  nameWithType.vb: IEnumerator(Of Entity)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of Jelly.Entity)
+  name.vb: IEnumerator(Of Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Jelly.Utilities.EntityList.ToArray*
+  commentId: Overload:Jelly.Utilities.EntityList.ToArray
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_ToArray
+  name: ToArray
+  nameWithType: EntityList.ToArray
+  fullName: Jelly.Utilities.EntityList.ToArray
+- uid: Jelly.Utilities.EntityList.HasVisibleEntities*
+  commentId: Overload:Jelly.Utilities.EntityList.HasVisibleEntities
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_HasVisibleEntities_Jelly_Tag_Jelly_Utilities_TagFilter_
+  name: HasVisibleEntities
+  nameWithType: EntityList.HasVisibleEntities
+  fullName: Jelly.Utilities.EntityList.HasVisibleEntities
+- uid: Jelly.Tag
+  commentId: T:Jelly.Tag
+  parent: Jelly
+  href: Jelly.Tag.html
+  name: Tag
+  nameWithType: Tag
+  fullName: Jelly.Tag
+- uid: Jelly.Utilities.TagFilter
+  commentId: T:Jelly.Utilities.TagFilter
+  parent: Jelly.Utilities
+  href: Jelly.Utilities.TagFilter.html
+  name: TagFilter
+  nameWithType: TagFilter
+  fullName: Jelly.Utilities.TagFilter
+- uid: Jelly.Utilities.EntityList.Clear*
+  commentId: Overload:Jelly.Utilities.EntityList.Clear
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Clear
+  name: Clear
+  nameWithType: EntityList.Clear
+  fullName: Jelly.Utilities.EntityList.Clear
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}.Clear
+  commentId: M:System.Collections.Generic.ICollection{Jelly.Entity}.Clear
+  parent: System.Collections.Generic.ICollection{Jelly.Entity}
+  definition: System.Collections.Generic.ICollection`1.Clear
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<Entity>.Clear()
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>.Clear()
+  nameWithType.vb: ICollection(Of Entity).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Clear
+  commentId: M:System.Collections.Generic.ICollection`1.Clear
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<T>.Clear()
+  fullName: System.Collections.Generic.ICollection<T>.Clear()
+  nameWithType.vb: ICollection(Of T).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: Jelly.Utilities.EntityList.Contains*
+  commentId: Overload:Jelly.Utilities.EntityList.Contains
+  href: Jelly.Utilities.EntityList.html#Jelly_Utilities_EntityList_Contains_Jelly_Entity_
+  name: Contains
+  nameWithType: EntityList.Contains
+  fullName: Jelly.Utilities.EntityList.Contains
+- uid: System.Collections.Generic.ICollection{Jelly.Entity}.Contains(Jelly.Entity)
+  commentId: M:System.Collections.Generic.ICollection{Jelly.Entity}.Contains(Jelly.Entity)
+  parent: System.Collections.Generic.ICollection{Jelly.Entity}
+  definition: System.Collections.Generic.ICollection`1.Contains(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(Entity)
+  nameWithType: ICollection<Entity>.Contains(Entity)
+  fullName: System.Collections.Generic.ICollection<Jelly.Entity>.Contains(Jelly.Entity)
+  nameWithType.vb: ICollection(Of Entity).Contains(Entity)
+  fullName.vb: System.Collections.Generic.ICollection(Of Jelly.Entity).Contains(Jelly.Entity)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Contains(Jelly.Entity)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{Jelly.Entity}.Contains(Jelly.Entity)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Contains(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Contains(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(T)
+  nameWithType: ICollection<T>.Contains(T)
+  fullName: System.Collections.Generic.ICollection<T>.Contains(T)
+  nameWithType.vb: ICollection(Of T).Contains(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Contains(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )

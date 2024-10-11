@@ -1,0 +1,178 @@
+### YamlMime:TableOfContent
+items:
+- uid: Jelly
+  name: Jelly
+  items:
+  - uid: Jelly.BasicContentProvider
+    name: BasicContentProvider
+  - uid: Jelly.Bit
+    name: Bit
+  - uid: Jelly.BooleanExtensions
+    name: BooleanExtensions
+  - uid: Jelly.CollisionSystem
+    name: CollisionSystem
+  - uid: Jelly.Component
+    name: Component
+  - uid: Jelly.ContentProvider
+    name: ContentProvider
+  - uid: Jelly.Entity
+    name: Entity
+  - uid: Jelly.GameServer
+    name: GameServer
+  - uid: Jelly.Input
+    name: Input
+  - uid: Jelly.InputType
+    name: InputType
+  - uid: Jelly.JellyBackend
+    name: JellyBackend
+  - uid: Jelly.Line
+    name: Line
+  - uid: Jelly.LocalizationManager
+    name: LocalizationManager
+  - uid: Jelly.Logger
+    name: Logger
+  - uid: Jelly.Logger.MessageType
+    name: Logger.MessageType
+  - uid: Jelly.MappedInput
+    name: MappedInput
+  - uid: Jelly.MappedInput.GamePad
+    name: MappedInput.GamePad
+  - uid: Jelly.MappedInput.Keyboard
+    name: MappedInput.Keyboard
+  - uid: Jelly.MappedInput.Mouse
+    name: MappedInput.Mouse
+  - uid: Jelly.MouseButtons
+    name: MouseButtons
+  - uid: Jelly.NetworkProvider
+    name: NetworkProvider
+  - uid: Jelly.ObjectDisposedEventArgs
+    name: ObjectDisposedEventArgs
+  - uid: Jelly.PointExtensions
+    name: PointExtensions
+  - uid: Jelly.RectangleExtensions
+    name: RectangleExtensions
+  - uid: Jelly.Scene
+    name: Scene
+  - uid: Jelly.SceneManager
+    name: SceneManager
+  - uid: Jelly.SceneManager.SceneChangedEvent
+    name: SceneManager.SceneChangedEvent
+  - uid: Jelly.Tag
+    name: Tag
+  - uid: Jelly.Time
+    name: Time
+- uid: Jelly.Components
+  name: Jelly.Components
+  items:
+  - uid: Jelly.Components.Actor
+    name: Actor
+  - uid: Jelly.Components.IWorldObject
+    name: IWorldObject
+  - uid: Jelly.Components.Moveable
+    name: Moveable
+  - uid: Jelly.Components.Solid
+    name: Solid
+  - uid: Jelly.Components.SpriteComponent
+    name: SpriteComponent
+- uid: Jelly.Components.Attributes
+  name: Jelly.Components.Attributes
+  items:
+  - uid: Jelly.Components.Attributes.ComponentTypeAttribute
+    name: ComponentTypeAttribute
+  - uid: Jelly.Components.Attributes.MutuallyExclusiveComponentAttribute
+    name: MutuallyExclusiveComponentAttribute
+  - uid: Jelly.Components.Attributes.MutuallyExclusiveComponentKind
+    name: MutuallyExclusiveComponentKind
+  - uid: Jelly.Components.Attributes.RequiredComponentAttribute
+    name: RequiredComponentAttribute
+  - uid: Jelly.Components.Attributes.SingletonComponentAttribute
+    name: SingletonComponentAttribute
+- uid: Jelly.Coroutines
+  name: Jelly.Coroutines
+  items:
+  - uid: Jelly.Coroutines.CoroutineHandle
+    name: CoroutineHandle
+  - uid: Jelly.Coroutines.CoroutineRunner
+    name: CoroutineRunner
+  - uid: Jelly.Coroutines.TimeDelay
+    name: TimeDelay
+- uid: Jelly.GameContent
+  name: Jelly.GameContent
+  items:
+  - uid: Jelly.GameContent.AbstractRegistry
+    name: AbstractRegistry
+  - uid: Jelly.GameContent.Registries
+    name: Registries
+  - uid: Jelly.GameContent.RegistryEntry
+    name: RegistryEntry
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry<TDef>
+  - uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+    name: Registry<TDef>.EntryEventDelegate
+- uid: Jelly.Graphics
+  name: Jelly.Graphics
+  items:
+  - uid: Jelly.Graphics.AbstractRenderer
+    name: AbstractRenderer
+  - uid: Jelly.Graphics.Camera
+    name: Camera
+  - uid: Jelly.Graphics.Renderer
+    name: Renderer
+  - uid: Jelly.Graphics.SpriteBatchExtensions
+    name: SpriteBatchExtensions
+  - uid: Jelly.Graphics.TextAlignment
+    name: TextAlignment
+  - uid: Jelly.Graphics.TextAlignmentPresets
+    name: TextAlignmentPresets
+  - uid: Jelly.Graphics.TextComponent
+    name: TextComponent
+- uid: Jelly.IO
+  name: Jelly.IO
+  items:
+  - uid: Jelly.IO.PathBuilder
+    name: PathBuilder
+  - uid: Jelly.IO.TextWriterEventArgs
+    name: TextWriterEventArgs
+  - uid: Jelly.IO.TextWriterFormattedEventArgs
+    name: TextWriterFormattedEventArgs
+  - uid: Jelly.IO.TextWriterWrapper
+    name: TextWriterWrapper
+- uid: Jelly.Localization
+  name: Jelly.Localization
+  items:
+  - uid: Jelly.Localization.LanguageSettings
+    name: LanguageSettings
+- uid: Jelly.Net
+  name: Jelly.Net
+  items:
+  - uid: Jelly.Net.SyncPacketType
+    name: SyncPacketType
+- uid: Jelly.Serialization
+  name: Jelly.Serialization
+  items:
+  - uid: Jelly.Serialization.JsonAutoPolymorphicAttribute
+    name: JsonAutoPolymorphicAttribute
+  - uid: Jelly.Serialization.JsonObjectBuilder
+    name: JsonObjectBuilder
+  - uid: Jelly.Serialization.JsonPointConverter
+    name: JsonPointConverter
+  - uid: Jelly.Serialization.JsonVector2Converter
+    name: JsonVector2Converter
+  - uid: Jelly.Serialization.PolymorphicTypeResolver
+    name: PolymorphicTypeResolver
+  - uid: Jelly.Serialization.TypeSet
+    name: TypeSet
+- uid: Jelly.Utilities
+  name: Jelly.Utilities
+  items:
+  - uid: Jelly.Utilities.ComponentList
+    name: ComponentList
+  - uid: Jelly.Utilities.ComponentList.LockModes
+    name: ComponentList.LockModes
+  - uid: Jelly.Utilities.EntityList
+    name: EntityList
+  - uid: Jelly.Utilities.MathUtil
+    name: MathUtil
+  - uid: Jelly.Utilities.TagFilter
+    name: TagFilter
+memberLayout: SamePage

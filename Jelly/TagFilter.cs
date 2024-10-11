@@ -1,4 +1,4 @@
-namespace Jelly.Utilities;
+namespace Jelly;
 
 public enum TagFilter
 {

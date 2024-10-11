@@ -1,0 +1,1303 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.GameContent.Registry`1
+  commentId: T:Jelly.GameContent.Registry`1
+  id: Registry`1
+  parent: Jelly.GameContent
+  children:
+  - Jelly.GameContent.Registry`1.EntryAdded
+  - Jelly.GameContent.Registry`1.EntryRemoved
+  - Jelly.GameContent.Registry`1.GetDef(System.String)
+  - Jelly.GameContent.Registry`1.GetDefStatic(System.String)
+  - Jelly.GameContent.Registry`1.GetEnumerator
+  - Jelly.GameContent.Registry`1.Item(System.String)
+  - Jelly.GameContent.Registry`1.Keys
+  - Jelly.GameContent.Registry`1.Register(`0)
+  - Jelly.GameContent.Registry`1.Register(`0,System.String)
+  - Jelly.GameContent.Registry`1.Unregister(System.String)
+  - Jelly.GameContent.Registry`1.Unregister(`0)
+  - Jelly.GameContent.Registry`1.Values
+  langs:
+  - csharp
+  - vb
+  name: Registry<TDef>
+  nameWithType: Registry<TDef>
+  fullName: Jelly.GameContent.Registry<TDef>
+  type: Class
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Registry
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 4
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: 'public abstract class Registry<TDef> : AbstractRegistry, IEnumerable<KeyValuePair<string, TDef>>, IEnumerable where TDef : RegistryEntry'
+    typeParameters:
+    - id: TDef
+    content.vb: Public MustInherit Class Registry(Of TDef As RegistryEntry) Inherits AbstractRegistry Implements IEnumerable(Of KeyValuePair(Of String, TDef)), IEnumerable
+  inheritance:
+  - System.Object
+  - Jelly.GameContent.AbstractRegistry
+  implements:
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - Jelly.GameContent.AbstractRegistry.Initialized
+  - Jelly.GameContent.AbstractRegistry.CheckInitialized
+  - Jelly.GameContent.AbstractRegistry.Init
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: Registry(Of TDef)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef)
+  name.vb: Registry(Of TDef)
+- uid: Jelly.GameContent.Registry`1.Item(System.String)
+  commentId: P:Jelly.GameContent.Registry`1.Item(System.String)
+  id: Item(System.String)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: Registry<TDef>.this[string]
+  fullName: Jelly.GameContent.Registry<TDef>.this[string]
+  type: Property
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: this[]
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 8
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public TDef this[string key] { get; }
+    parameters:
+    - id: key
+      type: System.String
+    return:
+      type: '{TDef}'
+    content.vb: Public ReadOnly Default Property this[](key As String) As TDef
+  overload: Jelly.GameContent.Registry`1.Item*
+  nameWithType.vb: Registry(Of TDef).this[](String)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).this[](String)
+  name.vb: this[](String)
+- uid: Jelly.GameContent.Registry`1.GetDef(System.String)
+  commentId: M:Jelly.GameContent.Registry`1.GetDef(System.String)
+  id: GetDef(System.String)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: GetDef(string)
+  nameWithType: Registry<TDef>.GetDef(string)
+  fullName: Jelly.GameContent.Registry<TDef>.GetDef(string)
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetDef
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 13
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public TDef? GetDef(string key)
+    parameters:
+    - id: key
+      type: System.String
+    return:
+      type: '{TDef}'
+    content.vb: Public Function GetDef(key As String) As TDef
+  overload: Jelly.GameContent.Registry`1.GetDef*
+  nameWithType.vb: Registry(Of TDef).GetDef(String)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).GetDef(String)
+  name.vb: GetDef(String)
+- uid: Jelly.GameContent.Registry`1.GetDefStatic(System.String)
+  commentId: M:Jelly.GameContent.Registry`1.GetDefStatic(System.String)
+  id: GetDefStatic(System.String)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: GetDefStatic(string)
+  nameWithType: Registry<TDef>.GetDefStatic(string)
+  fullName: Jelly.GameContent.Registry<TDef>.GetDefStatic(string)
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetDefStatic
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 21
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public static TDef? GetDefStatic(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: '{TDef}'
+    content.vb: Public Shared Function GetDefStatic(name As String) As TDef
+  overload: Jelly.GameContent.Registry`1.GetDefStatic*
+  nameWithType.vb: Registry(Of TDef).GetDefStatic(String)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).GetDefStatic(String)
+  name.vb: GetDefStatic(String)
+- uid: Jelly.GameContent.Registry`1.Register(`0)
+  commentId: M:Jelly.GameContent.Registry`1.Register(`0)
+  id: Register(`0)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: Register(TDef)
+  nameWithType: Registry<TDef>.Register(TDef)
+  fullName: Jelly.GameContent.Registry<TDef>.Register(TDef)
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Register
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 23
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public bool Register(TDef value)
+    parameters:
+    - id: value
+      type: '{TDef}'
+    return:
+      type: System.Boolean
+    content.vb: Public Function Register(value As TDef) As Boolean
+  overload: Jelly.GameContent.Registry`1.Register*
+  nameWithType.vb: Registry(Of TDef).Register(TDef)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Register(TDef)
+- uid: Jelly.GameContent.Registry`1.Register(`0,System.String)
+  commentId: M:Jelly.GameContent.Registry`1.Register(`0,System.String)
+  id: Register(`0,System.String)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: Register(TDef, string)
+  nameWithType: Registry<TDef>.Register(TDef, string)
+  fullName: Jelly.GameContent.Registry<TDef>.Register(TDef, string)
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Register
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 32
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public bool Register(TDef value, string key)
+    parameters:
+    - id: value
+      type: '{TDef}'
+    - id: key
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function Register(value As TDef, key As String) As Boolean
+  overload: Jelly.GameContent.Registry`1.Register*
+  nameWithType.vb: Registry(Of TDef).Register(TDef, String)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Register(TDef, String)
+  name.vb: Register(TDef, String)
+- uid: Jelly.GameContent.Registry`1.Unregister(System.String)
+  commentId: M:Jelly.GameContent.Registry`1.Unregister(System.String)
+  id: Unregister(System.String)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: Unregister(string)
+  nameWithType: Registry<TDef>.Unregister(string)
+  fullName: Jelly.GameContent.Registry<TDef>.Unregister(string)
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Unregister
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 50
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public bool Unregister(string key)
+    parameters:
+    - id: key
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function Unregister(key As String) As Boolean
+  overload: Jelly.GameContent.Registry`1.Unregister*
+  nameWithType.vb: Registry(Of TDef).Unregister(String)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Unregister(String)
+  name.vb: Unregister(String)
+- uid: Jelly.GameContent.Registry`1.Unregister(`0)
+  commentId: M:Jelly.GameContent.Registry`1.Unregister(`0)
+  id: Unregister(`0)
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: Unregister(TDef)
+  nameWithType: Registry<TDef>.Unregister(TDef)
+  fullName: Jelly.GameContent.Registry<TDef>.Unregister(TDef)
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Unregister
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 65
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public bool Unregister(TDef value)
+    parameters:
+    - id: value
+      type: '{TDef}'
+    return:
+      type: System.Boolean
+    content.vb: Public Function Unregister(value As TDef) As Boolean
+  overload: Jelly.GameContent.Registry`1.Unregister*
+  nameWithType.vb: Registry(Of TDef).Unregister(TDef)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Unregister(TDef)
+- uid: Jelly.GameContent.Registry`1.EntryAdded
+  commentId: E:Jelly.GameContent.Registry`1.EntryAdded
+  id: EntryAdded
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: EntryAdded
+  nameWithType: Registry<TDef>.EntryAdded
+  fullName: Jelly.GameContent.Registry<TDef>.EntryAdded
+  type: Event
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: EntryAdded
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 80
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public event Registry<TDef>.EntryEventDelegate EntryAdded
+    return:
+      type: Jelly.GameContent.Registry`1.EntryEventDelegate
+    content.vb: Public Event EntryAdded As Registry(Of TDef).EntryEventDelegate
+  nameWithType.vb: Registry(Of TDef).EntryAdded
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).EntryAdded
+- uid: Jelly.GameContent.Registry`1.EntryRemoved
+  commentId: E:Jelly.GameContent.Registry`1.EntryRemoved
+  id: EntryRemoved
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: EntryRemoved
+  nameWithType: Registry<TDef>.EntryRemoved
+  fullName: Jelly.GameContent.Registry<TDef>.EntryRemoved
+  type: Event
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: EntryRemoved
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 82
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public event Registry<TDef>.EntryEventDelegate EntryRemoved
+    return:
+      type: Jelly.GameContent.Registry`1.EntryEventDelegate
+    content.vb: Public Event EntryRemoved As Registry(Of TDef).EntryEventDelegate
+  nameWithType.vb: Registry(Of TDef).EntryRemoved
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).EntryRemoved
+- uid: Jelly.GameContent.Registry`1.GetEnumerator
+  commentId: M:Jelly.GameContent.Registry`1.GetEnumerator
+  id: GetEnumerator
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: Registry<TDef>.GetEnumerator()
+  fullName: Jelly.GameContent.Registry<TDef>.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetEnumerator
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 84
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  summary: Returns an enumerator that iterates through a collection.
+  example: []
+  syntax:
+    content: public override IEnumerator<KeyValuePair<string, TDef>> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}
+      description: An <xref href="System.Collections.IEnumerator" data-throw-if-not-resolved="false"></xref> object that can be used to iterate through the collection.
+    content.vb: Public Overrides Function GetEnumerator() As IEnumerator(Of KeyValuePair(Of String, TDef))
+  overridden: Jelly.GameContent.AbstractRegistry.GetEnumerator
+  overload: Jelly.GameContent.Registry`1.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}.GetEnumerator
+  nameWithType.vb: Registry(Of TDef).GetEnumerator()
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).GetEnumerator()
+- uid: Jelly.GameContent.Registry`1.Keys
+  commentId: P:Jelly.GameContent.Registry`1.Keys
+  id: Keys
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: Keys
+  nameWithType: Registry<TDef>.Keys
+  fullName: Jelly.GameContent.Registry<TDef>.Keys
+  type: Property
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Keys
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 92
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public virtual IReadOnlyCollection<string> Keys { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{System.String}
+    content.vb: Public Overridable ReadOnly Property Keys As IReadOnlyCollection(Of String)
+  overload: Jelly.GameContent.Registry`1.Keys*
+  nameWithType.vb: Registry(Of TDef).Keys
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Keys
+- uid: Jelly.GameContent.Registry`1.Values
+  commentId: P:Jelly.GameContent.Registry`1.Values
+  id: Values
+  parent: Jelly.GameContent.Registry`1
+  langs:
+  - csharp
+  - vb
+  name: Values
+  nameWithType: Registry<TDef>.Values
+  fullName: Jelly.GameContent.Registry<TDef>.Values
+  type: Property
+  source:
+    remote:
+      path: Jelly/GameContent/Registry.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Values
+    path: ../Jelly/GameContent/Registry.cs
+    startLine: 94
+  assemblies:
+  - Jelly
+  namespace: Jelly.GameContent
+  syntax:
+    content: public virtual IReadOnlyCollection<TDef> Values { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{{TDef}}
+    content.vb: Public Overridable ReadOnly Property Values As IReadOnlyCollection(Of TDef)
+  overload: Jelly.GameContent.Registry`1.Values*
+  nameWithType.vb: Registry(Of TDef).Values
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Values
+references:
+- uid: Jelly.GameContent
+  commentId: N:Jelly.GameContent
+  href: Jelly.html
+  name: Jelly.GameContent
+  nameWithType: Jelly.GameContent
+  fullName: Jelly.GameContent
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.GameContent
+    name: GameContent
+    href: Jelly.GameContent.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.GameContent
+    name: GameContent
+    href: Jelly.GameContent.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Jelly.GameContent.AbstractRegistry
+  commentId: T:Jelly.GameContent.AbstractRegistry
+  parent: Jelly.GameContent
+  href: Jelly.GameContent.AbstractRegistry.html
+  name: AbstractRegistry
+  nameWithType: AbstractRegistry
+  fullName: Jelly.GameContent.AbstractRegistry
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,`0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, TDef>>
+  nameWithType: IEnumerable<KeyValuePair<string, TDef>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, TDef>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, TDef))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, TDef))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, TDef))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TDef
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TDef
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Jelly.GameContent.AbstractRegistry.Initialized
+  commentId: P:Jelly.GameContent.AbstractRegistry.Initialized
+  parent: Jelly.GameContent.AbstractRegistry
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_Initialized
+  name: Initialized
+  nameWithType: AbstractRegistry.Initialized
+  fullName: Jelly.GameContent.AbstractRegistry.Initialized
+- uid: Jelly.GameContent.AbstractRegistry.CheckInitialized
+  commentId: M:Jelly.GameContent.AbstractRegistry.CheckInitialized
+  parent: Jelly.GameContent.AbstractRegistry
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_CheckInitialized
+  name: CheckInitialized()
+  nameWithType: AbstractRegistry.CheckInitialized()
+  fullName: Jelly.GameContent.AbstractRegistry.CheckInitialized()
+  spec.csharp:
+  - uid: Jelly.GameContent.AbstractRegistry.CheckInitialized
+    name: CheckInitialized
+    href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_CheckInitialized
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.GameContent.AbstractRegistry.CheckInitialized
+    name: CheckInitialized
+    href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_CheckInitialized
+  - name: (
+  - name: )
+- uid: Jelly.GameContent.AbstractRegistry.Init
+  commentId: M:Jelly.GameContent.AbstractRegistry.Init
+  parent: Jelly.GameContent.AbstractRegistry
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_Init
+  name: Init()
+  nameWithType: AbstractRegistry.Init()
+  fullName: Jelly.GameContent.AbstractRegistry.Init()
+  spec.csharp:
+  - uid: Jelly.GameContent.AbstractRegistry.Init
+    name: Init
+    href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_Init
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.GameContent.AbstractRegistry.Init
+    name: Init
+    href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_Init
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Jelly.GameContent.Registry`1.Item*
+  commentId: Overload:Jelly.GameContent.Registry`1.Item
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_Item_System_String_
+  name: this
+  nameWithType: Registry<TDef>.this
+  fullName: Jelly.GameContent.Registry<TDef>.this
+  nameWithType.vb: Registry(Of TDef).this[]
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).this[]
+  name.vb: this[]
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{TDef}'
+  commentId: '!:TDef'
+  definition: TDef
+  name: TDef
+  nameWithType: TDef
+  fullName: TDef
+- uid: TDef
+  name: TDef
+  nameWithType: TDef
+  fullName: TDef
+- uid: Jelly.GameContent.Registry`1.GetDef*
+  commentId: Overload:Jelly.GameContent.Registry`1.GetDef
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_GetDef_System_String_
+  name: GetDef
+  nameWithType: Registry<TDef>.GetDef
+  fullName: Jelly.GameContent.Registry<TDef>.GetDef
+  nameWithType.vb: Registry(Of TDef).GetDef
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).GetDef
+- uid: Jelly.GameContent.Registry`1.GetDefStatic*
+  commentId: Overload:Jelly.GameContent.Registry`1.GetDefStatic
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_GetDefStatic_System_String_
+  name: GetDefStatic
+  nameWithType: Registry<TDef>.GetDefStatic
+  fullName: Jelly.GameContent.Registry<TDef>.GetDefStatic
+  nameWithType.vb: Registry(Of TDef).GetDefStatic
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).GetDefStatic
+- uid: Jelly.GameContent.Registry`1.Register*
+  commentId: Overload:Jelly.GameContent.Registry`1.Register
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_Register__0_
+  name: Register
+  nameWithType: Registry<TDef>.Register
+  fullName: Jelly.GameContent.Registry<TDef>.Register
+  nameWithType.vb: Registry(Of TDef).Register
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Register
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Jelly.GameContent.Registry`1.Unregister*
+  commentId: Overload:Jelly.GameContent.Registry`1.Unregister
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_Unregister_System_String_
+  name: Unregister
+  nameWithType: Registry<TDef>.Unregister
+  fullName: Jelly.GameContent.Registry<TDef>.Unregister
+  nameWithType.vb: Registry(Of TDef).Unregister
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Unregister
+- uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+  commentId: T:Jelly.GameContent.Registry`1.EntryEventDelegate
+  parent: Jelly.GameContent
+  href: Jelly.GameContent.Registry-1.html
+  name: Registry<TDef>.EntryEventDelegate
+  nameWithType: Registry<TDef>.EntryEventDelegate
+  fullName: Jelly.GameContent.Registry<TDef>.EntryEventDelegate
+  nameWithType.vb: Registry(Of TDef).EntryEventDelegate
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).EntryEventDelegate
+  name.vb: Registry(Of TDef).EntryEventDelegate
+  spec.csharp:
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry
+    href: Jelly.GameContent.Registry-1.html
+  - name: <
+  - name: TDef
+  - name: '>'
+  - name: .
+  - uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+    name: EntryEventDelegate
+    href: Jelly.GameContent.Registry-1.EntryEventDelegate.html
+  spec.vb:
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry
+    href: Jelly.GameContent.Registry-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDef
+  - name: )
+  - name: .
+  - uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+    name: EntryEventDelegate
+    href: Jelly.GameContent.Registry-1.EntryEventDelegate.html
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: Jelly.GameContent.AbstractRegistry.GetEnumerator
+  commentId: M:Jelly.GameContent.AbstractRegistry.GetEnumerator
+  parent: Jelly.GameContent.AbstractRegistry
+  href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_GetEnumerator
+  name: GetEnumerator()
+  nameWithType: AbstractRegistry.GetEnumerator()
+  fullName: Jelly.GameContent.AbstractRegistry.GetEnumerator()
+  spec.csharp:
+  - uid: Jelly.GameContent.AbstractRegistry.GetEnumerator
+    name: GetEnumerator
+    href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_GetEnumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.GameContent.AbstractRegistry.GetEnumerator
+    name: GetEnumerator
+    href: Jelly.GameContent.AbstractRegistry.html#Jelly_GameContent_AbstractRegistry_GetEnumerator
+  - name: (
+  - name: )
+- uid: Jelly.GameContent.Registry`1.GetEnumerator*
+  commentId: Overload:Jelly.GameContent.Registry`1.GetEnumerator
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_GetEnumerator
+  name: GetEnumerator
+  nameWithType: Registry<TDef>.GetEnumerator
+  fullName: Jelly.GameContent.Registry<TDef>.GetEnumerator
+  nameWithType.vb: Registry(Of TDef).GetEnumerator
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,`0}}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<KeyValuePair<string, TDef>>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, TDef>>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, TDef)).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, TDef)).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,`0}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,`0}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,{TDef}}}
+  commentId: T:System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,`0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<KeyValuePair<string, TDef>>
+  nameWithType: IEnumerator<KeyValuePair<string, TDef>>
+  fullName: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, TDef>>
+  nameWithType.vb: IEnumerator(Of KeyValuePair(Of String, TDef))
+  fullName.vb: System.Collections.Generic.IEnumerator(Of System.Collections.Generic.KeyValuePair(Of String, TDef))
+  name.vb: IEnumerator(Of KeyValuePair(Of String, TDef))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TDef
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: TDef
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Jelly.GameContent.Registry`1.Keys*
+  commentId: Overload:Jelly.GameContent.Registry`1.Keys
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_Keys
+  name: Keys
+  nameWithType: Registry<TDef>.Keys
+  fullName: Jelly.GameContent.Registry<TDef>.Keys
+  nameWithType.vb: Registry(Of TDef).Keys
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Keys
+- uid: System.Collections.Generic.IReadOnlyCollection{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<string>
+  nameWithType: IReadOnlyCollection<string>
+  fullName: System.Collections.Generic.IReadOnlyCollection<string>
+  nameWithType.vb: IReadOnlyCollection(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of String)
+  name.vb: IReadOnlyCollection(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Jelly.GameContent.Registry`1.Values*
+  commentId: Overload:Jelly.GameContent.Registry`1.Values
+  href: Jelly.GameContent.Registry-1.html#Jelly_GameContent_Registry_1_Values
+  name: Values
+  nameWithType: Registry<TDef>.Values
+  fullName: Jelly.GameContent.Registry<TDef>.Values
+  nameWithType.vb: Registry(Of TDef).Values
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).Values
+- uid: System.Collections.Generic.IReadOnlyCollection{{TDef}}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<TDef>
+  nameWithType: IReadOnlyCollection<TDef>
+  fullName: System.Collections.Generic.IReadOnlyCollection<TDef>
+  nameWithType.vb: IReadOnlyCollection(Of TDef)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of TDef)
+  name.vb: IReadOnlyCollection(Of TDef)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: TDef
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDef
+  - name: )

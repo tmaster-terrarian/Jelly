@@ -1,0 +1,874 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.BooleanExtensions
+  commentId: T:Jelly.BooleanExtensions
+  id: BooleanExtensions
+  parent: Jelly
+  children:
+  - Jelly.BooleanExtensions.ReadBit(System.IO.BinaryReader)
+  - Jelly.BooleanExtensions.ToBit(System.Boolean)
+  - Jelly.BooleanExtensions.ToBit(System.Int32)
+  - Jelly.BooleanExtensions.ToByte(System.Boolean)
+  - Jelly.BooleanExtensions.ToDouble(System.Boolean)
+  - Jelly.BooleanExtensions.ToInt32(System.Boolean)
+  - Jelly.BooleanExtensions.ToInt64(System.Boolean)
+  - Jelly.BooleanExtensions.ToSingle(System.Boolean)
+  - Jelly.BooleanExtensions.ToUInt32(System.Boolean)
+  - Jelly.BooleanExtensions.ToUInt64(System.Boolean)
+  - Jelly.BooleanExtensions.Write(System.IO.BinaryWriter,Jelly.Bit)
+  langs:
+  - csharp
+  - vb
+  name: BooleanExtensions
+  nameWithType: BooleanExtensions
+  fullName: Jelly.BooleanExtensions
+  type: Class
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: BooleanExtensions
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 4
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static class BooleanExtensions
+    content.vb: Public Module BooleanExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Jelly.BooleanExtensions.ToBit(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToBit(System.Boolean)
+  id: ToBit(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToBit(bool)
+  nameWithType: BooleanExtensions.ToBit(bool)
+  fullName: Jelly.BooleanExtensions.ToBit(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToBit
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 6
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static Bit ToBit(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: Jelly.Bit
+    content.vb: Public Shared Function ToBit(value As Boolean) As Bit
+  overload: Jelly.BooleanExtensions.ToBit*
+  nameWithType.vb: BooleanExtensions.ToBit(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToBit(Boolean)
+  name.vb: ToBit(Boolean)
+- uid: Jelly.BooleanExtensions.ToBit(System.Int32)
+  commentId: M:Jelly.BooleanExtensions.ToBit(System.Int32)
+  id: ToBit(System.Int32)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToBit(int)
+  nameWithType: BooleanExtensions.ToBit(int)
+  fullName: Jelly.BooleanExtensions.ToBit(int)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToBit
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 11
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static Bit ToBit(this int value)
+    parameters:
+    - id: value
+      type: System.Int32
+    return:
+      type: Jelly.Bit
+    content.vb: Public Shared Function ToBit(value As Integer) As Bit
+  overload: Jelly.BooleanExtensions.ToBit*
+  nameWithType.vb: BooleanExtensions.ToBit(Integer)
+  fullName.vb: Jelly.BooleanExtensions.ToBit(Integer)
+  name.vb: ToBit(Integer)
+- uid: Jelly.BooleanExtensions.ToByte(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToByte(System.Boolean)
+  id: ToByte(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToByte(bool)
+  nameWithType: BooleanExtensions.ToByte(bool)
+  fullName: Jelly.BooleanExtensions.ToByte(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToByte
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 16
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static byte ToByte(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.Byte
+    content.vb: Public Shared Function ToByte(value As Boolean) As Byte
+  overload: Jelly.BooleanExtensions.ToByte*
+  nameWithType.vb: BooleanExtensions.ToByte(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToByte(Boolean)
+  name.vb: ToByte(Boolean)
+- uid: Jelly.BooleanExtensions.ToInt32(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToInt32(System.Boolean)
+  id: ToInt32(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToInt32(bool)
+  nameWithType: BooleanExtensions.ToInt32(bool)
+  fullName: Jelly.BooleanExtensions.ToInt32(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToInt32
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 21
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static int ToInt32(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function ToInt32(value As Boolean) As Integer
+  overload: Jelly.BooleanExtensions.ToInt32*
+  nameWithType.vb: BooleanExtensions.ToInt32(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToInt32(Boolean)
+  name.vb: ToInt32(Boolean)
+- uid: Jelly.BooleanExtensions.ToUInt32(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToUInt32(System.Boolean)
+  id: ToUInt32(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToUInt32(bool)
+  nameWithType: BooleanExtensions.ToUInt32(bool)
+  fullName: Jelly.BooleanExtensions.ToUInt32(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToUInt32
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 26
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static uint ToUInt32(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.UInt32
+    content.vb: Public Shared Function ToUInt32(value As Boolean) As UInteger
+  overload: Jelly.BooleanExtensions.ToUInt32*
+  nameWithType.vb: BooleanExtensions.ToUInt32(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToUInt32(Boolean)
+  name.vb: ToUInt32(Boolean)
+- uid: Jelly.BooleanExtensions.ToInt64(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToInt64(System.Boolean)
+  id: ToInt64(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToInt64(bool)
+  nameWithType: BooleanExtensions.ToInt64(bool)
+  fullName: Jelly.BooleanExtensions.ToInt64(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToInt64
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 31
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static long ToInt64(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.Int64
+    content.vb: Public Shared Function ToInt64(value As Boolean) As Long
+  overload: Jelly.BooleanExtensions.ToInt64*
+  nameWithType.vb: BooleanExtensions.ToInt64(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToInt64(Boolean)
+  name.vb: ToInt64(Boolean)
+- uid: Jelly.BooleanExtensions.ToUInt64(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToUInt64(System.Boolean)
+  id: ToUInt64(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToUInt64(bool)
+  nameWithType: BooleanExtensions.ToUInt64(bool)
+  fullName: Jelly.BooleanExtensions.ToUInt64(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToUInt64
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 36
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static ulong ToUInt64(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.UInt64
+    content.vb: Public Shared Function ToUInt64(value As Boolean) As ULong
+  overload: Jelly.BooleanExtensions.ToUInt64*
+  nameWithType.vb: BooleanExtensions.ToUInt64(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToUInt64(Boolean)
+  name.vb: ToUInt64(Boolean)
+- uid: Jelly.BooleanExtensions.ToSingle(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToSingle(System.Boolean)
+  id: ToSingle(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToSingle(bool)
+  nameWithType: BooleanExtensions.ToSingle(bool)
+  fullName: Jelly.BooleanExtensions.ToSingle(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToSingle
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 41
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static float ToSingle(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.Single
+    content.vb: Public Shared Function ToSingle(value As Boolean) As Single
+  overload: Jelly.BooleanExtensions.ToSingle*
+  nameWithType.vb: BooleanExtensions.ToSingle(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToSingle(Boolean)
+  name.vb: ToSingle(Boolean)
+- uid: Jelly.BooleanExtensions.ToDouble(System.Boolean)
+  commentId: M:Jelly.BooleanExtensions.ToDouble(System.Boolean)
+  id: ToDouble(System.Boolean)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToDouble(bool)
+  nameWithType: BooleanExtensions.ToDouble(bool)
+  fullName: Jelly.BooleanExtensions.ToDouble(bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ToDouble
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 46
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static double ToDouble(this bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    return:
+      type: System.Double
+    content.vb: Public Shared Function ToDouble(value As Boolean) As Double
+  overload: Jelly.BooleanExtensions.ToDouble*
+  nameWithType.vb: BooleanExtensions.ToDouble(Boolean)
+  fullName.vb: Jelly.BooleanExtensions.ToDouble(Boolean)
+  name.vb: ToDouble(Boolean)
+- uid: Jelly.BooleanExtensions.Write(System.IO.BinaryWriter,Jelly.Bit)
+  commentId: M:Jelly.BooleanExtensions.Write(System.IO.BinaryWriter,Jelly.Bit)
+  id: Write(System.IO.BinaryWriter,Jelly.Bit)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: Write(BinaryWriter, Bit)
+  nameWithType: BooleanExtensions.Write(BinaryWriter, Bit)
+  fullName: Jelly.BooleanExtensions.Write(System.IO.BinaryWriter, Jelly.Bit)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Write
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 56
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  summary: Writes a one-byte Bit value to the current stream.
+  example: []
+  syntax:
+    content: public static void Write(this BinaryWriter writer, Bit value)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ''
+    - id: value
+      type: Jelly.Bit
+      description: The Bit value to write (0 or 1).
+    content.vb: Public Shared Sub Write(writer As BinaryWriter, value As Bit)
+  overload: Jelly.BooleanExtensions.Write*
+- uid: Jelly.BooleanExtensions.ReadBit(System.IO.BinaryReader)
+  commentId: M:Jelly.BooleanExtensions.ReadBit(System.IO.BinaryReader)
+  id: ReadBit(System.IO.BinaryReader)
+  isExtensionMethod: true
+  parent: Jelly.BooleanExtensions
+  langs:
+  - csharp
+  - vb
+  name: ReadBit(BinaryReader)
+  nameWithType: BooleanExtensions.ReadBit(BinaryReader)
+  fullName: Jelly.BooleanExtensions.ReadBit(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: Jelly/BooleanExtensions.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ReadBit
+    path: ../Jelly/BooleanExtensions.cs
+    startLine: 61
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static Bit ReadBit(this BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+    return:
+      type: Jelly.Bit
+    content.vb: Public Shared Function ReadBit(reader As BinaryReader) As Bit
+  overload: Jelly.BooleanExtensions.ReadBit*
+references:
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Jelly.BooleanExtensions.ToBit*
+  commentId: Overload:Jelly.BooleanExtensions.ToBit
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToBit_System_Boolean_
+  name: ToBit
+  nameWithType: BooleanExtensions.ToBit
+  fullName: Jelly.BooleanExtensions.ToBit
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Jelly.Bit
+  commentId: T:Jelly.Bit
+  parent: Jelly
+  href: Jelly.Bit.html
+  name: Bit
+  nameWithType: Bit
+  fullName: Jelly.Bit
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Jelly.BooleanExtensions.ToByte*
+  commentId: Overload:Jelly.BooleanExtensions.ToByte
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToByte_System_Boolean_
+  name: ToByte
+  nameWithType: BooleanExtensions.ToByte
+  fullName: Jelly.BooleanExtensions.ToByte
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Jelly.BooleanExtensions.ToInt32*
+  commentId: Overload:Jelly.BooleanExtensions.ToInt32
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToInt32_System_Boolean_
+  name: ToInt32
+  nameWithType: BooleanExtensions.ToInt32
+  fullName: Jelly.BooleanExtensions.ToInt32
+- uid: Jelly.BooleanExtensions.ToUInt32*
+  commentId: Overload:Jelly.BooleanExtensions.ToUInt32
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToUInt32_System_Boolean_
+  name: ToUInt32
+  nameWithType: BooleanExtensions.ToUInt32
+  fullName: Jelly.BooleanExtensions.ToUInt32
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Jelly.BooleanExtensions.ToInt64*
+  commentId: Overload:Jelly.BooleanExtensions.ToInt64
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToInt64_System_Boolean_
+  name: ToInt64
+  nameWithType: BooleanExtensions.ToInt64
+  fullName: Jelly.BooleanExtensions.ToInt64
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Jelly.BooleanExtensions.ToUInt64*
+  commentId: Overload:Jelly.BooleanExtensions.ToUInt64
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToUInt64_System_Boolean_
+  name: ToUInt64
+  nameWithType: BooleanExtensions.ToUInt64
+  fullName: Jelly.BooleanExtensions.ToUInt64
+- uid: System.UInt64
+  commentId: T:System.UInt64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong
+  nameWithType: ulong
+  fullName: ulong
+  nameWithType.vb: ULong
+  fullName.vb: ULong
+  name.vb: ULong
+- uid: Jelly.BooleanExtensions.ToSingle*
+  commentId: Overload:Jelly.BooleanExtensions.ToSingle
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToSingle_System_Boolean_
+  name: ToSingle
+  nameWithType: BooleanExtensions.ToSingle
+  fullName: Jelly.BooleanExtensions.ToSingle
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Jelly.BooleanExtensions.ToDouble*
+  commentId: Overload:Jelly.BooleanExtensions.ToDouble
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ToDouble_System_Boolean_
+  name: ToDouble
+  nameWithType: BooleanExtensions.ToDouble
+  fullName: Jelly.BooleanExtensions.ToDouble
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Jelly.BooleanExtensions.Write*
+  commentId: Overload:Jelly.BooleanExtensions.Write
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_Write_System_IO_BinaryWriter_Jelly_Bit_
+  name: Write
+  nameWithType: BooleanExtensions.Write
+  fullName: Jelly.BooleanExtensions.Write
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Jelly.BooleanExtensions.ReadBit*
+  commentId: Overload:Jelly.BooleanExtensions.ReadBit
+  href: Jelly.BooleanExtensions.html#Jelly_BooleanExtensions_ReadBit_System_IO_BinaryReader_
+  name: ReadBit
+  nameWithType: BooleanExtensions.ReadBit
+  fullName: Jelly.BooleanExtensions.ReadBit
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader

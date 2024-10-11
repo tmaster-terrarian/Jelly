@@ -1,0 +1,247 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Net.SyncPacketType
+  commentId: T:Jelly.Net.SyncPacketType
+  id: SyncPacketType
+  parent: Jelly.Net
+  children:
+  - Jelly.Net.SyncPacketType.ComponentAdded
+  - Jelly.Net.SyncPacketType.ComponentRemoved
+  - Jelly.Net.SyncPacketType.ComponentUpdate
+  - Jelly.Net.SyncPacketType.EntityAdded
+  - Jelly.Net.SyncPacketType.EntityRemoved
+  - Jelly.Net.SyncPacketType.EntityUpdate
+  - Jelly.Net.SyncPacketType.Projectile
+  langs:
+  - csharp
+  - vb
+  name: SyncPacketType
+  nameWithType: SyncPacketType
+  fullName: Jelly.Net.SyncPacketType
+  type: Enum
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: SyncPacketType
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 2
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: 'public enum SyncPacketType : byte'
+    content.vb: Public Enum SyncPacketType As Byte
+- uid: Jelly.Net.SyncPacketType.EntityUpdate
+  commentId: F:Jelly.Net.SyncPacketType.EntityUpdate
+  id: EntityUpdate
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: EntityUpdate
+  nameWithType: SyncPacketType.EntityUpdate
+  fullName: Jelly.Net.SyncPacketType.EntityUpdate
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: EntityUpdate
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 4
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: EntityUpdate = 0
+    return:
+      type: Jelly.Net.SyncPacketType
+- uid: Jelly.Net.SyncPacketType.EntityAdded
+  commentId: F:Jelly.Net.SyncPacketType.EntityAdded
+  id: EntityAdded
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: EntityAdded
+  nameWithType: SyncPacketType.EntityAdded
+  fullName: Jelly.Net.SyncPacketType.EntityAdded
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: EntityAdded
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 5
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: EntityAdded = 1
+    return:
+      type: Jelly.Net.SyncPacketType
+- uid: Jelly.Net.SyncPacketType.EntityRemoved
+  commentId: F:Jelly.Net.SyncPacketType.EntityRemoved
+  id: EntityRemoved
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: EntityRemoved
+  nameWithType: SyncPacketType.EntityRemoved
+  fullName: Jelly.Net.SyncPacketType.EntityRemoved
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: EntityRemoved
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 6
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: EntityRemoved = 2
+    return:
+      type: Jelly.Net.SyncPacketType
+- uid: Jelly.Net.SyncPacketType.ComponentUpdate
+  commentId: F:Jelly.Net.SyncPacketType.ComponentUpdate
+  id: ComponentUpdate
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: ComponentUpdate
+  nameWithType: SyncPacketType.ComponentUpdate
+  fullName: Jelly.Net.SyncPacketType.ComponentUpdate
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ComponentUpdate
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 7
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: ComponentUpdate = 3
+    return:
+      type: Jelly.Net.SyncPacketType
+- uid: Jelly.Net.SyncPacketType.ComponentAdded
+  commentId: F:Jelly.Net.SyncPacketType.ComponentAdded
+  id: ComponentAdded
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: ComponentAdded
+  nameWithType: SyncPacketType.ComponentAdded
+  fullName: Jelly.Net.SyncPacketType.ComponentAdded
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ComponentAdded
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 8
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: ComponentAdded = 4
+    return:
+      type: Jelly.Net.SyncPacketType
+- uid: Jelly.Net.SyncPacketType.ComponentRemoved
+  commentId: F:Jelly.Net.SyncPacketType.ComponentRemoved
+  id: ComponentRemoved
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: ComponentRemoved
+  nameWithType: SyncPacketType.ComponentRemoved
+  fullName: Jelly.Net.SyncPacketType.ComponentRemoved
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ComponentRemoved
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 9
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: ComponentRemoved = 5
+    return:
+      type: Jelly.Net.SyncPacketType
+- uid: Jelly.Net.SyncPacketType.Projectile
+  commentId: F:Jelly.Net.SyncPacketType.Projectile
+  id: Projectile
+  parent: Jelly.Net.SyncPacketType
+  langs:
+  - csharp
+  - vb
+  name: Projectile
+  nameWithType: SyncPacketType.Projectile
+  fullName: Jelly.Net.SyncPacketType.Projectile
+  type: Field
+  source:
+    remote:
+      path: Jelly/Net/SyncPacketType.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Projectile
+    path: ../Jelly/Net/SyncPacketType.cs
+    startLine: 10
+  assemblies:
+  - Jelly
+  namespace: Jelly.Net
+  syntax:
+    content: Projectile = 6
+    return:
+      type: Jelly.Net.SyncPacketType
+references:
+- uid: Jelly.Net
+  commentId: N:Jelly.Net
+  href: Jelly.html
+  name: Jelly.Net
+  nameWithType: Jelly.Net
+  fullName: Jelly.Net
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Net
+    name: Net
+    href: Jelly.Net.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Net
+    name: Net
+    href: Jelly.Net.html
+- uid: Jelly.Net.SyncPacketType
+  commentId: T:Jelly.Net.SyncPacketType
+  parent: Jelly.Net
+  href: Jelly.Net.SyncPacketType.html
+  name: SyncPacketType
+  nameWithType: SyncPacketType
+  fullName: Jelly.Net.SyncPacketType

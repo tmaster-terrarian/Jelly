@@ -1,0 +1,2086 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Components.Moveable
+  commentId: T:Jelly.Components.Moveable
+  id: Moveable
+  parent: Jelly.Components
+  children:
+  - Jelly.Components.Moveable.Bottom
+  - Jelly.Components.Moveable.BottomEdge
+  - Jelly.Components.Moveable.BottomLeft
+  - Jelly.Components.Moveable.BottomMiddle
+  - Jelly.Components.Moveable.BottomRight
+  - Jelly.Components.Moveable.Center
+  - Jelly.Components.Moveable.Collidable
+  - Jelly.Components.Moveable.Facing
+  - Jelly.Components.Moveable.Height
+  - Jelly.Components.Moveable.Hitbox
+  - Jelly.Components.Moveable.Intersects(Microsoft.Xna.Framework.Rectangle)
+  - Jelly.Components.Moveable.Left
+  - Jelly.Components.Moveable.LeftEdge
+  - Jelly.Components.Moveable.LeftMiddle
+  - Jelly.Components.Moveable.RemainderPosition
+  - Jelly.Components.Moveable.RemainderX
+  - Jelly.Components.Moveable.RemainderY
+  - Jelly.Components.Moveable.Right
+  - Jelly.Components.Moveable.RightEdge
+  - Jelly.Components.Moveable.RightMiddle
+  - Jelly.Components.Moveable.SpriteEffects
+  - Jelly.Components.Moveable.Top
+  - Jelly.Components.Moveable.TopEdge
+  - Jelly.Components.Moveable.TopLeft
+  - Jelly.Components.Moveable.TopMiddle
+  - Jelly.Components.Moveable.TopRight
+  - Jelly.Components.Moveable.Width
+  - Jelly.Components.Moveable.bboxOffset
+  - Jelly.Components.Moveable.velocity
+  langs:
+  - csharp
+  - vb
+  name: Moveable
+  nameWithType: Moveable
+  fullName: Jelly.Components.Moveable
+  type: Class
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Moveable
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 6
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: 'public class Moveable : Component'
+    content.vb: Public Class Moveable Inherits Component
+  inheritance:
+  - System.Object
+  - Jelly.Component
+  derivedClasses:
+  - Jelly.Components.Actor
+  - Jelly.Components.Solid
+  inheritedMembers:
+  - Jelly.Component.Entity
+  - Jelly.Component.Enabled
+  - Jelly.Component.Visible
+  - Jelly.Component.Scene
+  - Jelly.Component.Added(Jelly.Entity)
+  - Jelly.Component.Removed(Jelly.Entity)
+  - Jelly.Component.EntityAwake
+  - Jelly.Component.EntityAdded(Jelly.Scene)
+  - Jelly.Component.EntityRemoved(Jelly.Scene)
+  - Jelly.Component.OnCreated
+  - Jelly.Component.OnEnable
+  - Jelly.Component.OnDisable
+  - Jelly.Component.Update
+  - Jelly.Component.PreDraw
+  - Jelly.Component.Draw
+  - Jelly.Component.PostDraw
+  - Jelly.Component.DrawUI
+  - Jelly.Component.SceneEnd(Jelly.Scene)
+  - Jelly.Component.RemoveSelf
+  - Jelly.Component.GetEqualityComparer
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Jelly.Components.Moveable.Facing
+  commentId: P:Jelly.Components.Moveable.Facing
+  id: Facing
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Facing
+  nameWithType: Moveable.Facing
+  fullName: Jelly.Components.Moveable.Facing
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Facing
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 11
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: public virtual int Facing { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overridable Property Facing As Integer
+  overload: Jelly.Components.Moveable.Facing*
+- uid: Jelly.Components.Moveable.Collidable
+  commentId: P:Jelly.Components.Moveable.Collidable
+  id: Collidable
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Collidable
+  nameWithType: Moveable.Collidable
+  fullName: Jelly.Components.Moveable.Collidable
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Collidable
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 13
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: public virtual bool Collidable { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Property Collidable As Boolean
+  overload: Jelly.Components.Moveable.Collidable*
+- uid: Jelly.Components.Moveable.SpriteEffects
+  commentId: P:Jelly.Components.Moveable.SpriteEffects
+  id: SpriteEffects
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: SpriteEffects
+  nameWithType: Moveable.SpriteEffects
+  fullName: Jelly.Components.Moveable.SpriteEffects
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: SpriteEffects
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 15
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public SpriteEffects SpriteEffects { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Graphics.SpriteEffects
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property SpriteEffects As SpriteEffects
+  overload: Jelly.Components.Moveable.SpriteEffects*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.velocity
+  commentId: F:Jelly.Components.Moveable.velocity
+  id: velocity
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: velocity
+  nameWithType: Moveable.velocity
+  fullName: Jelly.Components.Moveable.velocity
+  type: Field
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: velocity
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 19
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      public Vector2 velocity
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: >-
+      <JsonInclude>
+
+      Public velocity As Vector2
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.bboxOffset
+  commentId: F:Jelly.Components.Moveable.bboxOffset
+  id: bboxOffset
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: bboxOffset
+  nameWithType: Moveable.bboxOffset
+  fullName: Jelly.Components.Moveable.bboxOffset
+  type: Field
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: bboxOffset
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 22
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonInclude]
+
+      protected Point bboxOffset
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonInclude>
+
+      Protected bboxOffset As Point
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIncludeAttribute
+    ctor: System.Text.Json.Serialization.JsonIncludeAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.RemainderPosition
+  commentId: P:Jelly.Components.Moveable.RemainderPosition
+  id: RemainderPosition
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: RemainderPosition
+  nameWithType: Moveable.RemainderPosition
+  fullName: Jelly.Components.Moveable.RemainderPosition
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RemainderPosition
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 24
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: protected Vector2 RemainderPosition { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Vector2
+    content.vb: Protected Property RemainderPosition As Vector2
+  overload: Jelly.Components.Moveable.RemainderPosition*
+- uid: Jelly.Components.Moveable.RemainderX
+  commentId: P:Jelly.Components.Moveable.RemainderX
+  id: RemainderX
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: RemainderX
+  nameWithType: Moveable.RemainderX
+  fullName: Jelly.Components.Moveable.RemainderX
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RemainderX
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 30
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      protected float RemainderX { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonIgnore>
+
+      Protected Property RemainderX As Single
+  overload: Jelly.Components.Moveable.RemainderX*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.RemainderY
+  commentId: P:Jelly.Components.Moveable.RemainderY
+  id: RemainderY
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: RemainderY
+  nameWithType: Moveable.RemainderY
+  fullName: Jelly.Components.Moveable.RemainderY
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RemainderY
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 37
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      protected float RemainderY { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonIgnore>
+
+      Protected Property RemainderY As Single
+  overload: Jelly.Components.Moveable.RemainderY*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Width
+  commentId: P:Jelly.Components.Moveable.Width
+  id: Width
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: Moveable.Width
+  fullName: Jelly.Components.Moveable.Width
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Width
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 44
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: public int Width { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Width As Integer
+  overload: Jelly.Components.Moveable.Width*
+- uid: Jelly.Components.Moveable.Height
+  commentId: P:Jelly.Components.Moveable.Height
+  id: Height
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: Moveable.Height
+  fullName: Jelly.Components.Moveable.Height
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Height
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 50
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: public int Height { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Height As Integer
+  overload: Jelly.Components.Moveable.Height*
+- uid: Jelly.Components.Moveable.Hitbox
+  commentId: P:Jelly.Components.Moveable.Hitbox
+  id: Hitbox
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Hitbox
+  nameWithType: Moveable.Hitbox
+  fullName: Jelly.Components.Moveable.Hitbox
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Hitbox
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 56
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Rectangle Hitbox { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Hitbox As Rectangle
+  overload: Jelly.Components.Moveable.Hitbox*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Left
+  commentId: P:Jelly.Components.Moveable.Left
+  id: Left
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Left
+  nameWithType: Moveable.Left
+  fullName: Jelly.Components.Moveable.Left
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Left
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 67
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public int Left { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property Left As Integer
+  overload: Jelly.Components.Moveable.Left*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Right
+  commentId: P:Jelly.Components.Moveable.Right
+  id: Right
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: Moveable.Right
+  fullName: Jelly.Components.Moveable.Right
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Right
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 70
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public int Right { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property Right As Integer
+  overload: Jelly.Components.Moveable.Right*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Top
+  commentId: P:Jelly.Components.Moveable.Top
+  id: Top
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Top
+  nameWithType: Moveable.Top
+  fullName: Jelly.Components.Moveable.Top
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Top
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 73
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public int Top { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property Top As Integer
+  overload: Jelly.Components.Moveable.Top*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Bottom
+  commentId: P:Jelly.Components.Moveable.Bottom
+  id: Bottom
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Bottom
+  nameWithType: Moveable.Bottom
+  fullName: Jelly.Components.Moveable.Bottom
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Bottom
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 76
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public int Bottom { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property Bottom As Integer
+  overload: Jelly.Components.Moveable.Bottom*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Center
+  commentId: P:Jelly.Components.Moveable.Center
+  id: Center
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Center
+  nameWithType: Moveable.Center
+  fullName: Jelly.Components.Moveable.Center
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Center
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 79
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point Center { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property Center As Point
+  overload: Jelly.Components.Moveable.Center*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.TopLeft
+  commentId: P:Jelly.Components.Moveable.TopLeft
+  id: TopLeft
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: TopLeft
+  nameWithType: Moveable.TopLeft
+  fullName: Jelly.Components.Moveable.TopLeft
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: TopLeft
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 87
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point TopLeft { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property TopLeft As Point
+  overload: Jelly.Components.Moveable.TopLeft*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.TopRight
+  commentId: P:Jelly.Components.Moveable.TopRight
+  id: TopRight
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: TopRight
+  nameWithType: Moveable.TopRight
+  fullName: Jelly.Components.Moveable.TopRight
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: TopRight
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 95
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point TopRight { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property TopRight As Point
+  overload: Jelly.Components.Moveable.TopRight*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.BottomLeft
+  commentId: P:Jelly.Components.Moveable.BottomLeft
+  id: BottomLeft
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: BottomLeft
+  nameWithType: Moveable.BottomLeft
+  fullName: Jelly.Components.Moveable.BottomLeft
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: BottomLeft
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 103
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point BottomLeft { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property BottomLeft As Point
+  overload: Jelly.Components.Moveable.BottomLeft*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.BottomRight
+  commentId: P:Jelly.Components.Moveable.BottomRight
+  id: BottomRight
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: BottomRight
+  nameWithType: Moveable.BottomRight
+  fullName: Jelly.Components.Moveable.BottomRight
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: BottomRight
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 111
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point BottomRight { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property BottomRight As Point
+  overload: Jelly.Components.Moveable.BottomRight*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.RightEdge
+  commentId: P:Jelly.Components.Moveable.RightEdge
+  id: RightEdge
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: RightEdge
+  nameWithType: Moveable.RightEdge
+  fullName: Jelly.Components.Moveable.RightEdge
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RightEdge
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 119
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Rectangle RightEdge { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property RightEdge As Rectangle
+  overload: Jelly.Components.Moveable.RightEdge*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.LeftEdge
+  commentId: P:Jelly.Components.Moveable.LeftEdge
+  id: LeftEdge
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: LeftEdge
+  nameWithType: Moveable.LeftEdge
+  fullName: Jelly.Components.Moveable.LeftEdge
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: LeftEdge
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 122
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Rectangle LeftEdge { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property LeftEdge As Rectangle
+  overload: Jelly.Components.Moveable.LeftEdge*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.TopEdge
+  commentId: P:Jelly.Components.Moveable.TopEdge
+  id: TopEdge
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: TopEdge
+  nameWithType: Moveable.TopEdge
+  fullName: Jelly.Components.Moveable.TopEdge
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: TopEdge
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 125
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Rectangle TopEdge { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property TopEdge As Rectangle
+  overload: Jelly.Components.Moveable.TopEdge*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.BottomEdge
+  commentId: P:Jelly.Components.Moveable.BottomEdge
+  id: BottomEdge
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: BottomEdge
+  nameWithType: Moveable.BottomEdge
+  fullName: Jelly.Components.Moveable.BottomEdge
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: BottomEdge
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 128
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Rectangle BottomEdge { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Rectangle
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property BottomEdge As Rectangle
+  overload: Jelly.Components.Moveable.BottomEdge*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.LeftMiddle
+  commentId: P:Jelly.Components.Moveable.LeftMiddle
+  id: LeftMiddle
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: LeftMiddle
+  nameWithType: Moveable.LeftMiddle
+  fullName: Jelly.Components.Moveable.LeftMiddle
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: LeftMiddle
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 131
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point LeftMiddle { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property LeftMiddle As Point
+  overload: Jelly.Components.Moveable.LeftMiddle*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.RightMiddle
+  commentId: P:Jelly.Components.Moveable.RightMiddle
+  id: RightMiddle
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: RightMiddle
+  nameWithType: Moveable.RightMiddle
+  fullName: Jelly.Components.Moveable.RightMiddle
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RightMiddle
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 139
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point RightMiddle { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property RightMiddle As Point
+  overload: Jelly.Components.Moveable.RightMiddle*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.TopMiddle
+  commentId: P:Jelly.Components.Moveable.TopMiddle
+  id: TopMiddle
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: TopMiddle
+  nameWithType: Moveable.TopMiddle
+  fullName: Jelly.Components.Moveable.TopMiddle
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: TopMiddle
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 147
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point TopMiddle { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property TopMiddle As Point
+  overload: Jelly.Components.Moveable.TopMiddle*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.BottomMiddle
+  commentId: P:Jelly.Components.Moveable.BottomMiddle
+  id: BottomMiddle
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: BottomMiddle
+  nameWithType: Moveable.BottomMiddle
+  fullName: Jelly.Components.Moveable.BottomMiddle
+  type: Property
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: BottomMiddle
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 155
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Point BottomMiddle { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: >-
+      <JsonIgnore>
+
+      Public Property BottomMiddle As Point
+  overload: Jelly.Components.Moveable.BottomMiddle*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonIgnoreAttribute
+    ctor: System.Text.Json.Serialization.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Jelly.Components.Moveable.Intersects(Microsoft.Xna.Framework.Rectangle)
+  commentId: M:Jelly.Components.Moveable.Intersects(Microsoft.Xna.Framework.Rectangle)
+  id: Intersects(Microsoft.Xna.Framework.Rectangle)
+  parent: Jelly.Components.Moveable
+  langs:
+  - csharp
+  - vb
+  name: Intersects(Rectangle)
+  nameWithType: Moveable.Intersects(Rectangle)
+  fullName: Jelly.Components.Moveable.Intersects(Microsoft.Xna.Framework.Rectangle)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Components/Moveable.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Intersects
+    path: ../Jelly/Components/Moveable.cs
+    startLine: 163
+  assemblies:
+  - Jelly
+  namespace: Jelly.Components
+  syntax:
+    content: public virtual bool Intersects(Rectangle rectangle)
+    parameters:
+    - id: rectangle
+      type: Microsoft.Xna.Framework.Rectangle
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Function Intersects(rectangle As Rectangle) As Boolean
+  overload: Jelly.Components.Moveable.Intersects*
+references:
+- uid: Jelly.Components
+  commentId: N:Jelly.Components
+  href: Jelly.html
+  name: Jelly.Components
+  nameWithType: Jelly.Components
+  fullName: Jelly.Components
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Components
+    name: Components
+    href: Jelly.Components.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Components
+    name: Components
+    href: Jelly.Components.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Jelly.Component
+  commentId: T:Jelly.Component
+  parent: Jelly
+  href: Jelly.Component.html
+  name: Component
+  nameWithType: Component
+  fullName: Jelly.Component
+- uid: Jelly.Component.Entity
+  commentId: P:Jelly.Component.Entity
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Entity
+  name: Entity
+  nameWithType: Component.Entity
+  fullName: Jelly.Component.Entity
+- uid: Jelly.Component.Enabled
+  commentId: P:Jelly.Component.Enabled
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Enabled
+  name: Enabled
+  nameWithType: Component.Enabled
+  fullName: Jelly.Component.Enabled
+- uid: Jelly.Component.Visible
+  commentId: P:Jelly.Component.Visible
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Visible
+  name: Visible
+  nameWithType: Component.Visible
+  fullName: Jelly.Component.Visible
+- uid: Jelly.Component.Scene
+  commentId: P:Jelly.Component.Scene
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Scene
+  name: Scene
+  nameWithType: Component.Scene
+  fullName: Jelly.Component.Scene
+- uid: Jelly.Component.Added(Jelly.Entity)
+  commentId: M:Jelly.Component.Added(Jelly.Entity)
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Added_Jelly_Entity_
+  name: Added(Entity)
+  nameWithType: Component.Added(Entity)
+  fullName: Jelly.Component.Added(Jelly.Entity)
+  spec.csharp:
+  - uid: Jelly.Component.Added(Jelly.Entity)
+    name: Added
+    href: Jelly.Component.html#Jelly_Component_Added_Jelly_Entity_
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.Added(Jelly.Entity)
+    name: Added
+    href: Jelly.Component.html#Jelly_Component_Added_Jelly_Entity_
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: Jelly.Component.Removed(Jelly.Entity)
+  commentId: M:Jelly.Component.Removed(Jelly.Entity)
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Removed_Jelly_Entity_
+  name: Removed(Entity)
+  nameWithType: Component.Removed(Entity)
+  fullName: Jelly.Component.Removed(Jelly.Entity)
+  spec.csharp:
+  - uid: Jelly.Component.Removed(Jelly.Entity)
+    name: Removed
+    href: Jelly.Component.html#Jelly_Component_Removed_Jelly_Entity_
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.Removed(Jelly.Entity)
+    name: Removed
+    href: Jelly.Component.html#Jelly_Component_Removed_Jelly_Entity_
+  - name: (
+  - uid: Jelly.Entity
+    name: Entity
+    href: Jelly.Entity.html
+  - name: )
+- uid: Jelly.Component.EntityAwake
+  commentId: M:Jelly.Component.EntityAwake
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_EntityAwake
+  name: EntityAwake()
+  nameWithType: Component.EntityAwake()
+  fullName: Jelly.Component.EntityAwake()
+  spec.csharp:
+  - uid: Jelly.Component.EntityAwake
+    name: EntityAwake
+    href: Jelly.Component.html#Jelly_Component_EntityAwake
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.EntityAwake
+    name: EntityAwake
+    href: Jelly.Component.html#Jelly_Component_EntityAwake
+  - name: (
+  - name: )
+- uid: Jelly.Component.EntityAdded(Jelly.Scene)
+  commentId: M:Jelly.Component.EntityAdded(Jelly.Scene)
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_EntityAdded_Jelly_Scene_
+  name: EntityAdded(Scene)
+  nameWithType: Component.EntityAdded(Scene)
+  fullName: Jelly.Component.EntityAdded(Jelly.Scene)
+  spec.csharp:
+  - uid: Jelly.Component.EntityAdded(Jelly.Scene)
+    name: EntityAdded
+    href: Jelly.Component.html#Jelly_Component_EntityAdded_Jelly_Scene_
+  - name: (
+  - uid: Jelly.Scene
+    name: Scene
+    href: Jelly.Scene.html
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.EntityAdded(Jelly.Scene)
+    name: EntityAdded
+    href: Jelly.Component.html#Jelly_Component_EntityAdded_Jelly_Scene_
+  - name: (
+  - uid: Jelly.Scene
+    name: Scene
+    href: Jelly.Scene.html
+  - name: )
+- uid: Jelly.Component.EntityRemoved(Jelly.Scene)
+  commentId: M:Jelly.Component.EntityRemoved(Jelly.Scene)
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_EntityRemoved_Jelly_Scene_
+  name: EntityRemoved(Scene)
+  nameWithType: Component.EntityRemoved(Scene)
+  fullName: Jelly.Component.EntityRemoved(Jelly.Scene)
+  spec.csharp:
+  - uid: Jelly.Component.EntityRemoved(Jelly.Scene)
+    name: EntityRemoved
+    href: Jelly.Component.html#Jelly_Component_EntityRemoved_Jelly_Scene_
+  - name: (
+  - uid: Jelly.Scene
+    name: Scene
+    href: Jelly.Scene.html
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.EntityRemoved(Jelly.Scene)
+    name: EntityRemoved
+    href: Jelly.Component.html#Jelly_Component_EntityRemoved_Jelly_Scene_
+  - name: (
+  - uid: Jelly.Scene
+    name: Scene
+    href: Jelly.Scene.html
+  - name: )
+- uid: Jelly.Component.OnCreated
+  commentId: M:Jelly.Component.OnCreated
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_OnCreated
+  name: OnCreated()
+  nameWithType: Component.OnCreated()
+  fullName: Jelly.Component.OnCreated()
+  spec.csharp:
+  - uid: Jelly.Component.OnCreated
+    name: OnCreated
+    href: Jelly.Component.html#Jelly_Component_OnCreated
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.OnCreated
+    name: OnCreated
+    href: Jelly.Component.html#Jelly_Component_OnCreated
+  - name: (
+  - name: )
+- uid: Jelly.Component.OnEnable
+  commentId: M:Jelly.Component.OnEnable
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_OnEnable
+  name: OnEnable()
+  nameWithType: Component.OnEnable()
+  fullName: Jelly.Component.OnEnable()
+  spec.csharp:
+  - uid: Jelly.Component.OnEnable
+    name: OnEnable
+    href: Jelly.Component.html#Jelly_Component_OnEnable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.OnEnable
+    name: OnEnable
+    href: Jelly.Component.html#Jelly_Component_OnEnable
+  - name: (
+  - name: )
+- uid: Jelly.Component.OnDisable
+  commentId: M:Jelly.Component.OnDisable
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_OnDisable
+  name: OnDisable()
+  nameWithType: Component.OnDisable()
+  fullName: Jelly.Component.OnDisable()
+  spec.csharp:
+  - uid: Jelly.Component.OnDisable
+    name: OnDisable
+    href: Jelly.Component.html#Jelly_Component_OnDisable
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.OnDisable
+    name: OnDisable
+    href: Jelly.Component.html#Jelly_Component_OnDisable
+  - name: (
+  - name: )
+- uid: Jelly.Component.Update
+  commentId: M:Jelly.Component.Update
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Update
+  name: Update()
+  nameWithType: Component.Update()
+  fullName: Jelly.Component.Update()
+  spec.csharp:
+  - uid: Jelly.Component.Update
+    name: Update
+    href: Jelly.Component.html#Jelly_Component_Update
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.Update
+    name: Update
+    href: Jelly.Component.html#Jelly_Component_Update
+  - name: (
+  - name: )
+- uid: Jelly.Component.PreDraw
+  commentId: M:Jelly.Component.PreDraw
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_PreDraw
+  name: PreDraw()
+  nameWithType: Component.PreDraw()
+  fullName: Jelly.Component.PreDraw()
+  spec.csharp:
+  - uid: Jelly.Component.PreDraw
+    name: PreDraw
+    href: Jelly.Component.html#Jelly_Component_PreDraw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.PreDraw
+    name: PreDraw
+    href: Jelly.Component.html#Jelly_Component_PreDraw
+  - name: (
+  - name: )
+- uid: Jelly.Component.Draw
+  commentId: M:Jelly.Component.Draw
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_Draw
+  name: Draw()
+  nameWithType: Component.Draw()
+  fullName: Jelly.Component.Draw()
+  spec.csharp:
+  - uid: Jelly.Component.Draw
+    name: Draw
+    href: Jelly.Component.html#Jelly_Component_Draw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.Draw
+    name: Draw
+    href: Jelly.Component.html#Jelly_Component_Draw
+  - name: (
+  - name: )
+- uid: Jelly.Component.PostDraw
+  commentId: M:Jelly.Component.PostDraw
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_PostDraw
+  name: PostDraw()
+  nameWithType: Component.PostDraw()
+  fullName: Jelly.Component.PostDraw()
+  spec.csharp:
+  - uid: Jelly.Component.PostDraw
+    name: PostDraw
+    href: Jelly.Component.html#Jelly_Component_PostDraw
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.PostDraw
+    name: PostDraw
+    href: Jelly.Component.html#Jelly_Component_PostDraw
+  - name: (
+  - name: )
+- uid: Jelly.Component.DrawUI
+  commentId: M:Jelly.Component.DrawUI
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_DrawUI
+  name: DrawUI()
+  nameWithType: Component.DrawUI()
+  fullName: Jelly.Component.DrawUI()
+  spec.csharp:
+  - uid: Jelly.Component.DrawUI
+    name: DrawUI
+    href: Jelly.Component.html#Jelly_Component_DrawUI
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.DrawUI
+    name: DrawUI
+    href: Jelly.Component.html#Jelly_Component_DrawUI
+  - name: (
+  - name: )
+- uid: Jelly.Component.SceneEnd(Jelly.Scene)
+  commentId: M:Jelly.Component.SceneEnd(Jelly.Scene)
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_SceneEnd_Jelly_Scene_
+  name: SceneEnd(Scene)
+  nameWithType: Component.SceneEnd(Scene)
+  fullName: Jelly.Component.SceneEnd(Jelly.Scene)
+  spec.csharp:
+  - uid: Jelly.Component.SceneEnd(Jelly.Scene)
+    name: SceneEnd
+    href: Jelly.Component.html#Jelly_Component_SceneEnd_Jelly_Scene_
+  - name: (
+  - uid: Jelly.Scene
+    name: Scene
+    href: Jelly.Scene.html
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.SceneEnd(Jelly.Scene)
+    name: SceneEnd
+    href: Jelly.Component.html#Jelly_Component_SceneEnd_Jelly_Scene_
+  - name: (
+  - uid: Jelly.Scene
+    name: Scene
+    href: Jelly.Scene.html
+  - name: )
+- uid: Jelly.Component.RemoveSelf
+  commentId: M:Jelly.Component.RemoveSelf
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_RemoveSelf
+  name: RemoveSelf()
+  nameWithType: Component.RemoveSelf()
+  fullName: Jelly.Component.RemoveSelf()
+  spec.csharp:
+  - uid: Jelly.Component.RemoveSelf
+    name: RemoveSelf
+    href: Jelly.Component.html#Jelly_Component_RemoveSelf
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.RemoveSelf
+    name: RemoveSelf
+    href: Jelly.Component.html#Jelly_Component_RemoveSelf
+  - name: (
+  - name: )
+- uid: Jelly.Component.GetEqualityComparer
+  commentId: M:Jelly.Component.GetEqualityComparer
+  parent: Jelly.Component
+  href: Jelly.Component.html#Jelly_Component_GetEqualityComparer
+  name: GetEqualityComparer()
+  nameWithType: Component.GetEqualityComparer()
+  fullName: Jelly.Component.GetEqualityComparer()
+  spec.csharp:
+  - uid: Jelly.Component.GetEqualityComparer
+    name: GetEqualityComparer
+    href: Jelly.Component.html#Jelly_Component_GetEqualityComparer
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Jelly.Component.GetEqualityComparer
+    name: GetEqualityComparer
+    href: Jelly.Component.html#Jelly_Component_GetEqualityComparer
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+- uid: Jelly.Components.Moveable.Facing*
+  commentId: Overload:Jelly.Components.Moveable.Facing
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Facing
+  name: Facing
+  nameWithType: Moveable.Facing
+  fullName: Jelly.Components.Moveable.Facing
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Jelly.Components.Moveable.Collidable*
+  commentId: Overload:Jelly.Components.Moveable.Collidable
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Collidable
+  name: Collidable
+  nameWithType: Moveable.Collidable
+  fullName: Jelly.Components.Moveable.Collidable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Jelly.Components.Moveable.SpriteEffects*
+  commentId: Overload:Jelly.Components.Moveable.SpriteEffects
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_SpriteEffects
+  name: SpriteEffects
+  nameWithType: Moveable.SpriteEffects
+  fullName: Jelly.Components.Moveable.SpriteEffects
+- uid: Microsoft.Xna.Framework.Graphics.SpriteEffects
+  commentId: T:Microsoft.Xna.Framework.Graphics.SpriteEffects
+  parent: Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: SpriteEffects
+  nameWithType: SpriteEffects
+  fullName: Microsoft.Xna.Framework.Graphics.SpriteEffects
+- uid: Microsoft.Xna.Framework.Graphics
+  commentId: N:Microsoft.Xna.Framework.Graphics
+  isExternal: true
+  name: Microsoft.Xna.Framework.Graphics
+  nameWithType: Microsoft.Xna.Framework.Graphics
+  fullName: Microsoft.Xna.Framework.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Graphics
+    name: Graphics
+    isExternal: true
+- uid: Microsoft.Xna.Framework.Vector2
+  commentId: T:Microsoft.Xna.Framework.Vector2
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Vector2
+  nameWithType: Vector2
+  fullName: Microsoft.Xna.Framework.Vector2
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Microsoft.Xna.Framework.Point
+  commentId: T:Microsoft.Xna.Framework.Point
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Point
+  nameWithType: Point
+  fullName: Microsoft.Xna.Framework.Point
+- uid: Jelly.Components.Moveable.RemainderPosition*
+  commentId: Overload:Jelly.Components.Moveable.RemainderPosition
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_RemainderPosition
+  name: RemainderPosition
+  nameWithType: Moveable.RemainderPosition
+  fullName: Jelly.Components.Moveable.RemainderPosition
+- uid: Jelly.Components.Moveable.RemainderX*
+  commentId: Overload:Jelly.Components.Moveable.RemainderX
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_RemainderX
+  name: RemainderX
+  nameWithType: Moveable.RemainderX
+  fullName: Jelly.Components.Moveable.RemainderX
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Jelly.Components.Moveable.RemainderY*
+  commentId: Overload:Jelly.Components.Moveable.RemainderY
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_RemainderY
+  name: RemainderY
+  nameWithType: Moveable.RemainderY
+  fullName: Jelly.Components.Moveable.RemainderY
+- uid: Jelly.Components.Moveable.Width*
+  commentId: Overload:Jelly.Components.Moveable.Width
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Width
+  name: Width
+  nameWithType: Moveable.Width
+  fullName: Jelly.Components.Moveable.Width
+- uid: Jelly.Components.Moveable.Height*
+  commentId: Overload:Jelly.Components.Moveable.Height
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Height
+  name: Height
+  nameWithType: Moveable.Height
+  fullName: Jelly.Components.Moveable.Height
+- uid: Jelly.Components.Moveable.Hitbox*
+  commentId: Overload:Jelly.Components.Moveable.Hitbox
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Hitbox
+  name: Hitbox
+  nameWithType: Moveable.Hitbox
+  fullName: Jelly.Components.Moveable.Hitbox
+- uid: Microsoft.Xna.Framework.Rectangle
+  commentId: T:Microsoft.Xna.Framework.Rectangle
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Microsoft.Xna.Framework.Rectangle
+- uid: Jelly.Components.Moveable.Left*
+  commentId: Overload:Jelly.Components.Moveable.Left
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Left
+  name: Left
+  nameWithType: Moveable.Left
+  fullName: Jelly.Components.Moveable.Left
+- uid: Jelly.Components.Moveable.Right*
+  commentId: Overload:Jelly.Components.Moveable.Right
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Right
+  name: Right
+  nameWithType: Moveable.Right
+  fullName: Jelly.Components.Moveable.Right
+- uid: Jelly.Components.Moveable.Top*
+  commentId: Overload:Jelly.Components.Moveable.Top
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Top
+  name: Top
+  nameWithType: Moveable.Top
+  fullName: Jelly.Components.Moveable.Top
+- uid: Jelly.Components.Moveable.Bottom*
+  commentId: Overload:Jelly.Components.Moveable.Bottom
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Bottom
+  name: Bottom
+  nameWithType: Moveable.Bottom
+  fullName: Jelly.Components.Moveable.Bottom
+- uid: Jelly.Components.Moveable.Center*
+  commentId: Overload:Jelly.Components.Moveable.Center
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Center
+  name: Center
+  nameWithType: Moveable.Center
+  fullName: Jelly.Components.Moveable.Center
+- uid: Jelly.Components.Moveable.TopLeft*
+  commentId: Overload:Jelly.Components.Moveable.TopLeft
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_TopLeft
+  name: TopLeft
+  nameWithType: Moveable.TopLeft
+  fullName: Jelly.Components.Moveable.TopLeft
+- uid: Jelly.Components.Moveable.TopRight*
+  commentId: Overload:Jelly.Components.Moveable.TopRight
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_TopRight
+  name: TopRight
+  nameWithType: Moveable.TopRight
+  fullName: Jelly.Components.Moveable.TopRight
+- uid: Jelly.Components.Moveable.BottomLeft*
+  commentId: Overload:Jelly.Components.Moveable.BottomLeft
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_BottomLeft
+  name: BottomLeft
+  nameWithType: Moveable.BottomLeft
+  fullName: Jelly.Components.Moveable.BottomLeft
+- uid: Jelly.Components.Moveable.BottomRight*
+  commentId: Overload:Jelly.Components.Moveable.BottomRight
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_BottomRight
+  name: BottomRight
+  nameWithType: Moveable.BottomRight
+  fullName: Jelly.Components.Moveable.BottomRight
+- uid: Jelly.Components.Moveable.RightEdge*
+  commentId: Overload:Jelly.Components.Moveable.RightEdge
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_RightEdge
+  name: RightEdge
+  nameWithType: Moveable.RightEdge
+  fullName: Jelly.Components.Moveable.RightEdge
+- uid: Jelly.Components.Moveable.LeftEdge*
+  commentId: Overload:Jelly.Components.Moveable.LeftEdge
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_LeftEdge
+  name: LeftEdge
+  nameWithType: Moveable.LeftEdge
+  fullName: Jelly.Components.Moveable.LeftEdge
+- uid: Jelly.Components.Moveable.TopEdge*
+  commentId: Overload:Jelly.Components.Moveable.TopEdge
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_TopEdge
+  name: TopEdge
+  nameWithType: Moveable.TopEdge
+  fullName: Jelly.Components.Moveable.TopEdge
+- uid: Jelly.Components.Moveable.BottomEdge*
+  commentId: Overload:Jelly.Components.Moveable.BottomEdge
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_BottomEdge
+  name: BottomEdge
+  nameWithType: Moveable.BottomEdge
+  fullName: Jelly.Components.Moveable.BottomEdge
+- uid: Jelly.Components.Moveable.LeftMiddle*
+  commentId: Overload:Jelly.Components.Moveable.LeftMiddle
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_LeftMiddle
+  name: LeftMiddle
+  nameWithType: Moveable.LeftMiddle
+  fullName: Jelly.Components.Moveable.LeftMiddle
+- uid: Jelly.Components.Moveable.RightMiddle*
+  commentId: Overload:Jelly.Components.Moveable.RightMiddle
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_RightMiddle
+  name: RightMiddle
+  nameWithType: Moveable.RightMiddle
+  fullName: Jelly.Components.Moveable.RightMiddle
+- uid: Jelly.Components.Moveable.TopMiddle*
+  commentId: Overload:Jelly.Components.Moveable.TopMiddle
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_TopMiddle
+  name: TopMiddle
+  nameWithType: Moveable.TopMiddle
+  fullName: Jelly.Components.Moveable.TopMiddle
+- uid: Jelly.Components.Moveable.BottomMiddle*
+  commentId: Overload:Jelly.Components.Moveable.BottomMiddle
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_BottomMiddle
+  name: BottomMiddle
+  nameWithType: Moveable.BottomMiddle
+  fullName: Jelly.Components.Moveable.BottomMiddle
+- uid: Jelly.Components.Moveable.Intersects*
+  commentId: Overload:Jelly.Components.Moveable.Intersects
+  href: Jelly.Components.Moveable.html#Jelly_Components_Moveable_Intersects_Microsoft_Xna_Framework_Rectangle_
+  name: Intersects
+  nameWithType: Moveable.Intersects
+  fullName: Jelly.Components.Moveable.Intersects

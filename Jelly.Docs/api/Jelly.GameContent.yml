@@ -1,0 +1,121 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.GameContent
+  commentId: N:Jelly.GameContent
+  id: Jelly.GameContent
+  children:
+  - Jelly.GameContent.AbstractRegistry
+  - Jelly.GameContent.Registries
+  - Jelly.GameContent.RegistryEntry
+  - Jelly.GameContent.Registry`1
+  - Jelly.GameContent.Registry`1.EntryEventDelegate
+  langs:
+  - csharp
+  - vb
+  name: Jelly.GameContent
+  nameWithType: Jelly.GameContent
+  fullName: Jelly.GameContent
+  type: Namespace
+  assemblies:
+  - Jelly
+references:
+- uid: Jelly.GameContent.AbstractRegistry
+  commentId: T:Jelly.GameContent.AbstractRegistry
+  parent: Jelly.GameContent
+  href: Jelly.GameContent.AbstractRegistry.html
+  name: AbstractRegistry
+  nameWithType: AbstractRegistry
+  fullName: Jelly.GameContent.AbstractRegistry
+- uid: Jelly.GameContent.Registries
+  commentId: T:Jelly.GameContent.Registries
+  href: Jelly.GameContent.Registries.html
+  name: Registries
+  nameWithType: Registries
+  fullName: Jelly.GameContent.Registries
+- uid: Jelly.GameContent.Registry`1
+  commentId: T:Jelly.GameContent.Registry`1
+  href: Jelly.GameContent.Registry-1.html
+  name: Registry<TDef>
+  nameWithType: Registry<TDef>
+  fullName: Jelly.GameContent.Registry<TDef>
+  nameWithType.vb: Registry(Of TDef)
+  fullName.vb: Jelly.GameContent.Registry(Of TDef)
+  name.vb: Registry(Of TDef)
+  spec.csharp:
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry
+    href: Jelly.GameContent.Registry-1.html
+  - name: <
+  - name: TDef
+  - name: '>'
+  spec.vb:
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry
+    href: Jelly.GameContent.Registry-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDef
+  - name: )
+- uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+  commentId: T:Jelly.GameContent.Registry`1.EntryEventDelegate
+  parent: Jelly.GameContent
+  href: Jelly.GameContent.Registry-1.html
+  name: Registry<TDef>.EntryEventDelegate
+  nameWithType: Registry<TDef>.EntryEventDelegate
+  fullName: Jelly.GameContent.Registry<TDef>.EntryEventDelegate
+  nameWithType.vb: Registry(Of TDef).EntryEventDelegate
+  fullName.vb: Jelly.GameContent.Registry(Of TDef).EntryEventDelegate
+  name.vb: Registry(Of TDef).EntryEventDelegate
+  spec.csharp:
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry
+    href: Jelly.GameContent.Registry-1.html
+  - name: <
+  - name: TDef
+  - name: '>'
+  - name: .
+  - uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+    name: EntryEventDelegate
+    href: Jelly.GameContent.Registry-1.EntryEventDelegate.html
+  spec.vb:
+  - uid: Jelly.GameContent.Registry`1
+    name: Registry
+    href: Jelly.GameContent.Registry-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDef
+  - name: )
+  - name: .
+  - uid: Jelly.GameContent.Registry`1.EntryEventDelegate
+    name: EntryEventDelegate
+    href: Jelly.GameContent.Registry-1.EntryEventDelegate.html
+- uid: Jelly.GameContent.RegistryEntry
+  commentId: T:Jelly.GameContent.RegistryEntry
+  href: Jelly.GameContent.RegistryEntry.html
+  name: RegistryEntry
+  nameWithType: RegistryEntry
+  fullName: Jelly.GameContent.RegistryEntry
+- uid: Jelly.GameContent
+  commentId: N:Jelly.GameContent
+  href: Jelly.html
+  name: Jelly.GameContent
+  nameWithType: Jelly.GameContent
+  fullName: Jelly.GameContent
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.GameContent
+    name: GameContent
+    href: Jelly.GameContent.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.GameContent
+    name: GameContent
+    href: Jelly.GameContent.html

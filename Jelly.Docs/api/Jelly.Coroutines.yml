@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Coroutines
+  commentId: N:Jelly.Coroutines
+  id: Jelly.Coroutines
+  children:
+  - Jelly.Coroutines.CoroutineHandle
+  - Jelly.Coroutines.CoroutineRunner
+  - Jelly.Coroutines.TimeDelay
+  langs:
+  - csharp
+  - vb
+  name: Jelly.Coroutines
+  nameWithType: Jelly.Coroutines
+  fullName: Jelly.Coroutines
+  type: Namespace
+  assemblies:
+  - Jelly
+references:
+- uid: Jelly.Coroutines.CoroutineRunner
+  commentId: T:Jelly.Coroutines.CoroutineRunner
+  parent: Jelly.Coroutines
+  href: Jelly.Coroutines.CoroutineRunner.html
+  name: CoroutineRunner
+  nameWithType: CoroutineRunner
+  fullName: Jelly.Coroutines.CoroutineRunner
+- uid: Jelly.Coroutines.CoroutineHandle
+  commentId: T:Jelly.Coroutines.CoroutineHandle
+  parent: Jelly.Coroutines
+  href: Jelly.Coroutines.CoroutineHandle.html
+  name: CoroutineHandle
+  nameWithType: CoroutineHandle
+  fullName: Jelly.Coroutines.CoroutineHandle
+- uid: Jelly.Coroutines.TimeDelay
+  commentId: T:Jelly.Coroutines.TimeDelay
+  href: Jelly.Coroutines.TimeDelay.html
+  name: TimeDelay
+  nameWithType: TimeDelay
+  fullName: Jelly.Coroutines.TimeDelay
+- uid: Jelly.Coroutines
+  commentId: N:Jelly.Coroutines
+  href: Jelly.html
+  name: Jelly.Coroutines
+  nameWithType: Jelly.Coroutines
+  fullName: Jelly.Coroutines
+  spec.csharp:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Coroutines
+    name: Coroutines
+    href: Jelly.Coroutines.html
+  spec.vb:
+  - uid: Jelly
+    name: Jelly
+    href: Jelly.html
+  - name: .
+  - uid: Jelly.Coroutines
+    name: Coroutines
+    href: Jelly.Coroutines.html

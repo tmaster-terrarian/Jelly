@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Logger.MessageType
+  commentId: T:Jelly.Logger.MessageType
+  id: Logger.MessageType
+  parent: Jelly
+  children:
+  - Jelly.Logger.MessageType.ERROR
+  - Jelly.Logger.MessageType.INFO
+  - Jelly.Logger.MessageType.NONE
+  - Jelly.Logger.MessageType.WARN
+  langs:
+  - csharp
+  - vb
+  name: Logger.MessageType
+  nameWithType: Logger.MessageType
+  fullName: Jelly.Logger.MessageType
+  type: Enum
+  source:
+    remote:
+      path: Jelly/Logger.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: MessageType
+    path: ../Jelly/Logger.cs
+    startLine: 11
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public enum Logger.MessageType
+    content.vb: Public Enum Logger.MessageType
+- uid: Jelly.Logger.MessageType.INFO
+  commentId: F:Jelly.Logger.MessageType.INFO
+  id: INFO
+  parent: Jelly.Logger.MessageType
+  langs:
+  - csharp
+  - vb
+  name: INFO
+  nameWithType: Logger.MessageType.INFO
+  fullName: Jelly.Logger.MessageType.INFO
+  type: Field
+  source:
+    remote:
+      path: Jelly/Logger.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: INFO
+    path: ../Jelly/Logger.cs
+    startLine: 13
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: INFO = 0
+    return:
+      type: Jelly.Logger.MessageType
+- uid: Jelly.Logger.MessageType.ERROR
+  commentId: F:Jelly.Logger.MessageType.ERROR
+  id: ERROR
+  parent: Jelly.Logger.MessageType
+  langs:
+  - csharp
+  - vb
+  name: ERROR
+  nameWithType: Logger.MessageType.ERROR
+  fullName: Jelly.Logger.MessageType.ERROR
+  type: Field
+  source:
+    remote:
+      path: Jelly/Logger.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: ERROR
+    path: ../Jelly/Logger.cs
+    startLine: 14
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: ERROR = 1
+    return:
+      type: Jelly.Logger.MessageType
+- uid: Jelly.Logger.MessageType.WARN
+  commentId: F:Jelly.Logger.MessageType.WARN
+  id: WARN
+  parent: Jelly.Logger.MessageType
+  langs:
+  - csharp
+  - vb
+  name: WARN
+  nameWithType: Logger.MessageType.WARN
+  fullName: Jelly.Logger.MessageType.WARN
+  type: Field
+  source:
+    remote:
+      path: Jelly/Logger.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: WARN
+    path: ../Jelly/Logger.cs
+    startLine: 15
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: WARN = 2
+    return:
+      type: Jelly.Logger.MessageType
+- uid: Jelly.Logger.MessageType.NONE
+  commentId: F:Jelly.Logger.MessageType.NONE
+  id: NONE
+  parent: Jelly.Logger.MessageType
+  langs:
+  - csharp
+  - vb
+  name: NONE
+  nameWithType: Logger.MessageType.NONE
+  fullName: Jelly.Logger.MessageType.NONE
+  type: Field
+  source:
+    remote:
+      path: Jelly/Logger.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: NONE
+    path: ../Jelly/Logger.cs
+    startLine: 16
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: NONE = 3
+    return:
+      type: Jelly.Logger.MessageType
+references:
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+- uid: Jelly.Logger.MessageType
+  commentId: T:Jelly.Logger.MessageType
+  parent: Jelly
+  href: Jelly.Logger.html
+  name: Logger.MessageType
+  nameWithType: Logger.MessageType
+  fullName: Jelly.Logger.MessageType
+  spec.csharp:
+  - uid: Jelly.Logger
+    name: Logger
+    href: Jelly.Logger.html
+  - name: .
+  - uid: Jelly.Logger.MessageType
+    name: MessageType
+    href: Jelly.Logger.MessageType.html
+  spec.vb:
+  - uid: Jelly.Logger
+    name: Logger
+    href: Jelly.Logger.html
+  - name: .
+  - uid: Jelly.Logger.MessageType
+    name: MessageType
+    href: Jelly.Logger.MessageType.html

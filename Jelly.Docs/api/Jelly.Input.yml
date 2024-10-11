@@ -1,0 +1,1509 @@
+### YamlMime:ManagedReference
+items:
+- uid: Jelly.Input
+  commentId: T:Jelly.Input
+  id: Input
+  parent: Jelly
+  children:
+  - Jelly.Input.GetAnyDown(Jelly.InputType)
+  - Jelly.Input.GetAnyPressed(Jelly.InputType)
+  - Jelly.Input.GetAnyReleased(Jelly.InputType)
+  - Jelly.Input.GetDown(Jelly.MouseButtons)
+  - Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons)
+  - Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  - Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Keys)
+  - Jelly.Input.GetMouseButtonState(Jelly.MouseButtons)
+  - Jelly.Input.GetMousePositionWithZoom(System.Single,System.Boolean)
+  - Jelly.Input.GetPressed(Jelly.MouseButtons)
+  - Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons)
+  - Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  - Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Keys)
+  - Jelly.Input.GetReleased(Jelly.MouseButtons)
+  - Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons)
+  - Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  - Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Keys)
+  - Jelly.Input.GetScrollDelta
+  - Jelly.Input.GetTextInput
+  - Jelly.Input.InputDisabled
+  - Jelly.Input.KeyboardState
+  - Jelly.Input.MousePosition
+  - Jelly.Input.MousePositionClamped
+  - Jelly.Input.MouseState
+  - Jelly.Input.RefreshGamePadState
+  - Jelly.Input.RefreshGamePadState(Microsoft.Xna.Framework.PlayerIndex)
+  - Jelly.Input.RefreshKeyboardState
+  - Jelly.Input.RefreshMouseState
+  - Jelly.Input.UpdateTypingInput(Microsoft.Xna.Framework.GameTime)
+  langs:
+  - csharp
+  - vb
+  name: Input
+  nameWithType: Input
+  fullName: Jelly.Input
+  type: Class
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: Input
+    path: ../Jelly/Input.cs
+    startLine: 9
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static class Input
+    content.vb: Public Module Input
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Jelly.Input.InputDisabled
+  commentId: P:Jelly.Input.InputDisabled
+  id: InputDisabled
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: InputDisabled
+  nameWithType: Input.InputDisabled
+  fullName: Jelly.Input.InputDisabled
+  type: Property
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: InputDisabled
+    path: ../Jelly/Input.cs
+    startLine: 20
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool InputDisabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Property InputDisabled As Boolean
+  overload: Jelly.Input.InputDisabled*
+- uid: Jelly.Input.KeyboardState
+  commentId: P:Jelly.Input.KeyboardState
+  id: KeyboardState
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: KeyboardState
+  nameWithType: Input.KeyboardState
+  fullName: Jelly.Input.KeyboardState
+  type: Property
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: KeyboardState
+    path: ../Jelly/Input.cs
+    startLine: 22
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static KeyboardState KeyboardState { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Input.KeyboardState
+    content.vb: Public Shared ReadOnly Property KeyboardState As KeyboardState
+  overload: Jelly.Input.KeyboardState*
+- uid: Jelly.Input.MousePosition
+  commentId: P:Jelly.Input.MousePosition
+  id: MousePosition
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: MousePosition
+  nameWithType: Input.MousePosition
+  fullName: Jelly.Input.MousePosition
+  type: Property
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: MousePosition
+    path: ../Jelly/Input.cs
+    startLine: 24
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static Point MousePosition { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: Public Shared ReadOnly Property MousePosition As Point
+  overload: Jelly.Input.MousePosition*
+- uid: Jelly.Input.MousePositionClamped
+  commentId: P:Jelly.Input.MousePositionClamped
+  id: MousePositionClamped
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: MousePositionClamped
+  nameWithType: Input.MousePositionClamped
+  fullName: Jelly.Input.MousePositionClamped
+  type: Property
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: MousePositionClamped
+    path: ../Jelly/Input.cs
+    startLine: 29
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static Point MousePositionClamped { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: Public Shared ReadOnly Property MousePositionClamped As Point
+  overload: Jelly.Input.MousePositionClamped*
+- uid: Jelly.Input.GetMousePositionWithZoom(System.Single,System.Boolean)
+  commentId: M:Jelly.Input.GetMousePositionWithZoom(System.Single,System.Boolean)
+  id: GetMousePositionWithZoom(System.Single,System.Boolean)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetMousePositionWithZoom(float, bool)
+  nameWithType: Input.GetMousePositionWithZoom(float, bool)
+  fullName: Jelly.Input.GetMousePositionWithZoom(float, bool)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetMousePositionWithZoom
+    path: ../Jelly/Input.cs
+    startLine: 31
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static Point GetMousePositionWithZoom(float zoom, bool clamp)
+    parameters:
+    - id: zoom
+      type: System.Single
+    - id: clamp
+      type: System.Boolean
+    return:
+      type: Microsoft.Xna.Framework.Point
+    content.vb: Public Shared Function GetMousePositionWithZoom(zoom As Single, clamp As Boolean) As Point
+  overload: Jelly.Input.GetMousePositionWithZoom*
+  nameWithType.vb: Input.GetMousePositionWithZoom(Single, Boolean)
+  fullName.vb: Jelly.Input.GetMousePositionWithZoom(Single, Boolean)
+  name.vb: GetMousePositionWithZoom(Single, Boolean)
+- uid: Jelly.Input.RefreshKeyboardState
+  commentId: M:Jelly.Input.RefreshKeyboardState
+  id: RefreshKeyboardState
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: RefreshKeyboardState()
+  nameWithType: Input.RefreshKeyboardState()
+  fullName: Jelly.Input.RefreshKeyboardState()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RefreshKeyboardState
+    path: ../Jelly/Input.cs
+    startLine: 41
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static KeyboardState RefreshKeyboardState()
+    return:
+      type: Microsoft.Xna.Framework.Input.KeyboardState
+    content.vb: Public Shared Function RefreshKeyboardState() As KeyboardState
+  overload: Jelly.Input.RefreshKeyboardState*
+- uid: Jelly.Input.UpdateTypingInput(Microsoft.Xna.Framework.GameTime)
+  commentId: M:Jelly.Input.UpdateTypingInput(Microsoft.Xna.Framework.GameTime)
+  id: UpdateTypingInput(Microsoft.Xna.Framework.GameTime)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: UpdateTypingInput(GameTime)
+  nameWithType: Input.UpdateTypingInput(GameTime)
+  fullName: Jelly.Input.UpdateTypingInput(Microsoft.Xna.Framework.GameTime)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: UpdateTypingInput
+    path: ../Jelly/Input.cs
+    startLine: 49
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static void UpdateTypingInput(GameTime gameTime)
+    parameters:
+    - id: gameTime
+      type: Microsoft.Xna.Framework.GameTime
+    content.vb: Public Shared Sub UpdateTypingInput(gameTime As GameTime)
+  overload: Jelly.Input.UpdateTypingInput*
+- uid: Jelly.Input.GetTextInput
+  commentId: M:Jelly.Input.GetTextInput
+  id: GetTextInput
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetTextInput()
+  nameWithType: Input.GetTextInput()
+  fullName: Jelly.Input.GetTextInput()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetTextInput
+    path: ../Jelly/Input.cs
+    startLine: 73
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static char[] GetTextInput()
+    return:
+      type: System.Char[]
+    content.vb: Public Shared Function GetTextInput() As Char()
+  overload: Jelly.Input.GetTextInput*
+- uid: Jelly.Input.MouseState
+  commentId: P:Jelly.Input.MouseState
+  id: MouseState
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: MouseState
+  nameWithType: Input.MouseState
+  fullName: Jelly.Input.MouseState
+  type: Property
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: MouseState
+    path: ../Jelly/Input.cs
+    startLine: 81
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static MouseState MouseState { get; }
+    parameters: []
+    return:
+      type: Microsoft.Xna.Framework.Input.MouseState
+    content.vb: Public Shared ReadOnly Property MouseState As MouseState
+  overload: Jelly.Input.MouseState*
+- uid: Jelly.Input.RefreshMouseState
+  commentId: M:Jelly.Input.RefreshMouseState
+  id: RefreshMouseState
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: RefreshMouseState()
+  nameWithType: Input.RefreshMouseState()
+  fullName: Jelly.Input.RefreshMouseState()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RefreshMouseState
+    path: ../Jelly/Input.cs
+    startLine: 83
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static MouseState RefreshMouseState()
+    return:
+      type: Microsoft.Xna.Framework.Input.MouseState
+    content.vb: Public Shared Function RefreshMouseState() As MouseState
+  overload: Jelly.Input.RefreshMouseState*
+- uid: Jelly.Input.RefreshGamePadState
+  commentId: M:Jelly.Input.RefreshGamePadState
+  id: RefreshGamePadState
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: RefreshGamePadState()
+  nameWithType: Input.RefreshGamePadState()
+  fullName: Jelly.Input.RefreshGamePadState()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RefreshGamePadState
+    path: ../Jelly/Input.cs
+    startLine: 94
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static GamePadState RefreshGamePadState()
+    return:
+      type: Microsoft.Xna.Framework.Input.GamePadState
+    content.vb: Public Shared Function RefreshGamePadState() As GamePadState
+  overload: Jelly.Input.RefreshGamePadState*
+- uid: Jelly.Input.RefreshGamePadState(Microsoft.Xna.Framework.PlayerIndex)
+  commentId: M:Jelly.Input.RefreshGamePadState(Microsoft.Xna.Framework.PlayerIndex)
+  id: RefreshGamePadState(Microsoft.Xna.Framework.PlayerIndex)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: RefreshGamePadState(PlayerIndex)
+  nameWithType: Input.RefreshGamePadState(PlayerIndex)
+  fullName: Jelly.Input.RefreshGamePadState(Microsoft.Xna.Framework.PlayerIndex)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: RefreshGamePadState
+    path: ../Jelly/Input.cs
+    startLine: 96
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static GamePadState RefreshGamePadState(PlayerIndex index)
+    parameters:
+    - id: index
+      type: Microsoft.Xna.Framework.PlayerIndex
+    return:
+      type: Microsoft.Xna.Framework.Input.GamePadState
+    content.vb: Public Shared Function RefreshGamePadState(index As PlayerIndex) As GamePadState
+  overload: Jelly.Input.RefreshGamePadState*
+- uid: Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Keys)
+  commentId: M:Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Keys)
+  id: GetDown(Microsoft.Xna.Framework.Input.Keys)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetDown(Keys)
+  nameWithType: Input.GetDown(Keys)
+  fullName: Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Keys)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetDown
+    path: ../Jelly/Input.cs
+    startLine: 107
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetDown(Keys key)
+    parameters:
+    - id: key
+      type: Microsoft.Xna.Framework.Input.Keys
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetDown(key As Keys) As Boolean
+  overload: Jelly.Input.GetDown*
+- uid: Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Keys)
+  commentId: M:Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Keys)
+  id: GetPressed(Microsoft.Xna.Framework.Input.Keys)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetPressed(Keys)
+  nameWithType: Input.GetPressed(Keys)
+  fullName: Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Keys)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetPressed
+    path: ../Jelly/Input.cs
+    startLine: 112
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetPressed(Keys key)
+    parameters:
+    - id: key
+      type: Microsoft.Xna.Framework.Input.Keys
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetPressed(key As Keys) As Boolean
+  overload: Jelly.Input.GetPressed*
+- uid: Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Keys)
+  commentId: M:Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Keys)
+  id: GetReleased(Microsoft.Xna.Framework.Input.Keys)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetReleased(Keys)
+  nameWithType: Input.GetReleased(Keys)
+  fullName: Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Keys)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetReleased
+    path: ../Jelly/Input.cs
+    startLine: 117
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetReleased(Keys key)
+    parameters:
+    - id: key
+      type: Microsoft.Xna.Framework.Input.Keys
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetReleased(key As Keys) As Boolean
+  overload: Jelly.Input.GetReleased*
+- uid: Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  commentId: M:Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  id: GetDown(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetDown(Buttons, PlayerIndex)
+  nameWithType: Input.GetDown(Buttons, PlayerIndex)
+  fullName: Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons, Microsoft.Xna.Framework.PlayerIndex)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetDown
+    path: ../Jelly/Input.cs
+    startLine: 122
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetDown(Buttons button, PlayerIndex index)
+    parameters:
+    - id: button
+      type: Microsoft.Xna.Framework.Input.Buttons
+    - id: index
+      type: Microsoft.Xna.Framework.PlayerIndex
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetDown(button As Buttons, index As PlayerIndex) As Boolean
+  overload: Jelly.Input.GetDown*
+- uid: Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  commentId: M:Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  id: GetPressed(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetPressed(Buttons, PlayerIndex)
+  nameWithType: Input.GetPressed(Buttons, PlayerIndex)
+  fullName: Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons, Microsoft.Xna.Framework.PlayerIndex)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetPressed
+    path: ../Jelly/Input.cs
+    startLine: 127
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetPressed(Buttons button, PlayerIndex index)
+    parameters:
+    - id: button
+      type: Microsoft.Xna.Framework.Input.Buttons
+    - id: index
+      type: Microsoft.Xna.Framework.PlayerIndex
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetPressed(button As Buttons, index As PlayerIndex) As Boolean
+  overload: Jelly.Input.GetPressed*
+- uid: Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  commentId: M:Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  id: GetReleased(Microsoft.Xna.Framework.Input.Buttons,Microsoft.Xna.Framework.PlayerIndex)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetReleased(Buttons, PlayerIndex)
+  nameWithType: Input.GetReleased(Buttons, PlayerIndex)
+  fullName: Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons, Microsoft.Xna.Framework.PlayerIndex)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetReleased
+    path: ../Jelly/Input.cs
+    startLine: 132
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetReleased(Buttons button, PlayerIndex index)
+    parameters:
+    - id: button
+      type: Microsoft.Xna.Framework.Input.Buttons
+    - id: index
+      type: Microsoft.Xna.Framework.PlayerIndex
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetReleased(button As Buttons, index As PlayerIndex) As Boolean
+  overload: Jelly.Input.GetReleased*
+- uid: Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons)
+  commentId: M:Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons)
+  id: GetDown(Microsoft.Xna.Framework.Input.Buttons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetDown(Buttons)
+  nameWithType: Input.GetDown(Buttons)
+  fullName: Jelly.Input.GetDown(Microsoft.Xna.Framework.Input.Buttons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetDown
+    path: ../Jelly/Input.cs
+    startLine: 137
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetDown(Buttons button)
+    parameters:
+    - id: button
+      type: Microsoft.Xna.Framework.Input.Buttons
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetDown(button As Buttons) As Boolean
+  overload: Jelly.Input.GetDown*
+- uid: Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons)
+  commentId: M:Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons)
+  id: GetPressed(Microsoft.Xna.Framework.Input.Buttons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetPressed(Buttons)
+  nameWithType: Input.GetPressed(Buttons)
+  fullName: Jelly.Input.GetPressed(Microsoft.Xna.Framework.Input.Buttons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetPressed
+    path: ../Jelly/Input.cs
+    startLine: 139
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetPressed(Buttons button)
+    parameters:
+    - id: button
+      type: Microsoft.Xna.Framework.Input.Buttons
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetPressed(button As Buttons) As Boolean
+  overload: Jelly.Input.GetPressed*
+- uid: Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons)
+  commentId: M:Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons)
+  id: GetReleased(Microsoft.Xna.Framework.Input.Buttons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetReleased(Buttons)
+  nameWithType: Input.GetReleased(Buttons)
+  fullName: Jelly.Input.GetReleased(Microsoft.Xna.Framework.Input.Buttons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetReleased
+    path: ../Jelly/Input.cs
+    startLine: 141
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetReleased(Buttons button)
+    parameters:
+    - id: button
+      type: Microsoft.Xna.Framework.Input.Buttons
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetReleased(button As Buttons) As Boolean
+  overload: Jelly.Input.GetReleased*
+- uid: Jelly.Input.GetDown(Jelly.MouseButtons)
+  commentId: M:Jelly.Input.GetDown(Jelly.MouseButtons)
+  id: GetDown(Jelly.MouseButtons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetDown(MouseButtons)
+  nameWithType: Input.GetDown(MouseButtons)
+  fullName: Jelly.Input.GetDown(Jelly.MouseButtons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetDown
+    path: ../Jelly/Input.cs
+    startLine: 143
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetDown(MouseButtons button)
+    parameters:
+    - id: button
+      type: Jelly.MouseButtons
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetDown(button As MouseButtons) As Boolean
+  overload: Jelly.Input.GetDown*
+- uid: Jelly.Input.GetPressed(Jelly.MouseButtons)
+  commentId: M:Jelly.Input.GetPressed(Jelly.MouseButtons)
+  id: GetPressed(Jelly.MouseButtons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetPressed(MouseButtons)
+  nameWithType: Input.GetPressed(MouseButtons)
+  fullName: Jelly.Input.GetPressed(Jelly.MouseButtons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetPressed
+    path: ../Jelly/Input.cs
+    startLine: 148
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetPressed(MouseButtons button)
+    parameters:
+    - id: button
+      type: Jelly.MouseButtons
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetPressed(button As MouseButtons) As Boolean
+  overload: Jelly.Input.GetPressed*
+- uid: Jelly.Input.GetReleased(Jelly.MouseButtons)
+  commentId: M:Jelly.Input.GetReleased(Jelly.MouseButtons)
+  id: GetReleased(Jelly.MouseButtons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetReleased(MouseButtons)
+  nameWithType: Input.GetReleased(MouseButtons)
+  fullName: Jelly.Input.GetReleased(Jelly.MouseButtons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetReleased
+    path: ../Jelly/Input.cs
+    startLine: 153
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetReleased(MouseButtons button)
+    parameters:
+    - id: button
+      type: Jelly.MouseButtons
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetReleased(button As MouseButtons) As Boolean
+  overload: Jelly.Input.GetReleased*
+- uid: Jelly.Input.GetMouseButtonState(Jelly.MouseButtons)
+  commentId: M:Jelly.Input.GetMouseButtonState(Jelly.MouseButtons)
+  id: GetMouseButtonState(Jelly.MouseButtons)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetMouseButtonState(MouseButtons)
+  nameWithType: Input.GetMouseButtonState(MouseButtons)
+  fullName: Jelly.Input.GetMouseButtonState(Jelly.MouseButtons)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetMouseButtonState
+    path: ../Jelly/Input.cs
+    startLine: 171
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static ButtonState GetMouseButtonState(MouseButtons button)
+    parameters:
+    - id: button
+      type: Jelly.MouseButtons
+    return:
+      type: Microsoft.Xna.Framework.Input.ButtonState
+    content.vb: Public Shared Function GetMouseButtonState(button As MouseButtons) As ButtonState
+  overload: Jelly.Input.GetMouseButtonState*
+- uid: Jelly.Input.GetScrollDelta
+  commentId: M:Jelly.Input.GetScrollDelta
+  id: GetScrollDelta
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetScrollDelta()
+  nameWithType: Input.GetScrollDelta()
+  fullName: Jelly.Input.GetScrollDelta()
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetScrollDelta
+    path: ../Jelly/Input.cs
+    startLine: 173
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static int GetScrollDelta()
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function GetScrollDelta() As Integer
+  overload: Jelly.Input.GetScrollDelta*
+- uid: Jelly.Input.GetAnyDown(Jelly.InputType)
+  commentId: M:Jelly.Input.GetAnyDown(Jelly.InputType)
+  id: GetAnyDown(Jelly.InputType)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetAnyDown(InputType)
+  nameWithType: Input.GetAnyDown(InputType)
+  fullName: Jelly.Input.GetAnyDown(Jelly.InputType)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetAnyDown
+    path: ../Jelly/Input.cs
+    startLine: 178
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetAnyDown(InputType inputType)
+    parameters:
+    - id: inputType
+      type: Jelly.InputType
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetAnyDown(inputType As InputType) As Boolean
+  overload: Jelly.Input.GetAnyDown*
+- uid: Jelly.Input.GetAnyPressed(Jelly.InputType)
+  commentId: M:Jelly.Input.GetAnyPressed(Jelly.InputType)
+  id: GetAnyPressed(Jelly.InputType)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetAnyPressed(InputType)
+  nameWithType: Input.GetAnyPressed(InputType)
+  fullName: Jelly.Input.GetAnyPressed(Jelly.InputType)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetAnyPressed
+    path: ../Jelly/Input.cs
+    startLine: 204
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetAnyPressed(InputType inputType)
+    parameters:
+    - id: inputType
+      type: Jelly.InputType
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetAnyPressed(inputType As InputType) As Boolean
+  overload: Jelly.Input.GetAnyPressed*
+- uid: Jelly.Input.GetAnyReleased(Jelly.InputType)
+  commentId: M:Jelly.Input.GetAnyReleased(Jelly.InputType)
+  id: GetAnyReleased(Jelly.InputType)
+  parent: Jelly.Input
+  langs:
+  - csharp
+  - vb
+  name: GetAnyReleased(InputType)
+  nameWithType: Input.GetAnyReleased(InputType)
+  fullName: Jelly.Input.GetAnyReleased(Jelly.InputType)
+  type: Method
+  source:
+    remote:
+      path: Jelly/Input.cs
+      branch: dev
+      repo: https://github.com/tmaster-terrarian/Jelly.git
+    id: GetAnyReleased
+    path: ../Jelly/Input.cs
+    startLine: 257
+  assemblies:
+  - Jelly
+  namespace: Jelly
+  syntax:
+    content: public static bool GetAnyReleased(InputType inputType)
+    parameters:
+    - id: inputType
+      type: Jelly.InputType
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetAnyReleased(inputType As InputType) As Boolean
+  overload: Jelly.Input.GetAnyReleased*
+references:
+- uid: Jelly
+  commentId: N:Jelly
+  href: Jelly.html
+  name: Jelly
+  nameWithType: Jelly
+  fullName: Jelly
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Jelly.Input.InputDisabled*
+  commentId: Overload:Jelly.Input.InputDisabled
+  href: Jelly.Input.html#Jelly_Input_InputDisabled
+  name: InputDisabled
+  nameWithType: Input.InputDisabled
+  fullName: Jelly.Input.InputDisabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Jelly.Input.KeyboardState*
+  commentId: Overload:Jelly.Input.KeyboardState
+  href: Jelly.Input.html#Jelly_Input_KeyboardState
+  name: KeyboardState
+  nameWithType: Input.KeyboardState
+  fullName: Jelly.Input.KeyboardState
+- uid: Microsoft.Xna.Framework.Input.KeyboardState
+  commentId: T:Microsoft.Xna.Framework.Input.KeyboardState
+  parent: Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: KeyboardState
+  nameWithType: KeyboardState
+  fullName: Microsoft.Xna.Framework.Input.KeyboardState
+- uid: Microsoft.Xna.Framework.Input
+  commentId: N:Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: Microsoft.Xna.Framework.Input
+  nameWithType: Microsoft.Xna.Framework.Input
+  fullName: Microsoft.Xna.Framework.Input
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Input
+    name: Input
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework.Input
+    name: Input
+    isExternal: true
+- uid: Jelly.Input.MousePosition*
+  commentId: Overload:Jelly.Input.MousePosition
+  href: Jelly.Input.html#Jelly_Input_MousePosition
+  name: MousePosition
+  nameWithType: Input.MousePosition
+  fullName: Jelly.Input.MousePosition
+- uid: Microsoft.Xna.Framework.Point
+  commentId: T:Microsoft.Xna.Framework.Point
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: Point
+  nameWithType: Point
+  fullName: Microsoft.Xna.Framework.Point
+- uid: Microsoft.Xna.Framework
+  commentId: N:Microsoft.Xna.Framework
+  isExternal: true
+  name: Microsoft.Xna.Framework
+  nameWithType: Microsoft.Xna.Framework
+  fullName: Microsoft.Xna.Framework
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna
+    name: Xna
+    isExternal: true
+  - name: .
+  - uid: Microsoft.Xna.Framework
+    name: Framework
+    isExternal: true
+- uid: Jelly.Input.MousePositionClamped*
+  commentId: Overload:Jelly.Input.MousePositionClamped
+  href: Jelly.Input.html#Jelly_Input_MousePositionClamped
+  name: MousePositionClamped
+  nameWithType: Input.MousePositionClamped
+  fullName: Jelly.Input.MousePositionClamped
+- uid: Jelly.Input.GetMousePositionWithZoom*
+  commentId: Overload:Jelly.Input.GetMousePositionWithZoom
+  href: Jelly.Input.html#Jelly_Input_GetMousePositionWithZoom_System_Single_System_Boolean_
+  name: GetMousePositionWithZoom
+  nameWithType: Input.GetMousePositionWithZoom
+  fullName: Jelly.Input.GetMousePositionWithZoom
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Jelly.Input.RefreshKeyboardState*
+  commentId: Overload:Jelly.Input.RefreshKeyboardState
+  href: Jelly.Input.html#Jelly_Input_RefreshKeyboardState
+  name: RefreshKeyboardState
+  nameWithType: Input.RefreshKeyboardState
+  fullName: Jelly.Input.RefreshKeyboardState
+- uid: Jelly.Input.UpdateTypingInput*
+  commentId: Overload:Jelly.Input.UpdateTypingInput
+  href: Jelly.Input.html#Jelly_Input_UpdateTypingInput_Microsoft_Xna_Framework_GameTime_
+  name: UpdateTypingInput
+  nameWithType: Input.UpdateTypingInput
+  fullName: Jelly.Input.UpdateTypingInput
+- uid: Microsoft.Xna.Framework.GameTime
+  commentId: T:Microsoft.Xna.Framework.GameTime
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: GameTime
+  nameWithType: GameTime
+  fullName: Microsoft.Xna.Framework.GameTime
+- uid: Jelly.Input.GetTextInput*
+  commentId: Overload:Jelly.Input.GetTextInput
+  href: Jelly.Input.html#Jelly_Input_GetTextInput
+  name: GetTextInput
+  nameWithType: Input.GetTextInput
+  fullName: Jelly.Input.GetTextInput
+- uid: System.Char[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char[]
+  nameWithType: char[]
+  fullName: char[]
+  nameWithType.vb: Char()
+  fullName.vb: Char()
+  name.vb: Char()
+  spec.csharp:
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: (
+  - name: )
+- uid: Jelly.Input.MouseState*
+  commentId: Overload:Jelly.Input.MouseState
+  href: Jelly.Input.html#Jelly_Input_MouseState
+  name: MouseState
+  nameWithType: Input.MouseState
+  fullName: Jelly.Input.MouseState
+- uid: Microsoft.Xna.Framework.Input.MouseState
+  commentId: T:Microsoft.Xna.Framework.Input.MouseState
+  parent: Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: MouseState
+  nameWithType: MouseState
+  fullName: Microsoft.Xna.Framework.Input.MouseState
+- uid: Jelly.Input.RefreshMouseState*
+  commentId: Overload:Jelly.Input.RefreshMouseState
+  href: Jelly.Input.html#Jelly_Input_RefreshMouseState
+  name: RefreshMouseState
+  nameWithType: Input.RefreshMouseState
+  fullName: Jelly.Input.RefreshMouseState
+- uid: Jelly.Input.RefreshGamePadState*
+  commentId: Overload:Jelly.Input.RefreshGamePadState
+  href: Jelly.Input.html#Jelly_Input_RefreshGamePadState
+  name: RefreshGamePadState
+  nameWithType: Input.RefreshGamePadState
+  fullName: Jelly.Input.RefreshGamePadState
+- uid: Microsoft.Xna.Framework.Input.GamePadState
+  commentId: T:Microsoft.Xna.Framework.Input.GamePadState
+  parent: Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: GamePadState
+  nameWithType: GamePadState
+  fullName: Microsoft.Xna.Framework.Input.GamePadState
+- uid: Microsoft.Xna.Framework.PlayerIndex
+  commentId: T:Microsoft.Xna.Framework.PlayerIndex
+  parent: Microsoft.Xna.Framework
+  isExternal: true
+  name: PlayerIndex
+  nameWithType: PlayerIndex
+  fullName: Microsoft.Xna.Framework.PlayerIndex
+- uid: Jelly.Input.GetDown*
+  commentId: Overload:Jelly.Input.GetDown
+  href: Jelly.Input.html#Jelly_Input_GetDown_Microsoft_Xna_Framework_Input_Keys_
+  name: GetDown
+  nameWithType: Input.GetDown
+  fullName: Jelly.Input.GetDown
+- uid: Microsoft.Xna.Framework.Input.Keys
+  commentId: T:Microsoft.Xna.Framework.Input.Keys
+  parent: Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: Keys
+  nameWithType: Keys
+  fullName: Microsoft.Xna.Framework.Input.Keys
+- uid: Jelly.Input.GetPressed*
+  commentId: Overload:Jelly.Input.GetPressed
+  href: Jelly.Input.html#Jelly_Input_GetPressed_Microsoft_Xna_Framework_Input_Keys_
+  name: GetPressed
+  nameWithType: Input.GetPressed
+  fullName: Jelly.Input.GetPressed
+- uid: Jelly.Input.GetReleased*
+  commentId: Overload:Jelly.Input.GetReleased
+  href: Jelly.Input.html#Jelly_Input_GetReleased_Microsoft_Xna_Framework_Input_Keys_
+  name: GetReleased
+  nameWithType: Input.GetReleased
+  fullName: Jelly.Input.GetReleased
+- uid: Microsoft.Xna.Framework.Input.Buttons
+  commentId: T:Microsoft.Xna.Framework.Input.Buttons
+  parent: Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: Buttons
+  nameWithType: Buttons
+  fullName: Microsoft.Xna.Framework.Input.Buttons
+- uid: Jelly.MouseButtons
+  commentId: T:Jelly.MouseButtons
+  parent: Jelly
+  href: Jelly.MouseButtons.html
+  name: MouseButtons
+  nameWithType: MouseButtons
+  fullName: Jelly.MouseButtons
+- uid: Jelly.Input.GetMouseButtonState*
+  commentId: Overload:Jelly.Input.GetMouseButtonState
+  href: Jelly.Input.html#Jelly_Input_GetMouseButtonState_Jelly_MouseButtons_
+  name: GetMouseButtonState
+  nameWithType: Input.GetMouseButtonState
+  fullName: Jelly.Input.GetMouseButtonState
+- uid: Microsoft.Xna.Framework.Input.ButtonState
+  commentId: T:Microsoft.Xna.Framework.Input.ButtonState
+  parent: Microsoft.Xna.Framework.Input
+  isExternal: true
+  name: ButtonState
+  nameWithType: ButtonState
+  fullName: Microsoft.Xna.Framework.Input.ButtonState
+- uid: Jelly.Input.GetScrollDelta*
+  commentId: Overload:Jelly.Input.GetScrollDelta
+  href: Jelly.Input.html#Jelly_Input_GetScrollDelta
+  name: GetScrollDelta
+  nameWithType: Input.GetScrollDelta
+  fullName: Jelly.Input.GetScrollDelta
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Jelly.Input.GetAnyDown*
+  commentId: Overload:Jelly.Input.GetAnyDown
+  href: Jelly.Input.html#Jelly_Input_GetAnyDown_Jelly_InputType_
+  name: GetAnyDown
+  nameWithType: Input.GetAnyDown
+  fullName: Jelly.Input.GetAnyDown
+- uid: Jelly.InputType
+  commentId: T:Jelly.InputType
+  parent: Jelly
+  href: Jelly.InputType.html
+  name: InputType
+  nameWithType: InputType
+  fullName: Jelly.InputType
+- uid: Jelly.Input.GetAnyPressed*
+  commentId: Overload:Jelly.Input.GetAnyPressed
+  href: Jelly.Input.html#Jelly_Input_GetAnyPressed_Jelly_InputType_
+  name: GetAnyPressed
+  nameWithType: Input.GetAnyPressed
+  fullName: Jelly.Input.GetAnyPressed
+- uid: Jelly.Input.GetAnyReleased*
+  commentId: Overload:Jelly.Input.GetAnyReleased
+  href: Jelly.Input.html#Jelly_Input_GetAnyReleased_Jelly_InputType_
+  name: GetAnyReleased
+  nameWithType: Input.GetAnyReleased
+  fullName: Jelly.Input.GetAnyReleased
