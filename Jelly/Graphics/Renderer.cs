@@ -91,7 +91,7 @@ public static class Renderer
         SpriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
-    public static void BeginDraw(SamplerState samplerState = null, Matrix? transformMatrix = null)
+    public static void BeginDraw(SpriteSortMode sortMode = SpriteSortMode.Deferred, BlendState blendState = null, SamplerState samplerState = null, DepthStencilState depthStencilState = null, RasterizerState rasterizerState = null, Effect effect = null, Matrix? transformMatrix = null)
     {
         CheckInitialized();
         if(_state != RendererState.Idle) throw new InvalidOperationException("Invalid render state");
@@ -100,7 +100,7 @@ public static class Renderer
         GraphicsDevice.SetRenderTarget(RenderTarget);
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        SpriteBatch.Begin(sortMode: SpriteSortMode.Deferred, samplerState: samplerState, transformMatrix: transformMatrix, blendState: BlendState.AlphaBlend);
+        SpriteBatch.Begin(sortMode, blendState, samplerState, depthStencilState, rasterizerState, effect, transformMatrix);
 
         _state = RendererState.BaseDraw;
     }
