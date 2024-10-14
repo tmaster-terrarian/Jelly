@@ -57,7 +57,10 @@ public class Camera
             (random.NextSingle() - 0.5f) * 2 * currentShake
         );
 
-        currentShake = MathHelper.Max(0, currentShake - ((1f / shakeTime) * shakeMagnitude));
+        if(shakeTime > 0)
+            currentShake = MathHelper.Max(0, currentShake - ((1f / shakeTime) * shakeMagnitude));
+        else
+            currentShake = 0;
 
         Vector2 finalPosition = Vector2.Round(shakePosition);
 
