@@ -9,6 +9,7 @@ namespace Jelly.Graphics;
 
 public class Camera
 {
+    readonly Random random = new();
     float currentShake;
     float shakeMagnitude;
     int shakeTime;
@@ -52,8 +53,8 @@ public class Camera
         Vector2 basePosition = Position;
 
         Vector2 shakePosition = basePosition - new Vector2(
-            (Random.Shared.NextSingle() * currentShake * 2) - (currentShake * 0.5f),
-            (Random.Shared.NextSingle() * currentShake * 2) - (currentShake * 0.5f)
+            (random.NextSingle() - 0.5f) * 2 * currentShake,
+            (random.NextSingle() - 0.5f) * 2 * currentShake
         );
 
         currentShake = MathHelper.Max(0, currentShake - ((1f / shakeTime) * shakeMagnitude));
