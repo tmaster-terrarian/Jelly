@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 
 using Jelly.Net;
 using Jelly.Utilities;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Jelly;
 
@@ -150,5 +152,20 @@ public class Entity
     public T GetComponent<T>() where T : Component
     {
         return Components?.Get<T>();
+    }
+
+    public static IEqualityComparer<Entity> GetEqualityComparer() => new Comparer();
+
+    class Comparer : IEqualityComparer<Entity>
+    {
+        public bool Equals(Entity x, Entity y)
+        {
+            return x.Equals(y);
+        }
+
+        public int GetHashCode([DisallowNull] Entity obj)
+        {
+            return obj.GetHashCode();
+        }
     }
 }

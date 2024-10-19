@@ -8,6 +8,9 @@ namespace Jelly.Utilities;
 
 public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 {
+    [JsonConverter(typeof(JsonStringEnumConverter<LockModes>))]
+    public enum LockModes { Open, Locked, Error };
+
     private static Comparison<Entity> CompareDepth => (a, b) => Math.Sign(b.Depth - a.Depth);
 
     [JsonIgnore]
@@ -43,6 +46,58 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     }
 
     private readonly List<Entity> toAwake = [];
+    private readonly List<Entity> toAdd = [];
+    private readonly List<Entity> toRemove = [];
+
+    private readonly HashSet<Entity> current = new HashSet<Entity>(Entity.GetEqualityComparer());
+    private readonly HashSet<Entity> adding = new HashSet<Entity>(Entity.GetEqualityComparer());
+    private readonly HashSet<Entity> removing = new HashSet<Entity>(Entity.GetEqualityComparer());
+
+    private LockModes lockMode;
+
+    public LockModes LockMode
+    {
+        get => lockMode;
+
+        internal set
+        {
+            lockMode = value;
+
+            if (toAdd.Count > 0)
+            {
+                foreach (var entity in toAdd)
+                {
+                    if (current.Add(entity))
+                    {
+                        entities.Add(entity.EntityID, entity);
+                        entity.Added(Scene);
+                    }
+                }
+
+                adding.Clear();
+                toAdd.Clear();
+
+                _drawOrderDirty = true;
+            }
+
+            if (toRemove.Count > 0)
+            {
+                foreach (var entity in toRemove)
+                {
+                    if (current.Remove(entity))
+                    {
+                        entities.Remove(entity.EntityID);
+                        entity.Removed(Scene);
+                    }
+                }
+
+                removing.Clear();
+                toRemove.Clear();
+
+                _drawOrderDirty = true;
+            }
+        }
+    }
 
     [JsonIgnore] public Scene Scene { get; internal set; }
 
@@ -98,35 +153,71 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
     {
         bool exists = Entities.ContainsKey(entity.EntityID);
 
-        if(exists || Entities.TryAdd(entity.EntityID, entity))
+        switch (LockMode)
         {
-            _drawOrderDirty = true;
+            case LockModes.Open:
+                if(exists || Entities.TryAdd(entity.EntityID, entity))
+                {
+                    _drawOrderDirty = true;
 
-            if(exists)
-                Entities[entity.EntityID] = entity;
+                    if(exists)
+                        Entities[entity.EntityID] = entity;
 
-            if(Scene != null)
-            {
-                entity.Added(Scene);
+                    if(Scene != null)
+                    {
+                        entity.Added(Scene);
 
-                toAwake.Add(entity);
-            }
+                        toAwake.Add(entity);
+                    }
+                }
+                break;
+
+            case LockModes.Locked:
+                if (!current.Contains(entity) && !adding.Contains(entity))
+                {
+                    adding.Add(entity);
+                    toAdd.Add(entity);
+                    toAwake.Add(entity);
+                }
+                break;
+
+            case LockModes.Error:
+                throw new Exception("Cannot add or remove Entities at this time!");
         }
     }
 
     public bool Remove(Entity entity)
     {
-        if(Entities.Remove(entity.EntityID))
+        switch (LockMode)
         {
-            _drawOrderDirty = true;
+            case LockModes.Open:
+                if(Entities.Remove(entity.EntityID))
+                {
+                    _drawOrderDirty = true;
 
-            if(Scene != null)
-            {
-                entity.Removed(Scene);
-            }
+                    if(Scene != null)
+                    {
+                        entity.Removed(Scene);
+                    }
 
-            return true;
+                    return true;
+                }
+                break;
+
+            case LockModes.Locked:
+                if (current.Contains(entity) && !removing.Contains(entity))
+                {
+                    removing.Add(entity);
+                    toRemove.Add(entity);
+
+                    return true;
+                }
+                break;
+
+            case LockModes.Error:
+                throw new Exception("Cannot add or remove Entities at this time!");
         }
+
         return false;
     }
 
@@ -228,15 +319,29 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     public void Foreach<T>(Action<T> action) where T : Entity
     {
+        bool wasLocked = LockMode != LockModes.Open;
+        if(!wasLocked)
+            LockMode = LockModes.Locked;
+
         foreach (var e in Entities.Values)
             if (e is T)
                 action?.Invoke(e as T);
+
+        if(!wasLocked)
+            LockMode = LockModes.Open;
     }
 
     public void ForeachWithComponent<T>(Action<Entity> action) where T : Component
     {
+        bool wasLocked = LockMode != LockModes.Open;
+        if(!wasLocked)
+            LockMode = LockModes.Locked;
+
         foreach (var e in FindAllWithComponent<T>())
             action?.Invoke(e);
+
+        if(!wasLocked)
+            LockMode = LockModes.Open;
     }
 
     public IEnumerator<Entity> GetEnumerator()
@@ -265,25 +370,29 @@ public class EntityList : ICollection<Entity>, IEnumerable<Entity>, IEnumerable
 
     internal void Update()
     {
+        LockMode = LockModes.Locked;
         foreach(var entity in Entities.Values)
             if(entity.Enabled)
                 entity.Update();
+        LockMode = LockModes.Open;
 
         foreach(var entity in Entities.Values)
+        {
             if(entity.depthChanged)
             {
                 entity.depthChanged = false;
                 _drawOrderDirty = true;
             }
+        }
     }
 
     private void Draw(int phase, Tag matchTags, TagFilter filter)
     {
+        LockMode = LockModes.Error;
         foreach(var entity in ToDraw)
-        {
             if(entity.Visible && entity.Tag.Matches(matchTags, filter))
                 DrawPhase(entity, phase);
-        }
+        LockMode = LockModes.Open;
     }
 
     private static void DrawPhase(Entity entity, int phase)
