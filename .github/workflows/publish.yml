@@ -45,11 +45,11 @@ jobs:
       - name: Publish to Nuget
         run: dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} ${{ github.workspace }}/Nuget/*.nupkg --skip-duplicate
 
-      - name: Authenticate With GitHub Packages
-        run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+      # - name: Authenticate With GitHub Packages
+      #   run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
 
-      - name: Publish to GitHub Packages
-        run: dotnet nuget push --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} ${{ github.workspace }}/Nuget/*.nupkg --skip-duplicate
+      # - name: Publish to GitHub Packages
+      #   run: dotnet nuget push --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} ${{ github.workspace }}/Nuget/*.nupkg --skip-duplicate
 
   release:
     runs-on: ubuntu-latest
