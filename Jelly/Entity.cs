@@ -84,24 +84,44 @@ public class Entity
 
     public virtual void Awake(Scene scene)
     {
-        if(Components != null)
-            foreach(var c in Components)
-                c.EntityAwake();
+        bool wasLocked = Components.LockMode != ComponentList.LockModes.Open;
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Locked;
+
+        foreach(var c in Components)
+            c.EntityAwake();
+
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Open;
     }
 
     public virtual void Added(Scene scene)
     {
         Scene = scene;
-        if(Components != null)
-            foreach(var c in Components)
-                c.EntityAdded(scene);
+
+        bool wasLocked = Components.LockMode != ComponentList.LockModes.Open;
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Locked;
+
+        foreach(var c in Components)
+            c.EntityAdded(scene);
+
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Open;
     }
 
     public virtual void Removed(Scene scene)
     {
-        if(Components != null)
-            foreach(var c in Components)
-                c.EntityRemoved(scene);
+        bool wasLocked = Components.LockMode != ComponentList.LockModes.Open;
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Locked;
+
+        foreach(var c in Components)
+            c.EntityRemoved(scene);
+
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Open;
+
         Scene = null;
     }
 
@@ -109,9 +129,15 @@ public class Entity
 
     public virtual void SceneEnd(Scene scene)
     {
-        if(Components != null)
-            foreach(var c in Components)
-                c.SceneEnd(scene);
+        bool wasLocked = Components.LockMode != ComponentList.LockModes.Open;
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Locked;
+
+        foreach(var c in Components)
+            c.SceneEnd(scene);
+
+        if(!wasLocked)
+            Components.LockMode = ComponentList.LockModes.Open;
     }
 
     public virtual void Update()
