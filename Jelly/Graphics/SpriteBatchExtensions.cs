@@ -148,4 +148,14 @@ public static class SpriteBatchExtensions
 
 		spriteBatch.DrawNineSlice(texture, destinationRectangle, sourceRectangle, centerSliceBounds.Location, (sourceRectangle ?? texture.Bounds).Size - (centerSliceBounds.Location + centerSliceBounds.Size), color);
 	}
+
+	public static void DrawLine(this SpriteBatch spriteBatch, Vector2 start, Vector2 end, Color color, float width = 1, float layerDepth = 0)
+	{
+		spriteBatch.Draw(Renderer.PixelTexture, start, null, color, (end - start).ToRotation(), new Vector2(0, 0.5f), new Vector2(Vector2.Distance(start, end), width), SpriteEffects.None, layerDepth);
+	}
+
+	public static void DrawLine(this SpriteBatch spriteBatch, Vector2 start, float direction, float length, Color color, float width = 1, float layerDepth = 0)
+	{
+		spriteBatch.Draw(Renderer.PixelTexture, start, null, color, direction, new Vector2(0, 0.5f), new Vector2(length, width), SpriteEffects.None, layerDepth);
+	}
 }
