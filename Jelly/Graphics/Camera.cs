@@ -13,6 +13,7 @@ public class Camera
     float currentShake;
     float shakeMagnitude;
     int shakeTime;
+    Point _lastMousePosInWorld;
 
     public Vector2 Position { get; set; } = Vector2.Zero;
 
@@ -20,36 +21,30 @@ public class Camera
 
     public Matrix Transform { get; private set; } = new();
 
-    public Point MousePositionInWorld => Input.GetMousePositionWithZoom(Zoom, clamp: true) + Position.ToPoint();
+    public Point MousePositionInWorld => Input.InputDisabled ? _lastMousePosInWorld : Input.GetMousePositionWithZoom(Zoom, clamp: true) + Position.ToPoint();
 
     public void SetShake(float shakeMagnitude, int shakeTime)
     {
-        if(shakeMagnitude > this.shakeMagnitude)
+        if(Math.Abs(shakeMagnitude) >= this.currentShake)
         {
-            this.currentShake = shakeMagnitude;
-            this.shakeMagnitude = shakeMagnitude;
-        }
-        if(shakeTime > this.shakeTime)
-        {
-            this.shakeTime = shakeTime;
+            this.shakeMagnitude = Math.Abs(shakeMagnitude);
+            this.currentShake = Math.Abs(shakeMagnitude);
+            this.shakeTime = Math.Abs(shakeTime);
         }
     }
 
     public void AddShake(float shakeMagnitude, int shakeTime)
     {
-        this.currentShake += shakeMagnitude;
-        if(shakeMagnitude > this.shakeMagnitude)
-        {
-            this.shakeMagnitude = shakeMagnitude;
-        }
-        if(shakeTime > this.shakeTime)
-        {
-            this.shakeTime = shakeTime;
-        }
+        this.shakeMagnitude = Math.Abs(shakeMagnitude);
+        this.currentShake += Math.Abs(shakeMagnitude);
+        this.shakeTime = Math.Abs(shakeTime);
     }
 
     public void Update()
     {
+        if(!Input.InputDisabled)
+            _lastMousePosInWorld = MousePositionInWorld;
+
         Vector2 basePosition = Position;
 
         Vector2 shakePosition = basePosition - new Vector2(
@@ -58,9 +53,12 @@ public class Camera
         );
 
         if(shakeTime > 0)
-            currentShake = MathHelper.Max(0, currentShake - ((1f / shakeTime) * shakeMagnitude));
+            currentShake = MathHelper.Max(0, currentShake - ((1f / shakeTime) * shakeMagnitude) * (Time.UnscaledDeltaTime * 60));
         else
             currentShake = 0;
+
+        if(currentShake == 0)
+            shakeTime = 0;
 
         Vector2 finalPosition = Vector2.Round(shakePosition);
 
