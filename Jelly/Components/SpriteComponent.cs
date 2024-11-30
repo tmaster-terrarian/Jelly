@@ -23,15 +23,47 @@ public class SpriteComponent : Component
 
     public SpriteEffects SpriteEffects { get; set; } = SpriteEffects.None;
 
+    private Texture2D texture;
+
+    public override void OnCreated()
+    {
+        if(JellyBackend.ContentProvider.TryGetTexture(TexturePath, out Texture2D tex))
+        {
+            texture = tex;
+        }
+    }
+
     public override void Draw()
     {
         base.Draw();
 
         if(TexturePath is null) return;
 
-        if(JellyBackend.ContentProvider.TryGetTexture(TexturePath, out Texture2D tex))
-        {
-            Renderer.SpriteBatch.Draw(tex, Entity.Position.ToVector2(), SourceRectangle, Color * Alpha, Rotation, Pivot, Scale, SpriteEffects, 0);
-        }
+        if(texture is null) return;
+
+        Renderer.SpriteBatch.Draw(texture, Entity.Position.ToVector2(), SourceRectangle, Color * Alpha, Rotation, Pivot, Scale, SpriteEffects, 0);
+    }
+
+    bool removed;
+
+    public override void Removed(Entity entity)
+    {
+        Cleanup();
+    }
+
+    public override void EntityRemoved(Scene scene)
+    {
+        Cleanup();
+    }
+
+    private void Cleanup()
+    {
+        if(removed) return;
+
+        texture = null;
+
+        removed = true;
+
+        Visible = false;
     }
 }
